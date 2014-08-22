@@ -5,6 +5,7 @@
     "aglio": "^1.14.0",
     "body-parser": "~1.0.1",
     "express": "~4.0.0",
+    "request": "^2.40.0",
     "require": "^0.5.0"
   }
 }
