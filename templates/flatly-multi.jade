@@ -1,0 +1,14 @@
+extends flatly
+
+block nav
+    +Nav(true)
+
+block content
+    +Content('info', true)
+
+block scripts
+    script
+        :coffee
+            $('table').addClass 'table'
+
+    +Multipage()
