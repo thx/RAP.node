@@ -1,0 +1,280 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>爱淘宝项目重构二..接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#搭配---爱淘宝后台管理页" class="list-group-item heading">搭配 - 爱淘宝后台管理页</a></div><div class="list-group"><a href="#喜欢---爱淘宝后台管理页" class="list-group-item heading">喜欢 - 爱淘宝后台管理页</a></div><div class="list-group"><a href="#用户---爱淘宝后台管理页" class="list-group-item heading">用户 - 爱淘宝后台管理页</a></div><div class="list-group"><a href="#社交sns---爱淘宝后台管理页" class="list-group-item heading">社交SNS - 爱淘宝后台管理页</a></div><div class="list-group"><a href="#功能模块---爱淘宝后台管理页" class="list-group-item heading">功能模块 - 爱淘宝后台管理页</a></div><div class="list-group"><a href="#页面框架---爱淘宝后台管理页" class="list-group-item heading">页面框架 - 爱淘宝后台管理页</a><a href="#页面框架---爱淘宝后台管理页-页面框架请求" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;页面框架请求</a></div><div class="list-group"><a href="#专辑---合作专辑" class="list-group-item heading">专辑 - 合作专辑</a><a href="#专辑---合作专辑-取消当前用户参与的指定专辑" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;取消当前用户参与的指定专辑</a><a href="#专辑---合作专辑-当前用户参与的指定专辑" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;当前用户参与的指定专辑</a></div><div class="list-group"><a href="#专辑---个人、选品专辑" class="list-group-item heading">专辑 - 个人、选品专辑</a><a href="#专辑---个人、选品专辑-创建专辑" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;创建专辑</a><a href="#专辑---个人、选品专辑-发布专辑" class="list-group-item"><i class="fa fa-pencil"></i>&nbsp;发布专辑</a><a href="#专辑---个人、选品专辑-删除专辑" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;删除专辑</a></div><div class="list-group"><a href="#专辑---公共功能" class="list-group-item heading">专辑 - 公共功能</a><a href="#专辑---公共功能-获取专辑描述信息及可用标签列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取专辑描述信息及可用标签列表</a><a href="#专辑---公共功能-查看专辑详情" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;查看专辑详情</a><a href="#专辑---公共功能-获取商品详情" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取商品详情</a><a href="#专辑---公共功能-通过条件获取专辑商品信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;通过条件获取专辑商品信息</a><a href="#专辑---公共功能-获取商品分享计数" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取商品分享计数</a><a href="#专辑---公共功能-获取专辑列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取专辑列表</a><a href="#专辑---公共功能-查看专辑报表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;查看专辑报表</a><a href="#专辑---公共功能-获取专辑商品信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取专辑商品信息</a><a href="#专辑---公共功能-取消分享专辑商品" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;取消分享专辑商品</a><a href="#专辑---公共功能-更新专辑商品信息" class="list-group-item"><i class="fa fa-pencil"></i>&nbsp;更新专辑商品信息</a><a href="#专辑---公共功能-往指定专辑中分享商品" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;往指定专辑中分享商品</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">爱淘宝项目重构二..接口文档</h1></div></header><div class="description"></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="搭配---爱淘宝后台管理页">搭配 - 爱淘宝后台管理页&nbsp;<a href="#搭配---爱淘宝后台管理页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="喜欢---爱淘宝后台管理页">喜欢 - 爱淘宝后台管理页&nbsp;<a href="#喜欢---爱淘宝后台管理页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="用户---爱淘宝后台管理页">用户 - 爱淘宝后台管理页&nbsp;<a href="#用户---爱淘宝后台管理页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="社交sns---爱淘宝后台管理页">社交SNS - 爱淘宝后台管理页&nbsp;<a href="#社交sns---爱淘宝后台管理页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="功能模块---爱淘宝后台管理页">功能模块 - 爱淘宝后台管理页&nbsp;<a href="#功能模块---爱淘宝后台管理页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="页面框架---爱淘宝后台管理页">页面框架 - 爱淘宝后台管理页&nbsp;<a href="#页面框架---爱淘宝后台管理页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="页面框架---爱淘宝后台管理页-页面框架请求">页面框架请求&nbsp;<a href="#页面框架---爱淘宝后台管理页-页面框架请求"><i class="fa fa-link"></i></a></h4><p>VM实现, 包括：
+  淘宝公共吊顶
+  爱淘宝吊顶
+  爱淘宝底（如果存在）
+  淘宝公共底部</p>
+<section id="页面框架---爱淘宝后台管理页-页面框架请求-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#页面框架---爱淘宝后台管理页-页面框架请求-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/frame.htm</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#f7381bb9de482d832ad10d8524317df2" class="pull-right">Toggle</a></li><li id="f7381bb9de482d832ad10d8524317df2" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">resParam</span>": <span class="hljs-value"><span class="hljs-number">62514</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="专辑---合作专辑">专辑 - 合作专辑&nbsp;<a href="#专辑---合作专辑"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="专辑---合作专辑-取消当前用户参与的指定专辑">取消当前用户参与的指定专辑&nbsp;<a href="#专辑---合作专辑-取消当前用户参与的指定专辑"><i class="fa fa-link"></i></a></h4><section id="专辑---合作专辑-取消当前用户参与的指定专辑-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">DELETE</span></div><div style="float:left"><a href="#专辑---合作专辑-取消当前用户参与的指定专辑-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/collect/{collectId}/enrollment</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#27bee39d43461131aade7ebfdaa63f3e" class="pull-right">Toggle</a></li><li id="27bee39d43461131aade7ebfdaa63f3e" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"退出合作专辑成功!"</span></span>,
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">resultCode</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+</span>}
+</code></pre></li></ul></section><h4 id="专辑---合作专辑-当前用户参与的指定专辑">当前用户参与的指定专辑&nbsp;<a href="#专辑---合作专辑-当前用户参与的指定专辑"><i class="fa fa-link"></i></a></h4><p>取消当前用户参与的指定专辑</p>
+<section id="专辑---合作专辑-当前用户参与的指定专辑-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#专辑---合作专辑-当前用户参与的指定专辑-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/collect/{collectId}enrollment</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#8c7693869ac9aacb5a97f4f41246f1c3" class="pull-right">Toggle</a></li><li id="8c7693869ac9aacb5a97f4f41246f1c3" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">resultCode</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"参与合作专辑成功!"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="专辑---个人、选品专辑">专辑 - 个人、选品专辑&nbsp;<a href="#专辑---个人、选品专辑"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="专辑---个人、选品专辑-创建专辑">创建专辑&nbsp;<a href="#专辑---个人、选品专辑-创建专辑"><i class="fa fa-link"></i></a></h4><section id="专辑---个人、选品专辑-创建专辑-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#专辑---个人、选品专辑-创建专辑-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/collect</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a5c96f65042320ee7e4513b32a766405" class="pull-right">Toggle</a></li><li id="a5c96f65042320ee7e4513b32a766405" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---个人、选品专辑-发布专辑">发布专辑&nbsp;<a href="#专辑---个人、选品专辑-发布专辑"><i class="fa fa-link"></i></a></h4><section id="专辑---个人、选品专辑-发布专辑-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">PUT</span></div><div style="float:left"><a href="#专辑---个人、选品专辑-发布专辑-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/collect/{collectId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#fd6d8c36aa7c2915f4fa6d7226343e0b" class="pull-right">Toggle</a></li><li id="fd6d8c36aa7c2915f4fa6d7226343e0b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---个人、选品专辑-删除专辑">删除专辑&nbsp;<a href="#专辑---个人、选品专辑-删除专辑"><i class="fa fa-link"></i></a></h4><section id="专辑---个人、选品专辑-删除专辑-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">DELETE</span></div><div style="float:left"><a href="#专辑---个人、选品专辑-删除专辑-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/collect/{collectId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#62175e2ed33a1826579ddb74ffe1326a" class="pull-right">Toggle</a></li><li id="62175e2ed33a1826579ddb74ffe1326a" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="专辑---公共功能">专辑 - 公共功能&nbsp;<a href="#专辑---公共功能"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="专辑---公共功能-获取专辑描述信息及可用标签列表">获取专辑描述信息及可用标签列表&nbsp;<a href="#专辑---公共功能-获取专辑描述信息及可用标签列表"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-获取专辑描述信息及可用标签列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#专辑---公共功能-获取专辑描述信息及可用标签列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/collect/{collectId}/information</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a050938d7403dfff0131e62496178d84" class="pull-right">Toggle</a></li><li id="a050938d7403dfff0131e62496178d84" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---公共功能-查看专辑详情">查看专辑详情&nbsp;<a href="#专辑---公共功能-查看专辑详情"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-查看专辑详情-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#专辑---公共功能-查看专辑详情-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/collect/{collectId}/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c08c9d3d1cf7cd10b4572406a431a686" class="pull-right">Toggle</a></li><li id="c08c9d3d1cf7cd10b4572406a431a686" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---公共功能-获取商品详情">获取商品详情&nbsp;<a href="#专辑---公共功能-获取商品详情"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-获取商品详情-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#专辑---公共功能-获取商品详情-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/auction/{auctionId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#3a61c89487aabe8d7075364ebf4a7aca" class="pull-right">Toggle</a></li><li id="3a61c89487aabe8d7075364ebf4a7aca" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---公共功能-通过条件获取专辑商品信息">通过条件获取专辑商品信息&nbsp;<a href="#专辑---公共功能-通过条件获取专辑商品信息"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-通过条件获取专辑商品信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#专辑---公共功能-通过条件获取专辑商品信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/collectItem/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#de37681bc8330f3f24b230d9572e2473" class="pull-right">Toggle</a></li><li id="de37681bc8330f3f24b230d9572e2473" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---公共功能-获取商品分享计数">获取商品分享计数&nbsp;<a href="#专辑---公共功能-获取商品分享计数"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-获取商品分享计数-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#专辑---公共功能-获取商品分享计数-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/stat/{auctionId}/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7bd378b06d7952730f9240cf2d1e25aa" class="pull-right">Toggle</a></li><li id="7bd378b06d7952730f9240cf2d1e25aa" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---公共功能-获取专辑列表">获取专辑列表&nbsp;<a href="#专辑---公共功能-获取专辑列表"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-获取专辑列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#专辑---公共功能-获取专辑列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/collects</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#f1c3c83fb54e6900729f6fa2ba5ef29d" class="pull-right">Toggle</a></li><li id="f1c3c83fb54e6900729f6fa2ba5ef29d" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">collectVOs</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">tagList</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">isLeaf</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">tagType</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+                "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">children</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-number">1407724234000</span></span>,
+                "<span class="hljs-attribute">channelId</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+                "<span class="hljs-attribute">tagName</span>": <span class="hljs-value"><span class="hljs-string">"好东西5"</span></span>,
+                "<span class="hljs-attribute">parentId</span>": <span class="hljs-value"><span class="hljs-number">50004</span></span>,
+                "<span class="hljs-attribute">isAssembled</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-number">1407724234000</span></span>,
+                "<span class="hljs-attribute">selected</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">tagId</span>": <span class="hljs-value"><span class="hljs-number">50076</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">custTagList</span>": <span class="hljs-value"><span class="hljs-string">"默认"</span></span>,
+        "<span class="hljs-attribute">collectName</span>": <span class="hljs-value"><span class="hljs-string">"导入专辑4"</span></span>,
+        "<span class="hljs-attribute">refusedCooperItemNum</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">modifyInfoPermitted</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">mainPic</span>": <span class="hljs-value"><span class="hljs-string">"http://img01.daily.taobao.net/tfscom/i1/T1OaNcXcNoXXcJ0F70_033909.jpg"</span></span>,
+        "<span class="hljs-attribute">collectId</span>": <span class="hljs-value"><span class="hljs-number">3697041</span></span>,
+        "<span class="hljs-attribute">collectDescription</span>": <span class="hljs-value"><span class="hljs-string">"ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"</span></span>,
+        "<span class="hljs-attribute">cooperCollectRequirement</span>": <span class="hljs-value"><span class="hljs-string">"要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5要求要好东西5"</span></span>,
+        "<span class="hljs-attribute">addOrDelItemPermitted</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">isvType</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">subPics</span>": <span class="hljs-value"><span class="hljs-string">"i1/T1OaNcXcNoXXcJ0F70_033909.jpg"</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">channelName</span>": <span class="hljs-value"><span class="hljs-string">"女人"</span></span>,
+        "<span class="hljs-attribute">channelId</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-number">1407724234000</span></span>,
+        "<span class="hljs-attribute">parentTagName</span>": <span class="hljs-value"><span class="hljs-string">"风格"</span></span>,
+        "<span class="hljs-attribute">joinedCooperTime</span>": <span class="hljs-value"><span class="hljs-number">1407823216000</span></span>,
+        "<span class="hljs-attribute">isBoutique</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">uploadCooperItemNum</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">allUpItemNum</span>": <span class="hljs-value"><span class="hljs-number">4</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">tagList</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">isLeaf</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">tagType</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+                "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">children</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-number">1407724234000</span></span>,
+                "<span class="hljs-attribute">channelId</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+                "<span class="hljs-attribute">tagName</span>": <span class="hljs-value"><span class="hljs-string">"好东西5"</span></span>,
+                "<span class="hljs-attribute">parentId</span>": <span class="hljs-value"><span class="hljs-number">50004</span></span>,
+                "<span class="hljs-attribute">isAssembled</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-number">1407724234000</span></span>,
+                "<span class="hljs-attribute">selected</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">tagId</span>": <span class="hljs-value"><span class="hljs-number">50076</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">custTagList</span>": <span class="hljs-value"><span class="hljs-string">"默认"</span></span>,
+        "<span class="hljs-attribute">collectName</span>": <span class="hljs-value"><span class="hljs-string">"专辑名称2"</span></span>,
+        "<span class="hljs-attribute">refusedCooperItemNum</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">modifyInfoPermitted</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">mainPic</span>": <span class="hljs-value"><span class="hljs-string">"http://img01.daily.taobao.net/tfscom/i1/T1OaNcXcNoXXcJ0F70_033909.jpg"</span></span>,
+        "<span class="hljs-attribute">collectId</span>": <span class="hljs-value"><span class="hljs-number">3697037</span></span>,
+        "<span class="hljs-attribute">collectDescription</span>": <span class="hljs-value"><span class="hljs-string">"好东西和大家分享1"</span></span>,
+        "<span class="hljs-attribute">cooperCollectRequirement</span>": <span class="hljs-value"><span class="hljs-string">"要求要好东西1"</span></span>,
+        "<span class="hljs-attribute">addOrDelItemPermitted</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">isvType</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">subPics</span>": <span class="hljs-value"><span class="hljs-string">"i1/T1OaNcXcNoXXcJ0F70_033909.jpg"</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">channelName</span>": <span class="hljs-value"><span class="hljs-string">"女人"</span></span>,
+        "<span class="hljs-attribute">channelId</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-number">1407724234000</span></span>,
+        "<span class="hljs-attribute">parentTagName</span>": <span class="hljs-value"><span class="hljs-string">"品类"</span></span>,
+        "<span class="hljs-attribute">joinedCooperTime</span>": <span class="hljs-value"><span class="hljs-number">1407812635000</span></span>,
+        "<span class="hljs-attribute">isBoutique</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">uploadCooperItemNum</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">allUpItemNum</span>": <span class="hljs-value"><span class="hljs-number">4</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">tagList</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">isLeaf</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">tagType</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+                "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">children</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-number">1407724234000</span></span>,
+                "<span class="hljs-attribute">channelId</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+                "<span class="hljs-attribute">tagName</span>": <span class="hljs-value"><span class="hljs-string">"好东西5"</span></span>,
+                "<span class="hljs-attribute">parentId</span>": <span class="hljs-value"><span class="hljs-number">50004</span></span>,
+                "<span class="hljs-attribute">isAssembled</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-number">1407724234000</span></span>,
+                "<span class="hljs-attribute">selected</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">tagId</span>": <span class="hljs-value"><span class="hljs-number">50076</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">custTagList</span>": <span class="hljs-value"><span class="hljs-string">"默认"</span></span>,
+        "<span class="hljs-attribute">collectName</span>": <span class="hljs-value"><span class="hljs-string">"导入专辑5"</span></span>,
+        "<span class="hljs-attribute">refusedCooperItemNum</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">modifyInfoPermitted</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">mainPic</span>": <span class="hljs-value"><span class="hljs-string">"http://img01.daily.taobao.net/tfscom/TB1MUKDXXXXXXXSXXXXXXXXXXXX.jpg"</span></span>,
+        "<span class="hljs-attribute">collectId</span>": <span class="hljs-value"><span class="hljs-number">3697042</span></span>,
+        "<span class="hljs-attribute">collectDescription</span>": <span class="hljs-value"><span class="hljs-string">"好东西和大家分享6"</span></span>,
+        "<span class="hljs-attribute">cooperCollectRequirement</span>": <span class="hljs-value"><span class="hljs-string">"要求要好东西6"</span></span>,
+        "<span class="hljs-attribute">addOrDelItemPermitted</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">isvType</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">subPics</span>": <span class="hljs-value"><span class="hljs-string">"i1/T1OaNcXcNoXXcJ0F70_033909.jpg"</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">channelName</span>": <span class="hljs-value"><span class="hljs-string">"女人"</span></span>,
+        "<span class="hljs-attribute">channelId</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-number">1407724234000</span></span>,
+        "<span class="hljs-attribute">parentTagName</span>": <span class="hljs-value"><span class="hljs-string">"材质"</span></span>,
+        "<span class="hljs-attribute">joinedCooperTime</span>": <span class="hljs-value"><span class="hljs-number">1407743799000</span></span>,
+        "<span class="hljs-attribute">isBoutique</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">uploadCooperItemNum</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">allUpItemNum</span>": <span class="hljs-value"><span class="hljs-number">4</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">paged</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">offset</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">pages</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+    "<span class="hljs-attribute">firstPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">beginIndex</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">lastPage</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+    "<span class="hljs-attribute">endIndex</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">pageSize</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">nextPage</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">length</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">previousPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">items</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">page</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">slider</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"行业,tag分类查询合作专辑成功!"</span></span>,
+"<span class="hljs-attribute">resultCode</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+</span>}
+</code></pre></li></ul></section><h4 id="专辑---公共功能-查看专辑报表">查看专辑报表&nbsp;<a href="#专辑---公共功能-查看专辑报表"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-查看专辑报表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#专辑---公共功能-查看专辑报表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/stats/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c0c00122af3ca3797334c0713000f246" class="pull-right">Toggle</a></li><li id="c0c00122af3ca3797334c0713000f246" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---公共功能-获取专辑商品信息">获取专辑商品信息&nbsp;<a href="#专辑---公共功能-获取专辑商品信息"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-获取专辑商品信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#专辑---公共功能-获取专辑商品信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/collectItem/{collectItemId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#97fcf29d572dba36c8d2d71eeed4f1d0" class="pull-right">Toggle</a></li><li id="97fcf29d572dba36c8d2d71eeed4f1d0" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---公共功能-取消分享专辑商品">取消分享专辑商品&nbsp;<a href="#专辑---公共功能-取消分享专辑商品"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-取消分享专辑商品-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">DELETE</span></div><div style="float:left"><a href="#专辑---公共功能-取消分享专辑商品-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/collectItem/{collectItemId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e728f60b08f5503f1d6ea62b9e0f74bf" class="pull-right">Toggle</a></li><li id="e728f60b08f5503f1d6ea62b9e0f74bf" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---公共功能-更新专辑商品信息">更新专辑商品信息&nbsp;<a href="#专辑---公共功能-更新专辑商品信息"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-更新专辑商品信息-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">PUT</span></div><div style="float:left"><a href="#专辑---公共功能-更新专辑商品信息-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/collectItem/{collectItemId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#ced036b765c88e82bf57e60de2b734b0" class="pull-right">Toggle</a></li><li id="ced036b765c88e82bf57e60de2b734b0" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="专辑---公共功能-往指定专辑中分享商品">往指定专辑中分享商品&nbsp;<a href="#专辑---公共功能-往指定专辑中分享商品"><i class="fa fa-link"></i></a></h4><section id="专辑---公共功能-往指定专辑中分享商品-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#专辑---公共功能-往指定专辑中分享商品-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/collect/{collectId}/auction/{auctionId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#33a15d67543fd7553915459b368ff514" class="pull-right">Toggle</a></li><li id="33a15d67543fd7553915459b368ff514" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

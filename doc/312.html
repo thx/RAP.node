@@ -1,0 +1,259 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>sc无线appv..接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#rfq展示---rfq-list.." class="list-group-item heading">RFQ展示 - RFQ list..</a><a href="#rfq展示---rfq-list..-findrequestsbyal.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;findRequestsByAl..</a></div><div class="list-group"><a href="#rfq展示---rfq-最新报价.." class="list-group-item heading">RFQ展示 - RFQ 最新报价..</a><a href="#rfq展示---rfq-最新报价..-latestquotedprod.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;latestQuotedProd..</a></div><div class="list-group"><a href="#rfq展示---rfq-deta.." class="list-group-item heading">RFQ展示 - RFQ Deta..</a><a href="#rfq展示---rfq-deta..-findbuyingreques.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;findBuyingReques..</a></div><div class="list-group"><a href="#rfq展示---卖家频道展示rf.." class="list-group-item heading">RFQ展示 - 卖家频道展示RF..</a><a href="#rfq展示---卖家频道展示rf..-getsourcingrfqde.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;getSourcingRfqDe..</a></div><div class="list-group"><a href="#rfq编辑---编辑rfq" class="list-group-item heading">RFQ编辑 - 编辑RFQ</a><a href="#rfq编辑---编辑rfq-editrfq" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;editRFQ</a></div><div class="list-group"><a href="#浮层控制---getfloat.." class="list-group-item heading">浮层控制 - getFloat..</a><a href="#浮层控制---getfloat..-getfloatlayerfla.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;getFloatLayerFla..</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">sc无线appv..接口文档</h1></div></header><div class="description"></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="rfq展示---rfq-list..">RFQ展示 - RFQ list..&nbsp;<a href="#rfq展示---rfq-list.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="rfq展示---rfq-list..-findrequestsbyal..">findRequestsByAl..&nbsp;<a href="#rfq展示---rfq-list..-findrequestsbyal.."><i class="fa fa-link"></i></a></h4><p>findRequestsByAliMemberId:v3.1.2 版本对接口改造,添加status参数:
+参数可选值如下
+Pending,Rejected,Approved,Completed,Closed</p>
+<section id="rfq展示---rfq-list..-findrequestsbyal..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#rfq展示---rfq-list..-findrequestsbyal..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://gw.api.alibaba.com/openapi/param2/1/ali.intl.mobile/findRequestsByAliMemberId/74147?appkey=74147&amp;indexStart=0&amp;access_token=bc8f586b-1ac7-451b-953f-581bdb27e25b&amp;size=20&amp;status=Closed</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#01b3757938e83c478b29e002672de52b" class="pull-right">Toggle</a></li><li id="01b3757938e83c478b29e002672de52b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">entity</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">totalCount</span>": <span class="hljs-value"><span class="hljs-number">908</span></span>,
+"<span class="hljs-attribute">rfqList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">quotationTotalSize</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">quotationUnreadSize</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">rfqName</span>": <span class="hljs-value"><span class="hljs-string">"11111111111"</span></span>,
+        "<span class="hljs-attribute">rfqId</span>": <span class="hljs-value"><span class="hljs-number">240077005</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"Pending"</span></span>,
+        "<span class="hljs-attribute">gmtUserModified</span>": <span class="hljs-value"><span class="hljs-string">"01:36"</span>
+    </span>}
+]
+</span>}</span>,
+"<span class="hljs-attribute">resParam</span>": <span class="hljs-value"><span class="hljs-number">64721</span></span>,
+"<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-number">0.1</span></span>,
+"<span class="hljs-attribute">entityType</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"FindRequestsByAliMemberId"</span></span>,
+"<span class="hljs-attribute">ordinal</span>": <span class="hljs-value"><span class="hljs-number">20</span>
+</span>}</span>,
+"<span class="hljs-attribute">responseCode</span>": <span class="hljs-value"><span class="hljs-number">200</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="rfq展示---rfq-最新报价..">RFQ展示 - RFQ 最新报价..&nbsp;<a href="#rfq展示---rfq-最新报价.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="rfq展示---rfq-最新报价..-latestquotedprod..">latestQuotedProd..&nbsp;<a href="#rfq展示---rfq-最新报价..-latestquotedprod.."><i class="fa fa-link"></i></a></h4><p>latestQuotedProductList:获得最新的9个报价产品,</p>
+<section id="rfq展示---rfq-最新报价..-latestquotedprod..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#rfq展示---rfq-最新报价..-latestquotedprod..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://gw.api.alibaba.com/openapi/param2/1/ali.intl.mobile/latestQuotedProductList/74147?access_token=bc8f586b-1ac7-451b-953f-581bdb27e25b</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#6d44418b61e5d376e8f6b3232d5a89ab" class="pull-right">Toggle</a></li><li id="6d44418b61e5d376e8f6b3232d5a89ab" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">responseCode</span>": <span class="hljs-value"><span class="hljs-number">200</span></span>,
+"<span class="hljs-attribute">entity</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">product_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容jx3f"</span></span>,
+"<span class="hljs-attribute">displayOriginalImgUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3yk9"</span></span>,
+"<span class="hljs-attribute">scale_image_url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9apf"</span></span>,
+"<span class="hljs-attribute">product_detail</span>": <span class="hljs-value"><span class="hljs-string">"测试内容79p7"</span></span>,
+"<span class="hljs-attribute">product_url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容55fv"</span>
+</span>}</span>,
+"<span class="hljs-attribute">entityType</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ordinal</span>": <span class="hljs-value"><span class="hljs-number">20</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"FindRequestsByAliMemberId"</span>
+</span>}</span>,
+"<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-number">0.1</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="rfq展示---rfq-deta..">RFQ展示 - RFQ Deta..&nbsp;<a href="#rfq展示---rfq-deta.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="rfq展示---rfq-deta..-findbuyingreques..">findBuyingReques..&nbsp;<a href="#rfq展示---rfq-deta..-findbuyingreques.."><i class="fa fa-link"></i></a></h4><p>findBuyingRequestById:添加审批不通过标签信息</p>
+<section id="rfq展示---rfq-deta..-findbuyingreques..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#rfq展示---rfq-deta..-findbuyingreques..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://gw.api.alibaba.com/openapi/param2/1/ali.intl.mobile/findBuyingRequestById/74147?appkey=74147&amp;access_token=bc8f586b-1ac7-451b-953f-581bdb27e25b&amp;rfqId=240077005</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#5348eae5a50e4d3feec5e314e9cbc080" class="pull-right">Toggle</a></li><li id="5348eae5a50e4d3feec5e314e9cbc080" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">entity</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">fobPriceUnit</span>": <span class="hljs-value"><span class="hljs-string">"USD"</span></span>,
+"<span class="hljs-attribute">expireTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-25"</span></span>,
+"<span class="hljs-attribute">shippingTerms</span>": <span class="hljs-value"><span class="hljs-string">"FOB"</span></span>,
+"<span class="hljs-attribute">rfqName</span>": <span class="hljs-value"><span class="hljs-string">"11111111111"</span></span>,
+"<span class="hljs-attribute">annexFiles</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">fileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g04.s.alicdn.com/kf/HTB1uuE.FFXXXXaDXFXX760XFXXXh.png"</span></span>,
+        "<span class="hljs-attribute">imgUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g04.s.alicdn.com/kf/HTB1uuE.FFXXXXaDXFXX760XFXXXh.png"</span></span>,
+        "<span class="hljs-attribute">fileName</span>": <span class="hljs-value"><span class="hljs-string">"20140625163510.png"</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">quantityUnit</span>": <span class="hljs-value"><span class="hljs-string">"Pieces"</span></span>,
+"<span class="hljs-attribute">paymentTerms</span>": <span class="hljs-value"><span class="hljs-string">"T/T"</span></span>,
+"<span class="hljs-attribute">picList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">imgUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g04.s.alicdn.com/kf/HTB1uuE.FFXXXXaDXFXX760XFXXXh.png"</span></span>,
+        "<span class="hljs-attribute">displayOriginalImgUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g04.s.alicdn.com/kf/HTB1uuE.FFXXXXaDXFXX760XFXXXh.png_640x640.png"</span></span>,
+        "<span class="hljs-attribute">fileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g04.s.alicdn.com/kf/HTB1uuE.FFXXXXaDXFXX760XFXXXh.png"</span></span>,
+        "<span class="hljs-attribute">originalImgUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g04.s.alicdn.com/kf/HTB1uuE.FFXXXXaDXFXX760XFXXXh.png"</span></span>,
+        "<span class="hljs-attribute">fileName</span>": <span class="hljs-value"><span class="hljs-string">"20140625163510.png"</span></span>,
+        "<span class="hljs-attribute">summaryImgUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g04.s.alicdn.com/kf/HTB1uuE.FFXXXXaDXFXX760XFXXXh.png_100x100.png"</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-string">"222,222,222"</span></span>,
+"<span class="hljs-attribute">audioList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">audioHash</span>": <span class="hljs-value"><span class="hljs-string">"d745851b0e00c731d3b111aa94c0970f"</span></span>,
+        "<span class="hljs-attribute">audioLength</span>": <span class="hljs-value"><span class="hljs-string">"6"</span></span>,
+        "<span class="hljs-attribute">audioFileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://f03.s.alicdn.com/kf/HTB1M5NaFVXXXXbPXXXX8OJXFXXXD.amr"</span></span>,
+        "<span class="hljs-attribute">audioFileName</span>": <span class="hljs-value"><span class="hljs-string">"audio_1403685351.wav"</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">annexFilesNew</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">lastUpdate</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-25"</span></span>,
+"<span class="hljs-attribute">rfqDetail</span>": <span class="hljs-value"><span class="hljs-string">"333333333"</span></span>,
+"<span class="hljs-attribute">lbsCountry</span>": <span class="hljs-value"><span class="hljs-string">" China (Mainland)"</span></span>,
+"<span class="hljs-attribute">videoList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">videoLength</span>": <span class="hljs-value"><span class="hljs-string">"5"</span></span>,
+        "<span class="hljs-attribute">videoHash</span>": <span class="hljs-value"><span class="hljs-string">"12962fce9b52a3b39735ee451b4e1f04"</span></span>,
+        "<span class="hljs-attribute">videoScreenShootHash</span>": <span class="hljs-value"><span class="hljs-string">"075e61641e6f21b1b02a8e01e01c2a78"</span></span>,
+        "<span class="hljs-attribute">videoFileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://f01.s.alicdn.com/kf/HTB1alM.FFXXXXX4XFXX56FXFXXXM.mp4"</span></span>,
+        "<span class="hljs-attribute">videoScreenShoot</span>": <span class="hljs-value"><span class="hljs-string">"http://g04.s.alicdn.com/kf/HTB1KZQ_FFXXXXbaXVXX760XFXXX6.png"</span></span>,
+        "<span class="hljs-attribute">videoFileName</span>": <span class="hljs-value"><span class="hljs-string">"video_1403685348.mp4"</span>
+    </span>}
+]
+</span>}</span>,
+"<span class="hljs-attribute">entityType</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ordinal</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"FindBuyingRequestById"</span>
+</span>}</span>,
+"<span class="hljs-attribute">responseCode</span>": <span class="hljs-value"><span class="hljs-number">200</span></span>,
+"<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-number">0.1</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="rfq展示---卖家频道展示rf..">RFQ展示 - 卖家频道展示RF..&nbsp;<a href="#rfq展示---卖家频道展示rf.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="rfq展示---卖家频道展示rf..-getsourcingrfqde..">getSourcingRfqDe..&nbsp;<a href="#rfq展示---卖家频道展示rf..-getsourcingrfqde.."><i class="fa fa-link"></i></a></h4><p>getSourcingRfqDetail:返回图片时,返回缩略图,大图,原图,
+GIF实现待定</p>
+<section id="rfq展示---卖家频道展示rf..-getsourcingrfqde..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#rfq展示---卖家频道展示rf..-getsourcingrfqde..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://gw.api.alibaba.com/openapi/param2/1/ali.intl.mobile/getSourcingRfqDetail/74147?appkey=74147&amp;rfqId=133962092</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7fcc75c346586b28017800f7147064fe" class="pull-right">Toggle</a></li><li id="7fcc75c346586b28017800f7147064fe" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">responseCode</span>": <span class="hljs-value"><span class="hljs-number">200</span></span>,
+"<span class="hljs-attribute">entity</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">paymentTerms</span>": <span class="hljs-value"><span class="hljs-string">"T/T"</span></span>,
+"<span class="hljs-attribute">destinationPort</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+"<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+"<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-08 16:10:13 000 -0700"</span></span>,
+"<span class="hljs-attribute">supplierLocation</span>": <span class="hljs-value"><span class="hljs-string">"China (Mainland), Japan"</span></span>,
+"<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-string">"100 "</span></span>,
+"<span class="hljs-attribute">lstPic</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">imgUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g03.s.alicdn.com/kf/HTB1jF3TFFXXXXaCXFXX760XFXXXn.png"</span></span>,
+        "<span class="hljs-attribute">fileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g03.s.alicdn.com/kf/HTB1jF3TFFXXXXaCXFXX760XFXXXn.png"</span></span>,
+        "<span class="hljs-attribute">summaryImgUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g03.s.alicdn.com/kf/HTB1jF3TFFXXXXaCXFXX760XFXXXn.png_100x100.png"</span></span>,
+        "<span class="hljs-attribute">fileName</span>": <span class="hljs-value"><span class="hljs-string">"20140623141516.png"</span></span>,
+        "<span class="hljs-attribute">displayOriginalImgUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g03.s.alicdn.com/kf/HTB1jF3TFFXXXXaCXFXX760XFXXXn.png_640x640.png"</span></span>,
+        "<span class="hljs-attribute">originalImgUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://g03.s.alicdn.com/kf/HTB1jF3TFFXXXXaCXFXX760XFXXXn.png"</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">preferredUnitPrice</span>": <span class="hljs-value"><span class="hljs-string">"USD"</span></span>,
+"<span class="hljs-attribute">shippingTerms</span>": <span class="hljs-value"><span class="hljs-string">"FOB"</span></span>,
+"<span class="hljs-attribute">produceName</span>": <span class="hljs-value"><span class="hljs-string">"Electronic heating nail for titanium"</span></span>,
+"<span class="hljs-attribute">quantityUnit</span>": <span class="hljs-value"><span class="hljs-string">"Pieces"</span></span>,
+"<span class="hljs-attribute">headPicUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+"<span class="hljs-attribute">buyerName</span>": <span class="hljs-value"><span class="hljs-string">"Sean Edmundson"</span></span>,
+"<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-string">"80"</span></span>,
+"<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"::\r\nInlcudes 1x BLACK D-Nail Digital Control Station 5\"x5\"x3\"\r\n::\r\nIncludes 1x 20mm Heater with detachable XLR cord specs as follows\r\nHeight: 12.7mm;\r\nSection Size: 3*3mm;\r\n120V100W;\r\nThermocouple: type K;\r\nYellow? Kevlar Sleeve;\r\nWire Length: 1500mm;\r\nWith 5 Pin XLR Plug PLEASE include the female plug).\r\n::\r\nInlcudes 1x heavy-duty detachable power cord (AC)\r\n::\r\nIncludes MANUAL and Warranty sheet\r\n::\r\nUses 1/32 DIN pid Digital Temperature Controller\r\n::\r\nFully adjustable digital temperature control with memory function (PID controller)\r\n::\r\n700-975F recomended operating temperature (TITANIUM)\r\n::\r\n::\r\nSIMPLE up and down arrow temperature adjustments\r\n::\r\nOn / Off AC adapter (rocker switch) \r\n::\r\nOn / Off Output switch\r\n::\r\nSpring loaded clamping lever keeps cord securely attached during operation\r\n::\r\nINCLUDES MFG WARRANTY"</span>
+</span>}</span>,
+"<span class="hljs-attribute">entityType</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"getSourcingRfqDetail"</span></span>,
+"<span class="hljs-attribute">ordinal</span>": <span class="hljs-value"><span class="hljs-number">73</span>
+</span>}</span>,
+"<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-number">0.1</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="rfq编辑---编辑rfq">RFQ编辑 - 编辑RFQ&nbsp;<a href="#rfq编辑---编辑rfq"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="rfq编辑---编辑rfq-editrfq">editRFQ&nbsp;<a href="#rfq编辑---编辑rfq-editrfq"><i class="fa fa-link"></i></a></h4><section id="rfq编辑---编辑rfq-editrfq-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#rfq编辑---编辑rfq-editrfq-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4ee850fa7d1b9b878f7aaa2c46572504" class="pull-right">Toggle</a></li><li id="4ee850fa7d1b9b878f7aaa2c46572504" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="浮层控制---getfloat..">浮层控制 - getFloat..&nbsp;<a href="#浮层控制---getfloat.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="浮层控制---getfloat..-getfloatlayerfla..">getFloatLayerFla..&nbsp;<a href="#浮层控制---getfloat..-getfloatlayerfla.."><i class="fa fa-link"></i></a></h4><p>getFloatLayerFlag:获得 app 浮层控制标志位
+true  显示浮层
+false  不显示浮层</p>
+<p><a href="http://10.125.51.141:1780/openapi/param2/1/ali.intl.mobile/getFloatLayerFlag/1">http://10.125.51.141:1780/openapi/param2/1/ali.intl.mobile/getFloatLayerFlag/1</a></p>
+<section id="浮层控制---getfloat..-getfloatlayerfla..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#浮层控制---getfloat..-getfloatlayerfla..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://gw.api.alibaba.com/openapi/param2/1/ali.intl.mobile/getFloatLayerFlag/74147</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#81a01c9f8ca71911e219dd363e97025d" class="pull-right">Toggle</a></li><li id="81a01c9f8ca71911e219dd363e97025d" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">entity</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">layerControlFlag</span>": <span class="hljs-value"><span class="hljs-string">"测试内容bsy3"</span>
+</span>}</span>,
+"<span class="hljs-attribute">entityType</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"GetFloatLayerFlag"</span>
+</span>}</span>,
+"<span class="hljs-attribute">responseCode</span>": <span class="hljs-value"><span class="hljs-number">200</span></span>,
+"<span class="hljs-attribute">version</span>": <span class="hljs-value"><span class="hljs-number">0.1</span>
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>中国好声音接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#game---转椅子" class="list-group-item heading">Game - 转椅子</a><a href="#game---转椅子-抽奖接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;抽奖接口</a><a href="#game---转椅子-获取用户积分" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取用户积分</a><a href="#game---转椅子-中奖提交用户信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;中奖提交用户信息</a><a href="#game---转椅子-分享加积分" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;分享加积分</a></div><div class="list-group"><a href="#game---盲选" class="list-group-item heading">Game - 盲选</a><a href="#game---盲选-押宝投注" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;押宝投注</a><a href="#game---盲选-heartbeat" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;HeartBeat</a><a href="#game---盲选-转身游戏初始值" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;转身游戏初始值</a><a href="#game---盲选-中奖请求" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;中奖请求</a></div><div class="list-group"><a href="#game---奖品兑换" class="list-group-item heading">Game - 奖品兑换</a><a href="#game---奖品兑换-奖品池" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;奖品池</a><a href="#game---奖品兑换-我的奖品" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;我的奖品</a><a href="#game---奖品兑换-兑换奖品" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;兑换奖品</a></div><div class="list-group"><a href="#game---神烦扔火箭" class="list-group-item heading">Game - 神烦扔火箭</a><a href="#game---神烦扔火箭-随机用户id生产" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;随机用户id生产</a><a href="#game---神烦扔火箭-抽奖" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;抽奖</a><a href="#game---神烦扔火箭-学员被投票" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;学员被投票</a><a href="#game---神烦扔火箭-我的礼包" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;我的礼包</a><a href="#game---神烦扔火箭-抽奖的用户填写信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;抽奖的用户填写信息</a><a href="#game---神烦扔火箭-领奖" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;领奖</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">中国好声音接口文档</h1></div></header><div class="description"></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="game---转椅子">Game - 转椅子&nbsp;<a href="#game---转椅子"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="game---转椅子-抽奖接口">抽奖接口&nbsp;<a href="#game---转椅子-抽奖接口"><i class="fa fa-link"></i></a></h4><section id="game---转椅子-抽奖接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---转椅子-抽奖接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.getLucky</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#f44f3c3bbc5ec43386a6d1460c39b450" class="pull-right">Toggle</a></li><li id="f44f3c3bbc5ec43386a6d1460c39b450" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">278803</span></span>,
+"<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+</span>}</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"failure"</span></span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"'SYS_ERROR'"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---转椅子-获取用户积分">获取用户积分&nbsp;<a href="#game---转椅子-获取用户积分"><i class="fa fa-link"></i></a></h4><section id="game---转椅子-获取用户积分-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---转椅子-获取用户积分-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.getUserInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#ec761e1e3aa1208c2b58efadbfddb98d" class="pull-right">Toggle</a></li><li id="ec761e1e3aa1208c2b58efadbfddb98d" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">30557</span></span>,
+"<span class="hljs-attribute">concat_info</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">contact_addr</span>": <span class="hljs-value"><span class="hljs-string">"测试内容30u9"</span></span>,
+    "<span class="hljs-attribute">contact_tel</span>": <span class="hljs-value"><span class="hljs-string">"测试内容x1b6"</span></span>,
+    "<span class="hljs-attribute">contact_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容g89m"</span></span>,
+    "<span class="hljs-attribute">concat_alp_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容x69f"</span>
+</span>}</span>,
+"<span class="hljs-attribute">has_contact</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+"<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4954"</span></span>,
+"<span class="hljs-attribute">nick_name</span>": <span class="hljs-value"><span class="hljs-string">"虾小米"</span></span>,
+"<span class="hljs-attribute">distance</span>": <span class="hljs-value"><span class="hljs-number">65615</span>
+</span>}</span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"SYS_ERROR"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---转椅子-中奖提交用户信息">中奖提交用户信息&nbsp;<a href="#game---转椅子-中奖提交用户信息"><i class="fa fa-link"></i></a></h4><section id="game---转椅子-中奖提交用户信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---转椅子-中奖提交用户信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.addUserInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#3e9b5856a7df815dc256c2e09c072f59" class="pull-right">Toggle</a></li><li id="3e9b5856a7df815dc256c2e09c072f59" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"SYS_ERROR"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---转椅子-分享加积分">分享加积分&nbsp;<a href="#game---转椅子-分享加积分"><i class="fa fa-link"></i></a></h4><section id="game---转椅子-分享加积分-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---转椅子-分享加积分-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.share</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#3b7900c330000480d3423fe455b0fd40" class="pull-right">Toggle</a></li><li id="3b7900c330000480d3423fe455b0fd40" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"SYS_ERROR"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="game---盲选">Game - 盲选&nbsp;<a href="#game---盲选"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="game---盲选-押宝投注">押宝投注&nbsp;<a href="#game---盲选-押宝投注"><i class="fa fa-link"></i></a></h4><section id="game---盲选-押宝投注-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---盲选-押宝投注-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.bet</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#d982e938ccf9cbcf8c5cddb893c96999" class="pull-right">Toggle</a></li><li id="d982e938ccf9cbcf8c5cddb893c96999" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"failure"</span></span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"'no_login'"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---盲选-heartbeat">HeartBeat&nbsp;<a href="#game---盲选-heartbeat"><i class="fa fa-link"></i></a></h4><section id="game---盲选-heartbeat-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---盲选-heartbeat-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/mpp_request</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#87e0715d87b72ead1ee5c5bc3291b651" class="pull-right">Toggle</a></li><li id="87e0715d87b72ead1ee5c5bc3291b651" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">game_status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">prize_teachers</span>": <span class="hljs-value"><span class="hljs-string">"1011"</span></span>,
+"<span class="hljs-attribute">artist_logo</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/468x60"</span></span>,
+"<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-string">"1|200"</span></span>,
+"<span class="hljs-attribute">artist_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">artist_name</span>": <span class="hljs-value"><span class="hljs-string">"张恒远"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---盲选-转身游戏初始值">转身游戏初始值&nbsp;<a href="#game---盲选-转身游戏初始值"><i class="fa fa-link"></i></a></h4><section id="game---盲选-转身游戏初始值-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---盲选-转身游戏初始值-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.getProcessInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c7b6faadc3167d8f9b506655c1ca69cc" class="pull-right">Toggle</a></li><li id="c7b6faadc3167d8f9b506655c1ca69cc" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">all_bet_num</span>": <span class="hljs-value"><span class="hljs-number">58253</span></span>,
+"<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-string">"0"</span></span>,
+"<span class="hljs-attribute">date_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">artist_name</span>": <span class="hljs-value"><span class="hljs-string">"张无忌"</span></span>,
+"<span class="hljs-attribute">teachers</span>": <span class="hljs-value"><span class="hljs-string">"0000"</span></span>,
+"<span class="hljs-attribute">game_status</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+"<span class="hljs-attribute">artist_gender</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+"<span class="hljs-attribute">prize_teachers</span>": <span class="hljs-value"><span class="hljs-string">"0110"</span></span>,
+"<span class="hljs-attribute">artist_id</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}</span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"no_login"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---盲选-中奖请求">中奖请求&nbsp;<a href="#game---盲选-中奖请求"><i class="fa fa-link"></i></a></h4><section id="game---盲选-中奖请求-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---盲选-中奖请求-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.getBetInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#8702dd7b6c578a6a0a7214521e31de38" class="pull-right">Toggle</a></li><li id="8702dd7b6c578a6a0a7214521e31de38" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">45068</span>
+</span>}</span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"null"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="game---奖品兑换">Game - 奖品兑换&nbsp;<a href="#game---奖品兑换"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="game---奖品兑换-奖品池">奖品池&nbsp;<a href="#game---奖品兑换-奖品池"><i class="fa fa-link"></i></a></h4><section id="game---奖品兑换-奖品池-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---奖品兑换-奖品池-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.prizeZone</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#f4692b716470a20e8a8422eb868845b4" class="pull-right">Toggle</a></li><li id="f4692b716470a20e8a8422eb868845b4" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">314984</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Anna Hernandez"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">65006</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">484372</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Ronald Jones"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">28257</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">835984</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Shirley Harris"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">39230</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">364003</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Jessica Moore"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">5240</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">165130</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Kimberly Martin"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">24669</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">777571</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Ronald Johnson"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">17918</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">767626</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Margaret Lee"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">21977</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">243945</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Sandra Walker"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">71517</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">132968</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Nancy Lopez"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">96601</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">858590</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Michael Lee"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">71610</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">878017</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Anthony Walker"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">52128</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">267374</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Robert Walker"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">28257</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">555326</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Patricia Robinson"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">95801</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">29094</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Margaret Martinez"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">34427</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">139406</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Ronald Jones"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">87329</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">826503</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Christopher Anderson"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">45910</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">17</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">421386</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Betty Martinez"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">90083</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">78817</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Frank Thompson"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">44929</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">433597</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Nancy Moore"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">16739</span>
+</span>},
+{
+    "<span class="hljs-attribute">is_exchanged</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">20</span></span>,
+    "<span class="hljs-attribute">prize_num</span>": <span class="hljs-value"><span class="hljs-number">790079</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Robert Jones"</span></span>,
+    "<span class="hljs-attribute">prize_score</span>": <span class="hljs-value"><span class="hljs-number">11550</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span></span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"no login"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---奖品兑换-我的奖品">我的奖品&nbsp;<a href="#game---奖品兑换-我的奖品"><i class="fa fa-link"></i></a></h4><section id="game---奖品兑换-我的奖品-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---奖品兑换-我的奖品-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.myPrize</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#55e46c9fbbdddcb458f06a42824563fe" class="pull-right">Toggle</a></li><li id="55e46c9fbbdddcb458f06a42824563fe" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Daniel Walker"</span></span>,
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已发放"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"John Garcia"</span></span>,
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已发放"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Eric Anderson"</span></span>,
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已发放"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Mark White"</span></span>,
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已发放"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Frank Moore"</span></span>,
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已发放"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Kevin White"</span></span>,
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已发放"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Kevin Rodriguez"</span></span>,
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已发放"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Donna Jones"</span></span>,
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已发放"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Kenneth Williams"</span></span>,
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已发放"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"James White"</span></span>,
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已发放"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span></span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"no login"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---奖品兑换-兑换奖品">兑换奖品&nbsp;<a href="#game---奖品兑换-兑换奖品"><i class="fa fa-link"></i></a></h4><section id="game---奖品兑换-兑换奖品-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---奖品兑换-兑换奖品-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.exchangePrize</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a7a6ff4f4d272f28a7cea8f4f9201e92" class="pull-right">Toggle</a></li><li id="a7a6ff4f4d272f28a7cea8f4f9201e92" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"no login"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="game---神烦扔火箭">Game - 神烦扔火箭&nbsp;<a href="#game---神烦扔火箭"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="game---神烦扔火箭-随机用户id生产">随机用户id生产&nbsp;<a href="#game---神烦扔火箭-随机用户id生产"><i class="fa fa-link"></i></a></h4><p>cookie:chinavoice_user_sign</p>
+<section id="game---神烦扔火箭-随机用户id生产-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---神烦扔火箭-随机用户id生产-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.randUserId</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#245c46215777b88925ca91b352e246ba" class="pull-right">Toggle</a></li><li id="245c46215777b88925ca91b352e246ba" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value">[
+<span class="hljs-string">"ok"</span>,
+<span class="hljs-string">"failure"</span>
+]</span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"'SYS_ERROR'"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---神烦扔火箭-抽奖">抽奖&nbsp;<a href="#game---神烦扔火箭-抽奖"><i class="fa fa-link"></i></a></h4><section id="game---神烦扔火箭-抽奖-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---神烦扔火箭-抽奖-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.Lottery</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#503000bb0e4ea21f94d2abf0b114fd16" class="pull-right">Toggle</a></li><li id="503000bb0e4ea21f94d2abf0b114fd16" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">percent</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">prize_type</span>": <span class="hljs-value">[
+    <span class="hljs-number">1</span>,
+    <span class="hljs-number">2</span>
+]</span>,
+"<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">48048</span>
+</span>}</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span></span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---神烦扔火箭-学员被投票">学员被投票&nbsp;<a href="#game---神烦扔火箭-学员被投票"><i class="fa fa-link"></i></a></h4><section id="game---神烦扔火箭-学员被投票-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---神烦扔火箭-学员被投票-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.getArtistList</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#600c0bad2ea06c0e1938c8fd17280f74" class="pull-right">Toggle</a></li><li id="600c0bad2ea06c0e1938c8fd17280f74" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">2000</span></span>,
+    "<span class="hljs-attribute">percent</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---神烦扔火箭-我的礼包">我的礼包&nbsp;<a href="#game---神烦扔火箭-我的礼包"><i class="fa fa-link"></i></a></h4><section id="game---神烦扔火箭-我的礼包-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---神烦扔火箭-我的礼包-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.myGift</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e8933996ce1deaaf035df3cd7f34c1bb" class="pull-right">Toggle</a></li><li id="e8933996ce1deaaf035df3cd7f34c1bb" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"领取"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Anthony Miller"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已过期"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Susan Anderson"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已领取"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Anna Wilson"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已过期"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Robert Allen"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"领取"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Susan Anderson"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已领取"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Michelle Martinez"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已领取"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Laura Taylor"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已过期"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Frank Allen"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已过期"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Richard White"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已领取"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Carol Jackson"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"领取"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Brian Martin"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已领取"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Matthew Wilson"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"已领取"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Betty Clark"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>},
+{
+    "<span class="hljs-attribute">prize_status</span>": <span class="hljs-value"><span class="hljs-string">"领取"</span></span>,
+    "<span class="hljs-attribute">prize_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/180x180"</span></span>,
+    "<span class="hljs-attribute">prize_name</span>": <span class="hljs-value"><span class="hljs-string">"Donald Robinson"</span></span>,
+    "<span class="hljs-attribute">prize_type</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">prize_id</span>": <span class="hljs-value"><span class="hljs-number">68646</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"no login"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---神烦扔火箭-抽奖的用户填写信息">抽奖的用户填写信息&nbsp;<a href="#game---神烦扔火箭-抽奖的用户填写信息"><i class="fa fa-link"></i></a></h4><section id="game---神烦扔火箭-抽奖的用户填写信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---神烦扔火箭-抽奖的用户填写信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.addLotteryUserInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#d15821ae5ce7d5792ca1b0d52d1f4f14" class="pull-right">Toggle</a></li><li id="d15821ae5ce7d5792ca1b0d52d1f4f14" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><h4 id="game---神烦扔火箭-领奖">领奖&nbsp;<a href="#game---神烦扔火箭-领奖"><i class="fa fa-link"></i></a></h4><section id="game---神烦扔火箭-领奖-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#game---神烦扔火箭-领奖-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ChinaVoice.acceptPrize</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#1e2224e0233baeb7cff9c755fe1d2c20" class="pull-right">Toggle</a></li><li id="1e2224e0233baeb7cff9c755fe1d2c20" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

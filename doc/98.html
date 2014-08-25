@@ -1,0 +1,278 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>商品管理页面接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#列表页面---出售中列表" class="list-group-item heading">列表页面 - 出售中列表</a><a href="#列表页面---出售中列表-商品数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;商品数据</a><a href="#列表页面---出售中列表-修改宝贝标题成功" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;修改宝贝标题成功</a><a href="#列表页面---出售中列表-分页数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;分页数据</a><a href="#列表页面---出售中列表-表格头数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;表格头数据</a><a href="#列表页面---出售中列表-列表页面的商品表格数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;列表页面的商品表格数据</a><a href="#列表页面---出售中列表-获取sku数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取sku数据</a><a href="#列表页面---出售中列表-搜索" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;搜索</a></div><div class="list-group"><a href="#某模块---某页面" class="list-group-item heading">某模块 - 某页面</a><a href="#某模块---某页面-某请求" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;某请求</a></div><div class="list-group"><a href="#管理首页---首页" class="list-group-item heading">管理首页 - 首页</a><a href="#管理首页---首页-常用管理添加" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;常用管理添加</a><a href="#管理首页---首页-常用管理删除" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;常用管理删除</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">商品管理页面接口文档</h1></div></header><div class="description"></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="列表页面---出售中列表">列表页面 - 出售中列表&nbsp;<a href="#列表页面---出售中列表"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="列表页面---出售中列表-商品数据">商品数据&nbsp;<a href="#列表页面---出售中列表-商品数据"><i class="fa fa-link"></i></a></h4><section id="列表页面---出售中列表-商品数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#列表页面---出售中列表-商品数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a8e29775cad20423171e55f3c5522c83" class="pull-right">Toggle</a></li><li id="a8e29775cad20423171e55f3c5522c83" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">editURL</span>": <span class="hljs-value"><span class="hljs-string">"测试内容a17t"</span></span>,
+"<span class="hljs-attribute">icons</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"测试内容m4d6"</span></span>,
+    "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"测试内容62vb"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容43zs"</span></span>,
+    "<span class="hljs-attribute">fetchURL</span>": <span class="hljs-value"><span class="hljs-string">"测试内容26r0"</span></span>,
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容sb5k"</span></span>,
+    "<span class="hljs-attribute">icon</span>": <span class="hljs-value"><span class="hljs-string">"测试内容c14r"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">isRecommend</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">actions</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3n1h"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容g0c9"</span></span>,
+    "<span class="hljs-attribute">disabled</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">action</span>": <span class="hljs-value">[
+        <span class="hljs-string">"string1"</span>,
+        <span class="hljs-string">"string2"</span>,
+        <span class="hljs-string">"string3"</span>,
+        <span class="hljs-string">"string4"</span>,
+        <span class="hljs-string">"string5"</span>
+    ]
+</span>}
+]</span>,
+"<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7268"</span></span>,
+"<span class="hljs-attribute">lastModify</span>": <span class="hljs-value"><span class="hljs-string">"测试内容97ki"</span></span>,
+"<span class="hljs-attribute">hasSku</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">soonTime</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3f16"</span></span>,
+"<span class="hljs-attribute">price</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">actual</span>": <span class="hljs-value"><span class="hljs-number">78137</span></span>,
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3e9g"</span></span>,
+"<span class="hljs-attribute">editable</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">71614</span></span>,
+"<span class="hljs-attribute">actualType</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4bpf"</span>
+</span>}</span>,
+"<span class="hljs-attribute">image</span>": <span class="hljs-value"><span class="hljs-string">"测试内容261z"</span></span>,
+"<span class="hljs-attribute">outId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9bc1"</span></span>,
+"<span class="hljs-attribute">detailURL</span>": <span class="hljs-value"><span class="hljs-string">"测试内容c3rb"</span></span>,
+"<span class="hljs-attribute">quantity</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1824"</span></span>,
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ndxi"</span></span>,
+"<span class="hljs-attribute">editable</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">isIncrease</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</span>,
+"<span class="hljs-attribute">title</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">editable</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">suffix</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b032"</span></span>,
+"<span class="hljs-attribute">size</span>": <span class="hljs-value"><span class="hljs-number">42445</span></span>,
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3u8o"</span></span>,
+"<span class="hljs-attribute">prefix</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1yrl"</span></span>,
+"<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k606"</span>
+</span>}</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k2j7"</span></span>,
+"<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5k57"</span>
+</span>}</span>,
+"<span class="hljs-attribute">publishTime</span>": <span class="hljs-value"><span class="hljs-string">"测试内容y33x"</span></span>,
+"<span class="hljs-attribute">saleQuantity</span>": <span class="hljs-value"><span class="hljs-string">"测试内容nyn2"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="列表页面---出售中列表-修改宝贝标题成功">修改宝贝标题成功&nbsp;<a href="#列表页面---出售中列表-修改宝贝标题成功"><i class="fa fa-link"></i></a></h4><section id="列表页面---出售中列表-修改宝贝标题成功-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">DELETE</span></div><div style="float:left"><a href="#列表页面---出售中列表-修改宝贝标题成功-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#b42c4176e3d1ae5bf0e77a483045c133" class="pull-right">Toggle</a></li><li id="b42c4176e3d1ae5bf0e77a483045c133" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">success</span>": <span class="hljs-value">[]</span>,
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ku20"</span></span>,
+"<span class="hljs-attribute">failed</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容rv44"</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">36168</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"测试内容v5l6"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="列表页面---出售中列表-分页数据">分页数据&nbsp;<a href="#列表页面---出售中列表-分页数据"><i class="fa fa-link"></i></a></h4><section id="列表页面---出售中列表-分页数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#列表页面---出售中列表-分页数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#259b93e7e54dee3b277d70955c896281" class="pull-right">Toggle</a></li><li id="259b93e7e54dee3b277d70955c896281" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">showNum</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">showPageInput</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">totalRecord</span>": <span class="hljs-value"><span class="hljs-number">84813</span></span>,
+"<span class="hljs-attribute">current</span>": <span class="hljs-value"><span class="hljs-number">40740</span>
+</span>}
+</code></pre></li></ul></section><h4 id="列表页面---出售中列表-表格头数据">表格头数据&nbsp;<a href="#列表页面---出售中列表-表格头数据"><i class="fa fa-link"></i></a></h4><section id="列表页面---出售中列表-表格头数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#列表页面---出售中列表-表格头数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#25fd5ba769c2a01b7f8ca49bb91176e3" class="pull-right">Toggle</a></li><li id="25fd5ba769c2a01b7f8ca49bb91176e3" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">showToggle</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">buttons</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">params</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">formURL</span>": <span class="hljs-value"><span class="hljs-string">"测试内容o2w6"</span></span>,
+    "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1r25"</span></span>,
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">permission</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7i15"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容x87j"</span></span>,
+    "<span class="hljs-attribute">redirectURL</span>": <span class="hljs-value"><span class="hljs-string">"测试内容r61u"</span></span>,
+    "<span class="hljs-attribute">permission</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">idAttribute</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7474"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">group</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"info"</span></span>,
+    "<span class="hljs-attribute">sort</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1hu8"</span></span>,
+    "<span class="hljs-attribute">fieldname</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lp0w"</span></span>,
+    "<span class="hljs-attribute">cells</span>": <span class="hljs-value">[
+        <span class="hljs-string">"string1"</span>,
+        <span class="hljs-string">"string2"</span>,
+        <span class="hljs-string">"string3"</span>,
+        <span class="hljs-string">"string4"</span>,
+        <span class="hljs-string">"string5"</span>
+    ]</span>,
+    "<span class="hljs-attribute">caption</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容g8ft"</span></span>,
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"测试内容a56q"</span></span>,
+            "<span class="hljs-attribute">selected</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">sortable</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">recommendInfo</span>": <span class="hljs-value"><span class="hljs-string">"测试内容785e"</span></span>,
+"<span class="hljs-attribute">buttons1（废弃）</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">permission</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"./json/actions.do"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"up"</span></span>,
+    "<span class="hljs-attribute">params</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4fq1"</span></span>,
+    "<span class="hljs-attribute">msgConfirm</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2ky2"</span></span>,
+    "<span class="hljs-attribute">actions</span>": <span class="hljs-value"><span class="hljs-string">"测试内容p0hg"</span></span>,
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"上架"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="列表页面---出售中列表-列表页面的商品表格数据">列表页面的商品表格数据&nbsp;<a href="#列表页面---出售中列表-列表页面的商品表格数据"><i class="fa fa-link"></i></a></h4><p>由 商品数据、分页数据、表格头数据 组成</p>
+<section id="列表页面---出售中列表-列表页面的商品表格数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#列表页面---出售中列表-列表页面的商品表格数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e1576fff466e7ad08bd15d0e98caffaf" class="pull-right">Toggle</a></li><li id="e1576fff466e7ad08bd15d0e98caffaf" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">icons</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">apiQRCode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8d31"</span>
+</span>}</span>,
+"<span class="hljs-attribute">pagination</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">items</span>": <span class="hljs-value">[]</span>,
+"<span class="hljs-attribute">alerts</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容962w"</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">44341</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1yd7"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">header</span>": <span class="hljs-value">{}
+</span>}
+</code></pre></li></ul></section><h4 id="列表页面---出售中列表-获取sku数据">获取sku数据&nbsp;<a href="#列表页面---出售中列表-获取sku数据"><i class="fa fa-link"></i></a></h4><section id="列表页面---出售中列表-获取sku数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#列表页面---出售中列表-获取sku数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#578cae863652a091fe00a84d3b052a83" class="pull-right">Toggle</a></li><li id="578cae863652a091fe00a84d3b052a83" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">27653</span></span>,
+"<span class="hljs-attribute">sku</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">skuId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容gi6f"</span></span>,
+    "<span class="hljs-attribute">caption</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8km4"</span></span>,
+    "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-string">"测试内容kr8s"</span></span>,
+    "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-string">"测试内容l86e"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="列表页面---出售中列表-搜索">搜索&nbsp;<a href="#列表页面---出售中列表-搜索"><i class="fa fa-link"></i></a></h4><section id="列表页面---出售中列表-搜索-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#列表页面---出售中列表-搜索-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#cdef78749299c090e5f66f6e8864ab60" class="pull-right">Toggle</a></li><li id="cdef78749299c090e5f66f6e8864ab60" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="某模块---某页面">某模块 - 某页面&nbsp;<a href="#某模块---某页面"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="某模块---某页面-某请求">某请求&nbsp;<a href="#某模块---某页面-某请求"><i class="fa fa-link"></i></a></h4><section id="某模块---某页面-某请求-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块---某页面-某请求-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e221ba4cfcfe02e08723dae9059f9b88" class="pull-right">Toggle</a></li><li id="e221ba4cfcfe02e08723dae9059f9b88" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">resParam</span>": <span class="hljs-value"><span class="hljs-number">30481</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="管理首页---首页">管理首页 - 首页&nbsp;<a href="#管理首页---首页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="管理首页---首页-常用管理添加">常用管理添加&nbsp;<a href="#管理首页---首页-常用管理添加"><i class="fa fa-link"></i></a></h4><section id="管理首页---首页-常用管理添加-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">DELETE</span></div><div style="float:left"><a href="#管理首页---首页-常用管理添加-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#6c1d91c867e3f97da12914fa64347fd5" class="pull-right">Toggle</a></li><li id="6c1d91c867e3f97da12914fa64347fd5" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="管理首页---首页-常用管理删除">常用管理删除&nbsp;<a href="#管理首页---首页-常用管理删除"><i class="fa fa-link"></i></a></h4><section id="管理首页---首页-常用管理删除-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">DELETE</span></div><div style="float:left"><a href="#管理首页---首页-常用管理删除-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#5a5d6dff0b0091964dc10c5bc9426318" class="pull-right">Toggle</a></li><li id="5a5d6dff0b0091964dc10c5bc9426318" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

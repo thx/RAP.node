@@ -1,0 +1,312 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>MockJS对接..接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#主模块---接口数据编辑de.." class="list-group-item heading">主模块 - 接口数据编辑De..</a><a href="#主模块---接口数据编辑de..-指定jsonp回调名称" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;指定JSONP回调名称</a><a href="#主模块---接口数据编辑de..-mockjs规则编写示例" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Mockjs规则编写示例</a><a href="#主模块---接口数据编辑de..-restful-api-dele.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;RESTful API dele..</a><a href="#主模块---接口数据编辑de..-restful-api-upda.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;RESTful API upda..</a><a href="#主模块---接口数据编辑de..-mockjs自定义函数" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;MockJS自定义函数</a><a href="#主模块---接口数据编辑de..-模拟图片" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;模拟图片</a></div><div class="list-group"><a href="#主模块---简单请求示例" class="list-group-item heading">主模块 - 简单请求示例</a><a href="#主模块---简单请求示例-简单请求" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;简单请求</a><a href="#主模块---简单请求示例-简单mockjs数据请求" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;简单Mockjs数据请求</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">MockJS对接..接口文档</h1></div></header><div class="description"></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="主模块---接口数据编辑de..">主模块 - 接口数据编辑De..&nbsp;<a href="#主模块---接口数据编辑de.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="主模块---接口数据编辑de..-指定jsonp回调名称">指定JSONP回调名称&nbsp;<a href="#主模块---接口数据编辑de..-指定jsonp回调名称"><i class="fa fa-link"></i></a></h4><p>通过 [name]=value 的方式指定RAP JSONP请求的回调函数名称</p>
+<section id="主模块---接口数据编辑de..-指定jsonp回调名称-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#主模块---接口数据编辑de..-指定jsonp回调名称-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/JSONP_callback_specified_in_url.do?[cbtest]=123&amp;_c=aaa&amp;callback=bbb</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#755d2a0503b9fe214c26a2efc2097e5a" class="pull-right">Toggle</a></li><li id="755d2a0503b9fe214c26a2efc2097e5a" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">100</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">101</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">102</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"小黑"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="主模块---接口数据编辑de..-mockjs规则编写示例">Mockjs规则编写示例&nbsp;<a href="#主模块---接口数据编辑de..-mockjs规则编写示例"><i class="fa fa-link"></i></a></h4><p>本请求中展示了比较全的在RAP中编写Mockjs规则的方法，主要参考了 mockjs官网上的demo</p>
+<section id="主模块---接口数据编辑de..-mockjs规则编写示例-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#主模块---接口数据编辑de..-mockjs规则编写示例-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/rap_mockjs_rules_demo.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#414b1735b70811690e5c7b238538ef92" class="pull-right">Toggle</a></li><li id="414b1735b70811690e5c7b238538ef92" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">url2</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/250x250?810000198605223440&amp;id=620000200312261923"</span></span>,
+    "<span class="hljs-attribute">float3</span>": <span class="hljs-value"><span class="hljs-number">999.28232</span></span>,
+    "<span class="hljs-attribute">img4</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/250x250"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"06:07:38"</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+    "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">float1</span>": <span class="hljs-value"><span class="hljs-number">32543.609</span></span>,
+    "<span class="hljs-attribute">size</span>": <span class="hljs-value"><span class="hljs-string">"125x125"</span></span>,
+    "<span class="hljs-attribute">email333</span>": <span class="hljs-value"><span class="hljs-string">"r.lopez@lopez.com"</span></span>,
+    "<span class="hljs-attribute">grade2</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+    "<span class="hljs-attribute">float4</span>": <span class="hljs-value"><span class="hljs-number">68423.2992107938</span></span>,
+    "<span class="hljs-attribute">dummyimage</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">background</span>": <span class="hljs-value"><span class="hljs-string">"#849a4e"</span></span>,
+        "<span class="hljs-attribute">text2222</span>": <span class="hljs-value"><span class="hljs-string">"qojwohjr"</span></span>,
+        "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"png,gif,jpg"</span></span>,
+        "<span class="hljs-attribute">foreground</span>": <span class="hljs-value"><span class="hljs-string">"#f92f1c"</span></span>,
+        "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/@size/#849a4e/#f92f1c.&amp;text=@text"</span></span>,
+        "<span class="hljs-attribute">size11</span>": <span class="hljs-value"><span class="hljs-string">"160x600"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">star</span>": <span class="hljs-value"><span class="hljs-string">"★★★★"</span></span>,
+    "<span class="hljs-attribute">repeat</span>": <span class="hljs-value"><span class="hljs-string">"AAAAAAAAAA"</span></span>,
+    "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"abc=123"</span></span>,
+    "<span class="hljs-attribute">datetime</span>": <span class="hljs-value"><span class="hljs-string">"2006-05-31 11:33:54"</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Ykwsxdxmk Qpjsfsk Knypet Utjwaq Ahjaggmm Lctkzvp"</span></span>,
+    "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"GET"</span></span>,
+    "<span class="hljs-attribute">cn</span>": <span class="hljs-value"><span class="hljs-string">"汉字汉字汉字汉字"</span></span>,
+    "<span class="hljs-attribute">grade1</span>": <span class="hljs-value"><span class="hljs-number">76</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"1992-02-07"</span></span>,
+    "<span class="hljs-attribute">float2</span>": <span class="hljs-value"><span class="hljs-number">25.6222500957</span></span>,
+    "<span class="hljs-attribute">img2</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/234x60"</span></span>,
+    "<span class="hljs-attribute">img3</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/125x125"</span></span>,
+    "<span class="hljs-attribute">img1</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/200x200"</span></span>,
+    "<span class="hljs-attribute">url1</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/125x125?abc=123"</span>
+</span>},
+{
+    "<span class="hljs-attribute">url2</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/250x250?630000198201266264&amp;id=630000198106091179"</span></span>,
+    "<span class="hljs-attribute">float3</span>": <span class="hljs-value"><span class="hljs-number">999.556142</span></span>,
+    "<span class="hljs-attribute">img4</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/250x250"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"19:34:11"</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">101</span></span>,
+    "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">float1</span>": <span class="hljs-value"><span class="hljs-number">32543.3462187</span></span>,
+    "<span class="hljs-attribute">size</span>": <span class="hljs-value"><span class="hljs-string">"720x300"</span></span>,
+    "<span class="hljs-attribute">email333</span>": <span class="hljs-value"><span class="hljs-string">"f.wilson@garcia.io"</span></span>,
+    "<span class="hljs-attribute">grade2</span>": <span class="hljs-value"><span class="hljs-number">96</span></span>,
+    "<span class="hljs-attribute">float4</span>": <span class="hljs-value"><span class="hljs-number">68423.756166</span></span>,
+    "<span class="hljs-attribute">dummyimage</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">background</span>": <span class="hljs-value"><span class="hljs-string">"#4f875c"</span></span>,
+        "<span class="hljs-attribute">text2222</span>": <span class="hljs-value"><span class="hljs-string">"qgbipptjy"</span></span>,
+        "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"png,gif,jpg"</span></span>,
+        "<span class="hljs-attribute">foreground</span>": <span class="hljs-value"><span class="hljs-string">"#2c6668"</span></span>,
+        "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/@size/#4f875c/#2c6668.&amp;text=@text"</span></span>,
+        "<span class="hljs-attribute">size11</span>": <span class="hljs-value"><span class="hljs-string">"240x400"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">star</span>": <span class="hljs-value"><span class="hljs-string">"★"</span></span>,
+    "<span class="hljs-attribute">repeat</span>": <span class="hljs-value"><span class="hljs-string">"AAAAAAAAAA"</span></span>,
+    "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"abc=123"</span></span>,
+    "<span class="hljs-attribute">datetime</span>": <span class="hljs-value"><span class="hljs-string">"1986-04-22 19:02:34"</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Uxpjld Nolwyuib Xirh Pfmvqjwexv"</span></span>,
+    "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"POST"</span></span>,
+    "<span class="hljs-attribute">cn</span>": <span class="hljs-value"><span class="hljs-string">"汉字汉字汉字汉字"</span></span>,
+    "<span class="hljs-attribute">grade1</span>": <span class="hljs-value"><span class="hljs-number">71</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"1981-09-03"</span></span>,
+    "<span class="hljs-attribute">float2</span>": <span class="hljs-value"><span class="hljs-number">14.8716897</span></span>,
+    "<span class="hljs-attribute">img2</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/120x600"</span></span>,
+    "<span class="hljs-attribute">img3</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/720x300"</span></span>,
+    "<span class="hljs-attribute">img1</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/200x200"</span></span>,
+    "<span class="hljs-attribute">url1</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/720x300?abc=123"</span>
+</span>},
+{
+    "<span class="hljs-attribute">url2</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/250x250?140000200301025146&amp;id=420000198103181233"</span></span>,
+    "<span class="hljs-attribute">float3</span>": <span class="hljs-value"><span class="hljs-number">999.815</span></span>,
+    "<span class="hljs-attribute">img4</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/250x250"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"06:14:40"</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">102</span></span>,
+    "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">float1</span>": <span class="hljs-value"><span class="hljs-number">32543.2</span></span>,
+    "<span class="hljs-attribute">size</span>": <span class="hljs-value"><span class="hljs-string">"300x250"</span></span>,
+    "<span class="hljs-attribute">email333</span>": <span class="hljs-value"><span class="hljs-string">"r.johnson@clark.edu"</span></span>,
+    "<span class="hljs-attribute">grade2</span>": <span class="hljs-value"><span class="hljs-number">91</span></span>,
+    "<span class="hljs-attribute">float4</span>": <span class="hljs-value"><span class="hljs-number">68423.826</span></span>,
+    "<span class="hljs-attribute">dummyimage</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">background</span>": <span class="hljs-value"><span class="hljs-string">"#318226"</span></span>,
+        "<span class="hljs-attribute">text2222</span>": <span class="hljs-value"><span class="hljs-string">"esopdyx"</span></span>,
+        "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"png,gif,jpg"</span></span>,
+        "<span class="hljs-attribute">foreground</span>": <span class="hljs-value"><span class="hljs-string">"#0c7348"</span></span>,
+        "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/@size/#318226/#0c7348.&amp;text=@text"</span></span>,
+        "<span class="hljs-attribute">size11</span>": <span class="hljs-value"><span class="hljs-string">"234x60"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">star</span>": <span class="hljs-value"><span class="hljs-string">"★★★"</span></span>,
+    "<span class="hljs-attribute">repeat</span>": <span class="hljs-value"><span class="hljs-string">"AAAAAAAAAA"</span></span>,
+    "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"abc=123"</span></span>,
+    "<span class="hljs-attribute">datetime</span>": <span class="hljs-value"><span class="hljs-string">"1975-01-15 17:46:57"</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Nlprwzrp Lidckzzh Gofmcyxynt Uhelcsael Tikiv Pcrj Tdmrhekzdi"</span></span>,
+    "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"HEAD"</span></span>,
+    "<span class="hljs-attribute">cn</span>": <span class="hljs-value"><span class="hljs-string">"汉字汉字"</span></span>,
+    "<span class="hljs-attribute">grade1</span>": <span class="hljs-value"><span class="hljs-number">69</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"1973-03-16"</span></span>,
+    "<span class="hljs-attribute">float2</span>": <span class="hljs-value"><span class="hljs-number">44.476935</span></span>,
+    "<span class="hljs-attribute">img2</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/120x90"</span></span>,
+    "<span class="hljs-attribute">img3</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/300x250"</span></span>,
+    "<span class="hljs-attribute">img1</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/200x200"</span></span>,
+    "<span class="hljs-attribute">url1</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/300x250?abc=123"</span>
+</span>},
+{
+    "<span class="hljs-attribute">url2</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/250x250?460000197001082149&amp;id=220000197001213415"</span></span>,
+    "<span class="hljs-attribute">float3</span>": <span class="hljs-value"><span class="hljs-number">999.2366</span></span>,
+    "<span class="hljs-attribute">img4</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/250x250"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"04:47:50"</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">103</span></span>,
+    "<span class="hljs-attribute">published</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">float1</span>": <span class="hljs-value"><span class="hljs-number">32543.1</span></span>,
+    "<span class="hljs-attribute">size</span>": <span class="hljs-value"><span class="hljs-string">"125x125"</span></span>,
+    "<span class="hljs-attribute">email333</span>": <span class="hljs-value"><span class="hljs-string">"w.anderson@taylor.com"</span></span>,
+    "<span class="hljs-attribute">grade2</span>": <span class="hljs-value"><span class="hljs-number">90</span></span>,
+    "<span class="hljs-attribute">float4</span>": <span class="hljs-value"><span class="hljs-number">68423.7657</span></span>,
+    "<span class="hljs-attribute">dummyimage</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">background</span>": <span class="hljs-value"><span class="hljs-string">"#d09757"</span></span>,
+        "<span class="hljs-attribute">text2222</span>": <span class="hljs-value"><span class="hljs-string">"fmkrwrat"</span></span>,
+        "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"png,gif,jpg"</span></span>,
+        "<span class="hljs-attribute">foreground</span>": <span class="hljs-value"><span class="hljs-string">"#40088b"</span></span>,
+        "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/@size/#d09757/#40088b.&amp;text=@text"</span></span>,
+        "<span class="hljs-attribute">size11</span>": <span class="hljs-value"><span class="hljs-string">"250x250"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">star</span>": <span class="hljs-value"><span class="hljs-string">"★★★★"</span></span>,
+    "<span class="hljs-attribute">repeat</span>": <span class="hljs-value"><span class="hljs-string">"AAAAAAAAAA"</span></span>,
+    "<span class="hljs-attribute">param</span>": <span class="hljs-value"><span class="hljs-string">"abc=123"</span></span>,
+    "<span class="hljs-attribute">datetime</span>": <span class="hljs-value"><span class="hljs-string">"2008-11-28 15:27:45"</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Ipacifhd Xcwpfq Igfjjph Myjvzx Ccde Ipyesyof"</span></span>,
+    "<span class="hljs-attribute">method</span>": <span class="hljs-value"><span class="hljs-string">"HEAD"</span></span>,
+    "<span class="hljs-attribute">cn</span>": <span class="hljs-value"><span class="hljs-string">"汉字"</span></span>,
+    "<span class="hljs-attribute">grade1</span>": <span class="hljs-value"><span class="hljs-number">49</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"1993-07-20"</span></span>,
+    "<span class="hljs-attribute">float2</span>": <span class="hljs-value"><span class="hljs-number">26.5035</span></span>,
+    "<span class="hljs-attribute">img2</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/125x125"</span></span>,
+    "<span class="hljs-attribute">img3</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/125x125"</span></span>,
+    "<span class="hljs-attribute">img1</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/200x200"</span></span>,
+    "<span class="hljs-attribute">url1</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/125x125?abc=123"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="主模块---接口数据编辑de..-restful-api-dele..">RESTful API dele..&nbsp;<a href="#主模块---接口数据编辑de..-restful-api-dele.."><i class="fa fa-link"></i></a></h4><p>RESTful API(delete):相同的action，通过在参数中添加 {action}=update|delete|add|view来模拟RESTful API</p>
+<section id="主模块---接口数据编辑de..-restful-api-dele..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#主模块---接口数据编辑de..-restful-api-dele..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/RESTful_api_test?{action}=delete&amp;id=123</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#5e0c93474c83df5e78f43e29e1551bdb" class="pull-right">Toggle</a></li><li id="5e0c93474c83df5e78f43e29e1551bdb" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">a</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
+"<span class="hljs-attribute">b</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4d37"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="主模块---接口数据编辑de..-restful-api-upda..">RESTful API upda..&nbsp;<a href="#主模块---接口数据编辑de..-restful-api-upda.."><i class="fa fa-link"></i></a></h4><p>RESTful API(update):相同的action，通过在参数中添加 {action}=update|delete|add|view来模拟RESTful API</p>
+<section id="主模块---接口数据编辑de..-restful-api-upda..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#主模块---接口数据编辑de..-restful-api-upda..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/RESTful_api_test?{action}=update&amp;id=567</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#3a5ff71986de406157a34a886feb65ba" class="pull-right">Toggle</a></li><li id="3a5ff71986de406157a34a886feb65ba" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">b</span>": <span class="hljs-value"><span class="hljs-number">567</span>
+</span>}
+</code></pre></li></ul></section><h4 id="主模块---接口数据编辑de..-mockjs自定义函数">MockJS自定义函数&nbsp;<a href="#主模块---接口数据编辑de..-mockjs自定义函数"><i class="fa fa-link"></i></a></h4><section id="主模块---接口数据编辑de..-mockjs自定义函数-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#主模块---接口数据编辑de..-mockjs自定义函数-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/customizedFunction.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#bc8599c8bf50cbecf009a1c6f576ef1b" class="pull-right">Toggle</a></li><li id="bc8599c8bf50cbecf009a1c6f576ef1b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">x</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+"<span class="hljs-attribute">abc</span>": <span class="hljs-value"><span class="hljs-number">13</span>
+</span>}
+</code></pre></li></ul></section><h4 id="主模块---接口数据编辑de..-模拟图片">模拟图片&nbsp;<a href="#主模块---接口数据编辑de..-模拟图片"><i class="fa fa-link"></i></a></h4><section id="主模块---接口数据编辑de..-模拟图片-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#主模块---接口数据编辑de..-模拟图片-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/imgUrl</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#88f01751be1045c12a7797076e1bb247" class="pull-right">Toggle</a></li><li id="88f01751be1045c12a7797076e1bb247" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">imgUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://www.taobao.com/test.png"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="主模块---简单请求示例">主模块 - 简单请求示例&nbsp;<a href="#主模块---简单请求示例"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="主模块---简单请求示例-简单请求">简单请求&nbsp;<a href="#主模块---简单请求示例-简单请求"><i class="fa fa-link"></i></a></h4><p>简单请求示例</p>
+<section id="主模块---简单请求示例-简单请求-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#主模块---简单请求示例-简单请求-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/simple.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#592c9e31d486d0405d1bd48afb30fa44" class="pull-right">Toggle</a></li><li id="592c9e31d486d0405d1bd48afb30fa44" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">b</span>": <span class="hljs-value"><span class="hljs-string">"测试内容jw4p"</span></span>,
+"<span class="hljs-attribute">a</span>": <span class="hljs-value"><span class="hljs-number">74627</span></span>,
+"<span class="hljs-attribute">c</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">d</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">d1</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2zpk"</span></span>,
+    "<span class="hljs-attribute">d2</span>": <span class="hljs-value"><span class="hljs-string">"测试内容igs1"</span>
+</span>}</span>,
+"<span class="hljs-attribute">c1</span>": <span class="hljs-value"><span class="hljs-number">74642</span></span>,
+"<span class="hljs-attribute">c2</span>": <span class="hljs-value"><span class="hljs-number">77154</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="主模块---简单请求示例-简单mockjs数据请求">简单Mockjs数据请求&nbsp;<a href="#主模块---简单请求示例-简单mockjs数据请求"><i class="fa fa-link"></i></a></h4><p>获取用Mockjs渲染的数据</p>
+<section id="主模块---简单请求示例-简单mockjs数据请求-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#主模块---简单请求示例-简单mockjs数据请求-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/simple_mockjs_data.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7e1a7f944a563c2113f7ac274776df4b" class="pull-right">Toggle</a></li><li id="7e1a7f944a563c2113f7ac274776df4b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"B"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">fullname</span>": <span class="hljs-value"><span class="hljs-string">"dnwjinrh pwgretj"</span></span>,
+"<span class="hljs-attribute">firstname</span>": <span class="hljs-value"><span class="hljs-string">"dnwjinrh"</span></span>,
+"<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">363</span></span>,
+"<span class="hljs-attribute">lastname</span>": <span class="hljs-value"><span class="hljs-string">"pwgretj"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

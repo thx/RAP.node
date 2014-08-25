@@ -1,0 +1,635 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>店铺经接口整理接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#流量概况---流量概况-淘宝店.." class="list-group-item heading">流量概况 - 流量概况-淘宝店..</a><a href="#流量概况---流量概况-淘宝店..-按天、按小时折线图" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;按天、按小时折线图</a><a href="#流量概况---流量概况-淘宝店..-日均表格对比" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;日均表格对比</a><a href="#流量概况---流量概况-淘宝店..-最近7天被访问宝贝top10" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;最近7天被访问宝贝TOP10</a><a href="#流量概况---流量概况-淘宝店..-最近7天访客来源top10" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;最近7天访客来源TOP10</a><a href="#流量概况---流量概况-淘宝店..-最近7天访客地区top10" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;最近7天访客地区TOP10</a></div><div class="list-group"><a href="#流量概况---流量概况-手机淘.." class="list-group-item heading">流量概况 - 流量概况-手机淘..</a><a href="#流量概况---流量概况-手机淘..-今日、昨日、上周同期、前七日日均.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;今日、昨日、上周同期、前七日日均..</a><a href="#流量概况---流量概况-手机淘..-按天、按小时折线图1" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;按天、按小时折线图1</a></div><div class="list-group"><a href="#流量概况---店铺基本信息" class="list-group-item heading">流量概况 - 店铺基本信息</a><a href="#流量概况---店铺基本信息-店铺基本信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;店铺基本信息</a></div><div class="list-group"><a href="#实时客户访问---实时客户访问-趋.." class="list-group-item heading">实时客户访问 - 实时客户访问-趋..</a><a href="#实时客户访问---实时客户访问-趋..-趋势表格接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;趋势表格接口</a></div><div class="list-group"><a href="#实时客户访问---实时客户访问-主.." class="list-group-item heading">实时客户访问 - 实时客户访问-主..</a><a href="#实时客户访问---实时客户访问-主..-分页表格" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;分页表格</a></div><div class="list-group"><a href="#按小时流量分析---按小时流量分析-.." class="list-group-item heading">按小时流量分析 - 按小时流量分析-..</a><a href="#按小时流量分析---按小时流量分析-..-浏览量访客数对比" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;浏览量访客数对比</a></div><div class="list-group"><a href="#按小时流量分析---按小时流量分析-.." class="list-group-item heading">按小时流量分析 - 按小时流量分析-..</a><a href="#按小时流量分析---按小时流量分析-..-浏览量访客数对比2" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;浏览量访客数对比2</a></div><div class="list-group"><a href="#按天流量分析---按天流量分析-流.." class="list-group-item heading">按天流量分析 - 按天流量分析-流..</a><a href="#按天流量分析---按天流量分析-流..-接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;接口</a></div><div class="list-group"><a href="#按天流量分析---按天流量分析-流.." class="list-group-item heading">按天流量分析 - 按天流量分析-流..</a><a href="#按天流量分析---按天流量分析-流..-接口3" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;接口3</a></div><div class="list-group"><a href="#宝贝被访排行---宝贝被访详情" class="list-group-item heading">宝贝被访排行 - 宝贝被访详情</a><a href="#宝贝被访排行---宝贝被访详情-下拉框" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;下拉框</a><a href="#宝贝被访排行---宝贝被访详情-该宝贝被访详情" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;该宝贝被访详情</a><a href="#宝贝被访排行---宝贝被访详情-该宝贝被访趋势图" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;该宝贝被访趋势图</a><a href="#宝贝被访排行---宝贝被访详情-该宝贝访客地区" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;该宝贝访客地区</a><a href="#宝贝被访排行---宝贝被访详情-该宝贝访客来源" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;该宝贝访客来源</a></div><div class="list-group"><a href="#宝贝被访排行---宝贝被访排行" class="list-group-item heading">宝贝被访排行 - 宝贝被访排行</a><a href="#宝贝被访排行---宝贝被访排行-宝贝浏览量排行top15" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;宝贝浏览量排行TOP15</a><a href="#宝贝被访排行---宝贝被访排行-宝贝数据汇总" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;宝贝数据汇总</a><a href="#宝贝被访排行---宝贝被访排行-详细表格" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;详细表格</a></div><div class="list-group"><a href="#分类页被访排行---分类页被访排行" class="list-group-item heading">分类页被访排行 - 分类页被访排行</a><a href="#分类页被访排行---分类页被访排行-取宝贝条数" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;取宝贝条数</a><a href="#分类页被访排行---分类页被访排行-详细表格4" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;详细表格4</a></div><div class="list-group"><a href="#店内搜索关键词---趋势页" class="list-group-item heading">店内搜索关键词 - 趋势页</a><a href="#店内搜索关键词---趋势页-趋势接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;趋势接口</a></div><div class="list-group"><a href="#店内搜索关键词---主页面" class="list-group-item heading">店内搜索关键词 - 主页面</a><a href="#店内搜索关键词---主页面-店内搜索关键词top10" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;店内搜索关键词TOP10</a><a href="#店内搜索关键词---主页面-店内搜索关键词报表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;店内搜索关键词报表</a></div><div class="list-group"><a href="#首页被访数据---首页概况" class="list-group-item heading">首页被访数据 - 首页概况</a><a href="#首页被访数据---首页概况-首页数据汇总" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;首页数据汇总</a><a href="#首页被访数据---首页概况-趋势及详细报表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;趋势及详细报表</a></div><div class="list-group"><a href="#首页被访数据---首页到分类页" class="list-group-item heading">首页被访数据 - 首页到分类页</a><a href="#首页被访数据---首页到分类页-首页到分类页趋势" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;首页到分类页趋势</a><a href="#首页被访数据---首页到分类页-首页到分类页点击率报表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;首页到分类页点击率报表</a></div><div class="list-group"><a href="#首页被访数据---首页到宝贝页" class="list-group-item heading">首页被访数据 - 首页到宝贝页</a><a href="#首页被访数据---首页到宝贝页-首页到宝贝页趋势" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;首页到宝贝页趋势</a><a href="#首页被访数据---首页到宝贝页-首页到宝贝页点击率报表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;首页到宝贝页点击率报表</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">店铺经接口整理接口文档</h1></div></header><div class="description"><p>店铺经接口整理</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="流量概况---流量概况-淘宝店..">流量概况 - 流量概况-淘宝店..&nbsp;<a href="#流量概况---流量概况-淘宝店.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="流量概况---流量概况-淘宝店..-按天、按小时折线图">按天、按小时折线图&nbsp;<a href="#流量概况---流量概况-淘宝店..-按天、按小时折线图"><i class="fa fa-link"></i></a></h4><section id="流量概况---流量概况-淘宝店..-按天、按小时折线图-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#流量概况---流量概况-淘宝店..-按天、按小时折线图-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/shopflow/type/daily?days=2012-02-26..2012-03-26</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#6f9e9e6bf49c07f661c3d74b70f5191c" class="pull-right">Toggle</a></li><li id="6f9e9e6bf49c07f661c3d74b70f5191c" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容mb2p"</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">52282</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">82867</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4mcl"</span></span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">55548</span>
+</span>}
+</code></pre></li></ul></section><h4 id="流量概况---流量概况-淘宝店..-日均表格对比">日均表格对比&nbsp;<a href="#流量概况---流量概况-淘宝店..-日均表格对比"><i class="fa fa-link"></i></a></h4><section id="流量概况---流量概况-淘宝店..-日均表格对比-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#流量概况---流量概况-淘宝店..-日均表格对比-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/summarydata/~/~</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#0784df62d12dc060aa3280db7cc212de" class="pull-right">Toggle</a></li><li id="0784df62d12dc060aa3280db7cc212de" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容58k5"</span></span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">53136</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容dy79"</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6668"</span></span>,
+    "<span class="hljs-attribute">ppage</span>": <span class="hljs-value"><span class="hljs-number">45754</span></span>,
+    "<span class="hljs-attribute">staytime</span>": <span class="hljs-value"><span class="hljs-number">83676</span></span>,
+    "<span class="hljs-attribute">return_rate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容26y4"</span></span>,
+    "<span class="hljs-attribute">uv_times</span>": <span class="hljs-value"><span class="hljs-number">33818</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">70067</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="流量概况---流量概况-淘宝店..-最近7天被访问宝贝top10">最近7天被访问宝贝TOP10&nbsp;<a href="#流量概况---流量概况-淘宝店..-最近7天被访问宝贝top10"><i class="fa fa-link"></i></a></h4><section id="流量概况---流量概况-淘宝店..-最近7天被访问宝贝top10-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#流量概况---流量概况-淘宝店..-最近7天被访问宝贝top10-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/itemflow/type/top?days=2012-03-20..2012-03-26&amp;sort=uv</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#567894a4ea003dc9600076d689f29ef1" class="pull-right">Toggle</a></li><li id="567894a4ea003dc9600076d689f29ef1" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">55636</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ui2l"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">84228</span></span>,
+    "<span class="hljs-attribute">url_index</span>": <span class="hljs-value"><span class="hljs-string">"测试内容s6lq"</span></span>,
+    "<span class="hljs-attribute">out_uv_times</span>": <span class="hljs-value"><span class="hljs-number">77808</span></span>,
+    "<span class="hljs-attribute">ip_times</span>": <span class="hljs-value"><span class="hljs-number">32757</span></span>,
+    "<span class="hljs-attribute">uv_times</span>": <span class="hljs-value"><span class="hljs-number">57062</span></span>,
+    "<span class="hljs-attribute">in_uv_times</span>": <span class="hljs-value"><span class="hljs-number">48620</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容433f"</span></span>,
+    "<span class="hljs-attribute">total_time</span>": <span class="hljs-value"><span class="hljs-number">88557</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容s3t1"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="流量概况---流量概况-淘宝店..-最近7天访客来源top10">最近7天访客来源TOP10&nbsp;<a href="#流量概况---流量概况-淘宝店..-最近7天访客来源top10"><i class="fa fa-link"></i></a></h4><section id="流量概况---流量概况-淘宝店..-最近7天访客来源top10-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#流量概况---流量概况-淘宝店..-最近7天访客来源top10-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/visitorsrc/type/top?days=2011-11-01..2011-11-30</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#3d4683ad203f113d899b2bc7bc0e1e50" class="pull-right">Toggle</a></li><li id="3d4683ad203f113d899b2bc7bc0e1e50" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容wl0v"</span></span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">54526</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">ref_type</span>": <span class="hljs-value"><span class="hljs-number">22477</span></span>,
+    "<span class="hljs-attribute">type_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2542"</span></span>,
+    "<span class="hljs-attribute">landing_pv</span>": <span class="hljs-value"><span class="hljs-number">76637</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="流量概况---流量概况-淘宝店..-最近7天访客地区top10">最近7天访客地区TOP10&nbsp;<a href="#流量概况---流量概况-淘宝店..-最近7天访客地区top10"><i class="fa fa-link"></i></a></h4><section id="流量概况---流量概况-淘宝店..-最近7天访客地区top10-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#流量概况---流量概况-淘宝店..-最近7天访客地区top10-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/locflow/type/top?days=2012-03-20..2012-03-26&amp;country=4&amp;province=0&amp;overview=1</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#9f56e1c3744e6ffb38a7ed0eede600a0" class="pull-right">Toggle</a></li><li id="9f56e1c3744e6ffb38a7ed0eede600a0" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">81332</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容63au"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">city_pinyin</span>": <span class="hljs-value"><span class="hljs-string">"测试内容80v4"</span></span>,
+    "<span class="hljs-attribute">city_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容mo8k"</span></span>,
+    "<span class="hljs-attribute">full_pinyin</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8yy6"</span></span>,
+    "<span class="hljs-attribute">province_pinyin</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lj97"</span></span>,
+    "<span class="hljs-attribute">city_id</span>": <span class="hljs-value"><span class="hljs-number">40525</span></span>,
+    "<span class="hljs-attribute">country_id</span>": <span class="hljs-value"><span class="hljs-number">66841</span></span>,
+    "<span class="hljs-attribute">location_id</span>": <span class="hljs-value"><span class="hljs-number">58380</span></span>,
+    "<span class="hljs-attribute">country_pinyin</span>": <span class="hljs-value"><span class="hljs-string">"测试内容hy22"</span></span>,
+    "<span class="hljs-attribute">province_id</span>": <span class="hljs-value"><span class="hljs-number">26756</span></span>,
+    "<span class="hljs-attribute">country_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8h5v"</span></span>,
+    "<span class="hljs-attribute">province_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7y1x"</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">26051</span></span>,
+    "<span class="hljs-attribute">return_uv_times</span>": <span class="hljs-value"><span class="hljs-number">86860</span></span>,
+    "<span class="hljs-attribute">full_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4q5j"</span></span>,
+    "<span class="hljs-attribute">ip_times</span>": <span class="hljs-value"><span class="hljs-number">73045</span></span>,
+    "<span class="hljs-attribute">uv_times</span>": <span class="hljs-value"><span class="hljs-number">67681</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="流量概况---流量概况-手机淘..">流量概况 - 流量概况-手机淘..&nbsp;<a href="#流量概况---流量概况-手机淘.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="流量概况---流量概况-手机淘..-今日、昨日、上周同期、前七日日均..">今日、昨日、上周同期、前七日日均..&nbsp;<a href="#流量概况---流量概况-手机淘..-今日、昨日、上周同期、前七日日均.."><i class="fa fa-link"></i></a></h4><p>今日、昨日、上周同期、前七日日均数据对比:</p>
+<section id="流量概况---流量概况-手机淘..-今日、昨日、上周同期、前七日日均..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#流量概况---流量概况-手机淘..-今日、昨日、上周同期、前七日日均..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/mobile/summarydata/~</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#66cfbf0d0618f3b2c0760224e4cdffe3" class="pull-right">Toggle</a></li><li id="66cfbf0d0618f3b2c0760224e4cdffe3" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容66po"</span></span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">87806</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">staytime</span>": <span class="hljs-value"><span class="hljs-number">56771</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容n1h6"</span></span>,
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容dnm7"</span></span>,
+    "<span class="hljs-attribute">ppage</span>": <span class="hljs-value"><span class="hljs-number">54847</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">68242</span></span>,
+    "<span class="hljs-attribute">uv_times</span>": <span class="hljs-value"><span class="hljs-number">23487</span></span>,
+    "<span class="hljs-attribute">return_rate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容65t8"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="流量概况---流量概况-手机淘..-按天、按小时折线图1">按天、按小时折线图1&nbsp;<a href="#流量概况---流量概况-手机淘..-按天、按小时折线图1"><i class="fa fa-link"></i></a></h4><section id="流量概况---流量概况-手机淘..-按天、按小时折线图1-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#流量概况---流量概况-手机淘..-按天、按小时折线图1-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/mobile/shopflow/daily?days=2012-02-26..2012-03-26</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#007114d0a52f38582f20cefd36ae6f0a" class="pull-right">Toggle</a></li><li id="007114d0a52f38582f20cefd36ae6f0a" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容75eh"</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">85668</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">27718</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容703b"</span></span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">34664</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="流量概况---店铺基本信息">流量概况 - 店铺基本信息&nbsp;<a href="#流量概况---店铺基本信息"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="流量概况---店铺基本信息-店铺基本信息">店铺基本信息&nbsp;<a href="#流量概况---店铺基本信息-店铺基本信息"><i class="fa fa-link"></i></a></h4><section id="流量概况---店铺基本信息-店铺基本信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#流量概况---店铺基本信息-店铺基本信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/basicinfo/~/~</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#52d737a5841364da0050f968a95c82f1" class="pull-right">Toggle</a></li><li id="52d737a5841364da0050f968a95c82f1" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">visit_time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容dvw6"</span></span>,
+    "<span class="hljs-attribute">end_date</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2188"</span></span>,
+    "<span class="hljs-attribute">lastvisit_time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k64g"</span></span>,
+    "<span class="hljs-attribute">start_date</span>": <span class="hljs-value"><span class="hljs-string">"测试内容zw31"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">34140</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容p6sh"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="实时客户访问---实时客户访问-趋..">实时客户访问 - 实时客户访问-趋..&nbsp;<a href="#实时客户访问---实时客户访问-趋.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="实时客户访问---实时客户访问-趋..-趋势表格接口">趋势表格接口&nbsp;<a href="#实时客户访问---实时客户访问-趋..-趋势表格接口"><i class="fa fa-link"></i></a></h4><p>概览部分由上层页面传入</p>
+<section id="实时客户访问---实时客户访问-趋..-趋势表格接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#实时客户访问---实时客户访问-趋..-趋势表格接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/recent/type/trace?p4p=0&amp;visitor_id=aKaNCnOD6BqbcFqhVaPD6rXjrvGQyT4Bby7AgMXF3183Jc82Ef7h2A%3D%3D</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#75fabce51cf8898168085f8a0aeb2445" class="pull-right">Toggle</a></li><li id="75fabce51cf8898168085f8a0aeb2445" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">25401</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容t1g5"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">location_id</span>": <span class="hljs-value"><span class="hljs-number">76208</span></span>,
+    "<span class="hljs-attribute">uv_no</span>": <span class="hljs-value"><span class="hljs-number">50815</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容u1q5"</span></span>,
+    "<span class="hljs-attribute">stay_time</span>": <span class="hljs-value"><span class="hljs-number">46225</span></span>,
+    "<span class="hljs-attribute">return_uv</span>": <span class="hljs-value"><span class="hljs-number">84261</span></span>,
+    "<span class="hljs-attribute">location_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容52it"</span></span>,
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容uzo0"</span></span>,
+    "<span class="hljs-attribute">page_deep</span>": <span class="hljs-value"><span class="hljs-number">21038</span></span>,
+    "<span class="hljs-attribute">log_time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容txza"</span></span>,
+    "<span class="hljs-attribute">im</span>": <span class="hljs-value"><span class="hljs-string">"测试内容u6x3"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容j146"</span></span>,
+    "<span class="hljs-attribute">is_ref_p4p</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5rpm"</span></span>,
+    "<span class="hljs-attribute">ip</span>": <span class="hljs-value"><span class="hljs-string">"测试内容19ib"</span></span>,
+    "<span class="hljs-attribute">search_key</span>": <span class="hljs-value"><span class="hljs-string">"测试内容gtc2"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="实时客户访问---实时客户访问-主..">实时客户访问 - 实时客户访问-主..&nbsp;<a href="#实时客户访问---实时客户访问-主.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="实时客户访问---实时客户访问-主..-分页表格">分页表格&nbsp;<a href="#实时客户访问---实时客户访问-主..-分页表格"><i class="fa fa-link"></i></a></h4><p>店铺经接口返回格式：
+[{“cnt”:1000},[{“im”:””,”is_baobei”:1,”search_key”:””,”ip”:”110.17.97.14”,”url”:”<a href="http://item.taobao.com/item.htm?id=12341703064&quot;,&quot;uv&quot;:&quot;XErqBzKzG3ACAX0sEjrb17c9&quot;,&quot;url_baobei_id&quot;:&quot;12341703064&quot;,&quot;ref&quot;:&quot;http://item.taobao.com/item.htm?id=15505668239&quot;,&quot;is_ref_p4p&quot;:&quot;common&quot;,&quot;day&quot;:&quot;2012-03-26&quot;,&quot;location_name&quot;:&quot;内蒙古包头市&quot;,&quot;title&quot;:&quot;空城五">http://item.taobao.com/item.htm?id=12341703064&quot;,&quot;uv&quot;:&quot;XErqBzKzG3ACAX0sEjrb17c9&quot;,&quot;url_baobei_id&quot;:&quot;12341703064&quot;,&quot;ref&quot;:&quot;http://item.taobao.com/item.htm?id=15505668239&quot;,&quot;is_ref_p4p&quot;:&quot;common&quot;,&quot;day&quot;:&quot;2012-03-26&quot;,&quot;location_name&quot;:&quot;内蒙古包头市&quot;,&quot;title&quot;:&quot;空城五</a> 妖精的口袋 华丽的姿态~复古风纯色洞眼系带厚底鞋”,”location_id”:263173,”ref_type”:”shopself”,”log_time”:”13:34:59”,”uv_no”:39763,”uv_return”:0}]</p>
+<section id="实时客户访问---实时客户访问-主..-分页表格-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#实时客户访问---实时客户访问-主..-分页表格-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/recent/~/~?p4p=0&amp;limit=25&amp;offset=0</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a4b3c604f99f5df9f306f15708bfee7c" class="pull-right">Toggle</a></li><li id="a4b3c604f99f5df9f306f15708bfee7c" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">38821</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容tlro"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">ref</span>": <span class="hljs-value"><span class="hljs-string">"测试内容39d1"</span></span>,
+    "<span class="hljs-attribute">location_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容rfd1"</span></span>,
+    "<span class="hljs-attribute">is_baobei</span>": <span class="hljs-value"><span class="hljs-number">82046</span></span>,
+    "<span class="hljs-attribute">uv_no</span>": <span class="hljs-value"><span class="hljs-number">51322</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2w17"</span></span>,
+    "<span class="hljs-attribute">is_ref_p4p</span>": <span class="hljs-value"><span class="hljs-string">"测试内容l7sf"</span></span>,
+    "<span class="hljs-attribute">src_id</span>": <span class="hljs-value"><span class="hljs-number">32757</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1lh2"</span></span>,
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5x9p"</span></span>,
+    "<span class="hljs-attribute">url_baobei_id</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5gys"</span></span>,
+    "<span class="hljs-attribute">location_id</span>": <span class="hljs-value"><span class="hljs-number">73741</span></span>,
+    "<span class="hljs-attribute">log_time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6f25"</span></span>,
+    "<span class="hljs-attribute">uv_return</span>": <span class="hljs-value"><span class="hljs-number">40103</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"测试内容gge5"</span></span>,
+    "<span class="hljs-attribute">search_key</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1btq"</span></span>,
+    "<span class="hljs-attribute">ip</span>": <span class="hljs-value"><span class="hljs-string">"测试内容19oq"</span></span>,
+    "<span class="hljs-attribute">ref_type</span>": <span class="hljs-value"><span class="hljs-string">"测试内容82w8"</span></span>,
+    "<span class="hljs-attribute">im</span>": <span class="hljs-value"><span class="hljs-string">"测试内容225q"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="按小时流量分析---按小时流量分析-..">按小时流量分析 - 按小时流量分析-..&nbsp;<a href="#按小时流量分析---按小时流量分析-.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="按小时流量分析---按小时流量分析-..-浏览量访客数对比">浏览量访客数对比&nbsp;<a href="#按小时流量分析---按小时流量分析-..-浏览量访客数对比"><i class="fa fa-link"></i></a></h4><p>图表均调用同一个接口
+注意这里返回数据格式
+[[{“hour”:0,”uv”:3805,”pv”:13726}][{“pv”:8588,”uv”:2524,”hour”:0}]]</p>
+<section id="按小时流量分析---按小时流量分析-..-浏览量访客数对比-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#按小时流量分析---按小时流量分析-..-浏览量访客数对比-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/batch/shopflow/type/hourly?days=2012-03-25..2012-03-26</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4ca77d5f8488aa155eb465d367954f00" class="pull-right">Toggle</a></li><li id="4ca77d5f8488aa155eb465d367954f00" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">30703</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容e535"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">70550</span></span>,
+    "<span class="hljs-attribute">hour</span>": <span class="hljs-value"><span class="hljs-number">37682</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">66414</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="按小时流量分析---按小时流量分析-..">按小时流量分析 - 按小时流量分析-..&nbsp;<a href="#按小时流量分析---按小时流量分析-.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="按小时流量分析---按小时流量分析-..-浏览量访客数对比2">浏览量访客数对比2&nbsp;<a href="#按小时流量分析---按小时流量分析-..-浏览量访客数对比2"><i class="fa fa-link"></i></a></h4><p>图表均调用同一个接口</p>
+<section id="按小时流量分析---按小时流量分析-..-浏览量访客数对比2-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#按小时流量分析---按小时流量分析-..-浏览量访客数对比2-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/shopflow/type/hourly?day=2012-03-26</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a1d727da90eea479ac0fbac8843001ea" class="pull-right">Toggle</a></li><li id="a1d727da90eea479ac0fbac8843001ea" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">26174</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">hour</span>": <span class="hljs-value"><span class="hljs-number">22803</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">78441</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">23068</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ga56"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="按天流量分析---按天流量分析-流..">按天流量分析 - 按天流量分析-流..&nbsp;<a href="#按天流量分析---按天流量分析-流.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="按天流量分析---按天流量分析-流..-接口">接口&nbsp;<a href="#按天流量分析---按天流量分析-流..-接口"><i class="fa fa-link"></i></a></h4><p>这里需要特别注意，店铺经返回的接口格式为：
+[[{“day”:”2012-02-01”,”pv”:268130,”uv”:62014}],[{“day”:”2012-03-01”,”pv”:475603,”uv”:124109}]]</p>
+<section id="按天流量分析---按天流量分析-流..-接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#按天流量分析---按天流量分析-流..-接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/batch/shopflow/type/daily?days=2012-02-01..2012-02-29%2C2012-03-01..2012-03-26</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e59fe6c1ea0dceacf3ffcd80f5f50fe6" class="pull-right">Toggle</a></li><li id="e59fe6c1ea0dceacf3ffcd80f5f50fe6" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">70612</span></span>,
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容l5sx"</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">13488</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">36776</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容zed4"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="按天流量分析---按天流量分析-流..">按天流量分析 - 按天流量分析-流..&nbsp;<a href="#按天流量分析---按天流量分析-流.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="按天流量分析---按天流量分析-流..-接口3">接口3&nbsp;<a href="#按天流量分析---按天流量分析-流..-接口3"><i class="fa fa-link"></i></a></h4><p>图表同一个接口</p>
+<section id="按天流量分析---按天流量分析-流..-接口3-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#按天流量分析---按天流量分析-流..-接口3-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/shopflow/type/daily?days=2012-03-01..2012-03-26</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#d8f47bc672e8c6bd8d04c9764feac089" class="pull-right">Toggle</a></li><li id="d8f47bc672e8c6bd8d04c9764feac089" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容62f0"</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">84753</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">83423</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">31242</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ee16"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="宝贝被访排行---宝贝被访详情">宝贝被访排行 - 宝贝被访详情&nbsp;<a href="#宝贝被访排行---宝贝被访详情"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="宝贝被访排行---宝贝被访详情-下拉框">下拉框&nbsp;<a href="#宝贝被访排行---宝贝被访详情-下拉框"><i class="fa fa-link"></i></a></h4><p>获取下拉里的各宝贝</p>
+<section id="宝贝被访排行---宝贝被访详情-下拉框-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#宝贝被访排行---宝贝被访详情-下拉框-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/itemflow/type/ntop?days=2013-12-10..2013-12-10&amp;sort=uv&amp;num=15</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#6e1a8a3c148515324a7af6964b321a22" class="pull-right">Toggle</a></li><li id="6e1a8a3c148515324a7af6964b321a22" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容16ou"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5f25"</span></span>,
+    "<span class="hljs-attribute">url_index</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3o5x"</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">14215</span></span>,
+    "<span class="hljs-attribute">out_uv_times</span>": <span class="hljs-value"><span class="hljs-number">37213</span></span>,
+    "<span class="hljs-attribute">in_uv_times</span>": <span class="hljs-value"><span class="hljs-number">61231</span></span>,
+    "<span class="hljs-attribute">total_time</span>": <span class="hljs-value"><span class="hljs-number">12301</span></span>,
+    "<span class="hljs-attribute">uv_times</span>": <span class="hljs-value"><span class="hljs-number">40222</span></span>,
+    "<span class="hljs-attribute">ip_times</span>": <span class="hljs-value"><span class="hljs-number">51507</span></span>,
+    "<span class="hljs-attribute">ave_total_time</span>": <span class="hljs-value"><span class="hljs-number">45238</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容c714"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">28745</span>
+</span>}
+</code></pre></li></ul></section><h4 id="宝贝被访排行---宝贝被访详情-该宝贝被访详情">该宝贝被访详情&nbsp;<a href="#宝贝被访排行---宝贝被访详情-该宝贝被访详情"><i class="fa fa-link"></i></a></h4><section id="宝贝被访排行---宝贝被访详情-该宝贝被访详情-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#宝贝被访排行---宝贝被访详情-该宝贝被访详情-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/itemdetail/~/~?days=2013-12-10..2013-12-10&amp;item=36395080687</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#93c3f2e71e61106b1032472770f462ea" class="pull-right">Toggle</a></li><li id="93c3f2e71e61106b1032472770f462ea" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容33pd"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">pics_url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2rp3"</span></span>,
+    "<span class="hljs-attribute">avg_acc_time</span>": <span class="hljs-value"><span class="hljs-number">38874</span></span>,
+    "<span class="hljs-attribute">out</span>": <span class="hljs-value"><span class="hljs-number">14220</span></span>,
+    "<span class="hljs-attribute">avg_bounce_rate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1ug7"</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">80675</span></span>,
+    "<span class="hljs-attribute">focus</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8873"</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">87533</span></span>,
+    "<span class="hljs-attribute">avg_pv</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4t6o"</span></span>,
+    "<span class="hljs-attribute">avg_uv</span>": <span class="hljs-value"><span class="hljs-string">"测试内容n577"</span></span>,
+    "<span class="hljs-attribute">url_index</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9r96"</span></span>,
+    "<span class="hljs-attribute">in</span>": <span class="hljs-value"><span class="hljs-number">54211</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">38222</span>
+</span>}
+</code></pre></li></ul></section><h4 id="宝贝被访排行---宝贝被访详情-该宝贝被访趋势图">该宝贝被访趋势图&nbsp;<a href="#宝贝被访排行---宝贝被访详情-该宝贝被访趋势图"><i class="fa fa-link"></i></a></h4><section id="宝贝被访排行---宝贝被访详情-该宝贝被访趋势图-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#宝贝被访排行---宝贝被访详情-该宝贝被访趋势图-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/itemdailyflow/type/trend?days=2013-11-11..2013-12-10&amp;item=36395080687</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#fe4132d781e2c5ede6f79d06404794ab" class="pull-right">Toggle</a></li><li id="fe4132d781e2c5ede6f79d06404794ab" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容sm8q"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5022"</span></span>,
+    "<span class="hljs-attribute">out_uv_times</span>": <span class="hljs-value"><span class="hljs-number">78343</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">54715</span></span>,
+    "<span class="hljs-attribute">ip_times</span>": <span class="hljs-value"><span class="hljs-number">62252</span></span>,
+    "<span class="hljs-attribute">in_uv_times</span>": <span class="hljs-value"><span class="hljs-number">25471</span></span>,
+    "<span class="hljs-attribute">ave_total_time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容yoi6"</span></span>,
+    "<span class="hljs-attribute">uv_times</span>": <span class="hljs-value"><span class="hljs-number">13360</span></span>,
+    "<span class="hljs-attribute">total_time</span>": <span class="hljs-value"><span class="hljs-number">86464</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">68162</span>
+</span>}
+</code></pre></li></ul></section><h4 id="宝贝被访排行---宝贝被访详情-该宝贝访客地区">该宝贝访客地区&nbsp;<a href="#宝贝被访排行---宝贝被访详情-该宝贝访客地区"><i class="fa fa-link"></i></a></h4><section id="宝贝被访排行---宝贝被访详情-该宝贝访客地区-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#宝贝被访排行---宝贝被访详情-该宝贝访客地区-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/itemlocflow/type/percent?days=2013-12-10..2013-12-10&amp;country=4&amp;province=0&amp;item=36395080687</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#6a73e632065985ce9cf40c36e6c2ceab" class="pull-right">Toggle</a></li><li id="6a73e632065985ce9cf40c36e6c2ceab" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1j3c"</span></span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">80505</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">province_id</span>": <span class="hljs-value"><span class="hljs-number">17185</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">20622</span></span>,
+    "<span class="hljs-attribute">uv_times</span>": <span class="hljs-value"><span class="hljs-number">16015</span></span>,
+    "<span class="hljs-attribute">city_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9ijo"</span></span>,
+    "<span class="hljs-attribute">country_id</span>": <span class="hljs-value"><span class="hljs-number">87087</span></span>,
+    "<span class="hljs-attribute">full_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容087e"</span></span>,
+    "<span class="hljs-attribute">province_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容y4yz"</span></span>,
+    "<span class="hljs-attribute">location_id</span>": <span class="hljs-value"><span class="hljs-number">87540</span></span>,
+    "<span class="hljs-attribute">province_pinyin</span>": <span class="hljs-value"><span class="hljs-string">"测试内容w524"</span></span>,
+    "<span class="hljs-attribute">city_pinyin</span>": <span class="hljs-value"><span class="hljs-string">"测试内容n0y1"</span></span>,
+    "<span class="hljs-attribute">full_pinyin</span>": <span class="hljs-value"><span class="hljs-string">"测试内容n2g5"</span></span>,
+    "<span class="hljs-attribute">country_pinyin</span>": <span class="hljs-value"><span class="hljs-string">"测试内容l1se"</span></span>,
+    "<span class="hljs-attribute">country_name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容251q"</span></span>,
+    "<span class="hljs-attribute">avg_uv</span>": <span class="hljs-value"><span class="hljs-string">"测试内容t2m8"</span></span>,
+    "<span class="hljs-attribute">avg_pv</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8l35"</span></span>,
+    "<span class="hljs-attribute">city_id</span>": <span class="hljs-value"><span class="hljs-number">83626</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="宝贝被访排行---宝贝被访详情-该宝贝访客来源">该宝贝访客来源&nbsp;<a href="#宝贝被访排行---宝贝被访详情-该宝贝访客来源"><i class="fa fa-link"></i></a></h4><p>饼图</p>
+<section id="宝贝被访排行---宝贝被访详情-该宝贝访客来源-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#宝贝被访排行---宝贝被访详情-该宝贝访客来源-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/itemsrcflow/type/percent?days=2013-12-10..2013-12-10&amp;item=36395080687</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#41f8e6b15db65f217a4a158bd55486be" class="pull-right">Toggle</a></li><li id="41f8e6b15db65f217a4a158bd55486be" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">76474</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">parent_id</span>": <span class="hljs-value"><span class="hljs-number">38828</span></span>,
+    "<span class="hljs-attribute">src_id</span>": <span class="hljs-value"><span class="hljs-number">51137</span></span>,
+    "<span class="hljs-attribute">landing_pv_times</span>": <span class="hljs-value"><span class="hljs-number">21116</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1jbi"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容n4c8"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="宝贝被访排行---宝贝被访排行">宝贝被访排行 - 宝贝被访排行&nbsp;<a href="#宝贝被访排行---宝贝被访排行"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="宝贝被访排行---宝贝被访排行-宝贝浏览量排行top15">宝贝浏览量排行TOP15&nbsp;<a href="#宝贝被访排行---宝贝被访排行-宝贝浏览量排行top15"><i class="fa fa-link"></i></a></h4><p>radio选择不同的指标时会重新去取数据，sort为radio的指标值</p>
+<section id="宝贝被访排行---宝贝被访排行-宝贝浏览量排行top15-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#宝贝被访排行---宝贝被访排行-宝贝浏览量排行top15-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/itemflow/type/ntop?days=2013-12-08..2013-12-08&amp;num=15&amp;sort=avg_pv</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c9a433a29fe4578b4989184ac771067f" class="pull-right">Toggle</a></li><li id="c9a433a29fe4578b4989184ac771067f" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容284j"</span></span>,
+    "<span class="hljs-attribute">out_uv_times</span>": <span class="hljs-value"><span class="hljs-number">26102</span></span>,
+    "<span class="hljs-attribute">in_uv_times</span>": <span class="hljs-value"><span class="hljs-number">73105</span></span>,
+    "<span class="hljs-attribute">ave_total_time</span>": <span class="hljs-value"><span class="hljs-number">16037</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">13183</span></span>,
+    "<span class="hljs-attribute">ip_times</span>": <span class="hljs-value"><span class="hljs-number">72410</span></span>,
+    "<span class="hljs-attribute">uv_times</span>": <span class="hljs-value"><span class="hljs-number">57374</span></span>,
+    "<span class="hljs-attribute">url_index</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6ql8"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容15j9"</span></span>,
+    "<span class="hljs-attribute">total_time</span>": <span class="hljs-value"><span class="hljs-number">72206</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容041j"</span></span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">78673</span>
+</span>}
+</code></pre></li></ul></section><h4 id="宝贝被访排行---宝贝被访排行-宝贝数据汇总">宝贝数据汇总&nbsp;<a href="#宝贝被访排行---宝贝被访排行-宝贝数据汇总"><i class="fa fa-link"></i></a></h4><section id="宝贝被访排行---宝贝被访排行-宝贝数据汇总-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#宝贝被访排行---宝贝被访排行-宝贝数据汇总-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/itemflow/type/stats?days=2013-12-08..2013-12-08</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e577ecb0f01470884dfdc70f9289737b" class="pull-right">Toggle</a></li><li id="e577ecb0f01470884dfdc70f9289737b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">20704</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">avg_out_uv</span>": <span class="hljs-value"><span class="hljs-number">18345</span></span>,
+    "<span class="hljs-attribute">avg_bounce_rate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3nxo"</span></span>,
+    "<span class="hljs-attribute">sum_focus</span>": <span class="hljs-value"><span class="hljs-number">32362</span></span>,
+    "<span class="hljs-attribute">avg_item_acc_time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6tlh"</span></span>,
+    "<span class="hljs-attribute">avg_uv</span>": <span class="hljs-value"><span class="hljs-number">57801</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">38612</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">31256</span></span>,
+    "<span class="hljs-attribute">avg_in_uv</span>": <span class="hljs-value"><span class="hljs-number">23862</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容g64q"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="宝贝被访排行---宝贝被访排行-详细表格">详细表格&nbsp;<a href="#宝贝被访排行---宝贝被访排行-详细表格"><i class="fa fa-link"></i></a></h4><p>同样受radio的影响
+注意！与店铺经返回格式不同，店铺经数据返回格式：
+[{“total<em>num”:500},{“total_time”:157635,”focus”:”1.54%”,”in”:507,”url_index”:”19533917076”,”avg_acc_time”:155,”url”:”<a href="http://item.taobao.com/item.htm?id=19533917076&amp;ali_refid=a3_419435_1007:1102229433:7:%D5%B9%CA%BE%CE%BB%D6%C3">http://item.taobao.com/item.htm?id=19533917076&amp;ali_refid=a3_419435_1007:1102229433:7:%D5%B9%CA%BE%CE%BB%D6%C3</a></em>%CC%D4%B1%A6%CD%F8%2F%CE%D2%B5%C4%CC%D4%B1%A6%2F%CA%D5%B2%D8%C1%D0%B1%ED%D2%B3_1_31:4ea825f941ecfba0ef7ab11afef74dad&amp;ali_trackid=1_4ea825f941ecfba0ef7ab11afef74dad”,”pv”:1137,”cat”:””,”uv”:1017,”avg_pv”:1137,”bounce”:”63%”,”title”:”妖精的口袋拼针织保暖羽绒服~丹麦假期”,”out”:473,”avg_uv”:1017,”sum_focus”:73981,”pics_url”:””}]</p>
+<section id="宝贝被访排行---宝贝被访排行-详细表格-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#宝贝被访排行---宝贝被访排行-详细表格-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/itemflow/type/percent?days=2013-12-08..2013-12-08&amp;offset=0&amp;limit=25&amp;item=&amp;sort=pv&amp;dir=desc</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#eddab73bfe86d3cee13a0b37233535aa" class="pull-right">Toggle</a></li><li id="eddab73bfe86d3cee13a0b37233535aa" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">url_index</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4s8k"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5fpt"</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9t1w"</span></span>,
+    "<span class="hljs-attribute">pics_url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2706"</span></span>,
+    "<span class="hljs-attribute">avg_acc_time</span>": <span class="hljs-value"><span class="hljs-number">61117</span></span>,
+    "<span class="hljs-attribute">in</span>": <span class="hljs-value"><span class="hljs-number">64714</span></span>,
+    "<span class="hljs-attribute">total_time</span>": <span class="hljs-value"><span class="hljs-number">84640</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">68034</span></span>,
+    "<span class="hljs-attribute">bounce</span>": <span class="hljs-value"><span class="hljs-string">"测试内容633b"</span></span>,
+    "<span class="hljs-attribute">avg_uv</span>": <span class="hljs-value"><span class="hljs-number">77038</span></span>,
+    "<span class="hljs-attribute">out</span>": <span class="hljs-value"><span class="hljs-number">80755</span></span>,
+    "<span class="hljs-attribute">avg_pv</span>": <span class="hljs-value"><span class="hljs-number">72178</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">22445</span></span>,
+    "<span class="hljs-attribute">cat</span>": <span class="hljs-value"><span class="hljs-string">"测试内容244m"</span></span>,
+    "<span class="hljs-attribute">sum_focus</span>": <span class="hljs-value"><span class="hljs-number">52404</span></span>,
+    "<span class="hljs-attribute">focus</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9i2c"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">86851</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容717s"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="分类页被访排行---分类页被访排行">分类页被访排行 - 分类页被访排行&nbsp;<a href="#分类页被访排行---分类页被访排行"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="分类页被访排行---分类页被访排行-取宝贝条数">取宝贝条数&nbsp;<a href="#分类页被访排行---分类页被访排行-取宝贝条数"><i class="fa fa-link"></i></a></h4><p>用于计算表格的分页</p>
+<section id="分类页被访排行---分类页被访排行-取宝贝条数-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#分类页被访排行---分类页被访排行-取宝贝条数-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/stats/catflow/type/percent?cat=11&amp;max_of=pv&amp;count=1&amp;days=2013-12-09..2013-12-09</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#0191c8f9e7573ce6ddf131b5a51d773b" class="pull-right">Toggle</a></li><li id="0191c8f9e7573ce6ddf131b5a51d773b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">45705</span></span>,
+"<span class="hljs-attribute">max</span>": <span class="hljs-value"><span class="hljs-number">37808</span>
+</span>}</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容alw5"</span></span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">48604</span>
+</span>}
+</code></pre></li></ul></section><h4 id="分类页被访排行---分类页被访排行-详细表格4">详细表格4&nbsp;<a href="#分类页被访排行---分类页被访排行-详细表格4"><i class="fa fa-link"></i></a></h4><section id="分类页被访排行---分类页被访排行-详细表格4-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#分类页被访排行---分类页被访排行-详细表格4-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/catflow/type/percent?days=2013-12-09..2013-12-09&amp;offset=0&amp;limit=25&amp;cat=11&amp;sort=pv&amp;dir=desc</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#232b4e1433d29872f083a8852dfaf324" class="pull-right">Toggle</a></li><li id="232b4e1433d29872f083a8852dfaf324" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容f8rb"</span></span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">46086</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">url_index</span>": <span class="hljs-value"><span class="hljs-string">"测试内容tsln"</span></span>,
+    "<span class="hljs-attribute">cat</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1851"</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">17043</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容x8vt"</span></span>,
+    "<span class="hljs-attribute">avg_pv</span>": <span class="hljs-value"><span class="hljs-number">62140</span></span>,
+    "<span class="hljs-attribute">avg_uv</span>": <span class="hljs-value"><span class="hljs-number">54320</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">23544</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="店内搜索关键词---趋势页">店内搜索关键词 - 趋势页&nbsp;<a href="#店内搜索关键词---趋势页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="店内搜索关键词---趋势页-趋势接口">趋势接口&nbsp;<a href="#店内搜索关键词---趋势页-趋势接口"><i class="fa fa-link"></i></a></h4><p>趋势图和表格均请求同个接口，部分数据由主页面传入</p>
+<section id="店内搜索关键词---趋势页-趋势接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#店内搜索关键词---趋势页-趋势接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/keyflow/type/trend?days=2013-11-11..2013-12-10&amp;app=3&amp;key=%E6%AF%9B%E9%94%9F%E6%96%A4%E6%8B%B7%7C%7C</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e278992b46cd08de597b375d7eab7772" class="pull-right">Toggle</a></li><li id="e278992b46cd08de597b375d7eab7772" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">84661</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">total_page</span>": <span class="hljs-value"><span class="hljs-number">80636</span></span>,
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容g70u"</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">75054</span></span>,
+    "<span class="hljs-attribute">ss_times</span>": <span class="hljs-value"><span class="hljs-number">53785</span></span>,
+    "<span class="hljs-attribute">ss2_times</span>": <span class="hljs-value"><span class="hljs-number">72728</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3v48"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="店内搜索关键词---主页面">店内搜索关键词 - 主页面&nbsp;<a href="#店内搜索关键词---主页面"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="店内搜索关键词---主页面-店内搜索关键词top10">店内搜索关键词TOP10&nbsp;<a href="#店内搜索关键词---主页面-店内搜索关键词top10"><i class="fa fa-link"></i></a></h4><section id="店内搜索关键词---主页面-店内搜索关键词top10-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#店内搜索关键词---主页面-店内搜索关键词top10-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/keyflow/type/top?days=2013-12-10..2013-12-10&amp;app=3</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#b64a8c7553a79ba479296b64692a4102" class="pull-right">Toggle</a></li><li id="b64a8c7553a79ba479296b64692a4102" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">keyword</span>": <span class="hljs-value"><span class="hljs-string">"测试内容nx22"</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">54521</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">77020</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8y74"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="店内搜索关键词---主页面-店内搜索关键词报表">店内搜索关键词报表&nbsp;<a href="#店内搜索关键词---主页面-店内搜索关键词报表"><i class="fa fa-link"></i></a></h4><p>注意！！和店铺经返回格式不同。
+店铺经返回格式为：[{“total_num”:238},{“ss_times”:38,”total_page”:204,”pv_times”:43,”keyword”:”靴||”,”ss2_times”:27},{“ss_times”:16,”total_page”:126,”pv_times”:32,”keyword”:”袜||”,”ss2_times”:14},{“ss_times”:11,”total_page”:61,”pv_times”:27,”keyword”:”衬衫||”,”ss2_times”:8},{“ss_times”:5,”total_page”:34,”pv_times”:22,”keyword”:”裤||”,”ss2_times”:5}]</p>
+<section id="店内搜索关键词---主页面-店内搜索关键词报表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#店内搜索关键词---主页面-店内搜索关键词报表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/keyflow/type/percent?days=2013-12-10..2013-12-10&amp;app=3&amp;offset=0&amp;limit=25</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c1ffe776542cd4c1120dcd960ec991f0" class="pull-right">Toggle</a></li><li id="c1ffe776542cd4c1120dcd960ec991f0" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">63746</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容bysq"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">ss2_times</span>": <span class="hljs-value"><span class="hljs-number">41586</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">23261</span></span>,
+    "<span class="hljs-attribute">keyword</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8u14"</span></span>,
+    "<span class="hljs-attribute">ss_times</span>": <span class="hljs-value"><span class="hljs-number">50614</span></span>,
+    "<span class="hljs-attribute">total_page</span>": <span class="hljs-value"><span class="hljs-number">33181</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="首页被访数据---首页概况">首页被访数据 - 首页概况&nbsp;<a href="#首页被访数据---首页概况"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="首页被访数据---首页概况-首页数据汇总">首页数据汇总&nbsp;<a href="#首页被访数据---首页概况-首页数据汇总"><i class="fa fa-link"></i></a></h4><p>注意！！！返回格式不同！！
+店铺经返回格式为：
+[{“in_ss”:244887,”out_ss”:51539,”avg_pv”:”15947.7333”,”avg_uv”:”13172.4333”,”boc_ss”:43314,”avg_time”:162.9667,”pv_times”:478432,”click”:742815,”uv_times”:395173},{“in_ss”:781514,”out_ss”:””,”avg_pv”:”92253.0000”,”avg_uv”:”23515.5667”,”boc_ss”:””,”avg_time”:””,”pv_times”:2767590,”click”:””,”uv_times”:705467}]       。 其中：
+res[0]为首页数据相关指标，res[1]为全店相关指标数据，res[0][type] / res[1][type] 为计算比例</p>
+<section id="首页被访数据---首页概况-首页数据汇总-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#首页被访数据---首页概况-首页数据汇总-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/fpageflow/summarydata?days=2013-11-11..2013-12-10</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#6c377464bf75595208e798ab23376929" class="pull-right">Toggle</a></li><li id="6c377464bf75595208e798ab23376929" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">87012</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">avg_uv</span>": <span class="hljs-value"><span class="hljs-string">"测试内容02i1"</span></span>,
+    "<span class="hljs-attribute">avg_pv</span>": <span class="hljs-value"><span class="hljs-string">"测试内容469l"</span></span>,
+    "<span class="hljs-attribute">avg_time</span>": <span class="hljs-value"><span class="hljs-number">31740</span></span>,
+    "<span class="hljs-attribute">boc_ss</span>": <span class="hljs-value"><span class="hljs-number">83811</span></span>,
+    "<span class="hljs-attribute">out_ss</span>": <span class="hljs-value"><span class="hljs-number">64716</span></span>,
+    "<span class="hljs-attribute">click</span>": <span class="hljs-value"><span class="hljs-number">32563</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">12245</span></span>,
+    "<span class="hljs-attribute">in_ss</span>": <span class="hljs-value"><span class="hljs-number">13177</span></span>,
+    "<span class="hljs-attribute">uv_times</span>": <span class="hljs-value"><span class="hljs-number">32481</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6886"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="首页被访数据---首页概况-趋势及详细报表">趋势及详细报表&nbsp;<a href="#首页被访数据---首页概况-趋势及详细报表"><i class="fa fa-link"></i></a></h4><section id="首页被访数据---首页概况-趋势及详细报表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#首页被访数据---首页概况-趋势及详细报表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/fpageflow/daily?days=2013-11-11..2013-12-10</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#428b2559e9d5f9edc4c21dd94178c1e0" class="pull-right">Toggle</a></li><li id="428b2559e9d5f9edc4c21dd94178c1e0" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">24733</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6rk7"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">out_ss</span>": <span class="hljs-value"><span class="hljs-number">42520</span></span>,
+    "<span class="hljs-attribute">click</span>": <span class="hljs-value"><span class="hljs-number">50513</span></span>,
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容du1z"</span></span>,
+    "<span class="hljs-attribute">in_ss</span>": <span class="hljs-value"><span class="hljs-number">20783</span></span>,
+    "<span class="hljs-attribute">pv_times</span>": <span class="hljs-value"><span class="hljs-number">53726</span></span>,
+    "<span class="hljs-attribute">avg_time</span>": <span class="hljs-value"><span class="hljs-number">40743</span></span>,
+    "<span class="hljs-attribute">uv_times</span>": <span class="hljs-value"><span class="hljs-number">81258</span></span>,
+    "<span class="hljs-attribute">boc_ss</span>": <span class="hljs-value"><span class="hljs-number">52764</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="首页被访数据---首页到分类页">首页被访数据 - 首页到分类页&nbsp;<a href="#首页被访数据---首页到分类页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="首页被访数据---首页到分类页-首页到分类页趋势">首页到分类页趋势&nbsp;<a href="#首页被访数据---首页到分类页-首页到分类页趋势"><i class="fa fa-link"></i></a></h4><section id="首页被访数据---首页到分类页-首页到分类页趋势-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#首页被访数据---首页到分类页-首页到分类页趋势-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/fpageflow/cat/daily?days=2013-12-04..2013-12-10</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#1b58d8bf8acc78efe7f3a0c4fc738aaf" class="pull-right">Toggle</a></li><li id="1b58d8bf8acc78efe7f3a0c4fc738aaf" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">click</span>": <span class="hljs-value"><span class="hljs-number">18462</span></span>,
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4luj"</span></span>,
+    "<span class="hljs-attribute">click_rate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容cn7j"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">74777</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1uqs"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="首页被访数据---首页到分类页-首页到分类页点击率报表">首页到分类页点击率报表&nbsp;<a href="#首页被访数据---首页到分类页-首页到分类页点击率报表"><i class="fa fa-link"></i></a></h4><section id="首页被访数据---首页到分类页-首页到分类页点击率报表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#首页被访数据---首页到分类页-首页到分类页点击率报表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/fpageflow/cat/percent?days=2013-12-04..2013-12-10&amp;offset=0&amp;limit=25&amp;dir=desc&amp;keyword=%E4%B8%8B%E8%A3%85</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#62890589b0c3ede368b802232a2e8d1d" class="pull-right">Toggle</a></li><li id="62890589b0c3ede368b802232a2e8d1d" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">64888</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容12wy"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">75046</span></span>,
+"<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">caturl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容r817"</span></span>,
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7l20"</span></span>,
+        "<span class="hljs-attribute">click_rate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容i61x"</span></span>,
+        "<span class="hljs-attribute">click</span>": <span class="hljs-value"><span class="hljs-number">42628</span>
+    </span>}
+]
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="首页被访数据---首页到宝贝页">首页被访数据 - 首页到宝贝页&nbsp;<a href="#首页被访数据---首页到宝贝页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="首页被访数据---首页到宝贝页-首页到宝贝页趋势">首页到宝贝页趋势&nbsp;<a href="#首页被访数据---首页到宝贝页-首页到宝贝页趋势"><i class="fa fa-link"></i></a></h4><section id="首页被访数据---首页到宝贝页-首页到宝贝页趋势-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#首页被访数据---首页到宝贝页-首页到宝贝页趋势-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/fpageflow/item/daily?days=2013-12-04..2013-12-10</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#0f66fbf8d1c2276c4ef2de7b44bdfa0b" class="pull-right">Toggle</a></li><li id="0f66fbf8d1c2276c4ef2de7b44bdfa0b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">32173</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-string">"测试内容35g2"</span></span>,
+    "<span class="hljs-attribute">click_rate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容0n18"</span></span>,
+    "<span class="hljs-attribute">click</span>": <span class="hljs-value"><span class="hljs-number">72017</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容p489"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="首页被访数据---首页到宝贝页-首页到宝贝页点击率报表">首页到宝贝页点击率报表&nbsp;<a href="#首页被访数据---首页到宝贝页-首页到宝贝页点击率报表"><i class="fa fa-link"></i></a></h4><section id="首页被访数据---首页到宝贝页-首页到宝贝页点击率报表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#首页被访数据---首页到宝贝页-首页到宝贝页点击率报表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/fpageflow/item/percent?days=2013-12-04..2013-12-10&amp;offset=0&amp;limit=25&amp;dir=desc&amp;keyword=%E5%A6%96%E7%B2%BE%E7%9A%84%E5%8F%A3%E8%A2%8B</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7b9420993d37aab8b496ae369d81f4db" class="pull-right">Toggle</a></li><li id="7b9420993d37aab8b496ae369d81f4db" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容t22g"</span></span>,
+"<span class="hljs-attribute">res</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">aucid</span>": <span class="hljs-value"><span class="hljs-number">13783</span></span>,
+        "<span class="hljs-attribute">aucname</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6f66"</span></span>,
+        "<span class="hljs-attribute">click_rate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容dzh8"</span></span>,
+        "<span class="hljs-attribute">click</span>": <span class="hljs-value"><span class="hljs-number">38418</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">15660</span>
+</span>}</span>,
+"<span class="hljs-attribute">rCode</span>": <span class="hljs-value"><span class="hljs-number">67717</span>
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

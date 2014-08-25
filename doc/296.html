@@ -1,0 +1,791 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>广告主魔盒接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#妈妈魔盒---manage" class="list-group-item heading">妈妈魔盒 - manage</a><a href="#妈妈魔盒---manage-cpa_manage" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;cpa_manage</a><a href="#妈妈魔盒---manage-获取计划列表" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;获取计划列表</a><a href="#妈妈魔盒---manage-获取cpa图表数据" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;获取CPA图表数据</a><a href="#妈妈魔盒---manage-投放计划" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;投放计划</a><a href="#妈妈魔盒---manage-投放暂停" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;投放暂停</a><a href="#妈妈魔盒---manage-删除计划" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;删除计划</a><a href="#妈妈魔盒---manage-修改出价策略" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;修改出价策略</a><a href="#妈妈魔盒---manage-充值" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;充值</a><a href="#妈妈魔盒---manage-获取计划下面的创意列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取计划下面的创意列表</a></div><div class="list-group"><a href="#妈妈魔盒---desc" class="list-group-item heading">妈妈魔盒 - desc</a><a href="#妈妈魔盒---desc-joincpa" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;joincpa</a></div><div class="list-group"><a href="#妈妈魔盒---new" class="list-group-item heading">妈妈魔盒 - new</a><a href="#妈妈魔盒---new-获取计划详情接口" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;获取计划详情接口</a><a href="#妈妈魔盒---new-提交基本出价信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;提交基本出价信息</a><a href="#妈妈魔盒---new-提交设置的问题" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;提交设置的问题</a><a href="#妈妈魔盒---new-提交创意" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;提交创意</a><a href="#妈妈魔盒---new-获取主推宝贝的接口" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;获取主推宝贝的接口</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">广告主魔盒接口文档</h1></div></header><div class="description"><p>阿里妈妈魔盒</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="妈妈魔盒---manage">妈妈魔盒 - manage&nbsp;<a href="#妈妈魔盒---manage"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="妈妈魔盒---manage-cpa_manage">cpa_manage&nbsp;<a href="#妈妈魔盒---manage-cpa_manage"><i class="fa fa-link"></i></a></h4><p>点击cpa管理时调用的接口，来确定是展示哪个页面</p>
+<p>如果isJoinedcpa为false,则展示加入cpa签署协议页面
+      如果isJoinedcpa为true,hasTasks为true，则进入cpa计划展示页面
+      否则如果account为0，则到提示余额不足页面，
+      如果余额不为0，则进入创建cpa的提示页面</p>
+<section id="妈妈魔盒---manage-cpa_manage-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---manage-cpa_manage-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/cpa/cpaManage.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#11a56a2479859e393d8c60f2c23eacb3" class="pull-right">Toggle</a></li><li id="11a56a2479859e393d8c60f2c23eacb3" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容54u6"</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">account</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+"<span class="hljs-attribute">hasTasks</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">isJoinedcpa</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---manage-获取计划列表">获取计划列表&nbsp;<a href="#妈妈魔盒---manage-获取计划列表"><i class="fa fa-link"></i></a></h4><p>获取计划列表</p>
+<section id="妈妈魔盒---manage-获取计划列表-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---manage-获取计划列表-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/cpa/cpaList.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#2e20dd543ebfd97387e702201d3e14fc" class="pull-right">Toggle</a></li><li id="2e20dd543ebfd97387e702201d3e14fc" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">cpaTasks</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-26"</span></span>,
+        "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-23"</span></span>,
+        "<span class="hljs-attribute">rules</span>": <span class="hljs-value"><span class="hljs-string">"{\"consumptionFrequency\":1,\"consumptionLimit\":1}"</span></span>,
+        "<span class="hljs-attribute">creative</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-24"</span></span>,
+        "<span class="hljs-attribute">action</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-10"</span></span>,
+        "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsfd"</span></span>,
+        "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">actionNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>}
+]
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---manage-获取cpa图表数据">获取CPA图表数据&nbsp;<a href="#妈妈魔盒---manage-获取cpa图表数据"><i class="fa fa-link"></i></a></h4><p>@type=array_map;获取CPA图表数据</p>
+<section id="妈妈魔盒---manage-获取cpa图表数据-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---manage-获取cpa图表数据-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/magicbox/manage_chart_data.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7f327f7c5d197f06021651160c262337" class="pull-right">Toggle</a></li><li id="7f327f7c5d197f06021651160c262337" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>[
+{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">totalData</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">identified</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+        "<span class="hljs-attribute">consume</span>": <span class="hljs-value"><span class="hljs-number">100</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">listData</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">identified</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+            "<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-01"</span></span>,
+            "<span class="hljs-attribute">consume</span>": <span class="hljs-value"><span class="hljs-number">15</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">identified</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+            "<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-01"</span></span>,
+            "<span class="hljs-attribute">consume</span>": <span class="hljs-value"><span class="hljs-number">15</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">identified</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+            "<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-01"</span></span>,
+            "<span class="hljs-attribute">consume</span>": <span class="hljs-value"><span class="hljs-number">15</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">identified</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+            "<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-01"</span></span>,
+            "<span class="hljs-attribute">consume</span>": <span class="hljs-value"><span class="hljs-number">15</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">identified</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+            "<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-01"</span></span>,
+            "<span class="hljs-attribute">consume</span>": <span class="hljs-value"><span class="hljs-number">15</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">identified</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+            "<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-01"</span></span>,
+            "<span class="hljs-attribute">consume</span>": <span class="hljs-value"><span class="hljs-number">15</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">identified</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+            "<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"2014-06-01"</span></span>,
+            "<span class="hljs-attribute">consume</span>": <span class="hljs-value"><span class="hljs-number">15</span>
+        </span>}
+    ]
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">errorCode</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</span>}
+]
+</code></pre></li></ul></section><h4 id="妈妈魔盒---manage-投放计划">投放计划&nbsp;<a href="#妈妈魔盒---manage-投放计划"><i class="fa fa-link"></i></a></h4><p>投放计划</p>
+<section id="妈妈魔盒---manage-投放计划-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---manage-投放计划-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/cpa/onlineCpa.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#da8ecaea9b468b6f61d851eba72376a9" class="pull-right">Toggle</a></li><li id="da8ecaea9b468b6f61d851eba72376a9" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---manage-投放暂停">投放暂停&nbsp;<a href="#妈妈魔盒---manage-投放暂停"><i class="fa fa-link"></i></a></h4><p>投放暂停</p>
+<section id="妈妈魔盒---manage-投放暂停-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---manage-投放暂停-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/cpa/offlineCpa.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#0e08eedbf65bf91664054ecf7a60faaa" class="pull-right">Toggle</a></li><li id="0e08eedbf65bf91664054ecf7a60faaa" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---manage-删除计划">删除计划&nbsp;<a href="#妈妈魔盒---manage-删除计划"><i class="fa fa-link"></i></a></h4><p>删除计划</p>
+<section id="妈妈魔盒---manage-删除计划-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---manage-删除计划-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/cpa/deleteCpa.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#32d9e99e35a37e8daf0b5979e740677a" class="pull-right">Toggle</a></li><li id="32d9e99e35a37e8daf0b5979e740677a" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---manage-修改出价策略">修改出价策略&nbsp;<a href="#妈妈魔盒---manage-修改出价策略"><i class="fa fa-link"></i></a></h4><p>修改出价策略</p>
+<section id="妈妈魔盒---manage-修改出价策略-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---manage-修改出价策略-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/cpa/saveCpaGeneralIno.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#aec5fd9469d22f36603a76f290a6a550" class="pull-right">Toggle</a></li><li id="aec5fd9469d22f36603a76f290a6a550" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---manage-充值">充值&nbsp;<a href="#妈妈魔盒---manage-充值"><i class="fa fa-link"></i></a></h4><p>{“data”: {
+ “chargeUrl”:
+}, “info”: {
+ “message”: null,
+ “ok”: true
+}}</p>
+<section id="妈妈魔盒---manage-充值-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---manage-充值-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/cpa/chargeUrl.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#06e50e13f4671c2f26ad3df209a71387" class="pull-right">Toggle</a></li><li id="06e50e13f4671c2f26ad3df209a71387" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">chargeUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://www.baidu.com"</span>
+</span>}</span>,
+"<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---manage-获取计划下面的创意列表">获取计划下面的创意列表&nbsp;<a href="#妈妈魔盒---manage-获取计划下面的创意列表"><i class="fa fa-link"></i></a></h4><p>获取计划下面的创意列表</p>
+<section id="妈妈魔盒---manage-获取计划下面的创意列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#妈妈魔盒---manage-获取计划下面的创意列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/cpa/creativeList.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#64aa71312663917cb4eacc3f8ced65ac" class="pull-right">Toggle</a></li><li id="64aa71312663917cb4eacc3f8ced65ac" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">creatives</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">categoryName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容xk98"</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">11854</span></span>,
+        "<span class="hljs-attribute">landingPageUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容78c7"</span></span>,
+        "<span class="hljs-attribute">refuseReason</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7l27"</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">41378</span></span>,
+        "<span class="hljs-attribute">creativeName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容qw9b"</span></span>,
+        "<span class="hljs-attribute">qrCode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容32d4"</span>
+    </span>}
+]
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容305s"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="妈妈魔盒---desc">妈妈魔盒 - desc&nbsp;<a href="#妈妈魔盒---desc"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="妈妈魔盒---desc-joincpa">joincpa&nbsp;<a href="#妈妈魔盒---desc-joincpa"><i class="fa fa-link"></i></a></h4><p>需要一个接口用来签协议就是加入cpa</p>
+<section id="妈妈魔盒---desc-joincpa-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---desc-joincpa-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/cpa/joincpa.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#193049335946efb134ec4bf03e2d276c" class="pull-right">Toggle</a></li><li id="193049335946efb134ec4bf03e2d276c" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="妈妈魔盒---new">妈妈魔盒 - new&nbsp;<a href="#妈妈魔盒---new"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="妈妈魔盒---new-获取计划详情接口">获取计划详情接口&nbsp;<a href="#妈妈魔盒---new-获取计划详情接口"><i class="fa fa-link"></i></a></h4><p>获取当前计划的详情信息的接口</p>
+<section id="妈妈魔盒---new-获取计划详情接口-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---new-获取计划详情接口-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/http://adv.alimama.net/cpa/queryCpaTask.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#d35449fee183636f52a479654995efed" class="pull-right">Toggle</a></li><li id="d35449fee183636f52a479654995efed" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">cpaTask</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">1234566</span></span>,
+    "<span class="hljs-attribute">consumptionFrequency</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+    "<span class="hljs-attribute">action</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">question</span>": <span class="hljs-value"><span class="hljs-string">"dfgdfgdf"</span></span>,
+        "<span class="hljs-attribute">rightAnswer</span>": <span class="hljs-value"><span class="hljs-string">"dfgdfgdf"</span></span>,
+        "<span class="hljs-attribute">wrongAnswer</span>": <span class="hljs-value"><span class="hljs-string">"sds|fef|sfsdfsdfsdf"</span></span>,
+        "<span class="hljs-attribute">actionId</span>": <span class="hljs-value"><span class="hljs-number">123</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试app"</span></span>,
+    "<span class="hljs-attribute">advertisementPrice</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
+    "<span class="hljs-attribute">consumptionLimit</span>": <span class="hljs-value"><span class="hljs-number">30</span></span>,
+    "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-string">"2013-07-22"</span></span>,
+    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-number">12345</span></span>,
+    "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">456</span></span>,
+    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">creative</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">creativepicUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">actionUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">creativeName</span>": <span class="hljs-value"><span class="hljs-string">"testss"</span></span>,
+        "<span class="hljs-attribute">actionDisplayUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">creativeId</span>": <span class="hljs-value"><span class="hljs-number">1234</span></span>,
+        "<span class="hljs-attribute">auctions</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">auctionId</span>": <span class="hljs-value"><span class="hljs-number">2100509452371</span></span>,
+                "<span class="hljs-attribute">pictUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://daily02.img.taobaocdn.net/bao/uploaded/i2/T19cBcXjRfXXbRLrc3_045850.jpg"</span></span>,
+                "<span class="hljs-attribute">reservePrice</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+                "<span class="hljs-attribute">objectName</span>": <span class="hljs-value"><span class="hljs-string">"淘客群折扣宝贝3"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">promoteContext</span>": <span class="hljs-value"><span class="hljs-string">"sdfsdfsdfsdfsfdsdf"</span></span>,
+        "<span class="hljs-attribute">creativeDisplaypicUrl</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">createTime</span>": <span class="hljs-value"><span class="hljs-string">"2013-07-22"</span></span>,
+    "<span class="hljs-attribute">endTime</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">startTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-07-01"</span>
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---new-提交基本出价信息">提交基本出价信息&nbsp;<a href="#妈妈魔盒---new-提交基本出价信息"><i class="fa fa-link"></i></a></h4><p>提交基本信息</p>
+<section id="妈妈魔盒---new-提交基本出价信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#妈妈魔盒---new-提交基本出价信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/cpa/saveDraftCpaGeneralIno.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#5c8a0ecc97b99a3774cf6cd7d990f843" class="pull-right">Toggle</a></li><li id="5c8a0ecc97b99a3774cf6cd7d990f843" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">taskId</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---new-提交设置的问题">提交设置的问题&nbsp;<a href="#妈妈魔盒---new-提交设置的问题"><i class="fa fa-link"></i></a></h4><p>{“data”: {
+ “success”:true
+}, “info”: {
+ “message”: null,
+ “ok”: true
+}}</p>
+<section id="妈妈魔盒---new-提交设置的问题-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#妈妈魔盒---new-提交设置的问题-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/cpa/saveCpaQuestion.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#bcef5796a2a2b139d9d3d9102962e2a3" class="pull-right">Toggle</a></li><li id="bcef5796a2a2b139d9d3d9102962e2a3" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">isMoneyEnough</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---new-提交创意">提交创意&nbsp;<a href="#妈妈魔盒---new-提交创意"><i class="fa fa-link"></i></a></h4><section id="妈妈魔盒---new-提交创意-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#妈妈魔盒---new-提交创意-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/cpa/saveCpaCreative.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#d177140a8123e35381bec0612219d70b" class="pull-right">Toggle</a></li><li id="d177140a8123e35381bec0612219d70b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="妈妈魔盒---new-获取主推宝贝的接口">获取主推宝贝的接口&nbsp;<a href="#妈妈魔盒---new-获取主推宝贝的接口"><i class="fa fa-link"></i></a></h4><p>获取主推宝贝的接口</p>
+<section id="妈妈魔盒---new-获取主推宝贝的接口-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#妈妈魔盒---new-获取主推宝贝的接口-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/cpa/queryAuctions</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#cd07fdb1b7cdb08c89de52ead6959c68" class="pull-right">Toggle</a></li><li id="cd07fdb1b7cdb08c89de52ead6959c68" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">objectName</span>": <span class="hljs-value"><span class="hljs-string">"淘客群折扣宝贝3"</span></span>,
+        "<span class="hljs-attribute">cmAlipayCommissionAmt</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">testMember</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">objectStatus</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">bidCount</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+        "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">commissionRate</span>": <span class="hljs-value"><span class="hljs-number">800</span></span>,
+        "<span class="hljs-attribute">decimalCommissionRate</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+        "<span class="hljs-attribute">creativeCnt</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">mock</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">pictUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://daily04.img.taobaocdn.net/bao/uploaded/i4/10348033948469/T1OTmzXk0bXXXXXXXX_!!0-item_pic.jpg"</span></span>,
+        "<span class="hljs-attribute">isTestMember</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">tempRate</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">cmAlipayNum</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">itemIDs</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">reservePrice</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+        "<span class="hljs-attribute">decimalTempRate</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">cmAlipayAmt</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">shopKeeperId</span>": <span class="hljs-value"><span class="hljs-number">182929573</span></span>,
+        "<span class="hljs-attribute">commissionType</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">click</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">commissionStyle</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">itemIndex</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">objectId</span>": <span class="hljs-value"><span class="hljs-number">1500010716897</span></span>,
+        "<span class="hljs-attribute">mergescoreGrade</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">categoryCommRate</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creativeSendCnt</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">campaignId</span>": <span class="hljs-value"><span class="hljs-number">1234608777</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">auctionUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://item.daily.taobao.net/item.htm?id=1500010716897"</span></span>,
+        "<span class="hljs-attribute">quantity</span>": <span class="hljs-value"><span class="hljs-number">990</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">prePage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">pageNo</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">pageSize</span>": <span class="hljs-value"><span class="hljs-number">50</span></span>,
+"<span class="hljs-attribute">totalCount</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+"<span class="hljs-attribute">totalPages</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">hasNext</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">nextPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">hasPre</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

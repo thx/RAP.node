@@ -1,0 +1,403 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>无线升级接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#无线升级---无线升级" class="list-group-item heading">无线升级 - 无线升级</a><a href="#无线升级---无线升级-无线经营明细" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;无线经营明细</a><a href="#无线升级---无线升级-周环比" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;周环比</a><a href="#无线升级---无线升级-无线应用趋势图" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;无线应用趋势图</a><a href="#无线升级---无线升级-无线应用明细" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;无线应用明细</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">无线升级接口文档</h1></div></header><div class="description"><p>ALL IN</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="无线升级---无线升级">无线升级 - 无线升级&nbsp;<a href="#无线升级---无线升级"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="无线升级---无线升级-无线经营明细">无线经营明细&nbsp;<a href="#无线升级---无线升级-无线经营明细"><i class="fa fa-link"></i></a></h4><p>边界情况：{“all”:[],”other”:[]}</p>
+<section id="无线升级---无线升级-无线经营明细-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#无线升级---无线升级-无线经营明细-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/wireless/update_management?days=2013-01-01..2013-12-11</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#6d49916a8bcacae89f699b5d67135c64" class="pull-right">Toggle</a></li><li id="6d49916a8bcacae89f699b5d67135c64" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">other</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">2014-01-05</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">per_visit_depth</span>": <span class="hljs-value"><span class="hljs-number">80110</span></span>,
+    "<span class="hljs-attribute">gmv_auction_num</span>": <span class="hljs-value"><span class="hljs-number">88254</span></span>,
+    "<span class="hljs-attribute">alipay_winner_num</span>": <span class="hljs-value"><span class="hljs-number">27604</span></span>,
+    "<span class="hljs-attribute">ipv</span>": <span class="hljs-value"><span class="hljs-number">30036</span></span>,
+    "<span class="hljs-attribute">alipay_auction_num</span>": <span class="hljs-value"><span class="hljs-number">15150</span></span>,
+    "<span class="hljs-attribute">trade_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">57733</span></span>,
+    "<span class="hljs-attribute">seller_id</span>": <span class="hljs-value"><span class="hljs-number">73310</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">22370</span></span>,
+    "<span class="hljs-attribute">same_day_auction_num</span>": <span class="hljs-value"><span class="hljs-number">48136</span></span>,
+    "<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2m3s"</span></span>,
+    "<span class="hljs-attribute">gmv_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">57182</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">60607</span></span>,
+    "<span class="hljs-attribute">gmv_trade_num</span>": <span class="hljs-value"><span class="hljs-number">86624</span></span>,
+    "<span class="hljs-attribute">same_day_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">17427</span></span>,
+    "<span class="hljs-attribute">shop_id</span>": <span class="hljs-value"><span class="hljs-number">76161</span></span>,
+    "<span class="hljs-attribute">trade_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">71345</span></span>,
+    "<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">40522</span></span>,
+    "<span class="hljs-attribute">same_day_trade_rate</span>": <span class="hljs-value"><span class="hljs-number">44363</span></span>,
+    "<span class="hljs-attribute">view_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">73412</span></span>,
+    "<span class="hljs-attribute">per_user_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">83588</span></span>,
+    "<span class="hljs-attribute">same_day_trade_num</span>": <span class="hljs-value"><span class="hljs-number">72085</span></span>,
+    "<span class="hljs-attribute">alipay_trade_num</span>": <span class="hljs-value"><span class="hljs-number">85176</span></span>,
+    "<span class="hljs-attribute">unit_id</span>": <span class="hljs-value"><span class="hljs-number">87523</span></span>,
+    "<span class="hljs-attribute">iuv</span>": <span class="hljs-value"><span class="hljs-number">25112</span></span>,
+    "<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">87287</span></span>,
+    "<span class="hljs-attribute">view_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">47874</span>
+</span>}</span>,
+"<span class="hljs-attribute">2014-01-06</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">same_day_auction_num</span>": <span class="hljs-value"><span class="hljs-number">31788</span></span>,
+    "<span class="hljs-attribute">trade_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">24852</span></span>,
+    "<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">17478</span></span>,
+    "<span class="hljs-attribute">unit_id</span>": <span class="hljs-value"><span class="hljs-number">74551</span></span>,
+    "<span class="hljs-attribute">per_visit_depth</span>": <span class="hljs-value"><span class="hljs-number">27812</span></span>,
+    "<span class="hljs-attribute">same_day_trade_num</span>": <span class="hljs-value"><span class="hljs-number">74665</span></span>,
+    "<span class="hljs-attribute">per_user_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">20018</span></span>,
+    "<span class="hljs-attribute">view_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">78521</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">42446</span></span>,
+    "<span class="hljs-attribute">gmv_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">57677</span></span>,
+    "<span class="hljs-attribute">iuv</span>": <span class="hljs-value"><span class="hljs-number">38726</span></span>,
+    "<span class="hljs-attribute">gmv_auction_num</span>": <span class="hljs-value"><span class="hljs-number">58648</span></span>,
+    "<span class="hljs-attribute">gmv_trade_num</span>": <span class="hljs-value"><span class="hljs-number">54522</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">50177</span></span>,
+    "<span class="hljs-attribute">same_day_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">70507</span></span>,
+    "<span class="hljs-attribute">view_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">36800</span></span>,
+    "<span class="hljs-attribute">alipay_trade_num</span>": <span class="hljs-value"><span class="hljs-number">86046</span></span>,
+    "<span class="hljs-attribute">trade_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">45360</span></span>,
+    "<span class="hljs-attribute">seller_id</span>": <span class="hljs-value"><span class="hljs-number">66542</span></span>,
+    "<span class="hljs-attribute">alipay_auction_num</span>": <span class="hljs-value"><span class="hljs-number">13484</span></span>,
+    "<span class="hljs-attribute">alipay_winner_num</span>": <span class="hljs-value"><span class="hljs-number">57653</span></span>,
+    "<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容rmu0"</span></span>,
+    "<span class="hljs-attribute">ipv</span>": <span class="hljs-value"><span class="hljs-number">43224</span></span>,
+    "<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">68125</span></span>,
+    "<span class="hljs-attribute">shop_id</span>": <span class="hljs-value"><span class="hljs-number">11372</span></span>,
+    "<span class="hljs-attribute">same_day_trade_rate</span>": <span class="hljs-value"><span class="hljs-number">34158</span>
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">all</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">per_user_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">26005</span></span>,
+    "<span class="hljs-attribute">gmv_trade_num</span>": <span class="hljs-value"><span class="hljs-number">35660</span></span>,
+    "<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">18127</span></span>,
+    "<span class="hljs-attribute">alipay_winner_num</span>": <span class="hljs-value"><span class="hljs-number">44036</span></span>,
+    "<span class="hljs-attribute">view_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">58811</span></span>,
+    "<span class="hljs-attribute">gmv_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">25563</span></span>,
+    "<span class="hljs-attribute">trade_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">74040</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">88212</span></span>,
+    "<span class="hljs-attribute">trade_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">22207</span></span>,
+    "<span class="hljs-attribute">alipay_auction_num</span>": <span class="hljs-value"><span class="hljs-number">38742</span></span>,
+    "<span class="hljs-attribute">alipay_trade_num</span>": <span class="hljs-value"><span class="hljs-number">78506</span></span>,
+    "<span class="hljs-attribute">ipv</span>": <span class="hljs-value"><span class="hljs-number">88523</span></span>,
+    "<span class="hljs-attribute">gmv_auction_num</span>": <span class="hljs-value"><span class="hljs-number">56557</span></span>,
+    "<span class="hljs-attribute">same_day_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">13065</span></span>,
+    "<span class="hljs-attribute">same_day_trade_rate</span>": <span class="hljs-value"><span class="hljs-number">76212</span></span>,
+    "<span class="hljs-attribute">view_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">66543</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">44374</span></span>,
+    "<span class="hljs-attribute">same_day_auction_num</span>": <span class="hljs-value"><span class="hljs-number">30513</span></span>,
+    "<span class="hljs-attribute">per_visit_depth</span>": <span class="hljs-value"><span class="hljs-number">86241</span></span>,
+    "<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">28245</span></span>,
+    "<span class="hljs-attribute">iuv</span>": <span class="hljs-value"><span class="hljs-number">53802</span></span>,
+    "<span class="hljs-attribute">same_day_trade_num</span>": <span class="hljs-value"><span class="hljs-number">70418</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="无线升级---无线升级-周环比">周环比&nbsp;<a href="#无线升级---无线升级-周环比"><i class="fa fa-link"></i></a></h4><p>边界情况：{“convert”:{“iuv”:”-“,”trade_repeat_rate”:”-“,”trade_repeat_num”:”-“,”gmv_auction_num”:”-“,”gmv_trade_num”:”-“,”alipay_trade_amt”:”-“,”alipay_winner_num”:”-“,”same_day_auction_num”:”-“,”uv”:”-“,”same_day_trade_num”:”-“,”ipv”:”-“,”same_day_trade_rate”:”-“,”same_day_trade_amt”:”-“,”per_user_alipay_amt”:”-“,”alipay_convert”:”-“,”view_repeat_rate”:”-“,”gmv_trade_amt”:”-“,”pv”:”-“,”per_visit_depth”:”-“,”view_repeat_num”:”-“,”alipay_auction_num”:”-“,”alipay_trade_num”:”-“},”date”:[]}</p>
+<section id="无线升级---无线升级-周环比-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#无线升级---无线升级-周环比-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/wireless/update_compare?days=2013-09-04..2013-09-05</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#0a125c60fe7b688f518c41317a69e591" class="pull-right">Toggle</a></li><li id="0a125c60fe7b688f518c41317a69e591" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">convert</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ipv</span>": <span class="hljs-value"><span class="hljs-number">46042</span></span>,
+"<span class="hljs-attribute">alipay_winner_num</span>": <span class="hljs-value"><span class="hljs-number">41172</span></span>,
+"<span class="hljs-attribute">per_user_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">43086</span></span>,
+"<span class="hljs-attribute">gmv_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">60620</span></span>,
+"<span class="hljs-attribute">iuv</span>": <span class="hljs-value"><span class="hljs-number">13836</span></span>,
+"<span class="hljs-attribute">gmv_trade_num</span>": <span class="hljs-value"><span class="hljs-number">71740</span></span>,
+"<span class="hljs-attribute">view_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">37152</span></span>,
+"<span class="hljs-attribute">alipay_auction_num</span>": <span class="hljs-value"><span class="hljs-number">44882</span></span>,
+"<span class="hljs-attribute">same_day_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">38710</span></span>,
+"<span class="hljs-attribute">same_day_auction_num</span>": <span class="hljs-value"><span class="hljs-number">16511</span></span>,
+"<span class="hljs-attribute">same_day_trade_rate</span>": <span class="hljs-value"><span class="hljs-number">74678</span></span>,
+"<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">87420</span></span>,
+"<span class="hljs-attribute">gmv_auction_num</span>": <span class="hljs-value"><span class="hljs-number">44457</span></span>,
+"<span class="hljs-attribute">alipay_trade_num</span>": <span class="hljs-value"><span class="hljs-number">23374</span></span>,
+"<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">51644</span></span>,
+"<span class="hljs-attribute">per_visit_depth</span>": <span class="hljs-value"><span class="hljs-number">84667</span></span>,
+"<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">84251</span></span>,
+"<span class="hljs-attribute">trade_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">47172</span></span>,
+"<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">78113</span></span>,
+"<span class="hljs-attribute">trade_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">86287</span></span>,
+"<span class="hljs-attribute">same_day_trade_num</span>": <span class="hljs-value"><span class="hljs-number">41227</span></span>,
+"<span class="hljs-attribute">view_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">25527</span>
+</span>}</span>,
+"<span class="hljs-attribute">date</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">16081</span></span>,
+    "<span class="hljs-attribute">view_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">21170</span></span>,
+    "<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">32041</span></span>,
+    "<span class="hljs-attribute">gmv_trade_num</span>": <span class="hljs-value"><span class="hljs-number">41262</span></span>,
+    "<span class="hljs-attribute">per_visit_depth</span>": <span class="hljs-value"><span class="hljs-number">14787</span></span>,
+    "<span class="hljs-attribute">iuv</span>": <span class="hljs-value"><span class="hljs-number">80082</span></span>,
+    "<span class="hljs-attribute">same_day_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">74818</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">61718</span></span>,
+    "<span class="hljs-attribute">same_day_auction_num</span>": <span class="hljs-value"><span class="hljs-number">70768</span></span>,
+    "<span class="hljs-attribute">gmv_auction_num</span>": <span class="hljs-value"><span class="hljs-number">64777</span></span>,
+    "<span class="hljs-attribute">view_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">23431</span></span>,
+    "<span class="hljs-attribute">alipay_trade_num</span>": <span class="hljs-value"><span class="hljs-number">76426</span></span>,
+    "<span class="hljs-attribute">same_day_trade_rate</span>": <span class="hljs-value"><span class="hljs-number">48022</span></span>,
+    "<span class="hljs-attribute">per_user_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">73762</span></span>,
+    "<span class="hljs-attribute">same_day_trade_num</span>": <span class="hljs-value"><span class="hljs-number">86467</span></span>,
+    "<span class="hljs-attribute">gmv_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">73122</span></span>,
+    "<span class="hljs-attribute">trade_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">18614</span></span>,
+    "<span class="hljs-attribute">trade_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">35517</span></span>,
+    "<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">54104</span></span>,
+    "<span class="hljs-attribute">alipay_winner_num</span>": <span class="hljs-value"><span class="hljs-number">72860</span></span>,
+    "<span class="hljs-attribute">alipay_auction_num</span>": <span class="hljs-value"><span class="hljs-number">38341</span></span>,
+    "<span class="hljs-attribute">ipv</span>": <span class="hljs-value"><span class="hljs-number">23071</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="无线升级---无线升级-无线应用趋势图">无线应用趋势图&nbsp;<a href="#无线升级---无线升级-无线应用趋势图"><i class="fa fa-link"></i></a></h4><p>边界情况：[]</p>
+<section id="无线升级---无线升级-无线应用趋势图-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#无线升级---无线升级-无线应用趋势图-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/wireless/update_application_trend?days=2014-01-01..2014-01-06&amp;id=1</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7732dba510d96f62883d4da18d124ca1" class="pull-right">Toggle</a></li><li id="7732dba510d96f62883d4da18d124ca1" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">2014-01-05</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">view_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">60064</span></span>,
+"<span class="hljs-attribute">trade_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">68260</span></span>,
+"<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容m7yp"</span></span>,
+"<span class="hljs-attribute">per_visit_depth</span>": <span class="hljs-value"><span class="hljs-number">30188</span></span>,
+"<span class="hljs-attribute">gmv_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">46545</span></span>,
+"<span class="hljs-attribute">gmv_trade_num</span>": <span class="hljs-value"><span class="hljs-number">48581</span></span>,
+"<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">83604</span></span>,
+"<span class="hljs-attribute">alipay_auction_num</span>": <span class="hljs-value"><span class="hljs-number">74767</span></span>,
+"<span class="hljs-attribute">shop_id</span>": <span class="hljs-value"><span class="hljs-number">20724</span></span>,
+"<span class="hljs-attribute">alipay_winner_num</span>": <span class="hljs-value"><span class="hljs-number">36854</span></span>,
+"<span class="hljs-attribute">same_day_trade_num</span>": <span class="hljs-value"><span class="hljs-number">75654</span></span>,
+"<span class="hljs-attribute">unit_id</span>": <span class="hljs-value"><span class="hljs-number">34815</span></span>,
+"<span class="hljs-attribute">view_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">26814</span></span>,
+"<span class="hljs-attribute">gmv_auction_num</span>": <span class="hljs-value"><span class="hljs-number">85883</span></span>,
+"<span class="hljs-attribute">same_day_auction_num</span>": <span class="hljs-value"><span class="hljs-number">66044</span></span>,
+"<span class="hljs-attribute">trade_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">32325</span></span>,
+"<span class="hljs-attribute">ipv</span>": <span class="hljs-value"><span class="hljs-number">30174</span></span>,
+"<span class="hljs-attribute">iuv</span>": <span class="hljs-value"><span class="hljs-number">75224</span></span>,
+"<span class="hljs-attribute">same_day_trade_rate</span>": <span class="hljs-value"><span class="hljs-number">58587</span></span>,
+"<span class="hljs-attribute">alipay_trade_num</span>": <span class="hljs-value"><span class="hljs-number">40058</span></span>,
+"<span class="hljs-attribute">same_day_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">10400</span></span>,
+"<span class="hljs-attribute">seller_id</span>": <span class="hljs-value"><span class="hljs-number">11821</span></span>,
+"<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">43471</span></span>,
+"<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">22534</span></span>,
+"<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">67681</span></span>,
+"<span class="hljs-attribute">per_user_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">37517</span>
+</span>}</span>,
+"<span class="hljs-attribute">2014-01-06</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">same_day_auction_num</span>": <span class="hljs-value"><span class="hljs-number">81453</span></span>,
+"<span class="hljs-attribute">ipv</span>": <span class="hljs-value"><span class="hljs-number">25063</span></span>,
+"<span class="hljs-attribute">gmv_trade_num</span>": <span class="hljs-value"><span class="hljs-number">56432</span></span>,
+"<span class="hljs-attribute">unit_id</span>": <span class="hljs-value"><span class="hljs-number">76535</span></span>,
+"<span class="hljs-attribute">alipay_auction_num</span>": <span class="hljs-value"><span class="hljs-number">28531</span></span>,
+"<span class="hljs-attribute">per_user_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">21187</span></span>,
+"<span class="hljs-attribute">seller_id</span>": <span class="hljs-value"><span class="hljs-number">82620</span></span>,
+"<span class="hljs-attribute">per_visit_depth</span>": <span class="hljs-value"><span class="hljs-number">71856</span></span>,
+"<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1j9d"</span></span>,
+"<span class="hljs-attribute">trade_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">56676</span></span>,
+"<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">47072</span></span>,
+"<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">88524</span></span>,
+"<span class="hljs-attribute">trade_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">68753</span></span>,
+"<span class="hljs-attribute">shop_id</span>": <span class="hljs-value"><span class="hljs-number">44701</span></span>,
+"<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">61164</span></span>,
+"<span class="hljs-attribute">alipay_winner_num</span>": <span class="hljs-value"><span class="hljs-number">75326</span></span>,
+"<span class="hljs-attribute">alipay_trade_num</span>": <span class="hljs-value"><span class="hljs-number">50522</span></span>,
+"<span class="hljs-attribute">view_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">38105</span></span>,
+"<span class="hljs-attribute">iuv</span>": <span class="hljs-value"><span class="hljs-number">18137</span></span>,
+"<span class="hljs-attribute">same_day_trade_rate</span>": <span class="hljs-value"><span class="hljs-number">75636</span></span>,
+"<span class="hljs-attribute">same_day_trade_num</span>": <span class="hljs-value"><span class="hljs-number">20753</span></span>,
+"<span class="hljs-attribute">gmv_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">73124</span></span>,
+"<span class="hljs-attribute">gmv_auction_num</span>": <span class="hljs-value"><span class="hljs-number">25676</span></span>,
+"<span class="hljs-attribute">same_day_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">74346</span></span>,
+"<span class="hljs-attribute">view_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">21332</span></span>,
+"<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">60752</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="无线升级---无线升级-无线应用明细">无线应用明细&nbsp;<a href="#无线升级---无线升级-无线应用明细"><i class="fa fa-link"></i></a></h4><p>边界返回内容：[]</p>
+<section id="无线升级---无线升级-无线应用明细-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#无线升级---无线升级-无线应用明细-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/=/view/wireless/update_application?days=2014-01-06..2014-01-06</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#ce5f2f445a052de53870fb6120430120" class="pull-right">Toggle</a></li><li id="ce5f2f445a052de53870fb6120430120" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">1</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">alipay_trade_num</span>": <span class="hljs-value"><span class="hljs-number">17133</span></span>,
+"<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">53615</span></span>,
+"<span class="hljs-attribute">alipay_winner_num</span>": <span class="hljs-value"><span class="hljs-number">34840</span></span>,
+"<span class="hljs-attribute">view_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">33802</span></span>,
+"<span class="hljs-attribute">shop_id</span>": <span class="hljs-value"><span class="hljs-number">73235</span></span>,
+"<span class="hljs-attribute">gmv_auction_num</span>": <span class="hljs-value"><span class="hljs-number">53651</span></span>,
+"<span class="hljs-attribute">unit_id</span>": <span class="hljs-value"><span class="hljs-number">10817</span></span>,
+"<span class="hljs-attribute">alipay_auction_num</span>": <span class="hljs-value"><span class="hljs-number">84034</span></span>,
+"<span class="hljs-attribute">same_day_trade_rate</span>": <span class="hljs-value"><span class="hljs-number">57457</span></span>,
+"<span class="hljs-attribute">gmv_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">80103</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容j9lj"</span></span>,
+"<span class="hljs-attribute">per_user_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">85086</span></span>,
+"<span class="hljs-attribute">seller_id</span>": <span class="hljs-value"><span class="hljs-number">26603</span></span>,
+"<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8fu9"</span></span>,
+"<span class="hljs-attribute">iuv</span>": <span class="hljs-value"><span class="hljs-number">25218</span></span>,
+"<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">20181</span></span>,
+"<span class="hljs-attribute">wireless_platform</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6547"</span></span>,
+"<span class="hljs-attribute">same_day_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">22624</span></span>,
+"<span class="hljs-attribute">view_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">58057</span></span>,
+"<span class="hljs-attribute">per_visit_depth</span>": <span class="hljs-value"><span class="hljs-number">46751</span></span>,
+"<span class="hljs-attribute">trade_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">86808</span></span>,
+"<span class="hljs-attribute">trade_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">47433</span></span>,
+"<span class="hljs-attribute">gmv_trade_num</span>": <span class="hljs-value"><span class="hljs-number">58805</span></span>,
+"<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">27443</span></span>,
+"<span class="hljs-attribute">ipv</span>": <span class="hljs-value"><span class="hljs-number">48521</span></span>,
+"<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">80384</span></span>,
+"<span class="hljs-attribute">same_day_trade_num</span>": <span class="hljs-value"><span class="hljs-number">77544</span></span>,
+"<span class="hljs-attribute">same_day_auction_num</span>": <span class="hljs-value"><span class="hljs-number">56043</span>
+</span>}</span>,
+"<span class="hljs-attribute">2</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5zug"</span></span>,
+"<span class="hljs-attribute">same_day_trade_rate</span>": <span class="hljs-value"><span class="hljs-number">85238</span></span>,
+"<span class="hljs-attribute">ipv</span>": <span class="hljs-value"><span class="hljs-number">80624</span></span>,
+"<span class="hljs-attribute">trade_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">72210</span></span>,
+"<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">17035</span></span>,
+"<span class="hljs-attribute">alipay_trade_num</span>": <span class="hljs-value"><span class="hljs-number">10072</span></span>,
+"<span class="hljs-attribute">seller_id</span>": <span class="hljs-value"><span class="hljs-number">51718</span></span>,
+"<span class="hljs-attribute">per_visit_depth</span>": <span class="hljs-value"><span class="hljs-number">46185</span></span>,
+"<span class="hljs-attribute">same_day_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">34528</span></span>,
+"<span class="hljs-attribute">gmv_trade_num</span>": <span class="hljs-value"><span class="hljs-number">62440</span></span>,
+"<span class="hljs-attribute">view_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">44322</span></span>,
+"<span class="hljs-attribute">per_user_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">38322</span></span>,
+"<span class="hljs-attribute">same_day_trade_num</span>": <span class="hljs-value"><span class="hljs-number">87106</span></span>,
+"<span class="hljs-attribute">alipay_auction_num</span>": <span class="hljs-value"><span class="hljs-number">77431</span></span>,
+"<span class="hljs-attribute">same_day_auction_num</span>": <span class="hljs-value"><span class="hljs-number">53725</span></span>,
+"<span class="hljs-attribute">gmv_auction_num</span>": <span class="hljs-value"><span class="hljs-number">61674</span></span>,
+"<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">53685</span></span>,
+"<span class="hljs-attribute">gmv_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">34461</span></span>,
+"<span class="hljs-attribute">wireless_platform</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2317"</span></span>,
+"<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">45307</span></span>,
+"<span class="hljs-attribute">alipay_winner_num</span>": <span class="hljs-value"><span class="hljs-number">78585</span></span>,
+"<span class="hljs-attribute">unit_id</span>": <span class="hljs-value"><span class="hljs-number">51071</span></span>,
+"<span class="hljs-attribute">iuv</span>": <span class="hljs-value"><span class="hljs-number">85162</span></span>,
+"<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">77646</span></span>,
+"<span class="hljs-attribute">trade_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">43810</span></span>,
+"<span class="hljs-attribute">shop_id</span>": <span class="hljs-value"><span class="hljs-number">28546</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容vtm3"</span></span>,
+"<span class="hljs-attribute">view_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">77246</span>
+</span>}</span>,
+"<span class="hljs-attribute">3</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">shop_id</span>": <span class="hljs-value"><span class="hljs-number">88170</span></span>,
+"<span class="hljs-attribute">gmv_trade_num</span>": <span class="hljs-value"><span class="hljs-number">80528</span></span>,
+"<span class="hljs-attribute">trade_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">72343</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3rxl"</span></span>,
+"<span class="hljs-attribute">gmv_auction_num</span>": <span class="hljs-value"><span class="hljs-number">43385</span></span>,
+"<span class="hljs-attribute">trade_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">88033</span></span>,
+"<span class="hljs-attribute">per_visit_depth</span>": <span class="hljs-value"><span class="hljs-number">27372</span></span>,
+"<span class="hljs-attribute">seller_id</span>": <span class="hljs-value"><span class="hljs-number">35124</span></span>,
+"<span class="hljs-attribute">thedate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容vlw5"</span></span>,
+"<span class="hljs-attribute">iuv</span>": <span class="hljs-value"><span class="hljs-number">81086</span></span>,
+"<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">78137</span></span>,
+"<span class="hljs-attribute">same_day_trade_num</span>": <span class="hljs-value"><span class="hljs-number">32530</span></span>,
+"<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">51813</span></span>,
+"<span class="hljs-attribute">alipay_winner_num</span>": <span class="hljs-value"><span class="hljs-number">14860</span></span>,
+"<span class="hljs-attribute">view_repeat_rate</span>": <span class="hljs-value"><span class="hljs-number">38581</span></span>,
+"<span class="hljs-attribute">unit_id</span>": <span class="hljs-value"><span class="hljs-number">20147</span></span>,
+"<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">45675</span></span>,
+"<span class="hljs-attribute">same_day_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">16282</span></span>,
+"<span class="hljs-attribute">same_day_auction_num</span>": <span class="hljs-value"><span class="hljs-number">64430</span></span>,
+"<span class="hljs-attribute">per_user_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">41860</span></span>,
+"<span class="hljs-attribute">ipv</span>": <span class="hljs-value"><span class="hljs-number">73006</span></span>,
+"<span class="hljs-attribute">view_repeat_num</span>": <span class="hljs-value"><span class="hljs-number">88333</span></span>,
+"<span class="hljs-attribute">wireless_platform</span>": <span class="hljs-value"><span class="hljs-string">"测试内容81wu"</span></span>,
+"<span class="hljs-attribute">gmv_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">76786</span></span>,
+"<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">56343</span></span>,
+"<span class="hljs-attribute">same_day_trade_rate</span>": <span class="hljs-value"><span class="hljs-number">35000</span></span>,
+"<span class="hljs-attribute">alipay_auction_num</span>": <span class="hljs-value"><span class="hljs-number">61143</span></span>,
+"<span class="hljs-attribute">alipay_trade_num</span>": <span class="hljs-value"><span class="hljs-number">14062</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

@@ -1,0 +1,1349 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>询盘结构化接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#询盘结构化主表单---同公司多产品" class="list-group-item heading">询盘结构化主表单 - 同公司多产品</a><a href="#询盘结构化主表单---同公司多产品-同公司多产品请求" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;同公司多产品请求</a></div><div class="list-group"><a href="#询盘结构化主表单---全行业字段" class="list-group-item heading">询盘结构化主表单 - 全行业字段</a><a href="#询盘结构化主表单---全行业字段-行业化字段" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;行业化字段</a></div><div class="list-group"><a href="#询盘结构化主表单---不同公司多产品" class="list-group-item heading">询盘结构化主表单 - 不同公司多产品</a><a href="#询盘结构化主表单---不同公司多产品-不同公司多产品" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;不同公司多产品</a></div><div class="list-group"><a href="#询盘结构化主表单---request字.." class="list-group-item heading">询盘结构化主表单 - request字..</a><a href="#询盘结构化主表单---request字..-request-keys" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;request keys</a></div><div class="list-group"><a href="#询盘结构化主表单---test" class="list-group-item heading">询盘结构化主表单 - test</a><a href="#询盘结构化主表单---test-abcd" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;abcd</a></div><div class="list-group"><a href="#询盘结构化主表单---针对公司询盘" class="list-group-item heading">询盘结构化主表单 - 针对公司询盘</a><a href="#询盘结构化主表单---针对公司询盘-inquiry-company" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;inquiry-company</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">询盘结构化接口文档</h1></div></header><div class="description"><p>询盘结构化</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="询盘结构化主表单---同公司多产品">询盘结构化主表单 - 同公司多产品&nbsp;<a href="#询盘结构化主表单---同公司多产品"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="询盘结构化主表单---同公司多产品-同公司多产品请求">同公司多产品请求&nbsp;<a href="#询盘结构化主表单---同公司多产品-同公司多产品请求"><i class="fa fa-link"></i></a></h4><p>@type=array_map;</p>
+<section id="询盘结构化主表单---同公司多产品-同公司多产品请求-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#询盘结构化主表单---同公司多产品-同公司多产品请求-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/multiProducts.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4d467ee1c424c9686cfed319416cb5aa" class="pull-right">Toggle</a></li><li id="4d467ee1c424c9686cfed319416cb5aa" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>[
+{
+"<span class="hljs-attribute">receiverPresentList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"klwow"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"dcthd"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"vsb"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"lel"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"wenimieph"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1001</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"yyvzkxwjr"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"zbyxdmc"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"jwue"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"lqvimfo"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"tyhooldqxn"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"odxmokt"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"pllx"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"zcjppgx"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1003</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ucisksbtoa"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"egqlsibsc"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"klsbct"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"enmyyvmgou"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1004</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"mdou"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"otjtvi"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"raeoma"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"ltnsqjpq"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1005</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"uwcysc"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"xyniuuv"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"kcwei"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"qqnlxvnic"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1006</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"isbxdds"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"kgdq"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"befvoxh"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"mum"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1007</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"nnuv"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"mawcudio"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"olsp"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"rfwkjyxyl"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1008</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"cuxcagkr"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"poh"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"oucvysir"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"cmsjjsj"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1009</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"gaueecxxu"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"uyviuf"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"aznjgrrhd"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"tdm"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1010</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"bgv"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"ykcx"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"gsxbrts"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"wxtbwk"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1011</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"npeke"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"lifdipty"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"opujtg"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"yhauxjcxbd"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1012</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ebxwkwpre"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"hcj"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"hshha"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"fpmrc"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1013</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ydzci"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"wsjknlv"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"tbsyyfju"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"yxw"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1014</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ngugte"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"rdwgrie"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"jnvddebt"</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"flooq"</span></span>,
+        "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+        "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1015</span></span>,
+        "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"entxu"</span></span>,
+        "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"zfbi"</span></span>,
+        "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lfrp"</span></span>,
+        "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/52x52"</span></span>,
+        "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3bc7"</span></span>,
+        "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"fkmhey"</span>
+    </span>}
+]
+</span>}
+]
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="询盘结构化主表单---全行业字段">询盘结构化主表单 - 全行业字段&nbsp;<a href="#询盘结构化主表单---全行业字段"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="询盘结构化主表单---全行业字段-行业化字段">行业化字段&nbsp;<a href="#询盘结构化主表单---全行业字段-行业化字段"><i class="fa fa-link"></i></a></h4><section id="询盘结构化主表单---全行业字段-行业化字段-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#询盘结构化主表单---全行业字段-行业化字段-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/industryInfo.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#45c1d6effa0cbe4af59235cfd0ebbd8f" class="pull-right">Toggle</a></li><li id="45c1d6effa0cbe4af59235cfd0ebbd8f" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">industryInfo</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">attriName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7h53"</span></span>,
+    "<span class="hljs-attribute">attriId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1129"</span>
+</span>},
+{
+    "<span class="hljs-attribute">attriName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7h53"</span></span>,
+    "<span class="hljs-attribute">attriId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1129"</span>
+</span>},
+{
+    "<span class="hljs-attribute">attriName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7h53"</span></span>,
+    "<span class="hljs-attribute">attriId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1129"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="询盘结构化主表单---不同公司多产品">询盘结构化主表单 - 不同公司多产品&nbsp;<a href="#询盘结构化主表单---不同公司多产品"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="询盘结构化主表单---不同公司多产品-不同公司多产品">不同公司多产品&nbsp;<a href="#询盘结构化主表单---不同公司多产品-不同公司多产品"><i class="fa fa-link"></i></a></h4><p>@type=array_map;</p>
+<section id="询盘结构化主表单---不同公司多产品-不同公司多产品-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#询盘结构化主表单---不同公司多产品-不同公司多产品-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/multi-com-pro</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#fd1864a561dc9e59c7f3e1ea1258b200" class="pull-right">Toggle</a></li><li id="fd1864a561dc9e59c7f3e1ea1258b200" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>[
+{
+"<span class="hljs-attribute">receiverMultiPresentList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">companyId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ls35"</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"kxqrz"</span></span>,
+        "<span class="hljs-attribute">receiverPresentList</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"nzloyko"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"oksxnuccm"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"cgbcqdu"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"xkeanwuopb"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"obelidiy"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"tselpp"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1001</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"xdtd"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"sdil"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"foxs"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"effvp"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"gidslgxdo"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"scwbi"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ktfavkhc"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"uxeoddde"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1003</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"ypuwfrv"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"xcmlicx"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"cgdrptnghv"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"nxlvdel"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1004</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"mmr"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"xmpxjlorj"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ruybn"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"xwkqe"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1005</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"eepy"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"iwmb"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"fyuwm"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"putbkuse"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1006</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"ahckqokq"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"voavofhsz"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"xgahrrt"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ykhsrfq"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1007</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"cknrhmv"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"eodgxvcae"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"dkot"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ilyj"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1008</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"rjovqhp"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"uqu"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"jproq"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"vuvdleirvf"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1009</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"wwbg"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"wrqxxhxtyn"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ttaumyqq"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"kgovabv"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1010</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"pobus"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"jtiq"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"jvief"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ejsonudw"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1011</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"wyj"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"ktsgqp"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>}
+        ]
+    </span>},
+    {
+        "<span class="hljs-attribute">companyId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ls35"</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"kyulghh"</span></span>,
+        "<span class="hljs-attribute">receiverPresentList</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"cfmkjrmulf"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"nhcqy"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1012</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"kiabyhru"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"usfeusq"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">14</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"iqcj"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ovehc"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1013</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"tpltbbfig"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"nulyyqa"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">12</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"djrrqem"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"wjhyojsyzp"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1014</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"hnbixrf"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"beu"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"zwqmmnek"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ceapan"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1015</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"qvkaf"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"nfsslsqw"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"neujjwjumn"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"bkabtq"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1016</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"pgj"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"rwhw"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ivgbdyqfk"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"pukfypjw"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1017</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"lovh"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"efxtstyei"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"isyggcolm"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"zgvisxkdr"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1018</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"fjbse"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"nuddfzmsw"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"witosi"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"mqxlkf"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1019</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"cfd"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"kidbkgvso"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"fltjyo"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"hnvisxvvr"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1020</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"mbcuvwhj"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"wrby"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>}
+        ]
+    </span>},
+    {
+        "<span class="hljs-attribute">companyId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ls35"</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"gmjl"</span></span>,
+        "<span class="hljs-attribute">receiverPresentList</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"vtiev"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"vgcjqwu"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1021</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"iqjjhyyrt"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"ecgiqwdi"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"gflinrr"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"rskadyq"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1022</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"hjjng"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"nvdodbkddi"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"acze"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"hokjyhv"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1023</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"zkjoyl"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"bkflrko"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ayx"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"tiuisgx"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1024</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"opbjdt"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"ltomj"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"yhvigsght"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"lowo"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1025</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"vmzpx"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"vjulheex"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"zsjobfzdh"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"kgkpxdkxkr"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1026</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"yglrxqqfi"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"pfzk"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>}
+        ]
+    </span>},
+    {
+        "<span class="hljs-attribute">companyId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ls35"</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"dowgjq"</span></span>,
+        "<span class="hljs-attribute">receiverPresentList</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ppu"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"kxsup"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1027</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"fnt"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"lfvsahru"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ekkvtxgga"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"xlycl"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1028</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"dqfvpfi"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"hwbrlitx"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"wpbystxhej"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ktmcowg"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1029</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"brhguaox"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"bfhdwu"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"zbvegk"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"juomdqwby"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1030</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"qtxsea"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"frdfuqwe"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"wobhiph"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ffgx"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1031</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"xtgi"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"qkdnbub"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"nklvj"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ribqom"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1032</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"qomhwukt"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"dljudo"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"mwgulxk"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"cfsx"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1033</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"rsgutb"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"odxu"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"essvmob"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"xav"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1034</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"gshlwrca"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"eaqgvhuktm"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ygbbzc"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ckhdfw"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1035</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"nvmegnfrg"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"isxojf"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"yvj"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"jbtvbkuwmd"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1036</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"xirgc"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"cyoyj"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>}
+        ]
+    </span>},
+    {
+        "<span class="hljs-attribute">companyId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ls35"</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ywq"</span></span>,
+        "<span class="hljs-attribute">receiverPresentList</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"nllferwi"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"abz"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1037</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"wlyhy"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"efopibd"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ioiqztchb"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"gkxckdtr"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1038</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"wouss"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"mkskeqn"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"puwd"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"qadiq"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1039</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"efiut"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"xdxjdgt"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"iepbag"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"gqxbnb"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1040</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"eccbp"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"yqxcz"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"rcdxqnqfju"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"yna"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1041</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"faekrqbspp"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"bhlqetx"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">19</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"utebjsrpoc"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ltgpc"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1042</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"toszyhyjj"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"ekpeaddhdg"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"mjtfpsl"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"rjdfckurr"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1043</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"hvb"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"vcbmptzhr"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"enegpjh"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"bwyvns"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1044</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"hsyc"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"hzqt"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>}
+        ]
+    </span>},
+    {
+        "<span class="hljs-attribute">companyId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ls35"</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"byiuawbqq"</span></span>,
+        "<span class="hljs-attribute">receiverPresentList</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"dtgqbeozc"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"qvbg"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1045</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"plwlwoa"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"tchqvu"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"hcojgfsb"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"jjjwfgqd"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1046</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"oaxqeciud"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"jvwenu"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ysstbyatl"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"kkzicwx"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1047</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"sxmm"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"fqwvnnj"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"xsitirrj"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"vsy"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1048</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"nwe"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"wrzo"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"levulaffn"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"sooxkqqd"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1049</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"kfs"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"terihwhb"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"xtyjn"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"dvimmxj"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1050</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"vevsrpo"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"acyztns"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">17</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"xquxdohejr"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"afob"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1051</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"fpszo"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"yodkuyr"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>}
+        ]
+    </span>},
+    {
+        "<span class="hljs-attribute">companyId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ls35"</span></span>,
+        "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"risngnd"</span></span>,
+        "<span class="hljs-attribute">receiverPresentList</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"opdwe"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"kmwnse"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1052</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"vqmvcgd"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"yhmspdksu"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">13</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"bgfbvm"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"uujze"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1053</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"xhtkepskek"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"qsrkwb"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"ersmosdg"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"oftsfirhhy"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1054</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"qnkkfr"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"ofm"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"qkipxevvc"</span></span>,
+                "<span class="hljs-attribute">keyWords</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b564"</span></span>,
+                "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"hfibqvyoab"</span></span>,
+                "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-number">1055</span></span>,
+                "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"ktxte"</span></span>,
+                "<span class="hljs-attribute">productImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+                "<span class="hljs-attribute">targetSubject</span>": <span class="hljs-value"><span class="hljs-string">"dpcgdltsuk"</span></span>,
+                "<span class="hljs-attribute">minOrderQuantity</span>": <span class="hljs-value"><span class="hljs-number">16</span></span>,
+                "<span class="hljs-attribute">productUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/id"</span></span>,
+                "<span class="hljs-attribute">minOrderUnit</span>": <span class="hljs-value"><span class="hljs-string">"测试内容430b"</span>
+            </span>}
+        ]
+    </span>}
+]
+</span>}
+]
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="询盘结构化主表单---request字..">询盘结构化主表单 - request字..&nbsp;<a href="#询盘结构化主表单---request字.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="询盘结构化主表单---request字..-request-keys">request keys&nbsp;<a href="#询盘结构化主表单---request字..-request-keys"><i class="fa fa-link"></i></a></h4><section id="询盘结构化主表单---request字..-request-keys-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#询盘结构化主表单---request字..-request-keys-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/requestKeys</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#39f675db51640ca52abced52a2b9c419" class="pull-right">Toggle</a></li><li id="39f675db51640ca52abced52a2b9c419" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">options</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">companyDescription</span>": <span class="hljs-value"><span class="hljs-string">"Company Description"</span></span>,
+"<span class="hljs-attribute">fobPrices</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+"<span class="hljs-attribute">paymentTerms</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+"<span class="hljs-attribute">minimumOrderQuatity</span>": <span class="hljs-value"><span class="hljs-string">"Minimum order quantity"</span></span>,
+"<span class="hljs-attribute">inspectionCertificate</span>": <span class="hljs-value"><span class="hljs-string">"Inspection Certificate"</span></span>,
+"<span class="hljs-attribute">deliveryTime</span>": <span class="hljs-value"><span class="hljs-string">"Delivery Time"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="询盘结构化主表单---test">询盘结构化主表单 - test&nbsp;<a href="#询盘结构化主表单---test"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="询盘结构化主表单---test-abcd">abcd&nbsp;<a href="#询盘结构化主表单---test-abcd"><i class="fa fa-link"></i></a></h4><p>dff</p>
+<section id="询盘结构化主表单---test-abcd-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#询盘结构化主表单---test-abcd-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#77ec5c8261f17f617769a97498dcd4e0" class="pull-right">Toggle</a></li><li id="77ec5c8261f17f617769a97498dcd4e0" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">dd</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">index</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"cigdi"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">322</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"lpivf"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">281</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"qyhrtbefk"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">422</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"qsgnkx"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">432</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"hmrniif"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">467</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"okrgdhrh"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">239</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"dfltlejza"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">396</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mzhg"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">451</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"yoldldjdw"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">364</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nmnet"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">255</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"toylecn"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">416</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"tlt"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">321</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"jwynv"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">253</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ermdwswyx"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">291</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"cfh"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">274</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"dirmvryk"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">319</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"brwff"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">465</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"poeutfox"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">444</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ruvmvtm"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">444</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"bdlqhmcsj"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">390</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"quslou"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">201</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"illeinj"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">232</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"omclsxnd"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">344</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"yeiinyph"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">328</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"smakcmhy"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">386</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ymbcb"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">215</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"yhksy"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">271</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ebjmulvc"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">349</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"cdbqwc"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">384</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"lqzv"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">450</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ydiihcdi"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">226</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ctcntf"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">325</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"dwcqmlrn"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">440</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"nlbvp"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">385</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"pasojiwhx"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">373</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"cfbgrpso"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">294</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"scvmno"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">213</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"biprkjmi"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">421</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"yjhmm"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">440</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"kflodnftmm"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">253</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"zymlvp"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">295</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"vsrdjup"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">477</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"kwhgjd"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">459</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"olb"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">429</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"hwyve"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">387</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"flehcjxtq"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">240</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"zdrt"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">499</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"vqwy"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">358</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"xwztk"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">437</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"yckcuy"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">300</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ymyiif"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">255</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"xyxqubgv"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">402</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"wuwkw"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">388</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"gptjqawgn"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">241</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"hsoiieuvh"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">307</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"quoum"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">293</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"fus"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">217</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"pjt"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">289</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"spsoosa"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">440</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"hqd"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">473</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"veav"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">268</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"gqukbntfv"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">401</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"ynvjq"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">238</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"perlmsg"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">496</span>
+    </span>}
+]
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="询盘结构化主表单---针对公司询盘">询盘结构化主表单 - 针对公司询盘&nbsp;<a href="#询盘结构化主表单---针对公司询盘"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="询盘结构化主表单---针对公司询盘-inquiry-company">inquiry-company&nbsp;<a href="#询盘结构化主表单---针对公司询盘-inquiry-company"><i class="fa fa-link"></i></a></h4><section id="询盘结构化主表单---针对公司询盘-inquiry-company-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#询盘结构化主表单---针对公司询盘-inquiry-company-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/inq-company</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#86edb8dd450f56999151e49540e2648d" class="pull-right">Toggle</a></li><li id="86edb8dd450f56999151e49540e2648d" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">receiverPresentList</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"idum"</span></span>,
+    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"tepjo"</span></span>,
+    "<span class="hljs-attribute">companyImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50X50"</span></span>,
+    "<span class="hljs-attribute">companyUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容60wh"</span></span>,
+    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"pwcrpp"</span></span>,
+    "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容sr9c"</span>
+</span>},
+{
+    "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"frvvgmcih"</span></span>,
+    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"hyluqqsjm"</span></span>,
+    "<span class="hljs-attribute">companyImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50X50"</span></span>,
+    "<span class="hljs-attribute">companyUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容60wh"</span></span>,
+    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"ctpvj"</span></span>,
+    "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容sr9c"</span>
+</span>},
+{
+    "<span class="hljs-attribute">companyName</span>": <span class="hljs-value"><span class="hljs-string">"sicx"</span></span>,
+    "<span class="hljs-attribute">firstName</span>": <span class="hljs-value"><span class="hljs-string">"vmwduuk"</span></span>,
+    "<span class="hljs-attribute">companyImage</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50X50"</span></span>,
+    "<span class="hljs-attribute">companyUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容60wh"</span></span>,
+    "<span class="hljs-attribute">lastName</span>": <span class="hljs-value"><span class="hljs-string">"peuzo"</span></span>,
+    "<span class="hljs-attribute">targetId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容sr9c"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

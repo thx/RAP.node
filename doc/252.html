@@ -1,0 +1,271 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>星象台-领域达人接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#平台流程---流程主页" class="list-group-item heading">平台流程 - 流程主页</a><a href="#平台流程---流程主页-删-获取当前应用的流程状态" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;删 获取当前应用的流程状态</a><a href="#平台流程---流程主页-获取应用信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取应用信息</a><a href="#平台流程---流程主页-获取sample分类结果" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取sample分类结果</a><a href="#平台流程---流程主页-应用创建" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;应用创建</a><a href="#平台流程---流程主页-发布应用" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;发布应用</a><a href="#平台流程---流程主页-应用更新" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;应用更新</a><a href="#平台流程---流程主页-获取所有插件的结果数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取所有插件的结果数据</a><a href="#平台流程---流程主页-获取插件的配置" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取插件的配置</a><a href="#平台流程---流程主页-设置插件的配置数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;设置插件的配置数据</a><a href="#平台流程---流程主页-插件配置数据设置完成" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;插件配置数据设置完成</a><a href="#平台流程---流程主页-获取行业列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取行业列表</a><a href="#平台流程---流程主页-触发后端流程命令" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;触发后端流程命令</a><a href="#平台流程---流程主页-获取应用锁信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取应用锁信息</a></div><div class="list-group"><a href="#平台流程---插件交互" class="list-group-item heading">平台流程 - 插件交互</a><a href="#平台流程---插件交互-设置插件的配置" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;设置插件的配置</a><a href="#平台流程---插件交互-获取插件的配置数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取插件的配置数据</a></div><div class="list-group"><a href="#平台流程---应用列表页" class="list-group-item heading">平台流程 - 应用列表页</a><a href="#平台流程---应用列表页-获取应用的状态分布数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取应用的状态分布数据</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">星象台-领域达人接口文档</h1></div></header><div class="description"><p>专业领域人群筛选与分析</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="平台流程---流程主页">平台流程 - 流程主页&nbsp;<a href="#平台流程---流程主页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="平台流程---流程主页-删-获取当前应用的流程状态">删 获取当前应用的流程状态&nbsp;<a href="#平台流程---流程主页-删-获取当前应用的流程状态"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-删-获取当前应用的流程状态-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---流程主页-删-获取当前应用的流程状态-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/getAppStatus</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4f1847382a471a7676b2e7df57087e83" class="pull-right">Toggle</a></li><li id="4f1847382a471a7676b2e7df57087e83" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">appFlows</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"iframe|page|ajax"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"唯一标识"</span></span>,
+            "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://xxxx/xx.html"</span>
+        </span>}
+    ]
+</span>}</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-获取应用信息">获取应用信息&nbsp;<a href="#平台流程---流程主页-获取应用信息"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-获取应用信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---流程主页-获取应用信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/getAppInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#45126d4cc4960b6efe0fd7987de65609" class="pull-right">Toggle</a></li><li id="45126d4cc4960b6efe0fd7987de65609" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-获取sample分类结果">获取sample分类结果&nbsp;<a href="#平台流程---流程主页-获取sample分类结果"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-获取sample分类结果-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---流程主页-获取sample分类结果-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/getSampleResult</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#dfae38f1eb5eb9bf735f66b4606fcc7a" class="pull-right">Toggle</a></li><li id="dfae38f1eb5eb9bf735f66b4606fcc7a" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">28585</span></span>,
+    "<span class="hljs-attribute">sampleResult</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">level</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"xxx"</span></span>,
+            "<span class="hljs-attribute">words</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">weight</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+                    "<span class="hljs-attribute">word</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+                </span>}
+            ]
+        </span>}
+    ]
+</span>}</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-应用创建">应用创建&nbsp;<a href="#平台流程---流程主页-应用创建"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-应用创建-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#平台流程---流程主页-应用创建-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/app/api/createApp</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c81ec1134c29652017f7487f03e334bc" class="pull-right">Toggle</a></li><li id="c81ec1134c29652017f7487f03e334bc" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">appInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">attribute</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">dictRec</span>": <span class="hljs-value"><span class="hljs-number">75142</span></span>,
+            "<span class="hljs-attribute">industryIds</span>": <span class="hljs-value"><span class="hljs-string">"1,2,3"</span></span>,
+            "<span class="hljs-attribute">hosts</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b463"</span></span>,
+            "<span class="hljs-attribute">keywords</span>": <span class="hljs-value">[
+                <span class="hljs-string">"string1"</span>,
+                <span class="hljs-string">"string2"</span>,
+                <span class="hljs-string">"string3"</span>,
+                <span class="hljs-string">"string4"</span>,
+                <span class="hljs-string">"string5"</span>
+            ]
+        </span>}</span>,
+        "<span class="hljs-attribute">appId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9vv0"</span></span>,
+        "<span class="hljs-attribute">appName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容w081"</span>
+    </span>}
+</span>}</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-发布应用">发布应用&nbsp;<a href="#平台流程---流程主页-发布应用"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-发布应用-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#平台流程---流程主页-发布应用-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/app/api/publishApp</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#75ad568235d383706b4f90826f0d5853" class="pull-right">Toggle</a></li><li id="75ad568235d383706b4f90826f0d5853" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-应用更新">应用更新&nbsp;<a href="#平台流程---流程主页-应用更新"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-应用更新-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#平台流程---流程主页-应用更新-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/app/api/updateApp</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#24ff35596e0d65eda201f485aaef1987" class="pull-right">Toggle</a></li><li id="24ff35596e0d65eda201f485aaef1987" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-获取所有插件的结果数据">获取所有插件的结果数据&nbsp;<a href="#平台流程---流程主页-获取所有插件的结果数据"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-获取所有插件的结果数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---流程主页-获取所有插件的结果数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/getPluginResult</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#34edc489cd7335d28395036061c6fea2" class="pull-right">Toggle</a></li><li id="34edc489cd7335d28395036061c6fea2" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"list"</span></span>,
+                "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"房产|-|母婴|-|汽车"</span></span>,
+                "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"媒体行业"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"mediaIndustry"</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-获取插件的配置">获取插件的配置&nbsp;<a href="#平台流程---流程主页-获取插件的配置"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-获取插件的配置-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---流程主页-获取插件的配置-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/plugin/getPluginConfig</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4a34a2ab9756ead167636f269704fbce" class="pull-right">Toggle</a></li><li id="4a34a2ab9756ead167636f269704fbce" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5480"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-设置插件的配置数据">设置插件的配置数据&nbsp;<a href="#平台流程---流程主页-设置插件的配置数据"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-设置插件的配置数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---流程主页-设置插件的配置数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/plugin/setPluginConfig</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#2c3a3f274789c67cb4b1366d53ff1cfb" class="pull-right">Toggle</a></li><li id="2c3a3f274789c67cb4b1366d53ff1cfb" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">result</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-插件配置数据设置完成">插件配置数据设置完成&nbsp;<a href="#平台流程---流程主页-插件配置数据设置完成"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-插件配置数据设置完成-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---流程主页-插件配置数据设置完成-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/plugin/finish</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4b4898f7f924a883aa771a6476356091" class="pull-right">Toggle</a></li><li id="4b4898f7f924a883aa771a6476356091" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-获取行业列表">获取行业列表&nbsp;<a href="#平台流程---流程主页-获取行业列表"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-获取行业列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---流程主页-获取行业列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/getCategoryList</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#0b17fc94d7906c80ae2c9f22d8d60c2e" class="pull-right">Toggle</a></li><li id="0b17fc94d7906c80ae2c9f22d8d60c2e" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">configScope</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">configName</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">configId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">parentId</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-触发后端流程命令">触发后端流程命令&nbsp;<a href="#平台流程---流程主页-触发后端流程命令"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-触发后端流程命令-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---流程主页-触发后端流程命令-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/startApp</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#df158505e1d8941143cea41a11c7bf3c" class="pull-right">Toggle</a></li><li id="df158505e1d8941143cea41a11c7bf3c" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="平台流程---流程主页-获取应用锁信息">获取应用锁信息&nbsp;<a href="#平台流程---流程主页-获取应用锁信息"><i class="fa fa-link"></i></a></h4><section id="平台流程---流程主页-获取应用锁信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---流程主页-获取应用锁信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/getLockInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#42e5bd87b1a09578ce88818191c469b8" class="pull-right">Toggle</a></li><li id="42e5bd87b1a09578ce88818191c469b8" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8pg8"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-string">"测试内容685n"</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容md42"</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">defaultReleaseTime</span>": <span class="hljs-value"><span class="hljs-number">68875</span></span>,
+    "<span class="hljs-attribute">lock</span>": <span class="hljs-value"><span class="hljs-string">"测试内容turu"</span></span>,
+    "<span class="hljs-attribute">isLocked</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容44m1"</span>
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="平台流程---插件交互">平台流程 - 插件交互&nbsp;<a href="#平台流程---插件交互"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="平台流程---插件交互-设置插件的配置">设置插件的配置&nbsp;<a href="#平台流程---插件交互-设置插件的配置"><i class="fa fa-link"></i></a></h4><section id="平台流程---插件交互-设置插件的配置-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---插件交互-设置插件的配置-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/hsf</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#b29ec5fc261777ca021a97cd03eca240" class="pull-right">Toggle</a></li><li id="b29ec5fc261777ca021a97cd03eca240" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="平台流程---插件交互-获取插件的配置数据">获取插件的配置数据&nbsp;<a href="#平台流程---插件交互-获取插件的配置数据"><i class="fa fa-link"></i></a></h4><section id="平台流程---插件交互-获取插件的配置数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---插件交互-获取插件的配置数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/hsf名称</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c76508b186d1691c05e67ec72e24b555" class="pull-right">Toggle</a></li><li id="c76508b186d1691c05e67ec72e24b555" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">map</span>": <span class="hljs-value">{}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="平台流程---应用列表页">平台流程 - 应用列表页&nbsp;<a href="#平台流程---应用列表页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="平台流程---应用列表页-获取应用的状态分布数据">获取应用的状态分布数据&nbsp;<a href="#平台流程---应用列表页-获取应用的状态分布数据"><i class="fa fa-link"></i></a></h4><p>获取应用各状态的数量分布</p>
+<section id="平台流程---应用列表页-获取应用的状态分布数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#平台流程---应用列表页-获取应用的状态分布数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/app/api/getAppCountByStatus</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#ff251a1ad2889aa36052bfd1dbe1749a" class="pull-right">Toggle</a></li><li id="ff251a1ad2889aa36052bfd1dbe1749a" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

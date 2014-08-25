@@ -1,0 +1,352 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>阿里妈妈品牌接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#某模块（点击编辑..---某页面" class="list-group-item heading">某模块（点击编辑.. - 某页面</a><a href="#某模块（点击编辑..---某页面-某请求test" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;某请求test</a></div><div class="list-group"><a href="#某模块（点击编辑..---内容的页面" class="list-group-item heading">某模块（点击编辑.. - 内容的页面</a><a href="#某模块（点击编辑..---内容的页面-拿到目录树" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;拿到目录树</a><a href="#某模块（点击编辑..---内容的页面-获得到列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获得到列表</a><a href="#某模块（点击编辑..---内容的页面-拿到具体内容" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;拿到具体内容</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">阿里妈妈品牌接口文档</h1></div></header><div class="description"><p>阿里妈妈品牌，包括：品牌平台、营销、媒体</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="某模块（点击编辑..---某页面">某模块（点击编辑.. - 某页面&nbsp;<a href="#某模块（点击编辑..---某页面"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="某模块（点击编辑..---某页面-某请求test">某请求test&nbsp;<a href="#某模块（点击编辑..---某页面-某请求test"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---某页面-某请求test-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---某页面-某请求test-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/test.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#79285c5799dd959afe109ecfe868b722" class="pull-right">Toggle</a></li><li id="79285c5799dd959afe109ecfe868b722" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"aaaa"</span></span>,
+    "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">20</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="某模块（点击编辑..---内容的页面">某模块（点击编辑.. - 内容的页面&nbsp;<a href="#某模块（点击编辑..---内容的页面"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="某模块（点击编辑..---内容的页面-拿到目录树">拿到目录树&nbsp;<a href="#某模块（点击编辑..---内容的页面-拿到目录树"><i class="fa fa-link"></i></a></h4><p>根据id拿到目录树</p>
+<section id="某模块（点击编辑..---内容的页面-拿到目录树-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---内容的页面-拿到目录树-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/directory/getTree.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#fb87b7d520dfc27e9eb6b79d052e3ff4" class="pull-right">Toggle</a></li><li id="fb87b7d520dfc27e9eb6b79d052e3ff4" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">node</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">parentid</span>": <span class="hljs-value"><span class="hljs-number">32714</span></span>,
+    "<span class="hljs-attribute">isleaf</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+    "<span class="hljs-attribute">isPagein</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"阿里妈妈案例专区"</span></span>,
+    "<span class="hljs-attribute">child</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">desiredPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">child</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">nextPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                    "<span class="hljs-attribute">desiredPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">isleaf</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">perPageSize</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+                    "<span class="hljs-attribute">firstPage</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+                    "<span class="hljs-attribute">lastPage</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                    "<span class="hljs-attribute">endRow</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+                    "<span class="hljs-attribute">isPagein</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">modifier</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">totalPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                    "<span class="hljs-attribute">parentid</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+                    "<span class="hljs-attribute">startRow</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                    "<span class="hljs-attribute">previousPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">child</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">totalItem</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                    "<span class="hljs-attribute">creator</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"女装"</span></span>,
+                    "<span class="hljs-attribute">returnCount</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                    "<span class="hljs-attribute">createtime</span>": <span class="hljs-value"><span class="hljs-number">1399984113000</span></span>,
+                    "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value"><span class="hljs-number">1400033570000</span></span>,
+                    "<span class="hljs-attribute">orderStr</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">toPage</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">modifier</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">creator</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">parentid</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value"><span class="hljs-number">1400033604000</span></span>,
+            "<span class="hljs-attribute">createtime</span>": <span class="hljs-value"><span class="hljs-number">1399959141000</span></span>,
+            "<span class="hljs-attribute">firstPage</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+            "<span class="hljs-attribute">toPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">nextPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">returnCount</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">endRow</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+            "<span class="hljs-attribute">lastPage</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+            "<span class="hljs-attribute">totalPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"行业"</span></span>,
+            "<span class="hljs-attribute">isleaf</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">orderStr</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">perPageSize</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+            "<span class="hljs-attribute">startRow</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">previousPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">isPagein</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">totalItem</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="某模块（点击编辑..---内容的页面-获得到列表">获得到列表&nbsp;<a href="#某模块（点击编辑..---内容的页面-获得到列表"><i class="fa fa-link"></i></a></h4><p>根据节点拿到节点下面的内容</p>
+<section id="某模块（点击编辑..---内容的页面-获得到列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---内容的页面-获得到列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/commoncontent/findUnderContents.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#0801fd2a49cba6f3bdf293d798f0f089" class="pull-right">Toggle</a></li><li id="0801fd2a49cba6f3bdf293d798f0f089" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"文档标题"</span></span>,
+        "<span class="hljs-attribute">nodeid</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+        "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value"><span class="hljs-number">1400129008000</span></span>,
+        "<span class="hljs-attribute">image1</span>": <span class="hljs-value"><span class="hljs-string">"文档配图1"</span></span>,
+        "<span class="hljs-attribute">image2</span>": <span class="hljs-value"><span class="hljs-string">"文档配图2"</span></span>,
+        "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"http://img2.tbcdn.cn:80/tfscom/T1Wik8FqFbXXXXXXXX"</span></span>,
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">lastPage</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"作者名称"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">intro</span>": <span class="hljs-value"><span class="hljs-string">"文档简介"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"合同样本.docx"</span></span>,
+        "<span class="hljs-attribute">firstPage</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">3</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="某模块（点击编辑..---内容的页面-拿到具体内容">拿到具体内容&nbsp;<a href="#某模块（点击编辑..---内容的页面-拿到具体内容"><i class="fa fa-link"></i></a></h4><p>根据内容id拿到具体内容</p>
+<section id="某模块（点击编辑..---内容的页面-拿到具体内容-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---内容的页面-拿到具体内容-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/commoncontent/getContent.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#8e2f78c59f867b909fc5d0db6cba8b71" class="pull-right">Toggle</a></li><li id="8e2f78c59f867b909fc5d0db6cba8b71" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">content</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">intro</span>": <span class="hljs-value"><span class="hljs-string">"视频简介"</span></span>,
+    "<span class="hljs-attribute">nodeid</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+    "<span class="hljs-attribute">image2</span>": <span class="hljs-value"><span class="hljs-string">"图片地址2"</span></span>,
+    "<span class="hljs-attribute">pre</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">startRow</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">modifier</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">intro</span>": <span class="hljs-value"><span class="hljs-string">"文章的简介"</span></span>,
+        "<span class="hljs-attribute">firstPage</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">newest</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">image1</span>": <span class="hljs-value"><span class="hljs-string">"图片地址1"</span></span>,
+        "<span class="hljs-attribute">totalPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">next</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">image2</span>": <span class="hljs-value"><span class="hljs-string">"图片地址2"</span></span>,
+        "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"这是是文章的内容，是html代码"</span></span>,
+        "<span class="hljs-attribute">returnCount</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">totalItem</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"作者"</span></span>,
+        "<span class="hljs-attribute">nodeid</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+        "<span class="hljs-attribute">isPagein</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">previousPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">nextPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">list</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">createtime</span>": <span class="hljs-value"><span class="hljs-number">1400128874000</span></span>,
+        "<span class="hljs-attribute">draft</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">endRow</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+        "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value"><span class="hljs-number">1400128874000</span></span>,
+        "<span class="hljs-attribute">pre</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">toPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">lastPage</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">desiredPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">orderStr</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">creator</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">perPageSize</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"文章标题"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">newest</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value"><span class="hljs-number">1400129008000</span></span>,
+            "<span class="hljs-attribute">next</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">totalPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">draft</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">list</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">lastPage</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+            "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">endRow</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"文档标题"</span></span>,
+            "<span class="hljs-attribute">orderStr</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">modifier</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+            "<span class="hljs-attribute">totalItem</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">isPagein</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">returnCount</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">startRow</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+            "<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"作者名称"</span></span>,
+            "<span class="hljs-attribute">image1</span>": <span class="hljs-value"><span class="hljs-string">"文档配图1"</span></span>,
+            "<span class="hljs-attribute">creator</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">previousPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">pre</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">createtime</span>": <span class="hljs-value"><span class="hljs-number">1400129008000</span></span>,
+            "<span class="hljs-attribute">newest</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">perPageSize</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+            "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"http://img2.tbcdn.cn:80/tfscom/T1Wik8FqFbXXXXXXXX"</span></span>,
+            "<span class="hljs-attribute">desiredPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">image2</span>": <span class="hljs-value"><span class="hljs-string">"文档配图2"</span></span>,
+            "<span class="hljs-attribute">toPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"合同样本.docx"</span></span>,
+            "<span class="hljs-attribute">nextPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+            "<span class="hljs-attribute">nodeid</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+            "<span class="hljs-attribute">firstPage</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+            "<span class="hljs-attribute">intro</span>": <span class="hljs-value"><span class="hljs-string">"文档简介"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">image1</span>": <span class="hljs-value"><span class="hljs-string">"图片地址1"</span></span>,
+    "<span class="hljs-attribute">createtime</span>": <span class="hljs-value"><span class="hljs-number">1400128946000</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"视频标题"</span></span>,
+    "<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"作者名称"</span></span>,
+    "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value"><span class="hljs-number">1400128946000</span></span>,
+    "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"http://cloud.video.taobao.com//play/u/441068731/p/1/e/1/t/1/11841246.swf"</span></span>,
+    "<span class="hljs-attribute">next</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">returnCount</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">creator</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">draft</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">intro</span>": <span class="hljs-value"><span class="hljs-string">"文档简介"</span></span>,
+        "<span class="hljs-attribute">toPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">endRow</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+        "<span class="hljs-attribute">nodeid</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+        "<span class="hljs-attribute">image1</span>": <span class="hljs-value"><span class="hljs-string">"文档配图1"</span></span>,
+        "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"http://img2.tbcdn.cn:80/tfscom/T1Wik8FqFbXXXXXXXX"</span></span>,
+        "<span class="hljs-attribute">nextPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">totalItem</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"合同样本.docx"</span></span>,
+        "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value"><span class="hljs-number">1400129008000</span></span>,
+        "<span class="hljs-attribute">next</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">orderStr</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">image2</span>": <span class="hljs-value"><span class="hljs-string">"文档配图2"</span></span>,
+        "<span class="hljs-attribute">perPageSize</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+        "<span class="hljs-attribute">isPagein</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">lastPage</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">desiredPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">previousPage</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">author</span>": <span class="hljs-value"><span class="hljs-string">"作者名称"</span></span>,
+        "<span class="hljs-attribute">modifier</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">startRow</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">list</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">totalPage</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">createtime</span>": <span class="hljs-value"><span class="hljs-number">1400129008000</span></span>,
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"文档标题"</span></span>,
+        "<span class="hljs-attribute">firstPage</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">pre</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">newest</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>}
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

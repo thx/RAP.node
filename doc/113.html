@@ -1,0 +1,231 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>Petstore接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#demo模块---人员列表页面" class="list-group-item heading">Demo模块 - 人员列表页面</a><a href="#demo模块---人员列表页面-get-list" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Get List</a><a href="#demo模块---人员列表页面-page" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Page</a></div><div class="list-group"><a href="#demo模块---list页面" class="list-group-item heading">Demo模块 - List页面</a><a href="#demo模块---list页面-hello" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;hello</a><a href="#demo模块---list页面-test" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;test</a></div><div class="list-group"><a href="#demo模块---首页" class="list-group-item heading">Demo模块 - 首页</a><a href="#demo模块---首页-ok" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;OK</a><a href="#demo模块---首页-get-person" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Get Person</a></div><div class="list-group"><a href="#demo模块---产品list" class="list-group-item heading">Demo模块 - 产品List</a><a href="#demo模块---产品list-getlist.htm" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;getList.htm</a></div><div class="list-group"><a href="#demo模块---详情" class="list-group-item heading">Demo模块 - 详情</a><a href="#demo模块---详情-product-info" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Product info</a><a href="#demo模块---详情-product-summary" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Product summary</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">Petstore接口文档</h1></div></header><div class="description"><p>webx3 demo项目改造前后端分层设计</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="demo模块---人员列表页面">Demo模块 - 人员列表页面&nbsp;<a href="#demo模块---人员列表页面"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="demo模块---人员列表页面-get-list">Get List&nbsp;<a href="#demo模块---人员列表页面-get-list"><i class="fa fa-link"></i></a></h4><p>@type=array_map;取人员列表</p>
+<section id="demo模块---人员列表页面-get-list-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#demo模块---人员列表页面-get-list-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/list.htm</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7b1dc5476247c4b3db8794bc67660208" class="pull-right">Toggle</a></li><li id="7b1dc5476247c4b3db8794bc67660208" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>[
+{
+"<span class="hljs-attribute">user</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1996-09-24"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Mary Harris"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+        "<span class="hljs-attribute">work</span>": <span class="hljs-value"><span class="hljs-number">9</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1985-11-20"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Sandra Hall"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1001</span></span>,
+        "<span class="hljs-attribute">work</span>": <span class="hljs-value"><span class="hljs-number">9</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1970-12-04"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Linda Harris"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
+        "<span class="hljs-attribute">work</span>": <span class="hljs-value"><span class="hljs-number">5</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"2002-09-18"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Charles Gonzalez"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1003</span></span>,
+        "<span class="hljs-attribute">work</span>": <span class="hljs-value"><span class="hljs-number">6</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"2006-11-12"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Kenneth Young"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1004</span></span>,
+        "<span class="hljs-attribute">work</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1990-02-08"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Dorothy Clark"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1005</span></span>,
+        "<span class="hljs-attribute">work</span>": <span class="hljs-value"><span class="hljs-number">7</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"2013-09-23"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Maria White"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1006</span></span>,
+        "<span class="hljs-attribute">work</span>": <span class="hljs-value"><span class="hljs-number">5</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1984-01-01"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"John Lopez"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1007</span></span>,
+        "<span class="hljs-attribute">work</span>": <span class="hljs-value"><span class="hljs-number">9</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">birthday</span>": <span class="hljs-value"><span class="hljs-string">"1992-06-13"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"James Johnson"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1008</span></span>,
+        "<span class="hljs-attribute">work</span>": <span class="hljs-value"><span class="hljs-number">8</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">dept</span>": <span class="hljs-value"><span class="hljs-string">"来往"</span>
+</span>}
+]
+</code></pre></li></ul></section><h4 id="demo模块---人员列表页面-page">Page&nbsp;<a href="#demo模块---人员列表页面-page"><i class="fa fa-link"></i></a></h4><p>@type=array_map;ajax call</p>
+<section id="demo模块---人员列表页面-page-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#demo模块---人员列表页面-page-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/ajax.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#19386243272c1abd183adecc92a8f44f" class="pull-right">Toggle</a></li><li id="19386243272c1abd183adecc92a8f44f" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>[
+{
+"<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">18</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"lzj"</span>
+</span>}
+]
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="demo模块---list页面">Demo模块 - List页面&nbsp;<a href="#demo模块---list页面"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="demo模块---list页面-hello">hello&nbsp;<a href="#demo模块---list页面-hello"><i class="fa fa-link"></i></a></h4><section id="demo模块---list页面-hello-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#demo模块---list页面-hello-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/home/index.htm</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#d4cdc1156c46e3179a1e0a31e7fd05a5" class="pull-right">Toggle</a></li><li id="d4cdc1156c46e3179a1e0a31e7fd05a5" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-number">18</span>
+</span>}
+</code></pre></li></ul></section><h4 id="demo模块---list页面-test">test&nbsp;<a href="#demo模块---list页面-test"><i class="fa fa-link"></i></a></h4><section id="demo模块---list页面-test-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#demo模块---list页面-test-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/test.htm</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#58df515e67fd80a7cd44ff6043b00ccd" class="pull-right">Toggle</a></li><li id="58df515e67fd80a7cd44ff6043b00ccd" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="demo模块---首页">Demo模块 - 首页&nbsp;<a href="#demo模块---首页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="demo模块---首页-ok">OK&nbsp;<a href="#demo模块---首页-ok"><i class="fa fa-link"></i></a></h4><section id="demo模块---首页-ok-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#demo模块---首页-ok-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/home/ok.htm</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#58005f312bfe5712310bcdd7eea950ff" class="pull-right">Toggle</a></li><li id="58005f312bfe5712310bcdd7eea950ff" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"John Perez"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="demo模块---首页-get-person">Get Person&nbsp;<a href="#demo模块---首页-get-person"><i class="fa fa-link"></i></a></h4><section id="demo模块---首页-get-person-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#demo模块---首页-get-person-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/home/getPerson.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#50cb79258df853d0c54cfde924c6244a" class="pull-right">Toggle</a></li><li id="50cb79258df853d0c54cfde924c6244a" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Anthony Lopez"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="demo模块---产品list">Demo模块 - 产品List&nbsp;<a href="#demo模块---产品list"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="demo模块---产品list-getlist.htm">getList.htm&nbsp;<a href="#demo模块---产品list-getlist.htm"><i class="fa fa-link"></i></a></h4><section id="demo模块---产品list-getlist.htm-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#demo模块---产品list-getlist.htm-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/home/list.htm</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#ae9d165a3478696b6ba7f569f19a881e" class="pull-right">Toggle</a></li><li id="ae9d165a3478696b6ba7f569f19a881e" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">product</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">ID</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Margaret Robinson"</span>
+</span>},
+{
+    "<span class="hljs-attribute">ID</span>": <span class="hljs-value"><span class="hljs-number">1002</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Donald Gonzalez"</span>
+</span>},
+{
+    "<span class="hljs-attribute">ID</span>": <span class="hljs-value"><span class="hljs-number">1004</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Donna Lopez"</span>
+</span>},
+{
+    "<span class="hljs-attribute">ID</span>": <span class="hljs-value"><span class="hljs-number">1006</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Shirley Miller"</span>
+</span>},
+{
+    "<span class="hljs-attribute">ID</span>": <span class="hljs-value"><span class="hljs-number">1008</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Melissa Young"</span>
+</span>},
+{
+    "<span class="hljs-attribute">ID</span>": <span class="hljs-value"><span class="hljs-number">1010</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Melissa Jones"</span>
+</span>},
+{
+    "<span class="hljs-attribute">ID</span>": <span class="hljs-value"><span class="hljs-number">1012</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Linda Wilson"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="demo模块---详情">Demo模块 - 详情&nbsp;<a href="#demo模块---详情"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="demo模块---详情-product-info">Product info&nbsp;<a href="#demo模块---详情-product-info"><i class="fa fa-link"></i></a></h4><section id="demo模块---详情-product-info-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#demo模块---详情-product-info-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/home/detail.htm</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#99dc7e8adad5835d888c5060fdfda318" class="pull-right">Toggle</a></li><li id="99dc7e8adad5835d888c5060fdfda318" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"Cynthia Harris"</span></span>,
+"<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1001"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="demo模块---详情-product-summary">Product summary&nbsp;<a href="#demo模块---详情-product-summary"><i class="fa fa-link"></i></a></h4><section id="demo模块---详情-product-summary-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#demo模块---详情-product-summary-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/home/summary.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#ef04d508d7a39853a8af52b1cd63025d" class="pull-right">Toggle</a></li><li id="ef04d508d7a39853a8af52b1cd63025d" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">1111</span>
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

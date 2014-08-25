@@ -1,0 +1,217 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>月光宝盒-双11..接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#直播间---直播间报表" class="list-group-item heading">直播间 - 直播间报表</a><a href="#直播间---直播间报表-各时段会场指标对比" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;各时段会场指标对比</a><a href="#直播间---直播间报表-各会场指标变化" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;各会场指标变化</a></div><div class="list-group"><a href="#坑位---坑位数据" class="list-group-item heading">坑位 - 坑位数据</a><a href="#坑位---坑位数据-坑位效果详情" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;坑位效果详情</a><a href="#坑位---坑位数据-会场整体效果" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;会场整体效果</a><a href="#坑位---坑位数据-坑位效果整体展示" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;坑位效果整体展示</a></div><div class="list-group"><a href="#2013双11---2013双11改" class="list-group-item heading">2013双11 - 2013双11改</a><a href="#2013双11---2013双11改-会场指标30天趋势" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;会场指标30天趋势</a><a href="#2013双11---2013双11改-月光宝盒会场坑位排行" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;月光宝盒会场坑位排行</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">月光宝盒-双11..接口文档</h1></div></header><div class="description"><p>双11坑位</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="直播间---直播间报表">直播间 - 直播间报表&nbsp;<a href="#直播间---直播间报表"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="直播间---直播间报表-各时段会场指标对比">各时段会场指标对比&nbsp;<a href="#直播间---直播间报表-各时段会场指标对比"><i class="fa fa-link"></i></a></h4><p>多个会场，同一个指标对比</p>
+<section id="直播间---直播间报表-各时段会场指标对比-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#直播间---直播间报表-各时段会场指标对比-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/dacu/get_grounds_ind</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#62393975331da9368d98006caee81a57" class="pull-right">Toggle</a></li><li id="62393975331da9368d98006caee81a57" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">ind_value</span>": <span class="hljs-value"><span class="hljs-number">52741</span></span>,
+    "<span class="hljs-attribute">gid</span>": <span class="hljs-value"><span class="hljs-number">58248</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="直播间---直播间报表-各会场指标变化">各会场指标变化&nbsp;<a href="#直播间---直播间报表-各会场指标变化"><i class="fa fa-link"></i></a></h4><p>单个的会场所有指标趋势</p>
+<section id="直播间---直播间报表-各会场指标变化-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#直播间---直播间报表-各会场指标变化-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/dacu/get_ground_inds</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c21184af32f1420dc1f5aee9001f742f" class="pull-right">Toggle</a></li><li id="c21184af32f1420dc1f5aee9001f742f" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">22776</span></span>,
+    "<span class="hljs-attribute">uv_click</span>": <span class="hljs-value"><span class="hljs-number">54022</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">47002</span></span>,
+    "<span class="hljs-attribute">alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">53716</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">11144</span></span>,
+    "<span class="hljs-attribute">pv_rate</span>": <span class="hljs-value"><span class="hljs-number">45463</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-number">61260</span></span>,
+    "<span class="hljs-attribute">pv_click</span>": <span class="hljs-value"><span class="hljs-number">31234</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="坑位---坑位数据">坑位 - 坑位数据&nbsp;<a href="#坑位---坑位数据"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="坑位---坑位数据-坑位效果详情">坑位效果详情&nbsp;<a href="#坑位---坑位数据-坑位效果详情"><i class="fa fa-link"></i></a></h4><p>点击该坑位后，会出现该坑位的各个指标在24小时段内的趋势。</p>
+<section id="坑位---坑位数据-坑位效果详情-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#坑位---坑位数据-坑位效果详情-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/dacu/get_spm_detail</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#140b30430e0744fe2b9efbd0daa69bc2" class="pull-right">Toggle</a></li><li id="140b30430e0744fe2b9efbd0daa69bc2" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">28261</span></span>,
+    "<span class="hljs-attribute">pv_rate</span>": <span class="hljs-value"><span class="hljs-number">52648</span></span>,
+    "<span class="hljs-attribute">alipay_proportion</span>": <span class="hljs-value"><span class="hljs-number">16681</span></span>,
+    "<span class="hljs-attribute">alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">36101</span></span>,
+    "<span class="hljs-attribute">pv_click</span>": <span class="hljs-value"><span class="hljs-number">11803</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-number">87343</span></span>,
+    "<span class="hljs-attribute">item_alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">70144</span></span>,
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">77307</span></span>,
+    "<span class="hljs-attribute">item_alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">62431</span></span>,
+    "<span class="hljs-attribute">alipay_shop_amt</span>": <span class="hljs-value"><span class="hljs-number">84564</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-number">26885</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="坑位---坑位数据-会场整体效果">会场整体效果&nbsp;<a href="#坑位---坑位数据-会场整体效果"><i class="fa fa-link"></i></a></h4><p>用于对于选定的会场，在最上方展示该会场级别的整体数据。</p>
+<section id="坑位---坑位数据-会场整体效果-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#坑位---坑位数据-会场整体效果-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/dacu/get_ground_all</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4e06b54367f3c0071057b55f6e5e78dd" class="pull-right">Toggle</a></li><li id="4e06b54367f3c0071057b55f6e5e78dd" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">utilnow</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">uv_click</span>": <span class="hljs-value"><span class="hljs-number">47271</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">42450</span></span>,
+    "<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">30814</span></span>,
+    "<span class="hljs-attribute">pv_rate</span>": <span class="hljs-value"><span class="hljs-number">60267</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">11735</span></span>,
+    "<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">82734</span>
+</span>}</span>,
+"<span class="hljs-attribute">lasthour</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">pv_rate</span>": <span class="hljs-value"><span class="hljs-number">17480</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">87174</span></span>,
+    "<span class="hljs-attribute">uv_click</span>": <span class="hljs-value"><span class="hljs-number">23035</span></span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-number">27344</span></span>,
+    "<span class="hljs-attribute">alipay_trade_amt</span>": <span class="hljs-value"><span class="hljs-number">31501</span></span>,
+    "<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">66137</span>
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="坑位---坑位数据-坑位效果整体展示">坑位效果整体展示&nbsp;<a href="#坑位---坑位数据-坑位效果整体展示"><i class="fa fa-link"></i></a></h4><p>用于坑位效果整体展示页面</p>
+<section id="坑位---坑位数据-坑位效果整体展示-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#坑位---坑位数据-坑位效果整体展示-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/dacu/get_spm_all</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#42607336ea6b8e24e7b53d78515cf93b" class="pull-right">Toggle</a></li><li id="42607336ea6b8e24e7b53d78515cf93b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">60847</span></span>,
+    "<span class="hljs-attribute">alipay_shop_amt</span>": <span class="hljs-value"><span class="hljs-number">43574</span></span>,
+    "<span class="hljs-attribute">alipay_proportion</span>": <span class="hljs-value"><span class="hljs-number">72152</span></span>,
+    "<span class="hljs-attribute">spm_id</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2oi1"</span></span>,
+    "<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">75702</span></span>,
+    "<span class="hljs-attribute">pv_click</span>": <span class="hljs-value"><span class="hljs-number">77547</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="2013双11---2013双11改">2013双11 - 2013双11改&nbsp;<a href="#2013双11---2013双11改"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="2013双11---2013双11改-会场指标30天趋势">会场指标30天趋势&nbsp;<a href="#2013双11---2013双11改-会场指标30天趋势"><i class="fa fa-link"></i></a></h4><section id="2013双11---2013双11改-会场指标30天趋势-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#2013双11---2013双11改-会场指标30天趋势-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/grd_trend_d</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#81591bd4a262f5e65574fecb900752a4" class="pull-right">Toggle</a></li><li id="81591bd4a262f5e65574fecb900752a4" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">alipay_amt</span>": <span class="hljs-value"><span class="hljs-number">80823</span></span>,
+    "<span class="hljs-attribute">uv_rate</span>": <span class="hljs-value"><span class="hljs-number">87678</span></span>,
+    "<span class="hljs-attribute">alipay_convert</span>": <span class="hljs-value"><span class="hljs-number">62371</span></span>,
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-number">54765</span></span>,
+    "<span class="hljs-attribute">pv_click</span>": <span class="hljs-value"><span class="hljs-number">37022</span></span>,
+    "<span class="hljs-attribute">day</span>": <span class="hljs-value"><span class="hljs-number">81650</span></span>,
+    "<span class="hljs-attribute">pv_rate</span>": <span class="hljs-value"><span class="hljs-number">31041</span></span>,
+    "<span class="hljs-attribute">uv_click</span>": <span class="hljs-value"><span class="hljs-number">27657</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="2013双11---2013双11改-月光宝盒会场坑位排行">月光宝盒会场坑位排行&nbsp;<a href="#2013双11---2013双11改-月光宝盒会场坑位排行"><i class="fa fa-link"></i></a></h4><section id="2013双11---2013双11改-月光宝盒会场坑位排行-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#2013双11---2013双11改-月光宝盒会场坑位排行-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/rank</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#aceb1ab24beede5b84af93a1f323cbec" class="pull-right">Toggle</a></li><li id="aceb1ab24beede5b84af93a1f323cbec" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">top</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">71278</span></span>,
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">42638</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">low</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-number">14858</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">51237</span>
+    </span>}
+]
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

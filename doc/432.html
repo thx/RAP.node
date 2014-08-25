@@ -1,0 +1,664 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>openssp-..接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#广告位---删除广告位" class="list-group-item heading">广告位 - 删除广告位</a><a href="#广告位---删除广告位-删除广告位" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;删除广告位</a></div><div class="list-group"><a href="#广告位---广告位列表" class="list-group-item heading">广告位 - 广告位列表</a><a href="#广告位---广告位列表-推广位收入报表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;推广位收入报表</a><a href="#广告位---广告位列表-获取广告位关联的计划" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取广告位关联的计划</a><a href="#广告位---广告位列表-查询推广位列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;查询推广位列表</a><a href="#广告位---广告位列表-获取代码" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取代码</a></div><div class="list-group"><a href="#广告位---创建广告位" class="list-group-item heading">广告位 - 创建广告位</a><a href="#广告位---创建广告位-创建广告位" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;创建广告位</a><a href="#广告位---创建广告位-获取尺寸列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取尺寸列表</a><a href="#广告位---创建广告位-获取渠道" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取渠道</a><a href="#广告位---创建广告位-获取网站列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取网站列表</a></div><div class="list-group"><a href="#广告位---更新广告位" class="list-group-item heading">广告位 - 更新广告位</a><a href="#广告位---更新广告位-获取广告位详细信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取广告位详细信息</a><a href="#广告位---更新广告位-获取渠道1" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取渠道1</a><a href="#广告位---更新广告位-更新广告位" class="list-group-item"><i class="fa fa-pencil"></i>&nbsp;更新广告位</a></div><div class="list-group"><a href="#网站---新增网站" class="list-group-item heading">网站 - 新增网站</a><a href="#网站---新增网站-下载验证文件" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;下载验证文件</a><a href="#网站---新增网站-新增网站" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;新增网站</a><a href="#网站---新增网站-获取所有字典数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取所有字典数据</a></div><div class="list-group"><a href="#网站---更新网站" class="list-group-item heading">网站 - 更新网站</a><a href="#网站---更新网站-获取网站信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取网站信息</a><a href="#网站---更新网站-获取所有字典数据2" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取所有字典数据2</a><a href="#网站---更新网站-更新网站" class="list-group-item"><i class="fa fa-pencil"></i>&nbsp;更新网站</a></div><div class="list-group"><a href="#网站---网站列表" class="list-group-item heading">网站 - 网站列表</a><a href="#网站---网站列表-获取网站列表3" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取网站列表3</a><a href="#网站---网站列表-获取某网站下所有的推广位" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取某网站下所有的推广位</a><a href="#网站---网站列表-网站报表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;网站报表</a></div><div class="list-group"><a href="#渠道---删除渠道" class="list-group-item heading">渠道 - 删除渠道</a><a href="#渠道---删除渠道-删除渠道" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;删除渠道</a></div><div class="list-group"><a href="#渠道---更新渠道" class="list-group-item heading">渠道 - 更新渠道</a><a href="#渠道---更新渠道-更新渠道" class="list-group-item"><i class="fa fa-pencil"></i>&nbsp;更新渠道</a><a href="#渠道---更新渠道-获取渠道详细信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取渠道详细信息</a><a href="#渠道---更新渠道-按网站、尺寸信息获取该用户下所有.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;按网站、尺寸信息获取该用户下所有..</a><a href="#渠道---更新渠道-获取网站列表4" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取网站列表4</a></div><div class="list-group"><a href="#渠道---新增渠道" class="list-group-item heading">渠道 - 新增渠道</a><a href="#渠道---新增渠道-获取网站列表5" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取网站列表5</a><a href="#渠道---新增渠道-按网站、尺寸信息获取该用户下所有..6" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;按网站、尺寸信息获取该用户下所有..6</a><a href="#渠道---新增渠道-新增渠道" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;新增渠道</a><a href="#渠道---新增渠道-按网站、尺寸信息获取该用户下所有..7" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;按网站、尺寸信息获取该用户下所有..7</a></div><div class="list-group"><a href="#渠道---渠道列表" class="list-group-item heading">渠道 - 渠道列表</a><a href="#渠道---渠道列表-渠道收入报表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;渠道收入报表</a><a href="#渠道---渠道列表-获取渠道列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取渠道列表</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">openssp-..接口文档</h1></div></header><div class="description"><p>广告位相关</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="广告位---删除广告位">广告位 - 删除广告位&nbsp;<a href="#广告位---删除广告位"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="广告位---删除广告位-删除广告位">删除广告位&nbsp;<a href="#广告位---删除广告位-删除广告位"><i class="fa fa-link"></i></a></h4><section id="广告位---删除广告位-删除广告位-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">DELETE</span></div><div style="float:left"><a href="#广告位---删除广告位-删除广告位-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/api/adzone/{adzoneId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#63e1d06899f84f00d4bc23fa083a59e3" class="pull-right">Toggle</a></li><li id="63e1d06899f84f00d4bc23fa083a59e3" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容375o"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="广告位---广告位列表">广告位 - 广告位列表&nbsp;<a href="#广告位---广告位列表"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="广告位---广告位列表-推广位收入报表">推广位收入报表&nbsp;<a href="#广告位---广告位列表-推广位收入报表"><i class="fa fa-link"></i></a></h4><section id="广告位---广告位列表-推广位收入报表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#广告位---广告位列表-推广位收入报表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#21f33e34f9e00a5a47cbc6d9e7a61ffc" class="pull-right">Toggle</a></li><li id="21f33e34f9e00a5a47cbc6d9e7a61ffc" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="广告位---广告位列表-获取广告位关联的计划">获取广告位关联的计划&nbsp;<a href="#广告位---广告位列表-获取广告位关联的计划"><i class="fa fa-link"></i></a></h4><section id="广告位---广告位列表-获取广告位关联的计划-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#广告位---广告位列表-获取广告位关联的计划-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#5166dbd57fd8d994d4b1ba4b9042d5db" class="pull-right">Toggle</a></li><li id="5166dbd57fd8d994d4b1ba4b9042d5db" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="广告位---广告位列表-查询推广位列表">查询推广位列表&nbsp;<a href="#广告位---广告位列表-查询推广位列表"><i class="fa fa-link"></i></a></h4><section id="广告位---广告位列表-查询推广位列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#广告位---广告位列表-查询推广位列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzone/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#3e2fa0d53c94147a83aff044631afa64" class="pull-right">Toggle</a></li><li id="3e2fa0d53c94147a83aff044631afa64" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容q186"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="广告位---广告位列表-获取代码">获取代码&nbsp;<a href="#广告位---广告位列表-获取代码"><i class="fa fa-link"></i></a></h4><section id="广告位---广告位列表-获取代码-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#广告位---广告位列表-获取代码-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzone/{adzoneId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a1d9510d6798683fdb23c732c8f4929d" class="pull-right">Toggle</a></li><li id="a1d9510d6798683fdb23c732c8f4929d" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">AdzoneDO</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">adzonesize</span>": <span class="hljs-value"><span class="hljs-string">"测试内容30i3"</span></span>,
+    "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"测试内容i21y"</span></span>,
+    "<span class="hljs-attribute">createtime</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">sizecode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容no3k"</span></span>,
+    "<span class="hljs-attribute">poscode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容q45g"</span></span>,
+    "<span class="hljs-attribute">adzoneid</span>": <span class="hljs-value"><span class="hljs-number">46762</span></span>,
+    "<span class="hljs-attribute">sitename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容60kc"</span></span>,
+    "<span class="hljs-attribute">viewscreen</span>": <span class="hljs-value"><span class="hljs-number">66502</span></span>,
+    "<span class="hljs-attribute">videoType</span>": <span class="hljs-value"><span class="hljs-number">73021</span></span>,
+    "<span class="hljs-attribute">cpmMinPrice</span>": <span class="hljs-value"><span class="hljs-number">84646</span></span>,
+    "<span class="hljs-attribute">snapshotpath</span>": <span class="hljs-value"><span class="hljs-string">"测试内容51j0"</span></span>,
+    "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">staytime</span>": <span class="hljs-value"><span class="hljs-number">81737</span></span>,
+    "<span class="hljs-attribute">defaultAdid</span>": <span class="hljs-value"><span class="hljs-number">64642</span></span>,
+    "<span class="hljs-attribute">htmlText</span>": <span class="hljs-value"><span class="hljs-string">"测试内容qwxj"</span></span>,
+    "<span class="hljs-attribute">groupId</span>": <span class="hljs-value"><span class="hljs-number">66048</span></span>,
+    "<span class="hljs-attribute">transtype</span>": <span class="hljs-value"><span class="hljs-string">"测试内容v2kv"</span></span>,
+    "<span class="hljs-attribute">joinex</span>": <span class="hljs-value"><span class="hljs-number">76224</span></span>,
+    "<span class="hljs-attribute">snapshottime</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">adzoneurl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容q533"</span></span>,
+    "<span class="hljs-attribute">zonedesc</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8hj7"</span></span>,
+    "<span class="hljs-attribute">adxAuditStatus</span>": <span class="hljs-value"><span class="hljs-number">66161</span></span>,
+    "<span class="hljs-attribute">memberid</span>": <span class="hljs-value"><span class="hljs-number">55085</span></span>,
+    "<span class="hljs-attribute">maxDuration</span>": <span class="hljs-value"><span class="hljs-number">54248</span></span>,
+    "<span class="hljs-attribute">homepage</span>": <span class="hljs-value"><span class="hljs-number">60325</span></span>,
+    "<span class="hljs-attribute">distype</span>": <span class="hljs-value"><span class="hljs-number">48151</span></span>,
+    "<span class="hljs-attribute">adzonename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容h74j"</span></span>,
+    "<span class="hljs-attribute">pid</span>": <span class="hljs-value"><span class="hljs-string">"测试内容zf51"</span></span>,
+    "<span class="hljs-attribute">minDuration</span>": <span class="hljs-value"><span class="hljs-number">18464</span></span>,
+    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">43006</span></span>,
+    "<span class="hljs-attribute">siteid</span>": <span class="hljs-value"><span class="hljs-number">43333</span>
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容fa77"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="广告位---创建广告位">广告位 - 创建广告位&nbsp;<a href="#广告位---创建广告位"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="广告位---创建广告位-创建广告位">创建广告位&nbsp;<a href="#广告位---创建广告位-创建广告位"><i class="fa fa-link"></i></a></h4><section id="广告位---创建广告位-创建广告位-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#广告位---创建广告位-创建广告位-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/api/adzone/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#bbb240aace65814c200485b7460c1f23" class="pull-right">Toggle</a></li><li id="bbb240aace65814c200485b7460c1f23" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容j455"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{}
+</span>}
+</code></pre></li></ul></section><h4 id="广告位---创建广告位-获取尺寸列表">获取尺寸列表&nbsp;<a href="#广告位---创建广告位-获取尺寸列表"><i class="fa fa-link"></i></a></h4><section id="广告位---创建广告位-获取尺寸列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#广告位---创建广告位-获取尺寸列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzone/adzonesizes</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#9de01fe5b641145d2d5dcb1eac0e00fc" class="pull-right">Toggle</a></li><li id="9de01fe5b641145d2d5dcb1eac0e00fc" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容d7y7"</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">verticalList</span>": <span class="hljs-value">[]</span>,
+"<span class="hljs-attribute">squareList</span>": <span class="hljs-value">[]</span>,
+"<span class="hljs-attribute">recommendList</span>": <span class="hljs-value">[]</span>,
+"<span class="hljs-attribute">textLinkList</span>": <span class="hljs-value">[]</span>,
+"<span class="hljs-attribute">bannerList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">AdzoneSizeInfoDO</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">sizeType</span>": <span class="hljs-value"><span class="hljs-number">11034</span></span>,
+            "<span class="hljs-attribute">allowAdzoneType</span>": <span class="hljs-value"><span class="hljs-number">57348</span></span>,
+            "<span class="hljs-attribute">sizeId</span>": <span class="hljs-value"><span class="hljs-number">26755</span></span>,
+            "<span class="hljs-attribute">adzoneSize</span>": <span class="hljs-value"><span class="hljs-string">"测试内容56f6"</span></span>,
+            "<span class="hljs-attribute">recommend</span>": <span class="hljs-value"><span class="hljs-number">83333</span></span>,
+            "<span class="hljs-attribute">createTime</span>": <span class="hljs-value">{}</span>,
+            "<span class="hljs-attribute">sizeCode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容104g"</span></span>,
+            "<span class="hljs-attribute">isSsp</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+            "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value">{}</span>,
+            "<span class="hljs-attribute">scale</span>": <span class="hljs-value"><span class="hljs-string">"测试内容cr56"</span>
+        </span>}
+    </span>}
+]
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="广告位---创建广告位-获取渠道">获取渠道&nbsp;<a href="#广告位---创建广告位-获取渠道"><i class="fa fa-link"></i></a></h4><section id="广告位---创建广告位-获取渠道-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#广告位---创建广告位-获取渠道-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzonegroup</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#ecefc61b75a8b644ab998d0a8bf54e9f" class="pull-right">Toggle</a></li><li id="ecefc61b75a8b644ab998d0a8bf54e9f" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">QueryList</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">53620</span></span>,
+    "<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">AdzoneGroupDO</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">groupId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">creatorId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">memberId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">groupName</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">creatTime</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">modifierId</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+            </span>}
+        </span>}
+    ]
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1936"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="广告位---创建广告位-获取网站列表">获取网站列表&nbsp;<a href="#广告位---创建广告位-获取网站列表"><i class="fa fa-link"></i></a></h4><section id="广告位---创建广告位-获取网站列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#广告位---创建广告位-获取网站列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/site</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#de37987b430efd704ace9ad4fe1dc607" class="pull-right">Toggle</a></li><li id="de37987b430efd704ace9ad4fe1dc607" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容e3c3"</span></span>,
+    "<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">SiteDO</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容bp3c"</span></span>,
+                "<span class="hljs-attribute">propsMap</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">recordno</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">34621</span></span>,
+                    "<span class="hljs-attribute">income</span>": <span class="hljs-value"><span class="hljs-number">78184</span></span>,
+                    "<span class="hljs-attribute">sex</span>": <span class="hljs-value"><span class="hljs-number">87516</span>
+                </span>}</span>,
+                "<span class="hljs-attribute">bakMessage</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9k7d"</span></span>,
+                "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">sitestat</span>": <span class="hljs-value"><span class="hljs-number">22730</span></span>,
+                "<span class="hljs-attribute">sysid</span>": <span class="hljs-value"><span class="hljs-number">40851</span></span>,
+                "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1x22"</span></span>,
+                "<span class="hljs-attribute">userid</span>": <span class="hljs-value"><span class="hljs-number">80510</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5r53"</span></span>,
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9645"</span></span>,
+                "<span class="hljs-attribute">pubinfoid</span>": <span class="hljs-value"><span class="hljs-number">28776</span></span>,
+                "<span class="hljs-attribute">adzoneCount</span>": <span class="hljs-value"><span class="hljs-number">64070</span></span>,
+                "<span class="hljs-attribute">typename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容0894"</span></span>,
+                "<span class="hljs-attribute">createtime</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"测试内容13de"</span></span>,
+                "<span class="hljs-attribute">siteid</span>": <span class="hljs-value"><span class="hljs-number">13425</span>
+            </span>}
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">70010</span></span>,
+    "<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="广告位---更新广告位">广告位 - 更新广告位&nbsp;<a href="#广告位---更新广告位"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="广告位---更新广告位-获取广告位详细信息">获取广告位详细信息&nbsp;<a href="#广告位---更新广告位-获取广告位详细信息"><i class="fa fa-link"></i></a></h4><section id="广告位---更新广告位-获取广告位详细信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#广告位---更新广告位-获取广告位详细信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzone/{adzoneId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#704e744f1d875375ec796573bb6f2aa9" class="pull-right">Toggle</a></li><li id="704e744f1d875375ec796573bb6f2aa9" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容v5c8"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">Adzone</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">snapshottime</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">distype</span>": <span class="hljs-value"><span class="hljs-number">81110</span></span>,
+    "<span class="hljs-attribute">adzoneurl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容xt8w"</span></span>,
+    "<span class="hljs-attribute">sizecode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容e68o"</span></span>,
+    "<span class="hljs-attribute">adzoneid</span>": <span class="hljs-value"><span class="hljs-number">28811</span></span>,
+    "<span class="hljs-attribute">adxAuditStatus</span>": <span class="hljs-value"><span class="hljs-number">47714</span></span>,
+    "<span class="hljs-attribute">htmlText</span>": <span class="hljs-value"><span class="hljs-string">"测试内容y275"</span></span>,
+    "<span class="hljs-attribute">joinex</span>": <span class="hljs-value"><span class="hljs-number">28672</span></span>,
+    "<span class="hljs-attribute">transtype</span>": <span class="hljs-value"><span class="hljs-string">"测试内容q8w6"</span></span>,
+    "<span class="hljs-attribute">maxDuration</span>": <span class="hljs-value"><span class="hljs-number">61317</span></span>,
+    "<span class="hljs-attribute">adzonesize</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4rvx"</span></span>,
+    "<span class="hljs-attribute">sitename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容tn7f"</span></span>,
+    "<span class="hljs-attribute">pid</span>": <span class="hljs-value"><span class="hljs-string">"测试内容q7im"</span></span>,
+    "<span class="hljs-attribute">homepage</span>": <span class="hljs-value"><span class="hljs-number">65011</span></span>,
+    "<span class="hljs-attribute">cpmMinPrice</span>": <span class="hljs-value"><span class="hljs-number">73376</span></span>,
+    "<span class="hljs-attribute">videoType</span>": <span class="hljs-value"><span class="hljs-number">32846</span></span>,
+    "<span class="hljs-attribute">memberid</span>": <span class="hljs-value"><span class="hljs-number">21551</span></span>,
+    "<span class="hljs-attribute">defaultAdid</span>": <span class="hljs-value"><span class="hljs-number">55520</span></span>,
+    "<span class="hljs-attribute">adzonename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容298y"</span></span>,
+    "<span class="hljs-attribute">createtime</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">staytime</span>": <span class="hljs-value"><span class="hljs-number">64251</span></span>,
+    "<span class="hljs-attribute">poscode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容rb8r"</span></span>,
+    "<span class="hljs-attribute">snapshotpath</span>": <span class="hljs-value"><span class="hljs-string">"测试内容o34p"</span></span>,
+    "<span class="hljs-attribute">groupId</span>": <span class="hljs-value"><span class="hljs-number">42607</span></span>,
+    "<span class="hljs-attribute">viewscreen</span>": <span class="hljs-value"><span class="hljs-number">41383</span></span>,
+    "<span class="hljs-attribute">format</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8dgt"</span></span>,
+    "<span class="hljs-attribute">siteid</span>": <span class="hljs-value"><span class="hljs-number">40615</span></span>,
+    "<span class="hljs-attribute">zonedesc</span>": <span class="hljs-value"><span class="hljs-string">"测试内容y520"</span></span>,
+    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">88170</span></span>,
+    "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">minDuration</span>": <span class="hljs-value"><span class="hljs-number">68121</span>
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="广告位---更新广告位-获取渠道1">获取渠道1&nbsp;<a href="#广告位---更新广告位-获取渠道1"><i class="fa fa-link"></i></a></h4><section id="广告位---更新广告位-获取渠道1-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#广告位---更新广告位-获取渠道1-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzonegroup</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#5a2cc28102da582b5e2f8ca93b0293e0" class="pull-right">Toggle</a></li><li id="5a2cc28102da582b5e2f8ca93b0293e0" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">QueryList</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">AdzoneGroupDO</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">memberId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">creatTime</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">groupId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">modifierId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">creatorId</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">groupName</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+            </span>}
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">75125</span>
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容v268"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="广告位---更新广告位-更新广告位">更新广告位&nbsp;<a href="#广告位---更新广告位-更新广告位"><i class="fa fa-link"></i></a></h4><section id="广告位---更新广告位-更新广告位-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">PUT</span></div><div style="float:left"><a href="#广告位---更新广告位-更新广告位-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/api/adzone/{adzoneId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#10b763fd8b9a27b1eaaec7635a668f18" class="pull-right">Toggle</a></li><li id="10b763fd8b9a27b1eaaec7635a668f18" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3386"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="网站---新增网站">网站 - 新增网站&nbsp;<a href="#网站---新增网站"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="网站---新增网站-下载验证文件">下载验证文件&nbsp;<a href="#网站---新增网站-下载验证文件"><i class="fa fa-link"></i></a></h4><section id="网站---新增网站-下载验证文件-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#网站---新增网站-下载验证文件-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/site/verifyfile</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#431c677a440bb709a4a08c2cc18a8536" class="pull-right">Toggle</a></li><li id="431c677a440bb709a4a08c2cc18a8536" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="网站---新增网站-新增网站">新增网站&nbsp;<a href="#网站---新增网站-新增网站"><i class="fa fa-link"></i></a></h4><section id="网站---新增网站-新增网站-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#网站---新增网站-新增网站-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/api/site</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e1b5cfdc674334873f092d31b0431df2" class="pull-right">Toggle</a></li><li id="e1b5cfdc674334873f092d31b0431df2" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容799g"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="网站---新增网站-获取所有字典数据">获取所有字典数据&nbsp;<a href="#网站---新增网站-获取所有字典数据"><i class="fa fa-link"></i></a></h4><section id="网站---新增网站-获取所有字典数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#网站---新增网站-获取所有字典数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/dict/all</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#1c92e96a05d21e0e3f9018a0f4cbac71" class="pull-right">Toggle</a></li><li id="1c92e96a05d21e0e3f9018a0f4cbac71" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="网站---更新网站">网站 - 更新网站&nbsp;<a href="#网站---更新网站"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="网站---更新网站-获取网站信息">获取网站信息&nbsp;<a href="#网站---更新网站-获取网站信息"><i class="fa fa-link"></i></a></h4><section id="网站---更新网站-获取网站信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#网站---更新网站-获取网站信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/site/{siteId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e45c638758d7fcaf3a28e2c947404f6f" class="pull-right">Toggle</a></li><li id="e45c638758d7fcaf3a28e2c947404f6f" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2nb7"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">site</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">userid</span>": <span class="hljs-value"><span class="hljs-number">77070</span></span>,
+    "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">pubinfoid</span>": <span class="hljs-value"><span class="hljs-number">51183</span></span>,
+    "<span class="hljs-attribute">createtime</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">sitestat</span>": <span class="hljs-value"><span class="hljs-number">61101</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ab31"</span></span>,
+    "<span class="hljs-attribute">typename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容bmkk"</span></span>,
+    "<span class="hljs-attribute">bakMessage</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lh66"</span></span>,
+    "<span class="hljs-attribute">sysid</span>": <span class="hljs-value"><span class="hljs-number">45785</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3xb7"</span></span>,
+    "<span class="hljs-attribute">siteid</span>": <span class="hljs-value"><span class="hljs-number">38038</span></span>,
+    "<span class="hljs-attribute">propsMap</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">sex</span>": <span class="hljs-value"><span class="hljs-number">30446</span></span>,
+        "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">48185</span></span>,
+        "<span class="hljs-attribute">income</span>": <span class="hljs-value"><span class="hljs-number">62364</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"测试内容nvl5"</span></span>,
+    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"测试内容47gq"</span></span>,
+    "<span class="hljs-attribute">adzoneCount</span>": <span class="hljs-value"><span class="hljs-number">47511</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容38hk"</span>
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="网站---更新网站-获取所有字典数据2">获取所有字典数据2&nbsp;<a href="#网站---更新网站-获取所有字典数据2"><i class="fa fa-link"></i></a></h4><section id="网站---更新网站-获取所有字典数据2-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#网站---更新网站-获取所有字典数据2-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/dict/all</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7f4660e4fc1d32c40088b97036fbd761" class="pull-right">Toggle</a></li><li id="7f4660e4fc1d32c40088b97036fbd761" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">zones</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">TANX_SITE_TYPE</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">AdzoneCategoryDO</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">catDesc</span>": <span class="hljs-value"><span class="hljs-string">"测试内容86h3"</span></span>,
+            "<span class="hljs-attribute">no</span>": <span class="hljs-value"><span class="hljs-number">68356</span></span>,
+            "<span class="hljs-attribute">parentId</span>": <span class="hljs-value"><span class="hljs-number">44874</span></span>,
+            "<span class="hljs-attribute">catName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8esh"</span></span>,
+            "<span class="hljs-attribute">keycode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容d45e"</span></span>,
+            "<span class="hljs-attribute">catId</span>": <span class="hljs-value"><span class="hljs-number">57040</span>
+        </span>}
+    </span>}
+]</span>,
+"<span class="hljs-attribute">ages</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">TANX_ADZONES_SIZECODE</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">crowds</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">genders</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">TANX_ADBOARDS_FORMAT</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">browsers</span>": <span class="hljs-value">{}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="网站---更新网站-更新网站">更新网站&nbsp;<a href="#网站---更新网站-更新网站"><i class="fa fa-link"></i></a></h4><section id="网站---更新网站-更新网站-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">PUT</span></div><div style="float:left"><a href="#网站---更新网站-更新网站-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/api/site/{siteId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#78bcde2d861f8fa64aa156b531964f1a" class="pull-right">Toggle</a></li><li id="78bcde2d861f8fa64aa156b531964f1a" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k1r0"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="网站---网站列表">网站 - 网站列表&nbsp;<a href="#网站---网站列表"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="网站---网站列表-获取网站列表3">获取网站列表3&nbsp;<a href="#网站---网站列表-获取网站列表3"><i class="fa fa-link"></i></a></h4><section id="网站---网站列表-获取网站列表3-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#网站---网站列表-获取网站列表3-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/site</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e8b6453298dfc22f7dee29c180931710" class="pull-right">Toggle</a></li><li id="e8b6453298dfc22f7dee29c180931710" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">27576</span></span>,
+"<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">sysid</span>": <span class="hljs-value"><span class="hljs-number">85157</span></span>,
+        "<span class="hljs-attribute">userid</span>": <span class="hljs-value"><span class="hljs-number">60088</span></span>,
+        "<span class="hljs-attribute">createtime</span>": <span class="hljs-value">{}</span>,
+        "<span class="hljs-attribute">sitestat</span>": <span class="hljs-value"><span class="hljs-number">65710</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7cvo"</span></span>,
+        "<span class="hljs-attribute">typename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k284"</span></span>,
+        "<span class="hljs-attribute">propsMap</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">sex</span>": <span class="hljs-value"><span class="hljs-number">32673</span></span>,
+            "<span class="hljs-attribute">income</span>": <span class="hljs-value"><span class="hljs-number">36656</span></span>,
+            "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">31774</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">siteid</span>": <span class="hljs-value"><span class="hljs-number">67188</span></span>,
+        "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value">{}</span>,
+        "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"测试内容m0tb"</span></span>,
+        "<span class="hljs-attribute">bakMessage</span>": <span class="hljs-value"><span class="hljs-string">"测试内容15v9"</span></span>,
+        "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7q51"</span></span>,
+        "<span class="hljs-attribute">pubinfoid</span>": <span class="hljs-value"><span class="hljs-number">20625</span></span>,
+        "<span class="hljs-attribute">adzoneCount</span>": <span class="hljs-value"><span class="hljs-number">43858</span></span>,
+        "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"测试内容61kl"</span></span>,
+        "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k2tb"</span>
+    </span>}
+]
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9d83"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="网站---网站列表-获取某网站下所有的推广位">获取某网站下所有的推广位&nbsp;<a href="#网站---网站列表-获取某网站下所有的推广位"><i class="fa fa-link"></i></a></h4><section id="网站---网站列表-获取某网站下所有的推广位-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#网站---网站列表-获取某网站下所有的推广位-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzone/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#585a193019cb642b00e87a0e489aef48" class="pull-right">Toggle</a></li><li id="585a193019cb642b00e87a0e489aef48" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5m08"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">adzoneList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">distype</span>": <span class="hljs-value"><span class="hljs-string">"测试内容u1x7"</span></span>,
+                "<span class="hljs-attribute">sizecode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容956w"</span></span>,
+                "<span class="hljs-attribute">adzoneid</span>": <span class="hljs-value"><span class="hljs-number">33776</span></span>,
+                "<span class="hljs-attribute">adzonename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容f914"</span></span>,
+                "<span class="hljs-attribute">proxy</span>": <span class="hljs-value"><span class="hljs-number">76607</span></span>,
+                "<span class="hljs-attribute">relcampcount</span>": <span class="hljs-value"><span class="hljs-number">70204</span></span>,
+                "<span class="hljs-attribute">isP4p</span>": <span class="hljs-value"><span class="hljs-number">78047</span></span>,
+                "<span class="hljs-attribute">adzonesize</span>": <span class="hljs-value"><span class="hljs-string">"测试内容0uz4"</span></span>,
+                "<span class="hljs-attribute">blankStatus</span>": <span class="hljs-value"><span class="hljs-number">11532</span></span>,
+                "<span class="hljs-attribute">sitename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ht3j"</span></span>,
+                "<span class="hljs-attribute">joinex</span>": <span class="hljs-value"><span class="hljs-number">44713</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">26276</span>
+    </span>}
+]
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="网站---网站列表-网站报表">网站报表&nbsp;<a href="#网站---网站列表-网站报表"><i class="fa fa-link"></i></a></h4><section id="网站---网站列表-网站报表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#网站---网站列表-网站报表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#df33e920b54cfc9686019f7f51a8f316" class="pull-right">Toggle</a></li><li id="df33e920b54cfc9686019f7f51a8f316" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="渠道---删除渠道">渠道 - 删除渠道&nbsp;<a href="#渠道---删除渠道"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="渠道---删除渠道-删除渠道">删除渠道&nbsp;<a href="#渠道---删除渠道-删除渠道"><i class="fa fa-link"></i></a></h4><section id="渠道---删除渠道-删除渠道-delete" class="panel panel-danger"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">DELETE</span></div><div style="float:left"><a href="#渠道---删除渠道-删除渠道-delete" class="btn btn-xs btn-danger">DELETE</a></div><div style="overflow:hidden"><code>/api/adzonegroup/{groupId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#9935fb5e82ca6f53a6f92246bd4fcf5c" class="pull-right">Toggle</a></li><li id="9935fb5e82ca6f53a6f92246bd4fcf5c" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7ev7"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="渠道---更新渠道">渠道 - 更新渠道&nbsp;<a href="#渠道---更新渠道"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="渠道---更新渠道-更新渠道">更新渠道&nbsp;<a href="#渠道---更新渠道-更新渠道"><i class="fa fa-link"></i></a></h4><section id="渠道---更新渠道-更新渠道-put" class="panel panel-warning"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">PUT</span></div><div style="float:left"><a href="#渠道---更新渠道-更新渠道-put" class="btn btn-xs btn-warning">PUT</a></div><div style="overflow:hidden"><code>/api/adzonegroup/{groupId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#f4b2ec78314d5aa0aa38885131595e44" class="pull-right">Toggle</a></li><li id="f4b2ec78314d5aa0aa38885131595e44" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6y71"</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="渠道---更新渠道-获取渠道详细信息">获取渠道详细信息&nbsp;<a href="#渠道---更新渠道-获取渠道详细信息"><i class="fa fa-link"></i></a></h4><section id="渠道---更新渠道-获取渠道详细信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#渠道---更新渠道-获取渠道详细信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzonegroup/{groupId}</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#07e3cd0c9053951bbe5b94128fdde2c6" class="pull-right">Toggle</a></li><li id="07e3cd0c9053951bbe5b94128fdde2c6" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ktv6"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">groupName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9hfr"</span></span>,
+"<span class="hljs-attribute">adzonesList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">relcampcount</span>": <span class="hljs-value"><span class="hljs-number">20865</span></span>,
+        "<span class="hljs-attribute">joinex</span>": <span class="hljs-value"><span class="hljs-number">78762</span></span>,
+        "<span class="hljs-attribute">sizecode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7v5u"</span></span>,
+        "<span class="hljs-attribute">proxy</span>": <span class="hljs-value"><span class="hljs-number">18717</span></span>,
+        "<span class="hljs-attribute">adzonename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容s4ii"</span></span>,
+        "<span class="hljs-attribute">sitename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2atl"</span></span>,
+        "<span class="hljs-attribute">isP4p</span>": <span class="hljs-value"><span class="hljs-number">30380</span></span>,
+        "<span class="hljs-attribute">adzonesize</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ul2y"</span></span>,
+        "<span class="hljs-attribute">distype</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k84x"</span></span>,
+        "<span class="hljs-attribute">adzoneid</span>": <span class="hljs-value"><span class="hljs-number">76520</span></span>,
+        "<span class="hljs-attribute">blankStatus</span>": <span class="hljs-value"><span class="hljs-number">63065</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">groupId</span>": <span class="hljs-value"><span class="hljs-number">88788</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="渠道---更新渠道-按网站、尺寸信息获取该用户下所有..">按网站、尺寸信息获取该用户下所有..&nbsp;<a href="#渠道---更新渠道-按网站、尺寸信息获取该用户下所有.."><i class="fa fa-link"></i></a></h4><p>按网站、尺寸信息获取该用户下所有推广位列表:</p>
+<section id="渠道---更新渠道-按网站、尺寸信息获取该用户下所有..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#渠道---更新渠道-按网站、尺寸信息获取该用户下所有..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzone/siteorsize</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a72da085414715183be0622b168c16c2" class="pull-right">Toggle</a></li><li id="a72da085414715183be0622b168c16c2" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容t68y"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">adzoneList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">adzoneId</span>": <span class="hljs-value"><span class="hljs-number">66238</span></span>,
+        "<span class="hljs-attribute">siteName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3o2q"</span></span>,
+        "<span class="hljs-attribute">adzoneSize</span>": <span class="hljs-value"><span class="hljs-string">"测试内容v8nd"</span></span>,
+        "<span class="hljs-attribute">adzoneName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ht32"</span>
+    </span>}
+]
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="渠道---更新渠道-获取网站列表4">获取网站列表4&nbsp;<a href="#渠道---更新渠道-获取网站列表4"><i class="fa fa-link"></i></a></h4><section id="渠道---更新渠道-获取网站列表4-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#渠道---更新渠道-获取网站列表4-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/site</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#750127496efa92462a2f6df5bed96319" class="pull-right">Toggle</a></li><li id="750127496efa92462a2f6df5bed96319" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">80031</span></span>,
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ny37"</span></span>,
+    "<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">SiteDO</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k6d2"</span></span>,
+                "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容wx1d"</span></span>,
+                "<span class="hljs-attribute">typename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容evbq"</span></span>,
+                "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">bakMessage</span>": <span class="hljs-value"><span class="hljs-string">"测试内容528p"</span></span>,
+                "<span class="hljs-attribute">pubinfoid</span>": <span class="hljs-value"><span class="hljs-number">16263</span></span>,
+                "<span class="hljs-attribute">userid</span>": <span class="hljs-value"><span class="hljs-number">66731</span></span>,
+                "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6c6f"</span></span>,
+                "<span class="hljs-attribute">createtime</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ide7"</span></span>,
+                "<span class="hljs-attribute">sitestat</span>": <span class="hljs-value"><span class="hljs-number">68404</span></span>,
+                "<span class="hljs-attribute">propsMap</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">income</span>": <span class="hljs-value"><span class="hljs-number">77170</span></span>,
+                    "<span class="hljs-attribute">recordno</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">sex</span>": <span class="hljs-value"><span class="hljs-number">17467</span></span>,
+                    "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">76261</span>
+                </span>}</span>,
+                "<span class="hljs-attribute">siteid</span>": <span class="hljs-value"><span class="hljs-number">16463</span></span>,
+                "<span class="hljs-attribute">adzoneCount</span>": <span class="hljs-value"><span class="hljs-number">87804</span></span>,
+                "<span class="hljs-attribute">sysid</span>": <span class="hljs-value"><span class="hljs-number">51850</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5z3g"</span>
+            </span>}
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="渠道---新增渠道">渠道 - 新增渠道&nbsp;<a href="#渠道---新增渠道"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="渠道---新增渠道-获取网站列表5">获取网站列表5&nbsp;<a href="#渠道---新增渠道-获取网站列表5"><i class="fa fa-link"></i></a></h4><section id="渠道---新增渠道-获取网站列表5-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#渠道---新增渠道-获取网站列表5-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/site</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#38c1b814a4846c3196136660f011d691" class="pull-right">Toggle</a></li><li id="38c1b814a4846c3196136660f011d691" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">62264</span></span>,
+    "<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6764"</span></span>,
+    "<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">SiteDO</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">pubinfoid</span>": <span class="hljs-value"><span class="hljs-number">84562</span></span>,
+                "<span class="hljs-attribute">propsMap</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">recordno</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">income</span>": <span class="hljs-value"><span class="hljs-number">14628</span></span>,
+                    "<span class="hljs-attribute">sex</span>": <span class="hljs-value"><span class="hljs-number">23568</span></span>,
+                    "<span class="hljs-attribute">age</span>": <span class="hljs-value"><span class="hljs-number">50020</span>
+                </span>}</span>,
+                "<span class="hljs-attribute">sitestat</span>": <span class="hljs-value"><span class="hljs-number">11587</span></span>,
+                "<span class="hljs-attribute">updatetime</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">sysid</span>": <span class="hljs-value"><span class="hljs-number">62676</span></span>,
+                "<span class="hljs-attribute">bakMessage</span>": <span class="hljs-value"><span class="hljs-string">"测试内容p176"</span></span>,
+                "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"测试内容q85o"</span></span>,
+                "<span class="hljs-attribute">adzoneCount</span>": <span class="hljs-value"><span class="hljs-number">72506</span></span>,
+                "<span class="hljs-attribute">typename</span>": <span class="hljs-value"><span class="hljs-string">"测试内容i6cf"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容468x"</span></span>,
+                "<span class="hljs-attribute">siteid</span>": <span class="hljs-value"><span class="hljs-number">16252</span></span>,
+                "<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8346"</span></span>,
+                "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"测试内容vrvi"</span></span>,
+                "<span class="hljs-attribute">createtime</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">userid</span>": <span class="hljs-value"><span class="hljs-number">16540</span></span>,
+                "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"测试内容88yc"</span>
+            </span>}
+        </span>}
+    ]
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="渠道---新增渠道-按网站、尺寸信息获取该用户下所有..6">按网站、尺寸信息获取该用户下所有..6&nbsp;<a href="#渠道---新增渠道-按网站、尺寸信息获取该用户下所有..6"><i class="fa fa-link"></i></a></h4><p>按网站、尺寸信息获取该用户下所有推广位列表:</p>
+<section id="渠道---新增渠道-按网站、尺寸信息获取该用户下所有..6-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#渠道---新增渠道-按网站、尺寸信息获取该用户下所有..6-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzone/siteorsize</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#872506582aab1b7ca7089a03e8de0b26" class="pull-right">Toggle</a></li><li id="872506582aab1b7ca7089a03e8de0b26" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">adzoneList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">adzoneId</span>": <span class="hljs-value"><span class="hljs-number">21760</span></span>,
+        "<span class="hljs-attribute">siteName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b36n"</span></span>,
+        "<span class="hljs-attribute">adzoneName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容xljn"</span></span>,
+        "<span class="hljs-attribute">adzoneSize</span>": <span class="hljs-value"><span class="hljs-string">"测试内容32xc"</span>
+    </span>}
+]
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容32hr"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="渠道---新增渠道-新增渠道">新增渠道&nbsp;<a href="#渠道---新增渠道-新增渠道"><i class="fa fa-link"></i></a></h4><section id="渠道---新增渠道-新增渠道-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#渠道---新增渠道-新增渠道-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/api/adzonegroup</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#9d6012691e138a7e346005fc96f5da27" class="pull-right">Toggle</a></li><li id="9d6012691e138a7e346005fc96f5da27" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">groupId</span>": <span class="hljs-value"><span class="hljs-number">75286</span></span>,
+"<span class="hljs-attribute">groupName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容s1x2"</span>
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容n1b1"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="渠道---新增渠道-按网站、尺寸信息获取该用户下所有..7">按网站、尺寸信息获取该用户下所有..7&nbsp;<a href="#渠道---新增渠道-按网站、尺寸信息获取该用户下所有..7"><i class="fa fa-link"></i></a></h4><p>按网站、尺寸信息获取该用户下所有推广位列表:</p>
+<section id="渠道---新增渠道-按网站、尺寸信息获取该用户下所有..7-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#渠道---新增渠道-按网站、尺寸信息获取该用户下所有..7-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzone/siteorsize</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#05d0d0df22698729cad3c1fe043d27a5" class="pull-right">Toggle</a></li><li id="05d0d0df22698729cad3c1fe043d27a5" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2932"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">adzoneList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">adzoneName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容vm0g"</span></span>,
+        "<span class="hljs-attribute">adzoneId</span>": <span class="hljs-value"><span class="hljs-number">61860</span></span>,
+        "<span class="hljs-attribute">siteName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容25c5"</span></span>,
+        "<span class="hljs-attribute">adzoneSize</span>": <span class="hljs-value"><span class="hljs-string">"测试内容on17"</span>
+    </span>}
+]
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="渠道---渠道列表">渠道 - 渠道列表&nbsp;<a href="#渠道---渠道列表"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="渠道---渠道列表-渠道收入报表">渠道收入报表&nbsp;<a href="#渠道---渠道列表-渠道收入报表"><i class="fa fa-link"></i></a></h4><section id="渠道---渠道列表-渠道收入报表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#渠道---渠道列表-渠道收入报表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#351abc1a82602d613c4aee560fbeefde" class="pull-right">Toggle</a></li><li id="351abc1a82602d613c4aee560fbeefde" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="渠道---渠道列表-获取渠道列表">获取渠道列表&nbsp;<a href="#渠道---渠道列表-获取渠道列表"><i class="fa fa-link"></i></a></h4><section id="渠道---渠道列表-获取渠道列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#渠道---渠道列表-获取渠道列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/api/adzonegroup</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c1df6efe2122e9078056698ccd6befe8" class="pull-right">Toggle</a></li><li id="c1df6efe2122e9078056698ccd6befe8" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">adzoneGroups</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">list</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">creatTime</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">groupName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3571"</span></span>,
+                "<span class="hljs-attribute">updateTime</span>": <span class="hljs-value">{}</span>,
+                "<span class="hljs-attribute">groupId</span>": <span class="hljs-value"><span class="hljs-number">10016</span></span>,
+                "<span class="hljs-attribute">creatorId</span>": <span class="hljs-value"><span class="hljs-number">28564</span></span>,
+                "<span class="hljs-attribute">modifierId</span>": <span class="hljs-value"><span class="hljs-number">55712</span></span>,
+                "<span class="hljs-attribute">memberId</span>": <span class="hljs-value"><span class="hljs-number">30075</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">count</span>": <span class="hljs-value"><span class="hljs-number">82557</span>
+    </span>}
+]
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>SC联盟平台三期..接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#报表模块---报表" class="list-group-item heading">报表模块 - 报表</a><a href="#报表模块---报表-流量报表" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;流量报表</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">SC联盟平台三期..接口文档</h1></div></header><div class="description"></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="报表模块---报表">报表模块 - 报表&nbsp;<a href="#报表模块---报表"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="报表模块---报表-流量报表">流量报表&nbsp;<a href="#报表模块---报表-流量报表"><i class="fa fa-link"></i></a></h4><p>联盟三期，获取流量报表数据</p>
+<section id="报表模块---报表-流量报表-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#报表模块---报表-流量报表-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/reports/traffic_report_data.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#80617190ee00d8e78423c46da40ea3c6" class="pull-right">Toggle</a></li><li id="80617190ee00d8e78423c46da40ea3c6" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ye59"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">detail</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">26869</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">4326</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">33.6</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"04/19/1989"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">15175</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">27742</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">11475</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">67.1</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"01/18/1997"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">19149</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">13875</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">14100</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">37</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"04/12/1984"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">32347</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">27835</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">11031</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">18.9</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"12/19/1983"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">28834</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">7420</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">11886</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/21/1971"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">57065</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">5356</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">3932</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">9</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"08/21/1976"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">76295</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">7821</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">9110</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">44.8</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"06/09/2001"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">48866</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">7041</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">12299</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">35</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"08/14/1994"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">87546</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">14251</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">4938</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">11.2</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"04/29/2006"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">80876</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">6749</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">12521</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">54.1</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"02/16/2000"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">67392</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">15372</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">20041</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">90</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"05/19/2012"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">55629</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">14876</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">2857</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">68.7</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"03/16/2000"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">40067</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">15688</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">8910</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">66</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"07/23/1999"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">65649</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">17222</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">10110</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">96.6</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"05/18/2011"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">25020</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">26302</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">5638</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">30</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"03/21/2012"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">13739</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">29379</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">13728</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">84</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"09/08/1996"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">33738</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">18701</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">16820</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">71</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/31/2005"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">89469</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">12617</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">14729</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">33.5</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"05/08/1991"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">10273</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">19693</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">12999</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">73</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"03/01/1978"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">80090</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">23681</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">18863</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">62</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"08/12/1977"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">69820</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">4144</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">10912</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/26/1990"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">89527</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">20353</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">9206</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">92</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"02/08/1985"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">31123</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">10342</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">2841</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">62.5</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"02/18/2008"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">76803</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">5380</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">20323</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">51.7</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"09/07/1974"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">22118</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">26477</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">20826</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">23.2</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"08/25/2001"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">60860</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">29661</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">17779</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">65.9</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"05/04/2001"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">68757</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">8879</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">12462</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">60</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"12/13/1988"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">44945</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">16115</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">13961</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"11/12/1979"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">17636</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">27215</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">19349</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">54.7</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"03/15/2009"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">40131</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">9391</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">13211</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">86</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"05/18/1972"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">27513</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">13833</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">22651</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">74.8</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"11/24/2005"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">35481</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">9630</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">3302</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">21</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"09/25/2010"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">73724</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">6224</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">6008</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"03/03/1988"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">59614</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">3696</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">18290</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">54</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"04/28/1991"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">63156</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">28614</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">15949</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">16.1</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"12/18/1983"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">85380</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">9231</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">24148</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"05/25/1990"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">86424</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">11528</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">7283</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">38</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/29/1993"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">56618</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">17011</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">4416</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">28.5</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"06/19/1994"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">57429</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">18969</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">3528</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">47</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"05/20/1975"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">43510</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">3578</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">3975</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">41</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"02/16/1981"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">78411</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">5867</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">7032</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">25</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"11/15/2002"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">80966</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">24935</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">15010</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">67.5</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"09/07/1983"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">41321</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">12384</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">9401</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">23.6</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"05/11/1977"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">49393</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">7649</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">12999</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">30.1</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/09/1984"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">84153</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">18435</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">17043</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">87.6</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"03/26/1993"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">20177</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">8951</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">5590</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">85.4</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"07/10/1981"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">20609</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">27647</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">22620</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">35.1</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"04/23/1982"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">60520</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">14600</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">3851</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">94.3</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/25/1992"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">31638</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">29348</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">18685</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">39</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"11/22/1980"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">11657</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">26645</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">21908</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/30/2010"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">15557</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">11892</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">21401</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">66</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"04/24/1972"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">50230</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">26680</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">8230</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">59.6</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"01/01/1994"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">11865</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">22119</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">3214</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">52</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"06/13/1975"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">35114</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">6530</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">24453</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">56</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"08/15/1987"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">36922</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">19935</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">6570</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">52.8</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"01/14/1979"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">69941</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">7468</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">10777</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">49.1</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"09/27/1994"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">38717</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">28847</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">15585</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">67</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"02/27/1971"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">72437</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">6541</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">5244</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">18.3</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"04/18/2014"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">32865</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">18277</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">20410</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">97</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"07/16/2011"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">37646</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">21903</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">10261</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">48.1</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"01/06/1972"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">30834</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">4129</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">20098</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">31</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"01/17/2004"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">86580</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">25986</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">9017</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">58.1</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"09/23/2013"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">82210</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">13238</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">15666</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">66</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"11/22/1992"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">15508</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">14765</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">10609</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">23.2</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"04/29/1992"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">14019</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">27657</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">16194</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">50.4</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"04/20/2012"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">27084</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">18453</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">13897</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">70.2</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/30/1970"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">67959</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">28569</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">11189</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">79.7</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"03/30/1983"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">51935</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">6299</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">2746</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">69</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"09/11/1976"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">87250</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">27132</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">14960</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">71.6</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"07/25/1973"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">10142</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">17434</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">6522</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">29.4</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"07/05/1991"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">68271</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">14790</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">18612</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">50</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/31/1977"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">42887</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">7948</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">20449</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">86.6</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"02/13/1993"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">27449</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">15139</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">4378</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">66.4</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"07/28/1993"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">23708</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">20442</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">20108</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">63</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"06/27/2004"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">32762</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">10979</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">11596</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">36</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"02/23/2009"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">16754</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">3326</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">11057</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">23.6</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"12/12/2006"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">28013</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">18775</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">13249</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">56</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"12/04/2004"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">28858</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">24444</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">20179</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">74.3</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"06/27/2014"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">44280</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">8440</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">23307</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">66</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"03/29/1984"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">78666</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">18073</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">10028</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"11/30/2009"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">77554</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">29570</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">22932</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">84</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"09/03/1978"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">33505</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">26273</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">23971</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">23</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/20/2007"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">18112</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">11938</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">23057</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">27.4</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"01/27/1979"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">82217</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">13616</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">11577</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">19.5</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"02/06/2007"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">37017</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">20185</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">14708</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">54</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"08/09/1996"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">23669</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">23021</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">12818</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">17.5</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"12/06/2011"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">60301</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">7066</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">24902</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">62.4</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"05/13/1998"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">56053</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">15218</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">3982</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">11</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"01/05/1995"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">37037</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">3783</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">14305</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">68</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"10/12/2008"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">80769</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">13949</span></span>,
+        "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">19491</span></span>,
+        "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">3.9</span></span>,
+        "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"02/23/2006"</span></span>,
+        "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">81755</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">summary</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">uniqueVistor</span>": <span class="hljs-value"><span class="hljs-number">64376</span></span>,
+    "<span class="hljs-attribute">session</span>": <span class="hljs-value"><span class="hljs-number">80637</span></span>,
+    "<span class="hljs-attribute">bounceRate</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+    "<span class="hljs-attribute">pageview</span>": <span class="hljs-value"><span class="hljs-number">4763935</span>
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">55584</span>
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

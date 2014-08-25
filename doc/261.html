@@ -1,0 +1,175 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>淘宝首页接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#接口列表---首页" class="list-group-item heading">接口列表 - 首页</a><a href="#接口列表---首页-天猫定投广告接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;天猫定投广告接口</a><a href="#接口列表---首页-天猫logo墙" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;天猫logo墙</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">淘宝首页接口文档</h1></div></header><div class="description"><p>2014淘宝首页</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="接口列表---首页">接口列表 - 首页&nbsp;<a href="#接口列表---首页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="接口列表---首页-天猫定投广告接口">天猫定投广告接口&nbsp;<a href="#接口列表---首页-天猫定投广告接口"><i class="fa fa-link"></i></a></h4><p>天猫定投接口</p>
+<section id="接口列表---首页-天猫定投广告接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#接口列表---首页-天猫定投广告接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://ald.taobao.com/recommend2.htm</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#2fdd494c5d0e1610ee69a75aa70a01f7" class="pull-right">Toggle</a></li><li id="2fdd494c5d0e1610ee69a75aa70a01f7" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">544</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">entityType</span>": <span class="hljs-value"><span class="hljs-string">"OTHER"</span></span>,
+        "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"//www.taobao.com\" target=\"_self\" class=\"logo-bd\"&gt;淘宝网&lt;/a&gt;"</span></span>,
+        "<span class="hljs-attribute">acm</span>": <span class="hljs-value"><span class="hljs-string">"544.1003.2.44494"</span></span>,
+        "<span class="hljs-attribute">scm</span>": <span class="hljs-value"><span class="hljs-string">"1003.2.544.OTHER_1401257586263_44494"</span></span>,
+        "<span class="hljs-attribute">_s_</span>": <span class="hljs-value"><span class="hljs-string">"m"</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"&lt;a href=\"//www.taobao.com\" target=\"_self\" class=\"logo-bd\"&gt;淘宝网&lt;/a&gt;"</span></span>,
+"<span class="hljs-attribute">_s_</span>": <span class="hljs-value"><span class="hljs-string">"m"</span></span>,
+"<span class="hljs-attribute">scm</span>": <span class="hljs-value"><span class="hljs-string">"1003.2.544.OTHER_1401257586263_44494"</span></span>,
+"<span class="hljs-attribute">exposureParam</span>": <span class="hljs-value"><span class="hljs-string">"http://ac.mmstat.com/1.gif?uid=69738207&amp;apply=vote&amp;com=02&amp;acm=544.1.1003&amp;cod=544&amp;cache=1844239774&amp;logtype=4&amp;uuid=k5jhghz3&amp;scm=1003.1.544&amp;ip=42.120.74.206"</span></span>,
+"<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"544"</span></span>,
+"<span class="hljs-attribute">entityType</span>": <span class="hljs-value"><span class="hljs-string">"OTHER"</span></span>,
+"<span class="hljs-attribute">acm</span>": <span class="hljs-value"><span class="hljs-string">"544.1003.2.44494"</span>
+</span>}</span>,
+"<span class="hljs-attribute">tt-1097039-36358</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">exposureParam</span>": <span class="hljs-value"><span class="hljs-string">"http://ac.mmstat.com/1.gif?uid=69738207&amp;apply=vote&amp;com=02&amp;acm=tt-1097039-36358.1.1003&amp;cod=tt-1097039-36358&amp;cache=1001672838&amp;logtype=4&amp;uuid=k5jhghz3&amp;scm=1003.1.tt-1097039-36358&amp;ip=42.120.74.206"</span></span>,
+"<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"tt-1097039-36358"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{}
+</span>}</span>,
+"<span class="hljs-attribute">resParam</span>": <span class="hljs-value"><span class="hljs-number">62875</span></span>,
+"<span class="hljs-attribute">tt-1097039-36355</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"tt-1097039-36355"</span></span>,
+"<span class="hljs-attribute">exposureParam</span>": <span class="hljs-value"><span class="hljs-string">"http://ac.mmstat.com/1.gif?uid=69738207&amp;apply=vote&amp;com=02&amp;acm=tt-1097039-36355.1.1003&amp;cod=tt-1097039-36355&amp;cache=1511458670&amp;logtype=4&amp;uuid=k5jhghz3&amp;scm=1003.1.tt-1097039-36355&amp;ip=42.120.74.206"</span>
+</span>}</span>,
+"<span class="hljs-attribute">tt-1097039-36356</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">scm</span>": <span class="hljs-value"><span class="hljs-string">"1003.2.tt-1097039-36356-1.OTHER_1400643182708_69585"</span></span>,
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"1400643182708"</span></span>,
+        "<span class="hljs-attribute">link</span>": <span class="hljs-value"><span class="hljs-string">"http://www.tmall.com/market/chaoshi/hd-dwsh.php?acm=tt-1097039-36356-1.1003.2.69585&amp;ad_id=&amp;cm_id=&amp;pm_id=&amp;am_id=13010990416fde9a4f7d&amp;uuid=k5jhghz3&amp;scm=1003.2.tt-1097039-36356-1.OTHER_1400643182708_69585&amp;pos=1"</span></span>,
+        "<span class="hljs-attribute">_s_</span>": <span class="hljs-value"><span class="hljs-string">"d"</span></span>,
+        "<span class="hljs-attribute">acm</span>": <span class="hljs-value"><span class="hljs-string">"tt-1097039-36356-1.1003.2.69585"</span></span>,
+        "<span class="hljs-attribute">content</span>": <span class="hljs-value"><span class="hljs-string">"http://gtms01.alicdn.com/tps/i1/T1ADZbFSRXXXXoYQo0-130-200.png"</span></span>,
+        "<span class="hljs-attribute">entityType</span>": <span class="hljs-value"><span class="hljs-string">"OTHER"</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">exposureParam</span>": <span class="hljs-value"><span class="hljs-string">"http://ac.mmstat.com/1.gif?uid=69738207&amp;apply=vote&amp;com=02&amp;acm=tt-1097039-36356.1.1003&amp;cod=tt-1097039-36356&amp;cache=1235799011&amp;logtype=4&amp;uuid=k5jhghz3&amp;scm=1003.1.tt-1097039-36356&amp;ip=42.120.74.206"</span></span>,
+"<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"tt-1097039-36356"</span>
+</span>}</span>,
+"<span class="hljs-attribute">tt-1097039-36357</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">exposureParam</span>": <span class="hljs-value"><span class="hljs-string">"http://ac.mmstat.com/1.gif?uid=69738207&amp;apply=vote&amp;com=02&amp;acm=tt-1097039-36357.1.1003&amp;cod=tt-1097039-36357&amp;cache=643073971&amp;logtype=4&amp;uuid=k5jhghz3&amp;scm=1003.1.tt-1097039-36357&amp;ip=42.120.74.206"</span></span>,
+"<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"tt-1097039-36357"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="接口列表---首页-天猫logo墙">天猫logo墙&nbsp;<a href="#接口列表---首页-天猫logo墙"><i class="fa fa-link"></i></a></h4><p>@type=array_map;天猫logo墙</p>
+<section id="接口列表---首页-天猫logo墙-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#接口列表---首页-天猫logo墙-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://ald.taobao.com/recommend.htm</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#bc4e27dd8cdb62f54b1087a328532297" class="pull-right">Toggle</a></li><li id="bc4e27dd8cdb62f54b1087a328532297" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>[
+{
+"<span class="hljs-attribute">scm</span>": <span class="hljs-value"><span class="hljs-string">"1003.1.03014.Brand_11250402_64768"</span></span>,
+"<span class="hljs-attribute">acm</span>": <span class="hljs-value"><span class="hljs-string">"03014.1003.1.64768"</span></span>,
+"<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://brand.tmall.com/brandInfo.htm?acm=03014.1003.1.64768&amp;uuid=xqoWqxRB&amp;abtest=_AB-LR65-PR65&amp;brandId=11250402&amp;scm=1003.1.03014.Brand_11250402_64768&amp;pos=1"</span></span>,
+"<span class="hljs-attribute">img</span>": <span class="hljs-value"><span class="hljs-string">"http://g.ald.alicdn.com/bao/uploaded/T15bjvFbtbXXb1upjX.jpg"</span></span>,
+"<span class="hljs-attribute">entityType</span>": <span class="hljs-value"><span class="hljs-string">"Brand"</span></span>,
+"<span class="hljs-attribute">brandid</span>": <span class="hljs-value"><span class="hljs-string">"11250402"</span></span>,
+"<span class="hljs-attribute">lastBitOfSCM</span>": <span class="hljs-value"><span class="hljs-string">"7"</span>
+</span>}
+]
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

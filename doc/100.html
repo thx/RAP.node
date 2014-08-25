@@ -1,0 +1,245 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>消息回复函API接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#obp消息回复函..---model" class="list-group-item heading">OBP消息回复函.. - model</a><a href="#obp消息回复函..---model-saleprocuct" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;saleProcuct</a><a href="#obp消息回复函..---model-orderproduct" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;orderProduct</a><a href="#obp消息回复函..---model-orderproducts" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;orderProducts</a><a href="#obp消息回复函..---model-saleproducts" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;saleProducts</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">消息回复函API接口文档</h1></div></header><div class="description"><p>Velocity语法参考：
+<a href="http://www.cnblogs.com/firstyi/archive/2007/11/01/945749.h">http://www.cnblogs.com/firstyi/archive/2007/11/01/945749.h</a></p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="obp消息回复函..---model">OBP消息回复函.. - model&nbsp;<a href="#obp消息回复函..---model"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="obp消息回复函..---model-saleprocuct">saleProcuct&nbsp;<a href="#obp消息回复函..---model-saleprocuct"><i class="fa fa-link"></i></a></h4><p>产品详情</p>
+<section id="obp消息回复函..---model-saleprocuct-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#obp消息回复函..---model-saleprocuct-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#348aae86132f889689386cca459425f9" class="pull-right">Toggle</a></li><li id="348aae86132f889689386cca459425f9" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">saleProductAutos</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">createDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">saleProductAutoKey</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">actionType</span>": <span class="hljs-value"><span class="hljs-string">"测试内容80up"</span></span>,
+    "<span class="hljs-attribute">saleID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容tx7n"</span></span>,
+    "<span class="hljs-attribute">bizID</span>": <span class="hljs-value"><span class="hljs-number">62763</span>
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">bizStatusCnName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容t921"</span></span>,
+"<span class="hljs-attribute">sourceID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6t82"</span></span>,
+"<span class="hljs-attribute">actionType</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ix4t"</span></span>,
+"<span class="hljs-attribute">productID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容n1yq"</span></span>,
+"<span class="hljs-attribute">saleProductKey</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">bizID</span>": <span class="hljs-value"><span class="hljs-number">84822</span></span>,
+"<span class="hljs-attribute">saleID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容nl7k"</span>
+</span>}</span>,
+"<span class="hljs-attribute">relatedName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ym5u"</span></span>,
+"<span class="hljs-attribute">presentFlag</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">flowID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容gllq"</span></span>,
+"<span class="hljs-attribute">userID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容i7lr"</span></span>,
+"<span class="hljs-attribute">amount</span>": <span class="hljs-value"><span class="hljs-number">45223</span></span>,
+"<span class="hljs-attribute">collectID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容23x4"</span></span>,
+"<span class="hljs-attribute">pauseDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">saleProductInfo</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">validFlag</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">unitName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b68z"</span></span>,
+"<span class="hljs-attribute">userLevelName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容16mw"</span></span>,
+"<span class="hljs-attribute">orderSource</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5pq8"</span></span>,
+"<span class="hljs-attribute">transferDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">remark</span>": <span class="hljs-value"><span class="hljs-string">"测试内容0qnk"</span></span>,
+"<span class="hljs-attribute">keyword</span>": <span class="hljs-value"><span class="hljs-string">"测试内容e1hl"</span></span>,
+"<span class="hljs-attribute">userName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8483"</span></span>,
+"<span class="hljs-attribute">deadDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">transferRemark</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6wld"</span></span>,
+"<span class="hljs-attribute">parentSaleID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容si33"</span></span>,
+"<span class="hljs-attribute">oldSaleID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4k58"</span></span>,
+"<span class="hljs-attribute">bizHandlerType</span>": <span class="hljs-value"><span class="hljs-number">33802</span></span>,
+"<span class="hljs-attribute">bizStatus</span>": <span class="hljs-value"><span class="hljs-number">63048</span></span>,
+"<span class="hljs-attribute">updateDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">actionName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1p5u"</span></span>,
+"<span class="hljs-attribute">productName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容37hi"</span></span>,
+"<span class="hljs-attribute">transferType</span>": <span class="hljs-value"><span class="hljs-number">85886</span>
+</span>}
+</code></pre></li></ul></section><h4 id="obp消息回复函..---model-orderproduct">orderProduct&nbsp;<a href="#obp消息回复函..---model-orderproduct"><i class="fa fa-link"></i></a></h4><p>订单数据详情</p>
+<section id="obp消息回复函..---model-orderproduct-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#obp消息回复函..---model-orderproduct-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4e50f31f88156a85917b186d87d95181" class="pull-right">Toggle</a></li><li id="4e50f31f88156a85917b186d87d95181" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">classID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容62u1"</span></span>,
+"<span class="hljs-attribute">checkMoney</span>": <span class="hljs-value"><span class="hljs-number">63812</span></span>,
+"<span class="hljs-attribute">userName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容gm18"</span></span>,
+"<span class="hljs-attribute">productID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8v7x"</span></span>,
+"<span class="hljs-attribute">needProduce</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">presentPeriodNum</span>": <span class="hljs-value"><span class="hljs-number">25620</span></span>,
+"<span class="hljs-attribute">amount</span>": <span class="hljs-value"><span class="hljs-number">26182</span></span>,
+"<span class="hljs-attribute">bizHandlerType</span>": <span class="hljs-value"><span class="hljs-number">17045</span></span>,
+"<span class="hljs-attribute">presentFlag</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">orderProductInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">orderProductKey</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">productInfo</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2o1p"</span></span>,
+"<span class="hljs-attribute">userID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7up2"</span></span>,
+"<span class="hljs-attribute">productKey</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5cp5"</span></span>,
+"<span class="hljs-attribute">context</span>": <span class="hljs-value"><span class="hljs-string">"测试内容99r3"</span></span>,
+"<span class="hljs-attribute">productID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3of8"</span>
+</span>}</span>,
+"<span class="hljs-attribute">checkElse</span>": <span class="hljs-value"><span class="hljs-number">18855</span></span>,
+"<span class="hljs-attribute">saleID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6abi"</span></span>,
+"<span class="hljs-attribute">bizAttrib</span>": <span class="hljs-value"><span class="hljs-number">80341</span></span>,
+"<span class="hljs-attribute">ZEROMONEY</span>": <span class="hljs-value"><span class="hljs-number">84617</span></span>,
+"<span class="hljs-attribute">orderDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">money</span>": <span class="hljs-value"><span class="hljs-number">88301</span></span>,
+"<span class="hljs-attribute">parentSaleID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容y71s"</span></span>,
+"<span class="hljs-attribute">unitName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容68j5"</span></span>,
+"<span class="hljs-attribute">flowID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容y2sk"</span></span>,
+"<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">76367</span></span>,
+"<span class="hljs-attribute">productType</span>": <span class="hljs-value"><span class="hljs-string">"测试内容n4n4"</span></span>,
+"<span class="hljs-attribute">actionName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6s7q"</span></span>,
+"<span class="hljs-attribute">updateDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">presentPeriodUnit</span>": <span class="hljs-value"><span class="hljs-number">52867</span></span>,
+"<span class="hljs-attribute">bizStatusName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7275"</span></span>,
+"<span class="hljs-attribute">domainAuditStatus</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">orderProductKey</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">bizID</span>": <span class="hljs-value"><span class="hljs-number">57650</span></span>,
+"<span class="hljs-attribute">trackID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3d71"</span>
+</span>}</span>,
+"<span class="hljs-attribute">moneyStatus</span>": <span class="hljs-value"><span class="hljs-number">56475</span></span>,
+"<span class="hljs-attribute">checkDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">periodUnit</span>": <span class="hljs-value"><span class="hljs-number">52638</span></span>,
+"<span class="hljs-attribute">refundMoney</span>": <span class="hljs-value"><span class="hljs-number">83881</span></span>,
+"<span class="hljs-attribute">couponsNo</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2u7d"</span></span>,
+"<span class="hljs-attribute">strategyOutputs</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">periodUnit</span>": <span class="hljs-value"><span class="hljs-number">74750</span></span>,
+"<span class="hljs-attribute">sendDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">point</span>": <span class="hljs-value"><span class="hljs-number">32105</span></span>,
+"<span class="hljs-attribute">saveMoney</span>": <span class="hljs-value"><span class="hljs-number">24300</span></span>,
+"<span class="hljs-attribute">orderID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1161"</span></span>,
+"<span class="hljs-attribute">groupID</span>": <span class="hljs-value"><span class="hljs-number">84110</span></span>,
+"<span class="hljs-attribute">periodNum</span>": <span class="hljs-value"><span class="hljs-number">82720</span></span>,
+"<span class="hljs-attribute">coupon</span>": <span class="hljs-value"><span class="hljs-string">"测试内容t5nw"</span></span>,
+"<span class="hljs-attribute">bonus</span>": <span class="hljs-value"><span class="hljs-number">88118</span></span>,
+"<span class="hljs-attribute">bizID</span>": <span class="hljs-value"><span class="hljs-number">45831</span></span>,
+"<span class="hljs-attribute">trackID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容zdyw"</span></span>,
+"<span class="hljs-attribute">strategyOutputID</span>": <span class="hljs-value"><span class="hljs-number">20231</span></span>,
+"<span class="hljs-attribute">strategyID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容wo55"</span></span>,
+"<span class="hljs-attribute">sendStatus</span>": <span class="hljs-value"><span class="hljs-number">63241</span></span>,
+"<span class="hljs-attribute">gift</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5ye1"</span>
+</span>}</span>,
+"<span class="hljs-attribute">orderID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容goq4"</span></span>,
+"<span class="hljs-attribute">userRisterDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">failReason</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b26d"</span></span>,
+"<span class="hljs-attribute">bizStatus</span>": <span class="hljs-value"><span class="hljs-number">87530</span></span>,
+"<span class="hljs-attribute">checkFlag</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">sourceID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6nci"</span></span>,
+"<span class="hljs-attribute">remark</span>": <span class="hljs-value"><span class="hljs-string">"测试内容g3r4"</span></span>,
+"<span class="hljs-attribute">isIncrement</span>": <span class="hljs-value"><span class="hljs-number">31644</span></span>,
+"<span class="hljs-attribute">deadDate</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">periodUnitName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k592"</span></span>,
+"<span class="hljs-attribute">validFlag</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">userID</span>": <span class="hljs-value"><span class="hljs-string">"测试内容qwdw"</span></span>,
+"<span class="hljs-attribute">productName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容tk76"</span></span>,
+"<span class="hljs-attribute">checkPoint</span>": <span class="hljs-value"><span class="hljs-number">82505</span></span>,
+"<span class="hljs-attribute">holdMoney</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">actionType</span>": <span class="hljs-value"><span class="hljs-string">"测试内容nqq8"</span></span>,
+"<span class="hljs-attribute">periodNum</span>": <span class="hljs-value"><span class="hljs-number">64814</span></span>,
+"<span class="hljs-attribute">orderSource</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6jnr"</span></span>,
+"<span class="hljs-attribute">relatedName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容mkx2"</span></span>,
+"<span class="hljs-attribute">favorable</span>": <span class="hljs-value"><span class="hljs-string">"测试内容e1d4"</span></span>,
+"<span class="hljs-attribute">keyword</span>": <span class="hljs-value"><span class="hljs-string">"测试内容puex"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="obp消息回复函..---model-orderproducts">orderProducts&nbsp;<a href="#obp消息回复函..---model-orderproducts"><i class="fa fa-link"></i></a></h4><p>orderProduct的数组形式，每一个数组元素都是一个orderProduct对象。
+属性参见orderProduct。</p>
+<section id="obp消息回复函..---model-orderproducts-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#obp消息回复函..---model-orderproducts-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#159431b459c669a22e1c9734b4bab781" class="pull-right">Toggle</a></li><li id="159431b459c669a22e1c9734b4bab781" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="obp消息回复函..---model-saleproducts">saleProducts&nbsp;<a href="#obp消息回复函..---model-saleproducts"><i class="fa fa-link"></i></a></h4><p>saleProduct的数组形式，每一个数组元素都是一个saleProduct对象。 属性参见saleProduct。</p>
+<section id="obp消息回复函..---model-saleproducts-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#obp消息回复函..---model-saleproducts-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a2d12c2f17c06f9c00facc38aa5ed0d9" class="pull-right">Toggle</a></li><li id="a2d12c2f17c06f9c00facc38aa5ed0d9" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

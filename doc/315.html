@@ -1,0 +1,194 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>AE 测试 RA..接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#测试模块---测试页面" class="list-group-item heading">测试模块 - 测试页面</a><a href="#测试模块---测试页面-测试列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;测试列表</a></div><div class="list-group"><a href="#测试模块---测试页面1" class="list-group-item heading">测试模块 - 测试页面1</a><a href="#测试模块---测试页面1-测试列表1" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;测试列表1</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">AE 测试 RA..接口文档</h1></div></header><div class="description"><p>项目前测试使用</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="测试模块---测试页面">测试模块 - 测试页面&nbsp;<a href="#测试模块---测试页面"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="测试模块---测试页面-测试列表">测试列表&nbsp;<a href="#测试模块---测试页面-测试列表"><i class="fa fa-link"></i></a></h4><section id="测试模块---测试页面-测试列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#测试模块---测试页面-测试列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://crm.aliexpress.com/data2.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#35793fe4bdd0ed794beefdc40bc82198" class="pull-right">Toggle</a></li><li id="35793fe4bdd0ed794beefdc40bc82198" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">TestList</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Hcikrq Dumanxav Tfwoqiwtx Hhdt Efrjkrcwh"</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"1993-11-18"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Gvrhoapwy Ulmt Wgsbmt Pcn Tvrkmq"</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2011-02-08"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Cxpwreb Oconfx Pzri Xdc Bfutsthfv"</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"1974-12-24"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Yioytn Bwwujhdd Lbou Leuayhkvu Qvw"</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"1972-09-13"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Gya Crsxivca Yegxdsfxn Vdpb Sxv"</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"1982-12-03"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Rcntglrad Vqlb Rokxdckouk Jqc Rdvbofxoir"</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"1992-07-08"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Otxtpq Spkuf Neeyqdqvq Vscw Ovnbsusuu"</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2005-05-18"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Rkqmmtm Lxikrz Qbfxj Xusxvync Qyqfxvb"</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"2005-02-10"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="测试模块---测试页面1">测试模块 - 测试页面1&nbsp;<a href="#测试模块---测试页面1"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="测试模块---测试页面1-测试列表1">测试列表1&nbsp;<a href="#测试模块---测试页面1-测试列表1"><i class="fa fa-link"></i></a></h4><section id="测试模块---测试页面1-测试列表1-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#测试模块---测试页面1-测试列表1-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://crm.aliexpress.com/data1.json</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#45d6b7a49536ddff65b6082d52a9f345" class="pull-right">Toggle</a></li><li id="45d6b7a49536ddff65b6082d52a9f345" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">listArrey</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"@data"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://bskvwimii.net/sqnipgh"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"@data"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://cezxhzdb.edu/mlhcsl"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"@data"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://jgfukf.edu/rokumfuvi"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"@data"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://tmehebs.net/ljnz"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"@data"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://ejovtk.gov/ggrfvjvz"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"@data"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://sevsic.com/dznv"</span>
+</span>},
+{
+    "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+    "<span class="hljs-attribute">date</span>": <span class="hljs-value"><span class="hljs-string">"@data"</span></span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value"><span class="hljs-string">"http://eayf.edu/ftmro"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

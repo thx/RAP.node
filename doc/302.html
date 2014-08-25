@@ -1,0 +1,250 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>FWC2014接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#世界杯专题---主页" class="list-group-item heading">世界杯专题 - 主页</a><a href="#世界杯专题---主页-获取用户信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取用户信息</a><a href="#世界杯专题---主页-获取比赛信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取比赛信息</a><a href="#世界杯专题---主页-添加进球" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;添加进球</a><a href="#世界杯专题---主页-分享内容获取" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;分享内容获取</a><a href="#世界杯专题---主页-赛事总排行榜" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;赛事总排行榜</a><a href="#世界杯专题---主页-活动结束统计" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;活动结束统计</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">FWC2014接口文档</h1></div></header><div class="description"></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="世界杯专题---主页">世界杯专题 - 主页&nbsp;<a href="#世界杯专题---主页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="世界杯专题---主页-获取用户信息">获取用户信息&nbsp;<a href="#世界杯专题---主页-获取用户信息"><i class="fa fa-link"></i></a></h4><section id="世界杯专题---主页-获取用户信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#世界杯专题---主页-获取用户信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/WorldCup.getUserInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#91310e13ef8830565d4936e491bc2bb6" class="pull-right">Toggle</a></li><li id="91310e13ef8830565d4936e491bc2bb6" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"NO_LOGIN"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+"<span class="hljs-attribute">nick_name</span>": <span class="hljs-value"><span class="hljs-string">"虾小米"</span></span>,
+"<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">19606601</span>
+</span>}</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"failured"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="世界杯专题---主页-获取比赛信息">获取比赛信息&nbsp;<a href="#世界杯专题---主页-获取比赛信息"><i class="fa fa-link"></i></a></h4><section id="世界杯专题---主页-获取比赛信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#世界杯专题---主页-获取比赛信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/WorldCup.getMatchInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#ffb69a707c35fcd455cdf99d88bd0010" class="pull-right">Toggle</a></li><li id="ffb69a707c35fcd455cdf99d88bd0010" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"failured"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">matching_countries</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">match_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">country_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/100x60"</span></span>,
+        "<span class="hljs-attribute">country_name</span>": <span class="hljs-value"><span class="hljs-string">"法国"</span></span>,
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">81300245</span></span>,
+        "<span class="hljs-attribute">country_id</span>": <span class="hljs-value"><span class="hljs-number">7</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">match_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">country_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/100x60"</span></span>,
+        "<span class="hljs-attribute">country_name</span>": <span class="hljs-value"><span class="hljs-string">"西班牙"</span></span>,
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">43644806</span></span>,
+        "<span class="hljs-attribute">country_id</span>": <span class="hljs-value"><span class="hljs-number">15</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">match_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">country_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/100x60"</span></span>,
+        "<span class="hljs-attribute">country_name</span>": <span class="hljs-value"><span class="hljs-string">"德国"</span></span>,
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">83702285</span></span>,
+        "<span class="hljs-attribute">country_id</span>": <span class="hljs-value"><span class="hljs-number">11</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">match_id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">country_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/100x60"</span></span>,
+        "<span class="hljs-attribute">country_name</span>": <span class="hljs-value"><span class="hljs-string">"英格兰"</span></span>,
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">89636045</span></span>,
+        "<span class="hljs-attribute">country_id</span>": <span class="hljs-value"><span class="hljs-number">4</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">joined_member_count</span>": <span class="hljs-value"><span class="hljs-number">4543368</span>
+</span>}</span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"SYS_ERROR"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="世界杯专题---主页-添加进球">添加进球&nbsp;<a href="#世界杯专题---主页-添加进球"><i class="fa fa-link"></i></a></h4><section id="世界杯专题---主页-添加进球-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#世界杯专题---主页-添加进球-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/WorldCup.addGoal</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#40cf92006c59021e17140db983a4eaa9" class="pull-right">Toggle</a></li><li id="40cf92006c59021e17140db983a4eaa9" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-string">"null"</span></span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"SYS_ERROR"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"failured"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="世界杯专题---主页-分享内容获取">分享内容获取&nbsp;<a href="#世界杯专题---主页-分享内容获取"><i class="fa fa-link"></i></a></h4><section id="世界杯专题---主页-分享内容获取-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#世界杯专题---主页-分享内容获取-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/WorldCup.getSharingContent</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#2258937f1b16630bd16e8444c39d4d01" class="pull-right">Toggle</a></li><li id="2258937f1b16630bd16e8444c39d4d01" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">share_pic</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/100x100"</span>
+</span>}</span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"NO_LOGIN"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"failured"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="世界杯专题---主页-赛事总排行榜">赛事总排行榜&nbsp;<a href="#世界杯专题---主页-赛事总排行榜"><i class="fa fa-link"></i></a></h4><section id="世界杯专题---主页-赛事总排行榜-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#世界杯专题---主页-赛事总排行榜-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/WorldCup.getRankBoard</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7da3e369aa4fbb0dbd28c3350658371f" class="pull-right">Toggle</a></li><li id="7da3e369aa4fbb0dbd28c3350658371f" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"ok"</span></span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"SYS_ERROR"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">board</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">25754740</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+        "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Daniel White"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">17571915</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+        "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Laura Gonzalez"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">34002879</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+        "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Michael Martin"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">3</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">41353198</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+        "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"John Garcia"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">4</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">30434581</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+        "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Michael Walker"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">5</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">92019284</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+        "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Nancy Thomas"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">6</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">74646584</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+        "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Timothy Harris"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">7</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">83992390</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+        "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Scott Jackson"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">8</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">32225326</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+        "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Timothy Thomas"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">9</span>
+    </span>},
+    {
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">74921293</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+        "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Daniel Moore"</span></span>,
+        "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">10</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">my</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">50065613</span></span>,
+    "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://dummyimage.com/50x50"</span></span>,
+    "<span class="hljs-attribute">position</span>": <span class="hljs-value"><span class="hljs-number">92</span></span>,
+    "<span class="hljs-attribute">user_name</span>": <span class="hljs-value"><span class="hljs-string">"Melissa Taylor"</span>
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="世界杯专题---主页-活动结束统计">活动结束统计&nbsp;<a href="#世界杯专题---主页-活动结束统计"><i class="fa fa-link"></i></a></h4><section id="世界杯专题---主页-活动结束统计-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#世界杯专题---主页-活动结束统计-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/WorldCup.statistic</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e9d0085ac0e60ba11567b22dcbd58910" class="pull-right">Toggle</a></li><li id="e9d0085ac0e60ba11567b22dcbd58910" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">total_member</span>": <span class="hljs-value"><span class="hljs-number">4426182</span></span>,
+"<span class="hljs-attribute">total_score</span>": <span class="hljs-value"><span class="hljs-number">71743577</span>
+</span>}</span>,
+"<span class="hljs-attribute">err</span>": <span class="hljs-value"><span class="hljs-string">"NO_LOGIN"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-string">"failured"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

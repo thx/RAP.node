@@ -1,0 +1,1023 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>星象台-全网大盘接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#全网大盘---用户详情页" class="list-group-item heading">全网大盘 - 用户详情页</a></div><div class="list-group"><a href="#全网大盘---全网大盘页" class="list-group-item heading">全网大盘 - 全网大盘页</a><a href="#全网大盘---全网大盘页-全网最新趋势数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;全网最新趋势数据</a><a href="#全网大盘---全网大盘页-分类统计数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;分类统计数据</a><a href="#全网大盘---全网大盘页-全网top排行数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;全网Top排行数据</a><a href="#全网大盘---全网大盘页-获取通用统计数据接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取通用统计数据接口</a><a href="#全网大盘---全网大盘页-获取域名所属的分类数据接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取域名所属的分类数据接口</a><a href="#全网大盘---全网大盘页-获取用户详细数据接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取用户详细数据接口</a><a href="#全网大盘---全网大盘页-获取子分类数据接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取子分类数据接口</a><a href="#全网大盘---全网大盘页-获取域名的子域名列表接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取域名的子域名列表接口</a><a href="#全网大盘---全网大盘页-批量获取分类详细信息接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;批量获取分类详细信息接口</a><a href="#全网大盘---全网大盘页-临时接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;临时接口</a></div><div class="list-group"><a href="#全网大盘---站点详情页" class="list-group-item heading">全网大盘 - 站点详情页</a><a href="#全网大盘---站点详情页-站点详细数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;站点详细数据</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">星象台-全网大盘接口文档</h1></div></header><div class="description"><p>星象台全网数据大盘多角度展示、分析平台</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="全网大盘---用户详情页">全网大盘 - 用户详情页&nbsp;<a href="#全网大盘---用户详情页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="全网大盘---全网大盘页">全网大盘 - 全网大盘页&nbsp;<a href="#全网大盘---全网大盘页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="全网大盘---全网大盘页-全网最新趋势数据">全网最新趋势数据&nbsp;<a href="#全网大盘---全网大盘页-全网最新趋势数据"><i class="fa fa-link"></i></a></h4><p>全网周统计数据</p>
+<section id="全网大盘---全网大盘页-全网最新趋势数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---全网大盘页-全网最新趋势数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/xxt/statistics/api/getWholeWeek</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4e30df9a642b7d91044889ed80f1e20b" class="pull-right">Toggle</a></li><li id="4e30df9a642b7d91044889ed80f1e20b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">pv</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]</span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"PC"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]</span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"PC"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">xdata</span>": <span class="hljs-value"><span class="hljs-string">"0501,0502,0503"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">url</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">xdata</span>": <span class="hljs-value"><span class="hljs-string">"0501,0502,0503"</span></span>,
+        "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"PC"</span></span>,
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]
+            </span>},
+            {
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"MOBILE"</span></span>,
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]
+            </span>}
+        ]
+    </span>}</span>,
+    "<span class="hljs-attribute">host</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]</span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"MOBILE"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]</span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"MOBILE"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">xdata</span>": <span class="hljs-value"><span class="hljs-string">"0501,0502,0503"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">uv</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">xdata</span>": <span class="hljs-value"><span class="hljs-string">"0501,0502,0503"</span></span>,
+        "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]</span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"PC"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]</span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"PC"</span>
+            </span>}
+        ]
+    </span>}
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="全网大盘---全网大盘页-分类统计数据">分类统计数据&nbsp;<a href="#全网大盘---全网大盘页-分类统计数据"><i class="fa fa-link"></i></a></h4><p>获取某天全网所有分类的统计数据（PC+Mobile）</p>
+<section id="全网大盘---全网大盘页-分类统计数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---全网大盘页-分类统计数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/xxt/statistics/api/getWholeCategoryDay</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e96b018929b86613bbd41e61b95afa93" class="pull-right">Toggle</a></li><li id="e96b018929b86613bbd41e61b95afa93" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">pc</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">xdata</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Kenneth Allen"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Jeffrey Allen"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Richard Martin"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Matthew Williams"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Dorothy Miller"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-number">5.85144648</span></span>,
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-number">29.7241574376</span></span>,
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-number">93.2311341092</span></span>,
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-number">85.6013574317</span></span>,
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-number">84.7256044187</span></span>,
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span>
+            </span>}
+        ]
+    </span>}</span>,
+    "<span class="hljs-attribute">mobile</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">xdata</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Frank Hall"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Ronald Thompson"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Karen Thompson"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Scott Hernandez"</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"Elizabeth Young"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-number">77.3081</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-number">78.3209957</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-number">94.87</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-number">19.8815</span>
+            </span>},
+            {
+                "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+                "<span class="hljs-attribute">data</span>": <span class="hljs-value"><span class="hljs-number">17.4763</span>
+            </span>}
+        ]
+    </span>}
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2trt"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="全网大盘---全网大盘页-全网top排行数据">全网Top排行数据&nbsp;<a href="#全网大盘---全网大盘页-全网top排行数据"><i class="fa fa-link"></i></a></h4><p>获取全网Top数据（用户、站点等）</p>
+<section id="全网大盘---全网大盘页-全网top排行数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---全网大盘页-全网top排行数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/xxt/statistics/api/getWholeTopData</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a746f75c79c9435731f4013f5eecd142" class="pull-right">Toggle</a></li><li id="a746f75c79c9435731f4013f5eecd142" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">topHostFromMobile</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">491</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"dhcnr.io"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">534</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"cstsskyprm.co.uk"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">68</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"aswgr.gov"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">851</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"wssodkehdr.gov"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">248</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"oxycsh.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">331</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"ffcxjj.org"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">659</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"snefwcbibb.org"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">545</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"nonajbfbm.net"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"yrbpjfgh.org"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">78</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"wkt.com"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">randomUser</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">251</span></span>,
+            "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">"Karen White"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">58</span></span>,
+            "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">"Michelle Taylor"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">511</span></span>,
+            "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">"Brian Gonzalez"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">816</span></span>,
+            "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">"Paul Smith"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">543</span></span>,
+            "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">"Brenda Jones"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">486</span></span>,
+            "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">"Donald Anderson"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">790</span></span>,
+            "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">"Shirley Taylor"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">320</span></span>,
+            "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">"Paul Wilson"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">331</span></span>,
+            "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">"John Wilson"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">750</span></span>,
+            "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">"Kevin Lewis"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">topHostFromPc</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">301</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"xacs.co.uk"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">topHost</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">853</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"elwhmn.co.uk"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">940</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"vwixhqijl.gov"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">441</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"sibgwnfl.co.uk"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">863</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"reg.co.uk"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">49</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"upkvi.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">470</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"lqxlo.net"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">781</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"ohgbiylpv.gov"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">926</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"rcnysq.gov"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">161</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"epk.org"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">292</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"mkrgrf.net"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">topHostFromTanx</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">15</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"hobb.net"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">775</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"vackxr.co.uk"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">81</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"leynulousk.org"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">723</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"cfwe.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">862</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"dseyftvv.io"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">105</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"xseiwprl.net"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">20</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"max.edu"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">818</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"zueeow.org"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">119</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"vyquolktm.org"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">585</span></span>,
+            "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"xdpfibez.co.uk"</span>
+        </span>}
+    ]
+</span>}</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容d0j1"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="全网大盘---全网大盘页-获取通用统计数据接口">获取通用统计数据接口&nbsp;<a href="#全网大盘---全网大盘页-获取通用统计数据接口"><i class="fa fa-link"></i></a></h4><p>获取通用统计数据接口</p>
+<section id="全网大盘---全网大盘页-获取通用统计数据接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---全网大盘页-获取通用统计数据接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/statistics/api/getStatisticsData</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#5c706720a6b261374646ac1b338ee9a5" class="pull-right">Toggle</a></li><li id="5c706720a6b261374646ac1b338ee9a5" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">dates</span>": <span class="hljs-value">[
+        <span class="hljs-string">"2014-05-02"</span>,
+        <span class="hljs-string">"2014-05-03"</span>
+    ]</span>,
+    "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">typeValue</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,
+            "<span class="hljs-attribute">typeData</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">itemText</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>},
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>}
+                    ]</span>,
+                    "<span class="hljs-attribute">itemValue</span>": <span class="hljs-value">[
+                        <span class="hljs-string">"233"</span>,
+                        <span class="hljs-string">"321"</span>
+                    ]</span>,
+                    "<span class="hljs-attribute">itemKey</span>": <span class="hljs-value"><span class="hljs-string">"pv"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">itemText</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>},
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>}
+                    ]</span>,
+                    "<span class="hljs-attribute">itemValue</span>": <span class="hljs-value">[
+                        <span class="hljs-string">"233"</span>,
+                        <span class="hljs-string">"321"</span>
+                    ]</span>,
+                    "<span class="hljs-attribute">itemKey</span>": <span class="hljs-value"><span class="hljs-string">"pv"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">itemText</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>},
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>}
+                    ]</span>,
+                    "<span class="hljs-attribute">itemValue</span>": <span class="hljs-value">[
+                        <span class="hljs-string">"233"</span>,
+                        <span class="hljs-string">"321"</span>
+                    ]</span>,
+                    "<span class="hljs-attribute">itemKey</span>": <span class="hljs-value"><span class="hljs-string">"pv"</span>
+                </span>}
+            ]
+        </span>},
+        {
+            "<span class="hljs-attribute">typeValue</span>": <span class="hljs-value"><span class="hljs-string">"2"</span></span>,
+            "<span class="hljs-attribute">typeData</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">itemText</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>},
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>}
+                    ]</span>,
+                    "<span class="hljs-attribute">itemValue</span>": <span class="hljs-value">[
+                        <span class="hljs-string">"233"</span>,
+                        <span class="hljs-string">"321"</span>
+                    ]</span>,
+                    "<span class="hljs-attribute">itemKey</span>": <span class="hljs-value"><span class="hljs-string">"pv"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">itemText</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>},
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>}
+                    ]</span>,
+                    "<span class="hljs-attribute">itemValue</span>": <span class="hljs-value">[
+                        <span class="hljs-string">"233"</span>,
+                        <span class="hljs-string">"321"</span>
+                    ]</span>,
+                    "<span class="hljs-attribute">itemKey</span>": <span class="hljs-value"><span class="hljs-string">"pv"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">itemText</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>},
+                        {
+                            "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                            "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span>
+                        </span>}
+                    ]</span>,
+                    "<span class="hljs-attribute">itemValue</span>": <span class="hljs-value">[
+                        <span class="hljs-string">"233"</span>,
+                        <span class="hljs-string">"321"</span>
+                    ]</span>,
+                    "<span class="hljs-attribute">itemKey</span>": <span class="hljs-value"><span class="hljs-string">"pv"</span>
+                </span>}
+            ]
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"category"</span></span>,
+    "<span class="hljs-attribute">itemKeys</span>": <span class="hljs-value">[
+        <span class="hljs-string">"pv"</span>,
+        <span class="hljs-string">"uv"</span>,
+        <span class="hljs-string">"30TopPvDomain"</span>
+    ]</span>,
+    "<span class="hljs-attribute">typeValues</span>": <span class="hljs-value">[
+        <span class="hljs-string">"2"</span>,
+        <span class="hljs-string">"3"</span>
+    ]
+</span>}</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="全网大盘---全网大盘页-获取域名所属的分类数据接口">获取域名所属的分类数据接口&nbsp;<a href="#全网大盘---全网大盘页-获取域名所属的分类数据接口"><i class="fa fa-link"></i></a></h4><p>获取域名所属的分类数据接口</p>
+<section id="全网大盘---全网大盘页-获取域名所属的分类数据接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---全网大盘页-获取域名所属的分类数据接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/statistics/api/getHostCategoryList</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#5d9602d7e4653be3bc0683df7730c2af" class="pull-right">Toggle</a></li><li id="5d9602d7e4653be3bc0683df7730c2af" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1111</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"电子竞技"</span></span>,
+        "<span class="hljs-attribute">isLeaf</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+    </span>}
+]
+</span>}</span>,
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="全网大盘---全网大盘页-获取用户详细数据接口">获取用户详细数据接口&nbsp;<a href="#全网大盘---全网大盘页-获取用户详细数据接口"><i class="fa fa-link"></i></a></h4><p>获取用户详细数据接口</p>
+<section id="全网大盘---全网大盘页-获取用户详细数据接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---全网大盘页-获取用户详细数据接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/statistics/api/getUserInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#90eef154a1f646fe712b8526622c6fe5" class="pull-right">Toggle</a></li><li id="90eef154a1f646fe712b8526622c6fe5" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">hosts</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"tanx"</span></span>,
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">commonCategory</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span></span>,
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"male"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">acookie</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">dataSrcs</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"tanx"</span></span>,
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">b2bCategory</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">keywordList</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"male"</span></span>,
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">weight</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">catId</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">gender</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span></span>,
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"male"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">regions</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span></span>,
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"tanx"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">videoInfo</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">weight</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">catId</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">keywordList</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span></span>,
+                    "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"male"</span>
+                </span>}
+            ]
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">tbCategory</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">keywordList</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span></span>,
+                    "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"male"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">catId</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">firstDate</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">tmallBrand</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"male"</span></span>,
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">extTanxCategory</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"male"</span></span>,
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">urls</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"tanx"</span></span>,
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">keywords</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span></span>,
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"male"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">userType</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+    "<span class="hljs-attribute">querys</span>": <span class="hljs-value"><span class="hljs-string">"xxx,dddd"</span></span>,
+    "<span class="hljs-attribute">age</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"18-25"</span></span>,
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">visitDays</span>": <span class="hljs-value"><span class="hljs-string">"3"</span></span>,
+    "<span class="hljs-attribute">visitCount</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+    "<span class="hljs-attribute">lastDate</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">querySegment</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">key</span>": <span class="hljs-value"><span class="hljs-string">"male"</span></span>,
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"0.8"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">uid</span>": <span class="hljs-value"><span class="hljs-string">"dwqdqdwdq"</span>
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="全网大盘---全网大盘页-获取子分类数据接口">获取子分类数据接口&nbsp;<a href="#全网大盘---全网大盘页-获取子分类数据接口"><i class="fa fa-link"></i></a></h4><p>获取子分类数据接口</p>
+<section id="全网大盘---全网大盘页-获取子分类数据接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---全网大盘页-获取子分类数据接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/statistics/api/getCategoryList</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#1215376d3b6c2a5166018dc0cf989a80" class="pull-right">Toggle</a></li><li id="1215376d3b6c2a5166018dc0cf989a80" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1111</span></span>,
+        "<span class="hljs-attribute">isLeaf</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"电子竞技"</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="全网大盘---全网大盘页-获取域名的子域名列表接口">获取域名的子域名列表接口&nbsp;<a href="#全网大盘---全网大盘页-获取域名的子域名列表接口"><i class="fa fa-link"></i></a></h4><p>获取二级域名列表</p>
+<section id="全网大盘---全网大盘页-获取域名的子域名列表接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---全网大盘页-获取域名的子域名列表接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/statistics/api/getHostList</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#94cfa90d1324063b58f8a5bec7647f09" class="pull-right">Toggle</a></li><li id="94cfa90d1324063b58f8a5bec7647f09" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">hash</span>": <span class="hljs-value"><span class="hljs-string">"xxxxxxxxxxxxxxxxxxxxxxx"</span></span>,
+        "<span class="hljs-attribute">host</span>": <span class="hljs-value"><span class="hljs-string">"www.taobao.com"</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="全网大盘---全网大盘页-批量获取分类详细信息接口">批量获取分类详细信息接口&nbsp;<a href="#全网大盘---全网大盘页-批量获取分类详细信息接口"><i class="fa fa-link"></i></a></h4><p>根据分类Id批量获取分类信息</p>
+<section id="全网大盘---全网大盘页-批量获取分类详细信息接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---全网大盘页-批量获取分类详细信息接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/statistics/api/getCategoryInfo</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#df0109eceb7c266e0100ae0cfdce8476" class="pull-right">Toggle</a></li><li id="df0109eceb7c266e0100ae0cfdce8476" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1111</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"电子竞技"</span></span>,
+        "<span class="hljs-attribute">isLeaf</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span>
+</span>}
+</span>}
+</code></pre></li></ul></section><h4 id="全网大盘---全网大盘页-临时接口">临时接口&nbsp;<a href="#全网大盘---全网大盘页-临时接口"><i class="fa fa-link"></i></a></h4><p>aaa</p>
+<section id="全网大盘---全网大盘页-临时接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---全网大盘页-临时接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/aaaaaa</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#8e55e94eae07ef6ff5c4a029092fe456" class="pull-right">Toggle</a></li><li id="8e55e94eae07ef6ff5c4a029092fe456" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">typeValue</span>": <span class="hljs-value"><span class="hljs-string">"2,3"</span></span>,
+    "<span class="hljs-attribute">days</span>": <span class="hljs-value"><span class="hljs-string">"2014-05-02,2014-05-03"</span></span>,
+    "<span class="hljs-attribute">type</span>": <span class="hljs-value"><span class="hljs-string">"category"</span></span>,
+    "<span class="hljs-attribute">itemKeys</span>": <span class="hljs-value"><span class="hljs-string">"30TopPvDomain,30TopUvDomain"</span></span>,
+    "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">typeValue</span>": <span class="hljs-value"><span class="hljs-string">"2|www.taobao.com"</span></span>,
+            "<span class="hljs-attribute">typeData</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">itemText</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">dayData</span>": <span class="hljs-value">[
+                                {
+                                    "<span class="hljs-attribute">uv</span>": <span class="hljs-value"><span class="hljs-string">"222"</span></span>,
+                                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2323"</span></span>,
+                                    "<span class="hljs-attribute">pv</span>": <span class="hljs-value"><span class="hljs-string">"3222"</span>
+                                </span>}
+                            ]
+                        </span>}
+                    ]</span>,
+                    "<span class="hljs-attribute">itemValue</span>": <span class="hljs-value">{}</span>,
+                    "<span class="hljs-attribute">itemKey</span>": <span class="hljs-value"><span class="hljs-string">"30TopPvDomain"</span>
+                </span>}
+            ]
+        </span>}
+    ]
+</span>}
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="全网大盘---站点详情页">全网大盘 - 站点详情页&nbsp;<a href="#全网大盘---站点详情页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="全网大盘---站点详情页-站点详细数据">站点详细数据&nbsp;<a href="#全网大盘---站点详情页-站点详细数据"><i class="fa fa-link"></i></a></h4><p>获取站点详细</p>
+<section id="全网大盘---站点详情页-站点详细数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#全网大盘---站点详情页-站点详细数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/xxt/statistics/api/getHostDetail</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c13250940f2f507e34996d7204ab8bc6" class="pull-right">Toggle</a></li><li id="c13250940f2f507e34996d7204ab8bc6" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">info</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b1fk"</span></span>,
+"<span class="hljs-attribute">ok</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}</span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">message</span>": <span class="hljs-value"><span class="hljs-string">"错误信息"</span></span>,
+"<span class="hljs-attribute">result</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">category</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3fps"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3fps"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3fps"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3fps"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3fps"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">2</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3fps"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3fps"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">5</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3fps"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">6</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3fps"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3fps"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">domain</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">556</span></span>,
+            "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"vfdpkalts.net"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">523</span></span>,
+            "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"wcrg.edu"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">623</span></span>,
+            "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"xndtsbovic.gov"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">518</span></span>,
+            "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"hqhyisumq.net"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">790</span></span>,
+            "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"vlfwaffk.org"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">773</span></span>,
+            "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"zoptmw.edu"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">295</span></span>,
+            "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"dwrlq.co.uk"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">667</span></span>,
+            "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"nnoocy.edu"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">586</span></span>,
+            "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"jnybcsq.gov"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-number">810</span></span>,
+            "<span class="hljs-attribute">domain</span>": <span class="hljs-value"><span class="hljs-string">"aya.edu"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">charts</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">pv</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">mobile</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]</span>,
+                "<span class="hljs-attribute">xdata</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"0510"</span>,
+                    <span class="hljs-string">"0511"</span>,
+                    <span class="hljs-string">"0512"</span>
+                ]
+            </span>}</span>,
+            "<span class="hljs-attribute">pc</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">xdata</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"0510"</span>,
+                    <span class="hljs-string">"0511"</span>,
+                    <span class="hljs-string">"0512"</span>
+                ]</span>,
+                "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]
+            </span>}</span>,
+            "<span class="hljs-attribute">all</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">xdata</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"0510"</span>,
+                    <span class="hljs-string">"0511"</span>,
+                    <span class="hljs-string">"0512"</span>
+                ]</span>,
+                "<span class="hljs-attribute">series</span>": <span class="hljs-value">[
+                    <span class="hljs-string">"5"</span>,
+                    <span class="hljs-string">"6"</span>,
+                    <span class="hljs-string">"3"</span>
+                ]
+            </span>}
+        </span>}
+    </span>}
+</span>}</span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

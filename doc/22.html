@@ -1,0 +1,128 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>店铺装修升级接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#店铺装修升级---热力图" class="list-group-item heading">店铺装修升级 - 热力图</a><a href="#店铺装修升级---热力图-查询热力图数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;查询热力图数据</a><a href="#店铺装修升级---热力图-临时测试查询热力图数据" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;临时测试查询热力图数据</a><a href="#店铺装修升级---热力图-装修分析v2.0-获取页面链接点.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;装修分析V2.0 获取页面链接点..</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">店铺装修升级接口文档</h1></div></header><div class="description"><p>店铺装修升级</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="店铺装修升级---热力图">店铺装修升级 - 热力图&nbsp;<a href="#店铺装修升级---热力图"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="店铺装修升级---热力图-查询热力图数据">查询热力图数据&nbsp;<a href="#店铺装修升级---热力图-查询热力图数据"><i class="fa fa-link"></i></a></h4><p>必须是登录用户。
+成功返回的的事例：
+@code [{“path”:”[{\”img\”:\”http:\/\/img01.taobaocdn.com\/imgextra\/i1\/362409818\/T27.aWXgVXXXXXXXXX_!!362409818.jpg\”,\”width\”:\”200px\”,\”height\”:\”800px\”},{\”img\”:\”http:\/\/www.photophoto.cn\/m73\/060\/025\/0600250056.jpg\”,\”width\”:\”200px\”,\”height\”:\”800px\”}]”}] @end
+数据不存在返回的事例：
+{}</p>
+<section id="店铺装修升级---热力图-查询热力图数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#店铺装修升级---热力图-查询热力图数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://proxy.dev.lz.taobao.com:7662/=/view/decorewangpu/viewPic/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#74f2c156413173a8857dddab55d311df" class="pull-right">Toggle</a></li><li id="74f2c156413173a8857dddab55d311df" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">空</span>": <span class="hljs-value"><span class="hljs-string">"测试内容kwih"</span></span>,
+"<span class="hljs-attribute">path</span>": <span class="hljs-value"><span class="hljs-string">"测试内容zf0c"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="店铺装修升级---热力图-临时测试查询热力图数据">临时测试查询热力图数据&nbsp;<a href="#店铺装修升级---热力图-临时测试查询热力图数据"><i class="fa fa-link"></i></a></h4><script>var all=[{"time":"2012-10-21","url_id":"10","url_type":"page"},{"time":"2012-10-17","url_id":"11","url_type":"page"},{"time":"2012-10-15","url_id":"12","url_type":"page"},{"time":"2012-10-15","url_id":"13","url_type":"page"},{"time":"2012-10-12","url_id":"14","url_type":"page"},{"time":"2012-10-04","url_id":"15","url_type":"page"},{"time":"2012-10-19","url_id":"16","url_type":"page"},{"time":"2012-10-23","url_id":"17","url_type":"page"},{"time":"2012-10-01","url_id":"18","url_type":"page"},{"time":"2012-10-05","url_id":"19","url_type":"page"},{"time":"2012-10-14","url_id":"20","url_type":"page"},{"time":"2012-10-15","url_id":"21","url_type":"page"},{"time":"2012-10-27","url_id":"22","url_type":"page"},{"time":"2012-10-22","url_id":"23","url_type":"page"},{"time":"2012-10-01","url_id":"24","url_type":"page"},{"time":"2012-09-29","url_id":"25","url_type":"page"},{"time":"2012-10-04","url_id":"26","url_type":"page"},{"time":"2012-10-24","url_id":"27","url_type":"page"},{"time":"2012-10-09","url_id":"28","url_type":"page"},{"time":"2012-10-23","url_id":"29","url_type":"page"},{"time":"2012-10-11","url_id":"30","url_type":"page"},{"time":"2012-10-28","url_id":"31","url_type":"page"},{"time":"2012-10-09","url_id":"32","url_type":"page"},{"time":"2012-10-13","url_id":"33","url_type":"page"},{"time":"2012-10-11","url_id":"34","url_type":"page"},{"time":"2012-10-04","url_id":"35","url_type":"page"},{"time":"2012-10-06","url_id":"35","url_type":"page"},{"time":"2012-10-07","url_id":"35","url_type":"page"},{"time":"2012-10-09","url_id":"35","url_type":"page"},{"time":"2012-10-10","url_id":"35","url_type":"page"},{"time":"2012-10-15","url_id":"35","url_type":"page"},{"time":"2012-10-18","url_id":"35","url_type":"page"},{"time":"2012-10-21","url_id":"35","url_type":"page"},{"time":"2012-10-22","url_id":"35","url_type":"page"},{"time":"2012-10-22","url_id":"35","url_type":"page"},{"time":"2012-10-25","url_id":"35","url_type":"page"},{"time":"2012-10-20","url_id":"36","url_type":"page"},{"time":"2012-10-18","url_id":"6","url_type":"page"},{"time":"2012-09-30","url_id":"7","url_type":"page"},{"time":"2012-10-17","url_id":"8","url_type":"page"},{"time":"2012-10-06","url_id":"9","url_type":"page"}]
+</script><script>var path="[{\"img\":\"http://img01.taobaocdn.com/imgextra/i1/362409818/T27.aWXgVXXXXXXXXX_!!362409818.jpg\",\"width\":\"200px\",\"height\":\"800px\"},{\"img\":\"http://www.photophoto.cn/m73/060/025/0600250056.jpg\",\"width\":\"200px\",\"height\":\"800px\"}]"
+</script>
+
+<section id="店铺装修升级---热力图-临时测试查询热力图数据-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#店铺装修升级---热力图-临时测试查询热力图数据-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://proxy.dev.lz.taobao.com:7662/=/view/decorewangpu/viewAll</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#d2000e7a6e92ae06b545e056ec2c2d1b" class="pull-right">Toggle</a></li><li id="d2000e7a6e92ae06b545e056ec2c2d1b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section><h4 id="店铺装修升级---热力图-装修分析v2.0-获取页面链接点..">装修分析V2.0 获取页面链接点..&nbsp;<a href="#店铺装修升级---热力图-装修分析v2.0-获取页面链接点.."><i class="fa fa-link"></i></a></h4><p>装修分析V2.0 获取页面链接点击信息:[{“pv”:186439,”url_linkclick_count”:319052,”date”:”2012-12-12”,”url_type”:”index”,”url_id”:”33756187”,”click”:”1^C2^C4^B1^C2^C4”}]
+数据是36进制的</p>
+<section id="店铺装修升级---热力图-装修分析v2.0-获取页面链接点..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#店铺装修升级---热力图-装修分析v2.0-获取页面链接点..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/http://proxy.dev.lz.taobao.com:7662/=/view/decorewangpu/getLinks?unit_id=54173&amp;url_type=index&amp;day=2012-12-12&amp;url_id=33756187&amp;_s=c1b06om4o2j258e5oubrl84j19gi1u5rcq4o50cieln6tlm5r99g====</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e3a050f31aa340f9d5a45698c6b02278" class="pull-right">Toggle</a></li><li id="e3a050f31aa340f9d5a45698c6b02278" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code><span class="hljs-rules">{<span class="hljs-rule">}</span></span>
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

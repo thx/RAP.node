@@ -1,0 +1,178 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>网络大盘API接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#某模块（点击编辑..---网络大盘" class="list-group-item heading">某模块（点击编辑.. - 网络大盘</a><a href="#某模块（点击编辑..---网络大盘-获取设备api" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;获取设备API</a><a href="#某模块（点击编辑..---网络大盘-历史曲线api" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;历史曲线API</a><a href="#某模块（点击编辑..---网络大盘-设备性能指标api" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;设备性能指标API</a><a href="#某模块（点击编辑..---网络大盘-监控项环比利用率api" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;监控项环比利用率API</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">网络大盘API接口文档</h1></div></header><div class="description"></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="某模块（点击编辑..---网络大盘">某模块（点击编辑.. - 网络大盘&nbsp;<a href="#某模块（点击编辑..---网络大盘"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="某模块（点击编辑..---网络大盘-获取设备api">获取设备API&nbsp;<a href="#某模块（点击编辑..---网络大盘-获取设备api"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---网络大盘-获取设备api-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#某模块（点击编辑..---网络大盘-获取设备api-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#3e09fdaecef03180a07f32279628b5d5" class="pull-right">Toggle</a></li><li id="3e09fdaecef03180a07f32279628b5d5" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6oxu"</span></span>,
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">deviceItem</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">deviceItem</span>": <span class="hljs-value">[]</span>,
+            "<span class="hljs-attribute">deviceType</span>": <span class="hljs-value"><span class="hljs-string">"测试内容w9y6"</span></span>,
+            "<span class="hljs-attribute">hostName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容m207"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">hostName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容smu2"</span></span>,
+    "<span class="hljs-attribute">deviceType</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7k3h"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="某模块（点击编辑..---网络大盘-历史曲线api">历史曲线API&nbsp;<a href="#某模块（点击编辑..---网络大盘-历史曲线api"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---网络大盘-历史曲线api-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---网络大盘-历史曲线api-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#bfe69d90ff799c21e69d482755613ea7" class="pull-right">Toggle</a></li><li id="bfe69d90ff799c21e69d482755613ea7" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">itemName采集项名称</span>": <span class="hljs-value"><span class="hljs-number">57025</span></span>,
+    "<span class="hljs-attribute">collectTime</span>": <span class="hljs-value"><span class="hljs-string">"测试内容28vg"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容mf1g"</span></span>,
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}
+</code></pre></li></ul></section><h4 id="某模块（点击编辑..---网络大盘-设备性能指标api">设备性能指标API&nbsp;<a href="#某模块（点击编辑..---网络大盘-设备性能指标api"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---网络大盘-设备性能指标api-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---网络大盘-设备性能指标api-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#d6e1f28626a9bf41eb6ae39f68db01e4" class="pull-right">Toggle</a></li><li id="d6e1f28626a9bf41eb6ae39f68db01e4" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7iq2"</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">brandName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容lf89"</span></span>,
+    "<span class="hljs-attribute">room</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">roomName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容8f46"</span></span>,
+            "<span class="hljs-attribute">monitorItem</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">hostName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5521"</span></span>,
+                    "<span class="hljs-attribute">collectTime</span>": <span class="hljs-value"><span class="hljs-string">"测试内容cli4"</span></span>,
+                    "<span class="hljs-attribute">监控项</span>": <span class="hljs-value"><span class="hljs-string">"测试内容l02c"</span>
+                </span>}
+            ]
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">clusterName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容90jl"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="某模块（点击编辑..---网络大盘-监控项环比利用率api">监控项环比利用率API&nbsp;<a href="#某模块（点击编辑..---网络大盘-监控项环比利用率api"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---网络大盘-监控项环比利用率api-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---网络大盘-监控项环比利用率api-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#2b56c7874a10e9080a9d328509596c63" class="pull-right">Toggle</a></li><li id="2b56c7874a10e9080a9d328509596c63" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">msg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容17fn"</span></span>,
+"<span class="hljs-attribute">success</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">utilizationItem</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">utilization</span>": <span class="hljs-value"><span class="hljs-number">24006</span></span>,
+            "<span class="hljs-attribute">collectTime</span>": <span class="hljs-value"><span class="hljs-string">"测试内容924w"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">topCeiling</span>": <span class="hljs-value"><span class="hljs-number">85871</span></span>,
+    "<span class="hljs-attribute">itemData</span>": <span class="hljs-value"><span class="hljs-number">32083</span></span>,
+    "<span class="hljs-attribute">utilization</span>": <span class="hljs-value"><span class="hljs-number">31264</span></span>,
+    "<span class="hljs-attribute">chain</span>": <span class="hljs-value"><span class="hljs-number">12071</span></span>,
+    "<span class="hljs-attribute">hostName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容wth4"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

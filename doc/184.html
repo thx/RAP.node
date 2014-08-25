@@ -1,0 +1,207 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>国际机票搜索接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#某模块（点击编辑..---搜索结果页" class="list-group-item heading">某模块（点击编辑.. - 搜索结果页</a><a href="#某模块（点击编辑..---搜索结果页-航班产品搜索接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;航班产品搜索接口</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">国际机票搜索接口文档</h1></div></header><div class="description"></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="某模块（点击编辑..---搜索结果页">某模块（点击编辑.. - 搜索结果页&nbsp;<a href="#某模块（点击编辑..---搜索结果页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="某模块（点击编辑..---搜索结果页-航班产品搜索接口">航班产品搜索接口&nbsp;<a href="#某模块（点击编辑..---搜索结果页-航班产品搜索接口"><i class="fa fa-link"></i></a></h4><p>航班产品搜索接口</p>
+<section id="某模块（点击编辑..---搜索结果页-航班产品搜索接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---搜索结果页-航班产品搜索接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/flights_info.htm</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c8e7177b10f3593d01790dff5a8790b1" class="pull-right">Toggle</a></li><li id="c8e7177b10f3593d01790dff5a8790b1" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">data</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">cityMap</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">SIN</span>": <span class="hljs-value"><span class="hljs-string">"新加坡"</span></span>,
+    "<span class="hljs-attribute">SHA</span>": <span class="hljs-value"><span class="hljs-string">"上海"</span>
+</span>}</span>,
+"<span class="hljs-attribute">items</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">id</span>": <span class="hljs-value"><span class="hljs-string">"CA108iu878"</span></span>,
+        "<span class="hljs-attribute">subitems</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">agentId</span>": <span class="hljs-value"><span class="hljs-string">"23423"</span></span>,
+                "<span class="hljs-attribute">transVisa</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">childPrice</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+                "<span class="hljs-attribute">segs</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">00</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">flightRef</span>": <span class="hljs-value"><span class="hljs-string">"CA109PEKHKG0312"</span></span>,
+                        "<span class="hljs-attribute">cacheId</span>": <span class="hljs-value"><span class="hljs-number">12222</span></span>,
+                        "<span class="hljs-attribute">cabinName</span>": <span class="hljs-value"><span class="hljs-string">"Y"</span></span>,
+                        "<span class="hljs-attribute">fareItemId</span>": <span class="hljs-value"><span class="hljs-number">237283</span></span>,
+                        "<span class="hljs-attribute">cabinDesc</span>": <span class="hljs-value"><span class="hljs-string">"测试内容nj7y"</span></span>,
+                        "<span class="hljs-attribute">fareId</span>": <span class="hljs-value"><span class="hljs-number">10001</span></span>,
+                        "<span class="hljs-attribute">flightNo</span>": <span class="hljs-value"><span class="hljs-string">"CA109"</span>
+                    </span>}
+                </span>}</span>,
+                "<span class="hljs-attribute">originPrice</span>": <span class="hljs-value"><span class="hljs-number">1050</span></span>,
+                "<span class="hljs-attribute">fareSource</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">actId</span>": <span class="hljs-value"><span class="hljs-number">123</span></span>,
+                "<span class="hljs-attribute">actType</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+                "<span class="hljs-attribute">price</span>": <span class="hljs-value"><span class="hljs-number">1047</span></span>,
+                "<span class="hljs-attribute">cabinCount</span>": <span class="hljs-value"><span class="hljs-number">8</span></span>,
+                "<span class="hljs-attribute">childTax</span>": <span class="hljs-value"><span class="hljs-number">700</span></span>,
+                "<span class="hljs-attribute">adultTax</span>": <span class="hljs-value"><span class="hljs-number">1000</span></span>,
+                "<span class="hljs-attribute">freeBaggage</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">html</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">transCount</span>": <span class="hljs-value"><span class="hljs-number">0</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">airlineMap</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">HO</span>": <span class="hljs-value"><span class="hljs-string">"吉祥航空"</span></span>,
+    "<span class="hljs-attribute">ZH</span>": <span class="hljs-value"><span class="hljs-string">"深圳航空"</span></span>,
+    "<span class="hljs-attribute">MU</span>": <span class="hljs-value"><span class="hljs-string">"东方航空"</span></span>,
+    "<span class="hljs-attribute">HU</span>": <span class="hljs-value"><span class="hljs-string">"海南航空"</span></span>,
+    "<span class="hljs-attribute">CA</span>": <span class="hljs-value"><span class="hljs-string">"中国国航"</span></span>,
+    "<span class="hljs-attribute">FM</span>": <span class="hljs-value"><span class="hljs-string">"上海航空"</span></span>,
+    "<span class="hljs-attribute">KN</span>": <span class="hljs-value"><span class="hljs-string">"联合航空"</span></span>,
+    "<span class="hljs-attribute">CZ</span>": <span class="hljs-value"><span class="hljs-string">"南方航空"</span></span>,
+    "<span class="hljs-attribute">MF</span>": <span class="hljs-value"><span class="hljs-string">"厦门航空"</span>
+</span>}</span>,
+"<span class="hljs-attribute">agentMap</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">1426</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">score</span>": <span class="hljs-value"><span class="hljs-number">3.4</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+        "<span class="hljs-attribute">feedbackCount</span>": <span class="hljs-value"><span class="hljs-number">389</span></span>,
+        "<span class="hljs-attribute">ww</span>": <span class="hljs-value"><span class="hljs-string">""</span>
+    </span>}
+</span>}</span>,
+"<span class="hljs-attribute">airportMap</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">SHA</span>": <span class="hljs-value"><span class="hljs-string">"虹桥机场"</span></span>,
+    "<span class="hljs-attribute">PVG</span>": <span class="hljs-value"><span class="hljs-string">"浦东机场"</span></span>,
+    "<span class="hljs-attribute">NAY</span>": <span class="hljs-value"><span class="hljs-string">"南苑机场"</span></span>,
+    "<span class="hljs-attribute">PEK</span>": <span class="hljs-value"><span class="hljs-string">"首都机场"</span>
+</span>}</span>,
+"<span class="hljs-attribute">query</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">depCityName</span>": <span class="hljs-value"><span class="hljs-string">"北京"</span></span>,
+    "<span class="hljs-attribute">depCityCode</span>": <span class="hljs-value"><span class="hljs-string">"BJS"</span></span>,
+    "<span class="hljs-attribute">arrCityName</span>": <span class="hljs-value"><span class="hljs-string">"上海"</span></span>,
+    "<span class="hljs-attribute">arrCityCode</span>": <span class="hljs-value"><span class="hljs-string">"SHA"</span>
+</span>}</span>,
+"<span class="hljs-attribute">flights</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">CA109PEKHKG0312</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">arrCity</span>": <span class="hljs-value"><span class="hljs-string">"HKG"</span></span>,
+        "<span class="hljs-attribute">arrTerminal</span>": <span class="hljs-value"><span class="hljs-string">"B"</span></span>,
+        "<span class="hljs-attribute">planeStyle</span>": <span class="hljs-value"><span class="hljs-string">"333"</span></span>,
+        "<span class="hljs-attribute">depTime</span>": <span class="hljs-value"><span class="hljs-number">13000000009898</span></span>,
+        "<span class="hljs-attribute">depAirport</span>": <span class="hljs-value"><span class="hljs-string">"PEK"</span></span>,
+        "<span class="hljs-attribute">flyMins</span>": <span class="hljs-value"><span class="hljs-number">30</span></span>,
+        "<span class="hljs-attribute">arrAirport</span>": <span class="hljs-value"><span class="hljs-string">"HKG"</span></span>,
+        "<span class="hljs-attribute">arrTime</span>": <span class="hljs-value"><span class="hljs-number">13000000009898</span></span>,
+        "<span class="hljs-attribute">cacheId</span>": <span class="hljs-value"><span class="hljs-number">12222</span></span>,
+        "<span class="hljs-attribute">flyHours</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">flightNo</span>": <span class="hljs-value"><span class="hljs-string">"CA109"</span></span>,
+        "<span class="hljs-attribute">depTerminal</span>": <span class="hljs-value"><span class="hljs-string">"T1"</span></span>,
+        "<span class="hljs-attribute">depCity</span>": <span class="hljs-value"><span class="hljs-string">"BJS"</span>
+    </span>}
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">continue</span>": <span class="hljs-value"><span class="hljs-number">0</span></span>,
+"<span class="hljs-attribute">processTime</span>": <span class="hljs-value"><span class="hljs-string">"2014-04-10 14:10:34"</span></span>,
+"<span class="hljs-attribute">HOST</span>": <span class="hljs-value"><span class="hljs-string">"iesearch160081.pre.cm3"</span></span>,
+"<span class="hljs-attribute">flag</span>": <span class="hljs-value"><span class="hljs-number">7</span></span>,
+"<span class="hljs-attribute">status</span>": <span class="hljs-value"><span class="hljs-number">200</span></span>,
+"<span class="hljs-attribute">intervalTime</span>": <span class="hljs-value"><span class="hljs-number">2000</span>
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

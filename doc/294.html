@@ -1,0 +1,184 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>NOC值班视图接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#某模块（点击编辑..---noc值班视图页.." class="list-group-item heading">某模块（点击编辑.. - NOC值班视图页..</a><a href="#某模块（点击编辑..---noc值班视图页..-noc查看列表页面" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;NOC查看列表页面</a><a href="#某模块（点击编辑..---noc值班视图页..-通知人列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;通知人列表</a><a href="#某模块（点击编辑..---noc值班视图页..-关闭报警" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;关闭报警</a><a href="#某模块（点击编辑..---noc值班视图页..-通知成功次数列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;通知成功次数列表</a><a href="#某模块（点击编辑..---noc值班视图页..-查看设备信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;查看设备信息</a><a href="#某模块（点击编辑..---noc值班视图页..-报警项状态明细" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;报警项状态明细</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">NOC值班视图接口文档</h1></div></header><div class="description"></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="某模块（点击编辑..---noc值班视图页..">某模块（点击编辑.. - NOC值班视图页..&nbsp;<a href="#某模块（点击编辑..---noc值班视图页.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="某模块（点击编辑..---noc值班视图页..-noc查看列表页面">NOC查看列表页面&nbsp;<a href="#某模块（点击编辑..---noc值班视图页..-noc查看列表页面"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---noc值班视图页..-noc查看列表页面-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---noc值班视图页..-noc查看列表页面-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/getNocList</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#9399d541e820bc86cff66e7c0e43c124" class="pull-right">Toggle</a></li><li id="9399d541e820bc86cff66e7c0e43c124" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">returnData</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">monitorInfo</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">nocForm</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k2kh"</span></span>,
+    "<span class="hljs-attribute">callStauts</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">alarmTime</span>": <span class="hljs-value"><span class="hljs-string">"测试内容js29"</span></span>,
+    "<span class="hljs-attribute">outPut</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9465"</span></span>,
+    "<span class="hljs-attribute">monitorId</span>": <span class="hljs-value"><span class="hljs-number">24036</span></span>,
+    "<span class="hljs-attribute">monitorStatus</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+    "<span class="hljs-attribute">alarmPerson</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="某模块（点击编辑..---noc值班视图页..-通知人列表">通知人列表&nbsp;<a href="#某模块（点击编辑..---noc值班视图页..-通知人列表"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---noc值班视图页..-通知人列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---noc值班视图页..-通知人列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#b23853f5dfda0a9c81ef28e38fe0e83d" class="pull-right">Toggle</a></li><li id="b23853f5dfda0a9c81ef28e38fe0e83d" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">contactPerson</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">ww</span>": <span class="hljs-value"><span class="hljs-string">"测试内容cl5f"</span></span>,
+    "<span class="hljs-attribute">shifts</span>": <span class="hljs-value"><span class="hljs-string">"测试内容22p4"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容7n91"</span></span>,
+    "<span class="hljs-attribute">mobile</span>": <span class="hljs-value"><span class="hljs-number">34352</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">Owner</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容81y4"</span></span>,
+    "<span class="hljs-attribute">ww</span>": <span class="hljs-value"><span class="hljs-string">"测试内容k67v"</span></span>,
+    "<span class="hljs-attribute">mobile</span>": <span class="hljs-value"><span class="hljs-number">87722</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="某模块（点击编辑..---noc值班视图页..-关闭报警">关闭报警&nbsp;<a href="#某模块（点击编辑..---noc值班视图页..-关闭报警"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---noc值班视图页..-关闭报警-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---noc值班视图页..-关闭报警-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/nocClose</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#60ca15fdefb10e0f00378ed8de7031f4" class="pull-right">Toggle</a></li><li id="60ca15fdefb10e0f00378ed8de7031f4" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</code></pre></li></ul></section><h4 id="某模块（点击编辑..---noc值班视图页..-通知成功次数列表">通知成功次数列表&nbsp;<a href="#某模块（点击编辑..---noc值班视图页..-通知成功次数列表"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---noc值班视图页..-通知成功次数列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---noc值班视图页..-通知成功次数列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4941f3a9b46c925f13136dafd6a669a3" class="pull-right">Toggle</a></li><li id="4941f3a9b46c925f13136dafd6a669a3" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">Persondata</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">emailCount</span>": <span class="hljs-value"><span class="hljs-number">74005</span></span>,
+    "<span class="hljs-attribute">wwCount</span>": <span class="hljs-value"><span class="hljs-number">87636</span></span>,
+    "<span class="hljs-attribute">mobileCount</span>": <span class="hljs-value"><span class="hljs-number">57851</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容37mj"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="某模块（点击编辑..---noc值班视图页..-查看设备信息">查看设备信息&nbsp;<a href="#某模块（点击编辑..---noc值班视图页..-查看设备信息"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---noc值班视图页..-查看设备信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---noc值班视图页..-查看设备信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#68b4d3e491c389ed8e7768d381bff4e9" class="pull-right">Toggle</a></li><li id="68b4d3e491c389ed8e7768d381bff4e9" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">serviceRoom</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">groupName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容71xp"</span></span>,
+"<span class="hljs-attribute">serviceName</span>": <span class="hljs-value"><span class="hljs-string">"测试内容104g"</span></span>,
+"<span class="hljs-attribute">label</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">monitorType</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1o41"</span></span>,
+"<span class="hljs-attribute">classify</span>": <span class="hljs-value"><span class="hljs-string">"测试内容05xz"</span></span>,
+"<span class="hljs-attribute">IP</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ti06"</span></span>,
+"<span class="hljs-attribute">serviceStatus</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6ppg"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="某模块（点击编辑..---noc值班视图页..-报警项状态明细">报警项状态明细&nbsp;<a href="#某模块（点击编辑..---noc值班视图页..-报警项状态明细"><i class="fa fa-link"></i></a></h4><section id="某模块（点击编辑..---noc值班视图页..-报警项状态明细-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#某模块（点击编辑..---noc值班视图页..-报警项状态明细-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#f5cc4c638990bdbbb7983895af233a76" class="pull-right">Toggle</a></li><li id="f5cc4c638990bdbbb7983895af233a76" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">rawData</span>": <span class="hljs-value"><span class="hljs-string">"测试内容33jp"</span></span>,
+"<span class="hljs-attribute">collection</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">description</span>": <span class="hljs-value"><span class="hljs-string">"测试内容sj5i"</span></span>,
+    "<span class="hljs-attribute">returnCode</span>": <span class="hljs-value"><span class="hljs-string">"测试内容wn6t"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容agh1"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">alarmData</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">criticalExpression</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b81c"</span></span>,
+    "<span class="hljs-attribute">waringExpression</span>": <span class="hljs-value"><span class="hljs-string">"测试内容tpfj"</span></span>,
+    "<span class="hljs-attribute">alarmName</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">output</span>": <span class="hljs-value"><span class="hljs-string">"测试内容m72t"</span></span>,
+    "<span class="hljs-attribute">alarmStatus</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6256"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">resultData</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9v2g"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>

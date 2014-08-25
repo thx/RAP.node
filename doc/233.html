@@ -1,0 +1,1664 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>问到底接口文档</title><link rel="stylesheet" href="http://localhost:8827/css/bootstrap.min.css"><link rel="stylesheet" href="http://localhost:8827/css/font-awesome.min.css"><link rel="stylesheet" href="http://localhost:8827/css/css.css"><style>/* Highlight.js Theme Tomorrow */
+.hljs-comment,.hljs-title{color:#8e908c}.hljs-variable,.hljs-attribute,.hljs-tag,.hljs-regexp,.ruby .hljs-constant,.xml .hljs-tag .hljs-title,.xml .hljs-pi,.xml .hljs-doctype,.html .hljs-doctype,.css .hljs-id,.css .hljs-class,.css .hljs-pseudo{color:#c82829}.hljs-number,.hljs-preprocessor,.hljs-pragma,.hljs-built_in,.hljs-literal,.hljs-params,.hljs-constant{color:#f5871f}.ruby .hljs-class .hljs-title,.css .hljs-rules .hljs-attribute{color:#eab700}.hljs-string,.hljs-value,.hljs-inheritance,.hljs-header,.ruby .hljs-symbol,.xml .hljs-cdata{color:#718c00}.css .hljs-hexcolor{color:#3e999f}.hljs-function,.python .hljs-decorator,.python .hljs-title,.ruby .hljs-function .hljs-title,.ruby .hljs-title .hljs-keyword,.perl .hljs-sub,.javascript .hljs-title,.coffeescript .hljs-title{color:#4271ae}.hljs-keyword,.javascript .hljs-function{color:#8959a8}.hljs{display:block;background:white;color:#4d4d4c;padding:.5em}.coffeescript .javascript,.javascript .xml,.tex .hljs-formula,.xml .javascript,.xml .vbscript,.xml .css,.xml .hljs-cdata{opacity:.5}</style><style>body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+.list-group-item.collapse.in {
+  display: block;
+}
+#nav {
+  margin-top: 38px;
+  min-width: 255px;
+  top: 0;
+  bottom: 0;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  overflow-y: auto;
+}
+@media (max-width: 1199px) {
+  #nav {
+    min-width: 212px;
+  }
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><div class="col-md-3"><nav id="nav" class="hidden-sm hidden-xs affix nav"><div class="list-group"><a href="#问到底---首页" class="list-group-item heading">问到底 - 首页</a><a href="#问到底---首页-首页数据输出" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;首页数据输出</a><a href="#问到底---首页-获取最新问题总数" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;获取最新问题总数</a><a href="#问到底---首页-每5秒获取一次问题总量" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;每5秒获取一次问题总量</a><a href="#问到底---首页-根据问题tab类型获取相应的列表" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;根据问题tab类型获取相应的列表</a></div><div class="list-group"><a href="#问到底---list页面" class="list-group-item heading">问到底 - list页面</a><a href="#问到底---list页面-list页面数据输出" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;list页面数据输出</a><a href="#问到底---list页面-根据排序类型获取list数据借口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;根据排序类型获取list数据借口</a><a href="#问到底---list页面-问题收藏接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;问题收藏接口</a></div><div class="list-group"><a href="#问到底---detai页面" class="list-group-item heading">问到底 - detai页面</a><a href="#问到底---detai页面-detail页数据输出" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;detail页数据输出</a><a href="#问到底---detai页面-踩接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;踩接口</a><a href="#问到底---detai页面-采纳答案接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;采纳答案接口</a><a href="#问到底---detai页面-根据分页器的to页获取评论lis.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;根据分页器的to页获取评论lis..</a><a href="#问到底---detai页面-评论提交接口" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;评论提交接口</a><a href="#问到底---detai页面-回答提交接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;回答提交接口</a><a href="#问到底---detai页面-根据分页器的to页获取回答的li.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;根据分页器的to页获取回答的li..</a></div><div class="list-group"><a href="#问到底---profile页.." class="list-group-item heading">问到底 - profile页..</a><a href="#问到底---profile页..-profile页面数据输出" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;profile页面数据输出</a><a href="#问到底---profile页..-修改用户介绍借口" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;修改用户介绍借口</a><a href="#问到底---profile页..-根据用户id获取用户信息" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;根据用户id获取用户信息</a><a href="#问到底---profile页..-根据pagenum获取收藏lis.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;根据pagenum获取收藏lis..</a><a href="#问到底---profile页..-根据pagenum获取回答问题l.." class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;根据pagenum获取回答问题l..</a><a href="#问到底---profile页..-状态" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;状态</a></div><div class="list-group"><a href="#问到底---errorcod.." class="list-group-item heading">问到底 - ErrorCod..</a><a href="#问到底---errorcod..-错误码" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;错误码</a><a href="#问到底---errorcod..-前后端接口定义" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;前后端接口定义</a><a href="#问到底---errorcod..-提问面板接口" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;提问面板接口</a></div></nav></div><div class="col-md-9"><div><header><div class="page-header"><h1 id="top">问到底接口文档</h1></div></header><div class="description"><p>垂直于外贸的知识问答社区</p>
+</div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="问到底---首页">问到底 - 首页&nbsp;<a href="#问到底---首页"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="问到底---首页-首页数据输出">首页数据输出&nbsp;<a href="#问到底---首页-首页数据输出"><i class="fa fa-link"></i></a></h4><section id="问到底---首页-首页数据输出-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---首页-首页数据输出-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a0a29834f5c0d01e03f866bbd06bc8cb" class="pull-right">Toggle</a></li><li id="a0a29834f5c0d01e03f866bbd06bc8cb" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">latestQuestionsList</span>": <span class="hljs-value">[]</span>,
+"<span class="hljs-attribute">firstCateList</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"询盘发布"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">weekRanking</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">QuestionInfo</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"测试内容566b"</span></span>,
+            "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">68165</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容dp6e"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容421b"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"测试内容j1n9"</span></span>,
+            "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">31161</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容14t9"</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容i0n5"</span>
+        </span>}
+    ]
+</span>}
+]</span>,
+"<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">precentData</span>": <span class="hljs-value"><span class="hljs-string">"测试内容f3fr"</span></span>,
+"<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">20802</span></span>,
+"<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"测试内容n8u7"</span></span>,
+"<span class="hljs-attribute">levelData</span>": <span class="hljs-value"><span class="hljs-number">52544</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容254b"</span></span>,
+"<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1wms"</span></span>,
+"<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6788"</span>
+</span>}</span>,
+"<span class="hljs-attribute">lang</span>": <span class="hljs-value"><span class="hljs-string">"en"</span></span>,
+"<span class="hljs-attribute">isLogin</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">categorysData</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">firstCate</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span></span>,
+        "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"阿里产品"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">secCates</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>}
+    ]
+</span>},
+{
+    "<span class="hljs-attribute">firstCate</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span></span>,
+        "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"阿里产品"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">secCates</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>}
+    ]
+</span>},
+{
+    "<span class="hljs-attribute">firstCate</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span></span>,
+        "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"阿里产品"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">secCates</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>}
+    ]
+</span>},
+{
+    "<span class="hljs-attribute">firstCate</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span></span>,
+        "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"阿里产品"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">secCates</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>},
+        {
+            "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"关于网站"</span></span>,
+            "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://alibaba.com"</span>
+        </span>}
+    ]
+</span>}
+]</span>,
+"<span class="hljs-attribute">askPanelInfo</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">expertAskInfo</span>": <span class="hljs-value">[]</span>,
+    "<span class="hljs-attribute">openAskInfo</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">rewardsCoins</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+                    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"国际站"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">firstCateList</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">cateInfo</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">secondCate</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"询盘发布"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"1"</span>
+                        </span>}
+                    ]</span>,
+                    "<span class="hljs-attribute">firstCate</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"国际站"</span></span>,
+                        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"1"</span>
+                    </span>}
+                </span>}
+            ]
+        </span>}
+    ]
+</span>}
+]</span>,
+"<span class="hljs-attribute">noticeInfo</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6pag"</span></span>,
+    "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1646"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---首页-获取最新问题总数">获取最新问题总数&nbsp;<a href="#问到底---首页-获取最新问题总数"><i class="fa fa-link"></i></a></h4><section id="问到底---首页-获取最新问题总数-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---首页-获取最新问题总数-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/indextotal.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#c2f7489824819c6def996b5faac55e76" class="pull-right">Toggle</a></li><li id="c2f7489824819c6def996b5faac55e76" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">18360</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---首页-每5秒获取一次问题总量">每5秒获取一次问题总量&nbsp;<a href="#问到底---首页-每5秒获取一次问题总量"><i class="fa fa-link"></i></a></h4><section id="问到底---首页-每5秒获取一次问题总量-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---首页-每5秒获取一次问题总量-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/indexquestiontotal.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#b5c9e20704d8820a1d767c65f9ae0d0b" class="pull-right">Toggle</a></li><li id="b5c9e20704d8820a1d767c65f9ae0d0b" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">3000</span></span>,
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---首页-根据问题tab类型获取相应的列表">根据问题tab类型获取相应的列表&nbsp;<a href="#问到底---首页-根据问题tab类型获取相应的列表"><i class="fa fa-link"></i></a></h4><section id="问到底---首页-根据问题tab类型获取相应的列表-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---首页-根据问题tab类型获取相应的列表-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/indexQuestionList.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#b6390612f8cf9552f7fa405acaba6b5d" class="pull-right">Toggle</a></li><li id="b6390612f8cf9552f7fa405acaba6b5d" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">questionsList</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">viewMore</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"low these schammers to sent trade match? next time you find s"</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"24 mins ago"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">203</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1200</span></span>,
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">244</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"One TW customer ask us to make samples,we have made him 2kind of samples for free,but he ask more models.We ask USD250 for sample charge.Make Nylon Bristle at his color will cost RMB800.00,make 4 moulds will cost RMB400.00.Raw materials,workers wage and so on.Will cost our at least RMB1800.T"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/90/90/tech"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"32 mins ago"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>},
+{
+    "<span class="hljs-attribute">viewMore</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"low these schammers to sent trade match? next time you find s"</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"24 mins ago"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">203</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1200</span></span>,
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">244</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"One TW customer ask us to make samples,we have made him 2kind of samples for free,but he ask more models.We ask USD250 for sample charge.Make Nylon Bristle at his color will cost RMB800.00,make 4 moulds will cost RMB400.00.Raw materials,workers wage and so on.Will cost our at least RMB1800.T"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/90/90/tech"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"32 mins ago"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>},
+{
+    "<span class="hljs-attribute">viewMore</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"low these schammers to sent trade match? next time you find s"</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"24 mins ago"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">203</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1200</span></span>,
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">244</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"One TW customer ask us to make samples,we have made him 2kind of samples for free,but he ask more models.We ask USD250 for sample charge.Make Nylon Bristle at his color will cost RMB800.00,make 4 moulds will cost RMB400.00.Raw materials,workers wage and so on.Will cost our at least RMB1800.T"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/90/90/tech"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"32 mins ago"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>},
+{
+    "<span class="hljs-attribute">viewMore</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"low these schammers to sent trade match? next time you find s"</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"24 mins ago"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">203</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1200</span></span>,
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">244</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"One TW customer ask us to make samples,we have made him 2kind of samples for free,but he ask more models.We ask USD250 for sample charge.Make Nylon Bristle at his color will cost RMB800.00,make 4 moulds will cost RMB400.00.Raw materials,workers wage and so on.Will cost our at least RMB1800.T"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/90/90/tech"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"32 mins ago"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>},
+{
+    "<span class="hljs-attribute">viewMore</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"low these schammers to sent trade match? next time you find s"</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"24 mins ago"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">203</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1200</span></span>,
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">244</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"One TW customer ask us to make samples,we have made him 2kind of samples for free,but he ask more models.We ask USD250 for sample charge.Make Nylon Bristle at his color will cost RMB800.00,make 4 moulds will cost RMB400.00.Raw materials,workers wage and so on.Will cost our at least RMB1800.T"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/90/90/tech"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"32 mins ago"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>},
+{
+    "<span class="hljs-attribute">viewMore</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"low these schammers to sent trade match? next time you find s"</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"24 mins ago"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">203</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1200</span></span>,
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">244</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"One TW customer ask us to make samples,we have made him 2kind of samples for free,but he ask more models.We ask USD250 for sample charge.Make Nylon Bristle at his color will cost RMB800.00,make 4 moulds will cost RMB400.00.Raw materials,workers wage and so on.Will cost our at least RMB1800.T"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/90/90/tech"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"32 mins ago"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>},
+{
+    "<span class="hljs-attribute">viewMore</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"low these schammers to sent trade match? next time you find s"</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"24 mins ago"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">203</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1200</span></span>,
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">244</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"One TW customer ask us to make samples,we have made him 2kind of samples for free,but he ask more models.We ask USD250 for sample charge.Make Nylon Bristle at his color will cost RMB800.00,make 4 moulds will cost RMB400.00.Raw materials,workers wage and so on.Will cost our at least RMB1800.T"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/90/90/tech"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"32 mins ago"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>},
+{
+    "<span class="hljs-attribute">viewMore</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"low these schammers to sent trade match? next time you find s"</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"24 mins ago"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">203</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1200</span></span>,
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">244</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"One TW customer ask us to make samples,we have made him 2kind of samples for free,but he ask more models.We ask USD250 for sample charge.Make Nylon Bristle at his color will cost RMB800.00,make 4 moulds will cost RMB400.00.Raw materials,workers wage and so on.Will cost our at least RMB1800.T"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/90/90/tech"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"32 mins ago"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>},
+{
+    "<span class="hljs-attribute">viewMore</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"low these schammers to sent trade match? next time you find s"</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"24 mins ago"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">203</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1200</span></span>,
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">244</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"One TW customer ask us to make samples,we have made him 2kind of samples for free,but he ask more models.We ask USD250 for sample charge.Make Nylon Bristle at his color will cost RMB800.00,make 4 moulds will cost RMB400.00.Raw materials,workers wage and so on.Will cost our at least RMB1800.T"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/90/90/tech"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"32 mins ago"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>},
+{
+    "<span class="hljs-attribute">viewMore</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+            "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"low these schammers to sent trade match? next time you find s"</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"24 mins ago"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">203</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1200</span></span>,
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">244</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"One TW customer ask us to make samples,we have made him 2kind of samples for free,but he ask more models.We ask USD250 for sample charge.Make Nylon Bristle at his color will cost RMB800.00,make 4 moulds will cost RMB400.00.Raw materials,workers wage and so on.Will cost our at least RMB1800.T"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/90/90/tech"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"32 mins ago"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">isLatest</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="问到底---list页面">问到底 - list页面&nbsp;<a href="#问到底---list页面"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="问到底---list页面-list页面数据输出">list页面数据输出&nbsp;<a href="#问到底---list页面-list页面数据输出"><i class="fa fa-link"></i></a></h4><section id="问到底---list页面-list页面数据输出-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---list页面-list页面数据输出-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#9034e932fb5c9c527d6091c476e34196" class="pull-right">Toggle</a></li><li id="9034e932fb5c9c527d6091c476e34196" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">RelatedTopicInfo</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6r7b"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">lang</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3e9p"</span></span>,
+"<span class="hljs-attribute">isLogin</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">[]</span>,
+"<span class="hljs-attribute">questionsList</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">38887</span></span>,
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2ipw"</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">65101</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容qdwx"</span></span>,
+    "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容1285"</span></span>,
+    "<span class="hljs-attribute">thumbsInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"测试内容f26v"</span>
+            </span>}
+        ]
+    </span>}</span>,
+    "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">73280</span></span>,
+    "<span class="hljs-attribute">cate</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"测试内容p7o8"</span></span>,
+        "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3pw6"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"测试内容nkom"</span></span>,
+    "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{}</span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容226w"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">currentCateInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">lessCate</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">isCurrent</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+        "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容19r7"</span></span>,
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"测试内容rz4z"</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">fullCate</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容jp45"</span></span>,
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4b7n"</span></span>,
+        "<span class="hljs-attribute">isCurrent</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">firstCate</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容q5gn"</span></span>,
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"测试内容44wx"</span>
+    </span>}
+]
+</span>}</span>,
+"<span class="hljs-attribute">resultNum</span>": <span class="hljs-value"><span class="hljs-number">66531</span></span>,
+"<span class="hljs-attribute">categorysData</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">askPanelInfo</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---list页面-根据排序类型获取list数据借口">根据排序类型获取list数据借口&nbsp;<a href="#问到底---list页面-根据排序类型获取list数据借口"><i class="fa fa-link"></i></a></h4><section id="问到底---list页面-根据排序类型获取list数据借口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---list页面-根据排序类型获取list数据借口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/listSort.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7e9e17cc4d906cb2cf982a1f9d6a2a91" class="pull-right">Toggle</a></li><li id="7e9e17cc4d906cb2cf982a1f9d6a2a91" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">questionList</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容702q"</span></span>,
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbs</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">thumbsData</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"500"</span></span>,
+        "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">rewardNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"Allow these schammers to sent trade match? nex t time yo u find some agent to help you then you may not be cheaten 38 mins ago"</span></span>,
+        "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"38 mins"</span></span>,
+        "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">" industryw want o sell my adult pic or cideo?"</span></span>,
+        "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span>
+    </span>}
+</span>},
+{
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容702q"</span></span>,
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbs</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">thumbsData</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"500"</span></span>,
+        "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">rewardNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"Allow these schammers to sent trade match? nex t time yo u find some agent to help you then you may not be cheaten 38 mins ago"</span></span>,
+        "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"38 mins"</span></span>,
+        "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">" industryw want o sell my adult pic or cideo?"</span></span>,
+        "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span>
+    </span>}
+</span>},
+{
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容702q"</span></span>,
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbs</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">thumbsData</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"500"</span></span>,
+        "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">rewardNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"Allow these schammers to sent trade match? nex t time yo u find some agent to help you then you may not be cheaten 38 mins ago"</span></span>,
+        "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"38 mins"</span></span>,
+        "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">" industryw want o sell my adult pic or cideo?"</span></span>,
+        "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span>
+    </span>}
+</span>},
+{
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容702q"</span></span>,
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbs</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">thumbsData</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"500"</span></span>,
+        "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">rewardNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"Allow these schammers to sent trade match? nex t time yo u find some agent to help you then you may not be cheaten 38 mins ago"</span></span>,
+        "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"38 mins"</span></span>,
+        "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">" industryw want o sell my adult pic or cideo?"</span></span>,
+        "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span>
+    </span>}
+</span>},
+{
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容702q"</span></span>,
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbs</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">thumbsData</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"500"</span></span>,
+        "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">rewardNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"Allow these schammers to sent trade match? nex t time yo u find some agent to help you then you may not be cheaten 38 mins ago"</span></span>,
+        "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"38 mins"</span></span>,
+        "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">" industryw want o sell my adult pic or cideo?"</span></span>,
+        "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span>
+    </span>}
+</span>},
+{
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容702q"</span></span>,
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbs</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">thumbsData</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"500"</span></span>,
+        "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">rewardNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"Allow these schammers to sent trade match? nex t time yo u find some agent to help you then you may not be cheaten 38 mins ago"</span></span>,
+        "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"38 mins"</span></span>,
+        "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">" industryw want o sell my adult pic or cideo?"</span></span>,
+        "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span>
+    </span>}
+</span>},
+{
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容702q"</span></span>,
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">questionInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">thumbs</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">thumbsData</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">src</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+        </span>}</span>,
+        "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"500"</span></span>,
+        "<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+        "<span class="hljs-attribute">rewardNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"Allow these schammers to sent trade match? nex t time yo u find some agent to help you then you may not be cheaten 38 mins ago"</span></span>,
+        "<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"38 mins"</span></span>,
+        "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">" industryw want o sell my adult pic or cideo?"</span></span>,
+        "<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+        "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">500</span>
+    </span>}
+</span>}
+]</span>,
+"<span class="hljs-attribute">resutlNum</span>": <span class="hljs-value"><span class="hljs-number">2422525</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---list页面-问题收藏接口">问题收藏接口&nbsp;<a href="#问到底---list页面-问题收藏接口"><i class="fa fa-link"></i></a></h4><section id="问到底---list页面-问题收藏接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---list页面-问题收藏接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/listsave.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#9ed65a2926e6c81b26f20205ad3b9301" class="pull-right">Toggle</a></li><li id="9ed65a2926e6c81b26f20205ad3b9301" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">savesNum</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="问到底---detai页面">问到底 - detai页面&nbsp;<a href="#问到底---detai页面"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="问到底---detai页面-detail页数据输出">detail页数据输出&nbsp;<a href="#问到底---detai页面-detail页数据输出"><i class="fa fa-link"></i></a></h4><section id="问到底---detai页面-detail页数据输出-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---detai页面-detail页数据输出-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#a20a1a90e4398a894c6ea657ffd4d8fb" class="pull-right">Toggle</a></li><li id="a20a1a90e4398a894c6ea657ffd4d8fb" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">otherAnswers</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">otherAnswersList</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"测试内容uu2q"</span></span>,
+        "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容ig88"</span></span>,
+        "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">47247</span></span>,
+        "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容83y1"</span></span>,
+        "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">23235</span></span>,
+        "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">[
+            {
+                "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4898"</span></span>,
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容f2zm"</span></span>,
+                "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容v06t"</span>
+            </span>}
+        ]</span>,
+        "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-number">43030</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">expertAnswerInfo</span>": <span class="hljs-value">{}</span>,
+"<span class="hljs-attribute">num</span>": <span class="hljs-value"><span class="hljs-number">10462</span></span>,
+"<span class="hljs-attribute">paginationInfo</span>": <span class="hljs-value">[
+    {
+        "<span class="hljs-attribute">pagesize</span>": <span class="hljs-value"><span class="hljs-number">42574</span></span>,
+        "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">11764</span>
+    </span>}
+]</span>,
+"<span class="hljs-attribute">bestAnswerInfo</span>": <span class="hljs-value">{}
+</span>}</span>,
+"<span class="hljs-attribute">firstCateInfo</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5i18"</span></span>,
+    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6prr"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">emptyIdentifier</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">takenAnswerInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">40721</span></span>,
+"<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">62388</span></span>,
+"<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容fiom"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容u840"</span></span>,
+    "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"测试内容9bf4"</span>
+</span>}</span>,
+"<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-number">33323</span></span>,
+"<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容212u"</span></span>,
+"<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-number">30278</span></span>,
+"<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"测试内容r3x8"</span>
+</span>}</span>,
+"<span class="hljs-attribute">askToEnInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">AskInfo</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容c6c5"</span></span>,
+    "<span class="hljs-attribute">reward</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容kxk3"</span></span>,
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"测试内容53y1"</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"测试内容03ul"</span></span>,
+    "<span class="hljs-attribute">cate</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"测试内容u05v"</span></span>,
+            "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"测试内容l9v2"</span>
+        </span>}
+    ]
+</span>}</span>,
+"<span class="hljs-attribute">isAskToEn</span>": <span class="hljs-value"><span class="hljs-literal">false</span>
+</span>}</span>,
+"<span class="hljs-attribute">questionInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">isTaken</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">veiwNum</span>": <span class="hljs-value"><span class="hljs-number">44871</span></span>,
+"<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">24467</span></span>,
+"<span class="hljs-attribute">questionId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容l70w"</span></span>,
+"<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容mf6m"</span></span>,
+"<span class="hljs-attribute">cate</span>": <span class="hljs-value"><span class="hljs-string">"测试内容51y8"</span></span>,
+"<span class="hljs-attribute">answersNum</span>": <span class="hljs-value"><span class="hljs-number">21415</span></span>,
+"<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"测试内容6oy1"</span></span>,
+    "<span class="hljs-attribute">level</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}</span>,
+"<span class="hljs-attribute">isSaved</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">thumbs</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+    "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">src</span>": <span class="hljs-value">{}
+        </span>}
+    ]
+</span>}</span>,
+"<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"测试内容3f3j"</span></span>,
+"<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">56756</span>
+</span>}</span>,
+"<span class="hljs-attribute">lang</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">isLogin</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">askPanelInfo</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">isSelf</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---detai页面-踩接口">踩接口&nbsp;<a href="#问到底---detai页面-踩接口"><i class="fa fa-link"></i></a></h4><section id="问到底---detai页面-踩接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---detai页面-踩接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/detailunlike.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4efcfa34623d37d705222213723aab48" class="pull-right">Toggle</a></li><li id="4efcfa34623d37d705222213723aab48" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">number</span>": <span class="hljs-value"><span class="hljs-number">100</span></span>,
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---detai页面-采纳答案接口">采纳答案接口&nbsp;<a href="#问到底---detai页面-采纳答案接口"><i class="fa fa-link"></i></a></h4><section id="问到底---detai页面-采纳答案接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---detai页面-采纳答案接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/detailtaken.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#ccff2654a55b7dec107b3845a4b5747a" class="pull-right">Toggle</a></li><li id="ccff2654a55b7dec107b3845a4b5747a" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"38 minutes ago"</span></span>,
+"<span class="hljs-attribute">thumbs</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">hasThumbs</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">thumbData</span>": <span class="hljs-value">[
+        <span class="hljs-string">"string1"</span>,
+        <span class="hljs-string">"string2"</span>,
+        <span class="hljs-string">"string3"</span>,
+        <span class="hljs-string">"string4"</span>,
+        <span class="hljs-string">"string5"</span>
+    ]
+</span>}</span>,
+"<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"4"</span></span>,
+"<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+    "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/60/60/tech"</span></span>,
+    "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"353"</span>
+</span>}</span>,
+"<span class="hljs-attribute">commentNum</span>": <span class="hljs-value"><span class="hljs-number">35</span></span>,
+"<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">32</span></span>,
+"<span class="hljs-attribute">answerDetail</span>": <span class="hljs-value"><span class="hljs-string">"My Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...to sent trade match? next time you then you may not be cheaten..."</span></span>,
+"<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">32</span>
+</span>}</span>,
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---detai页面-根据分页器的to页获取评论lis..">根据分页器的to页获取评论lis..&nbsp;<a href="#问到底---detai页面-根据分页器的to页获取评论lis.."><i class="fa fa-link"></i></a></h4><p>根据分页器的to页获取评论list:</p>
+<section id="问到底---detai页面-根据分页器的to页获取评论lis..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---detai页面-根据分页器的to页获取评论lis..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/detailgetbypagination.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#3805e094391a91fd2e886a5e7508ebe0" class="pull-right">Toggle</a></li><li id="3805e094391a91fd2e886a5e7508ebe0" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">commentsList</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"242"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"239 mins ago"</span></span>,
+    "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://baiud.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"2422222233333333333333333333"</span>
+</span>},
+{
+    "<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"242"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"239 mins ago"</span></span>,
+    "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://baiud.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"2422222233333333333333333333"</span>
+</span>},
+{
+    "<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"242"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"239 mins ago"</span></span>,
+    "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://baiud.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"2422222233333333333333333333"</span>
+</span>},
+{
+    "<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"242"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"239 mins ago"</span></span>,
+    "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://baiud.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"2422222233333333333333333333"</span>
+</span>},
+{
+    "<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"242"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"239 mins ago"</span></span>,
+    "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://baiud.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"2422222233333333333333333333"</span>
+</span>},
+{
+    "<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"242"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"239 mins ago"</span></span>,
+    "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://baiud.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"2422222233333333333333333333"</span>
+</span>},
+{
+    "<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"242"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"239 mins ago"</span></span>,
+    "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://baiud.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"2422222233333333333333333333"</span>
+</span>},
+{
+    "<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"242"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"239 mins ago"</span></span>,
+    "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://baiud.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"2422222233333333333333333333"</span>
+</span>},
+{
+    "<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"242"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"239 mins ago"</span></span>,
+    "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://baiud.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"2422222233333333333333333333"</span>
+</span>},
+{
+    "<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"242"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"239 mins ago"</span></span>,
+    "<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"24"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"https://baiud.com"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"2422222233333333333333333333"</span>
+</span>}
+]</span>,
+"<span class="hljs-attribute">paginationInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">pagesize</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+"<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">124</span>
+</span>}</span>,
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---detai页面-评论提交接口">评论提交接口&nbsp;<a href="#问到底---detai页面-评论提交接口"><i class="fa fa-link"></i></a></h4><section id="问到底---detai页面-评论提交接口-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#问到底---detai页面-评论提交接口-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/detailCommentSubmit.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#9709641496768de2f225ad6f7ccb2bef" class="pull-right">Toggle</a></li><li id="9709641496768de2f225ad6f7ccb2bef" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">commentInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"测试内容28ql"</span></span>,
+"<span class="hljs-attribute">commentId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容aj6t"</span></span>,
+"<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"测试内容t29r"</span></span>,
+"<span class="hljs-attribute">userInfo</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"测试内容cjv5"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容fj08"</span></span>,
+    "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容bw3p"</span></span>,
+    "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5do8"</span>
+</span>}
+</span>}</span>,
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">errorMsg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容4ijq"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---detai页面-回答提交接口">回答提交接口&nbsp;<a href="#问到底---detai页面-回答提交接口"><i class="fa fa-link"></i></a></h4><section id="问到底---detai页面-回答提交接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---detai页面-回答提交接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/detailAnswer.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#20593eab65d6d3cd50680979a2c0a2f8" class="pull-right">Toggle</a></li><li id="20593eab65d6d3cd50680979a2c0a2f8" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-number">21836</span></span>,
+"<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-number">21200</span></span>,
+"<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">"测试内容x7pq"</span></span>,
+"<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-number">42741</span></span>,
+"<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">68866</span></span>,
+"<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+    "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b9e2"</span></span>,
+    "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"测试内容q071"</span></span>,
+    "<span class="hljs-attribute">userId</span>": <span class="hljs-value"><span class="hljs-string">"测试内容5b49"</span></span>,
+    "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容tibz"</span>
+</span>}</span>,
+"<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-number">64761</span>
+</span>}</span>,
+"<span class="hljs-attribute">errorMsg</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2s92"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---detai页面-根据分页器的to页获取回答的li..">根据分页器的to页获取回答的li..&nbsp;<a href="#问到底---detai页面-根据分页器的to页获取回答的li.."><i class="fa fa-link"></i></a></h4><p>根据分页器的to页获取回答的list:</p>
+<section id="问到底---detai页面-根据分页器的to页获取回答的li..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---detai页面-根据分页器的to页获取回答的li..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/detailgetanswerlist.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#3323bd1ac038e0d963ed26787b25de43" class="pull-right">Toggle</a></li><li id="3323bd1ac038e0d963ed26787b25de43" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">paginationInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">current</span>": <span class="hljs-value"><span class="hljs-number">3</span></span>,
+"<span class="hljs-attribute">pagesize</span>": <span class="hljs-value"><span class="hljs-number">10</span></span>,
+"<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">135</span>
+</span>}</span>,
+"<span class="hljs-attribute">answersList</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">" Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these scham"</span></span>,
+    "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"29 mins ago"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/60/60/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+    "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span>
+</span>},
+{
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">" Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these scham"</span></span>,
+    "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"29 mins ago"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/60/60/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+    "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span>
+</span>},
+{
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">" Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these scham"</span></span>,
+    "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"29 mins ago"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/60/60/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+    "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span>
+</span>},
+{
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">" Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these scham"</span></span>,
+    "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"29 mins ago"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/60/60/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+    "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span>
+</span>},
+{
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">" Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these scham"</span></span>,
+    "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"29 mins ago"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/60/60/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+    "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span>
+</span>},
+{
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">" Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these scham"</span></span>,
+    "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"29 mins ago"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/60/60/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+    "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span>
+</span>},
+{
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">" Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these scham"</span></span>,
+    "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"29 mins ago"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/60/60/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+    "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span>
+</span>},
+{
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">" Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these scham"</span></span>,
+    "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"29 mins ago"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/60/60/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+    "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span>
+</span>},
+{
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">" Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these scham"</span></span>,
+    "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"29 mins ago"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/60/60/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+    "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span>
+</span>},
+{
+    "<span class="hljs-attribute">detail</span>": <span class="hljs-value"><span class="hljs-string">" Alibaba allow these schammers to sent trade match? next time you find some agent to help you then you may not be cheaten...My Alibaba allow these scham"</span></span>,
+    "<span class="hljs-attribute">commentsNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-string">"29 mins ago"</span></span>,
+    "<span class="hljs-attribute">answerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/detail.html"</span></span>,
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"http://placeimg.com/60/60/tech"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">answerId</span>": <span class="hljs-value"><span class="hljs-string">"13"</span></span>,
+    "<span class="hljs-attribute">likeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span></span>,
+    "<span class="hljs-attribute">unlikeNum</span>": <span class="hljs-value"><span class="hljs-string">"14"</span>
+</span>}
+]
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="问到底---profile页..">问到底 - profile页..&nbsp;<a href="#问到底---profile页.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="问到底---profile页..-profile页面数据输出">profile页面数据输出&nbsp;<a href="#问到底---profile页..-profile页面数据输出"><i class="fa fa-link"></i></a></h4><section id="问到底---profile页..-profile页面数据输出-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---profile页..-profile页面数据输出-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#b8cec056d710ec74f7b1a81c7ebff9d9" class="pull-right">Toggle</a></li><li id="b8cec056d710ec74f7b1a81c7ebff9d9" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">lang</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">questionListInfo</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">needTakenNum</span>": <span class="hljs-value"><span class="hljs-number">41104</span></span>,
+    "<span class="hljs-attribute">questionList</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">84206</span></span>,
+            "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">status</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">isApproved</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+                "<span class="hljs-attribute">isWaittingApproved</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">hasAnswer</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+                "<span class="hljs-attribute">takenAnswer</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+            </span>}</span>,
+            "<span class="hljs-attribute">cate</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+                    "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">paginationInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">current</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+        "<span class="hljs-attribute">total</span>": <span class="hljs-value"><span class="hljs-number">42604</span></span>,
+        "<span class="hljs-attribute">pagesize</span>": <span class="hljs-value"><span class="hljs-number">33245</span>
+    </span>}
+</span>}
+]</span>,
+"<span class="hljs-attribute">isLogin</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">profileInfo</span>": <span class="hljs-value">{
+"<span class="hljs-attribute">introduction</span>": <span class="hljs-value"><span class="hljs-string">"测试内容2vv1"</span></span>,
+"<span class="hljs-attribute">honorList</span>": <span class="hljs-value">[
+    <span class="hljs-string">"string1"</span>,
+    <span class="hljs-string">"string2"</span>,
+    <span class="hljs-string">"string3"</span>,
+    <span class="hljs-string">"string4"</span>,
+    <span class="hljs-string">"string5"</span>
+]</span>,
+"<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">66627</span></span>,
+"<span class="hljs-attribute">questionNum</span>": <span class="hljs-value"><span class="hljs-number">31042</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"测试内容88wh"</span></span>,
+"<span class="hljs-attribute">levelData</span>": <span class="hljs-value"><span class="hljs-number">65566</span></span>,
+"<span class="hljs-attribute">levelPrecent</span>": <span class="hljs-value"><span class="hljs-string">"测试内容b114"</span>
+</span>}</span>,
+"<span class="hljs-attribute">userInfo</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---profile页..-修改用户介绍借口">修改用户介绍借口&nbsp;<a href="#问到底---profile页..-修改用户介绍借口"><i class="fa fa-link"></i></a></h4><section id="问到底---profile页..-修改用户介绍借口-post" class="panel panel-success"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">POST</span></div><div style="float:left"><a href="#问到底---profile页..-修改用户介绍借口-post" class="btn btn-xs btn-success">POST</a></div><div style="overflow:hidden"><code>/editProfile.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#749249220f7c0afc5586013b21a8f314" class="pull-right">Toggle</a></li><li id="749249220f7c0afc5586013b21a8f314" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">false</span></span>,
+"<span class="hljs-attribute">introduceInfo</span>": <span class="hljs-value"><span class="hljs-string">"测试内容o0i2"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---profile页..-根据用户id获取用户信息">根据用户id获取用户信息&nbsp;<a href="#问到底---profile页..-根据用户id获取用户信息"><i class="fa fa-link"></i></a></h4><section id="问到底---profile页..-根据用户id获取用户信息-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---profile页..-根据用户id获取用户信息-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/profileUserInfo.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#9264a77cdc004339b29593b27903432c" class="pull-right">Toggle</a></li><li id="9264a77cdc004339b29593b27903432c" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">answerNum</span>": <span class="hljs-value"><span class="hljs-number">20</span></span>,
+"<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://playman.com/js/6v/biz/askit/profile.html"</span></span>,
+"<span class="hljs-attribute">levelPercent</span>": <span class="hljs-value"><span class="hljs-string">"40%"</span></span>,
+"<span class="hljs-attribute">levelData</span>": <span class="hljs-value"><span class="hljs-number">4</span></span>,
+"<span class="hljs-attribute">avatar</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+"<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">8000</span></span>,
+"<span class="hljs-attribute">acountId</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+"<span class="hljs-attribute">questonNum</span>": <span class="hljs-value"><span class="hljs-number">20</span></span>,
+"<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+"<span class="hljs-attribute">saveNum</span>": <span class="hljs-value"><span class="hljs-number">20</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---profile页..-根据pagenum获取收藏lis..">根据pagenum获取收藏lis..&nbsp;<a href="#问到底---profile页..-根据pagenum获取收藏lis.."><i class="fa fa-link"></i></a></h4><p>根据pagenum获取收藏list:</p>
+<section id="问到底---profile页..-根据pagenum获取收藏lis..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---profile页..-根据pagenum获取收藏lis..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/profileQuestions.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#4a77f73eca8e3a54158eb84f00098d06" class="pull-right">Toggle</a></li><li id="4a77f73eca8e3a54158eb84f00098d06" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">true</span></span>,
+"<span class="hljs-attribute">savesList</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://taobao.com"</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">time</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">1235</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span></span>,
+        "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-string">"baiud.com"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">cate</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+        "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"alibaba product"</span>
+    </span>}
+</span>}
+]
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---profile页..-根据pagenum获取回答问题l..">根据pagenum获取回答问题l..&nbsp;<a href="#问到底---profile页..-根据pagenum获取回答问题l.."><i class="fa fa-link"></i></a></h4><p>根据pagenum获取回答问题list:</p>
+<section id="问到底---profile页..-根据pagenum获取回答问题l..-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---profile页..-根据pagenum获取回答问题l..-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/profileAnswerslist.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#8384dd98cb4b83ebc2145e7412976808" class="pull-right">Toggle</a></li><li id="8384dd98cb4b83ebc2145e7412976808" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">answersList</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">detailUrl</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span></span>,
+    "<span class="hljs-attribute">status</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">istaken</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">coins</span>": <span class="hljs-value"><span class="hljs-number">500</span></span>,
+    "<span class="hljs-attribute">title</span>": <span class="hljs-value"><span class="hljs-string">"demo"</span></span>,
+    "<span class="hljs-attribute">askerInfo</span>": <span class="hljs-value">[
+        {
+            "<span class="hljs-attribute">profileUrl</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+        </span>}
+    ]</span>,
+    "<span class="hljs-attribute">cate</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">val</span>": <span class="hljs-value"><span class="hljs-string">"alibaba product"</span></span>,
+        "<span class="hljs-attribute">href</span>": <span class="hljs-value"><span class="hljs-string">"http://baidu.com"</span>
+    </span>}
+</span>}
+]</span>,
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-literal">true</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---profile页..-状态">状态&nbsp;<a href="#问到底---profile页..-状态"><i class="fa fa-link"></i></a></h4><section id="问到底---profile页..-状态-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---profile页..-状态-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#7bd342e6759fb7a125b5d28642ea5868" class="pull-right">Toggle</a></li><li id="7bd342e6759fb7a125b5d28642ea5868" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">1</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">2</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">3</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">4</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">5</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">6</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">7</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">8</span>": <span class="hljs-value"><span class="hljs-number">1</span></span>,
+"<span class="hljs-attribute">9</span>": <span class="hljs-value"><span class="hljs-number">1</span>
+</span>}
+</code></pre></li></ul></section></div></div></div><div><div class="panel panel-default"><div class="panel-heading"><h3 id="问到底---errorcod..">问到底 - ErrorCod..&nbsp;<a href="#问到底---errorcod.."><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="问到底---errorcod..-错误码">错误码&nbsp;<a href="#问到底---errorcod..-错误码"><i class="fa fa-link"></i></a></h4><p>1：提交太频繁
+2：包含敏感词
+3：用户被禁言
+4：剩余铜币不足
+5：问题不存在</p>
+<section id="问到底---errorcod..-错误码-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---errorcod..-错误码-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#5e5e18cb2a54a8f8fd6ec4b266fc761c" class="pull-right">Toggle</a></li><li id="5e5e18cb2a54a8f8fd6ec4b266fc761c" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">0</span>": <span class="hljs-value"><span class="hljs-number">61744</span></span>,
+"<span class="hljs-attribute">1</span>": <span class="hljs-value"><span class="hljs-number">30401</span></span>,
+"<span class="hljs-attribute">2</span>": <span class="hljs-value"><span class="hljs-number">27355</span></span>,
+"<span class="hljs-attribute">3</span>": <span class="hljs-value"><span class="hljs-number">12123</span></span>,
+"<span class="hljs-attribute">4</span>": <span class="hljs-value"><span class="hljs-number">42437</span></span>,
+"<span class="hljs-attribute">5</span>": <span class="hljs-value"><span class="hljs-number">50042</span></span>,
+"<span class="hljs-attribute">6</span>": <span class="hljs-value"><span class="hljs-number">86708</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---errorcod..-前后端接口定义">前后端接口定义&nbsp;<a href="#问到底---errorcod..-前后端接口定义"><i class="fa fa-link"></i></a></h4><section id="问到底---errorcod..-前后端接口定义-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---errorcod..-前后端接口定义-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#e36e329415eecf434e09a86b1a3004f3" class="pull-right">Toggle</a></li><li id="e36e329415eecf434e09a86b1a3004f3" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-number">43073</span>
+</span>}
+</code></pre></li></ul></section><h4 id="问到底---errorcod..-提问面板接口">提问面板接口&nbsp;<a href="#问到底---errorcod..-提问面板接口"><i class="fa fa-link"></i></a></h4><section id="问到底---errorcod..-提问面板接口-get" class="panel panel-info"><div class="panel-heading"><div style="float:right"><span style="text-transform: lowercase">GET</span></div><div style="float:left"><a href="#问到底---errorcod..-提问面板接口-get" class="btn btn-xs btn-primary">GET</a></div><div style="overflow:hidden"><code>/askpanelInfo.do</code></div></div><ul class="list-group"><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#706605263f99af6d1c5272565194a964" class="pull-right">Toggle</a></li><li id="706605263f99af6d1c5272565194a964" class="list-group-item panel-collapse collapse"><h5>Body</h5><pre><code>{
+"<span class="hljs-attribute">bscases</span>": <span class="hljs-value">[
+{
+    "<span class="hljs-attribute">codeKey</span>": <span class="hljs-value"><span class="hljs-string">""</span></span>,
+    "<span class="hljs-attribute">model</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">expertAskInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">expertList</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">expertFields</span>": <span class="hljs-value">{
+                    "<span class="hljs-attribute">tem1</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">tip</span>": <span class="hljs-value"><span class="hljs-string">"询盘"</span></span>,
+                            "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"field1"</span>
+                        </span>}
+                    ]
+                </span>}</span>,
+                "<span class="hljs-attribute">tem2</span>": <span class="hljs-value">[
+                    {
+                        "<span class="hljs-attribute">honor</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+                        "<span class="hljs-attribute">summary</span>": <span class="hljs-value"><span class="hljs-string">"i am playman"</span></span>,
+                        "<span class="hljs-attribute">nickName</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+                    </span>},
+                    {
+                        "<span class="hljs-attribute">honor</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+                        "<span class="hljs-attribute">summary</span>": <span class="hljs-value"><span class="hljs-string">"i am playman"</span></span>,
+                        "<span class="hljs-attribute">nickName</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+                    </span>}
+                ]</span>,
+                "<span class="hljs-attribute">tem1</span>": <span class="hljs-value">[
+                    {
+                        "<span class="hljs-attribute">honor</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+                        "<span class="hljs-attribute">summary</span>": <span class="hljs-value"><span class="hljs-string">"i am playman"</span></span>,
+                        "<span class="hljs-attribute">nickName</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+                    </span>},
+                    {
+                        "<span class="hljs-attribute">honor</span>": <span class="hljs-value"><span class="hljs-string">"https://placeimg.com/30/30/tech"</span></span>,
+                        "<span class="hljs-attribute">summary</span>": <span class="hljs-value"><span class="hljs-string">"i am playman"</span></span>,
+                        "<span class="hljs-attribute">nickName</span>": <span class="hljs-value"><span class="hljs-string">"playman"</span>
+                    </span>}
+                ]
+            </span>}</span>,
+            "<span class="hljs-attribute">askTemplate</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"tem1"</span></span>,
+                    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"询盘发布"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"tem2"</span></span>,
+                    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"外贸邮"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">rewardsCoins</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"10"</span></span>,
+                    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"10"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+                    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"12"</span>
+                </span>}
+            ]
+        </span>}</span>,
+        "<span class="hljs-attribute">csrfToken</span>": <span class="hljs-value"><span class="hljs-string">"hello"</span></span>,
+        "<span class="hljs-attribute">openAskInfo</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">cateInfo</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">secondCate</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"产品发布与管理"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2"</span>
+                        </span>}
+                    ]</span>,
+                    "<span class="hljs-attribute">firstCate</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+                        "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"国际站服务"</span>
+                    </span>}
+                </span>},
+                {
+                    "<span class="hljs-attribute">secondCate</span>": <span class="hljs-value">[
+                        {
+                            "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"产品发布与管理"</span></span>,
+                            "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2"</span>
+                        </span>}
+                    ]</span>,
+                    "<span class="hljs-attribute">firstCate</span>": <span class="hljs-value">{
+                        "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"1"</span></span>,
+                        "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"国际站服务"</span>
+                    </span>}
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">rewardsCoins</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"10"</span></span>,
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"10"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"12"</span></span>,
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"12"</span>
+                </span>}
+            ]</span>,
+            "<span class="hljs-attribute">mainCateInfo</span>": <span class="hljs-value">[
+                {
+                    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"国际"</span></span>,
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"1"</span>
+                </span>},
+                {
+                    "<span class="hljs-attribute">text</span>": <span class="hljs-value"><span class="hljs-string">"国家"</span></span>,
+                    "<span class="hljs-attribute">value</span>": <span class="hljs-value"><span class="hljs-string">"2"</span>
+                </span>}
+            ]
+        </span>}
+    </span>}
+</span>}
+]</span>,
+"<span class="hljs-attribute">code</span>": <span class="hljs-value"><span class="hljs-string">"200"</span>
+</span>}
+</code></pre></li></ul></section></div></div></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by&nbsp;<a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a>&nbsp;on 25 Aug 2014</p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="http://localhost:8827//js/jquery-1.11.0.min.js"></script><script src="http://localhost:8827/js/bootstrap.min.js"></script><script>(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script>(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script></html>
