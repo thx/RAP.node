@@ -1,0 +1,22 @@
+{
+  "name": "rap",
+  "version": "0.11.0",
+  "description": "RAP is a GUI web interface structure management system. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thx/RAP.node.git"
+  },
+  "keywords": [
+    "rap"
+  ],
+  "author": "Bosn",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/thx/RAP.node/issues"
+  },
+  "homepage": "https://github.com/thx/RAP.node"
+}
