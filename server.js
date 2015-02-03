@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 3000;        // set our port
+var port = process.env.PORT || 7429;        // set our port
 var api = require('./route/api');
 var index = require('./route/index');
 
